@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const renderFilmsCard = (films) => {
+const renderFilmsCard = (films, onHeaderClick) => {
   return films.map((film) => {
     return <article key={film} className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
         <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
           alt={film} width="280" height="175"/>
       </div>
-      <h3 className="small-movie-card__title">
+      <h3 className="small-movie-card__title" onClick={onHeaderClick}>
         <a className="small-movie-card__link" href="movie-page.html">{film}</a>
       </h3>
     </article>;
@@ -16,7 +16,7 @@ const renderFilmsCard = (films) => {
 };
 
 const Main = (props) => {
-  const {films, filmName, genre, date} = props;
+  const {films, filmName, genre, date, onHeaderClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -112,7 +112,7 @@ const Main = (props) => {
         </ul>
 
         <div className="catalog__movies-list">
-          {renderFilmsCard(films)}
+          {renderFilmsCard(films, onHeaderClick)}
         </div>
 
         <div className="catalog__more">
@@ -141,7 +141,8 @@ Main.propTypes = {
   films: PropTypes.arrayOf(PropTypes.string).isRequired,
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  date: PropTypes.number.isRequired,
+  onHeaderClick: PropTypes.func
 };
 
 export default Main;
