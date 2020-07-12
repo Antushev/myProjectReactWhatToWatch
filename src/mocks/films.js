@@ -1,7 +1,3 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import App from './app.jsx';
-
 const films = [
   {
     name: `Хоббит: Пустошь Смауга`,
@@ -53,26 +49,4 @@ const films = [
   }
 ];
 
-const film = {
-  name: `Интерстеллар`,
-  picture: `img/pictrue.jpg`,
-  genre: `Adventure`,
-  date: 2014
-};
-
-describe(`AppComponent`, () => {
-  it(`AppComponentSnapshot`, () => {
-    const tree = renderer
-      .create(
-          <App
-            films={films}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
-          />
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-});
+export {films};

@@ -259,19 +259,28 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Хоббит: Пустошь Смауга"
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Хоббит: Пустошь Смауга",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -283,19 +292,28 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Интерстеллар"
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Интерстеллар",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -307,19 +325,28 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Спасти рядоого Райана"
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Спасти рядоого Райана",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -331,19 +358,61 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Власталин колец: Возвращение короля"
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Хоббит: Пустошь Смауга",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Хоббит: Пустошь Смауга
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Власталин колец: Возвращение короля",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
+              height="175"
+              src="img/pulp-fiction.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -355,25 +424,100 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Хоббит: Нежданное путешествие"
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Хоббит: Пустошь Смауга",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Хоббит: Пустошь Смауга
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Хоббит: Нежданное путешествие",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
+              height="175"
+              src="img/pulp-fiction.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
             >
               Хоббит: Нежданное путешествие
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt={
+                Object {
+                  "date": 2014,
+                  "genre": "Adventure",
+                  "name": "Хоббит: Пустошь Смауга",
+                  "picture": "img/pulp-fiction.jpg",
+                }
+              }
+              height="175"
+              src="img/pulp-fiction.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Хоббит: Пустошь Смауга
             </a>
           </h3>
         </article>

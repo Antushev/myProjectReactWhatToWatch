@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseOver={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <img
+      alt={
+        Object {
+          "date": 2014,
+          "genre": "Adventure",
+          "name": "Хоббит: Пустошь Смауга",
+          "picture": "img/pulp-fiction.jpg",
+        }
+      }
+      height="175"
+      src="img/pulp-fiction.jpg"
+      width="280"
+    />
+  </div>
+  <h3
+    className="small-movie-card__title"
+    onClick={[Function]}
+  >
+    <a
+      className="small-movie-card__link"
+      href="movie-page.html"
+    >
+      Хоббит: Пустошь Смауга
+    </a>
+  </h3>
+</article>
+`;

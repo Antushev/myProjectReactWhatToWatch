@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
+
+import FilmsList from './films-list.jsx';
 
 const films = [
   {
@@ -53,22 +54,13 @@ const films = [
   }
 ];
 
-const film = {
-  name: `Интерстеллар`,
-  picture: `img/pictrue.jpg`,
-  genre: `Adventure`,
-  date: 2014
-};
-
-describe(`AppComponent`, () => {
-  it(`AppComponentSnapshot`, () => {
+describe(`FilmsListComponent`, () => {
+  it(`FilmcListComponentSnapshot`, () => {
     const tree = renderer
       .create(
-          <App
+          <FilmsList
             films={films}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
+            handleHeaderClick={() => {}}
           />
       )
       .toJSON();

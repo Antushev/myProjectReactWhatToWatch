@@ -1,6 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import App from './app.jsx';
+import {configure, shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import FilmsList from './films-list.jsx';
+
+configure({adapter: new Adapter()});
 
 const films = [
   {
@@ -53,26 +56,23 @@ const films = [
   }
 ];
 
-const film = {
-  name: `Интерстеллар`,
-  picture: `img/pictrue.jpg`,
-  genre: `Adventure`,
-  date: 2014
-};
+describe(`FilmsListComponent`, () => {
+  it(`Click header films`, () => {
+    const handleHeaderClick = jest.fn();
 
-describe(`AppComponent`, () => {
-  it(`AppComponentSnapshot`, () => {
-    const tree = renderer
-      .create(
-          <App
-            films={films}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
-          />
-      )
-      .toJSON();
+    const filmsList = shallow(
+        <FilmsList
+          films={films}
+          handleHeaderClick={handleHeaderClick}
+        />
+    );
 
-    expect(tree).toMatchSnapshot();
+    const buttonHeaders = filmsList.find(`.small-movie-card__title`);
+
+    buttonHeaders.forEach((buttonHeader) => {
+      buttonHeader.simulate(`click`);
+    });
+
+    expect(handleHeaderClick).toBeCalledTimes(buttonHeaders.length);
   });
 });
