@@ -9,16 +9,9 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
     className="small-movie-card__image"
   >
     <img
-      alt={
-        Object {
-          "date": 2014,
-          "genre": "Adventure",
-          "name": "Хоббит: Пустошь Смауга",
-          "picture": "img/pulp-fiction.jpg",
-        }
-      }
+      alt="Интерстеллар"
       height="175"
-      src="img/pulp-fiction.jpg"
+      src="img/pictrue.jpg"
       width="280"
     />
   </div>
@@ -30,7 +23,7 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Хоббит: Пустошь Смауга
+      Интерстеллар
     </a>
   </h3>
 </article>

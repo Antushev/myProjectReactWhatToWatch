@@ -1,14 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FilmCard from './film-card.jsx';
+import {film} from '../../utils/films-test.js';
 
-const film = {
-  name: `Хоббит: Пустошь Смауга`,
-  picture: `img/pulp-fiction.jpg`,
-  genre: `Adventure`,
-  date: 2014
-};
+import FilmCard from './film-card.jsx';
 
 describe(`FilmCardComponent`, () => {
   it(`FilmCardComponentSnapshot`, () => {

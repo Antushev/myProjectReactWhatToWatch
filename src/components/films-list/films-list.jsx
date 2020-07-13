@@ -1,19 +1,18 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {filmShape} from '../../utils/shapes.js';
 
 import FilmCard from '../film-card/film-card.jsx';
-
 
 export default class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: null,
-      picture: null,
-      genre: null,
-      date: null
+      activeCardId: null
     };
+
+    this._handleFilmCardMouseOver = this._handleFilmCardMouseOver.bind(this);
   }
 
   render() {
@@ -27,27 +26,26 @@ export default class FilmsList extends PureComponent {
   }
 
   _renderFilmsCard(films, handleHeaderClick) {
-    return films.map((film, index) => {
+    return films.map((film) => {
       return <FilmCard
-        key={film + index}
+        key={film.id}
         film={film}
         handleHeaderClick={handleHeaderClick}
-        handleFilmCardMouseOver={() => {
-          this.setState(film);
-        }}
+        handleFilmCardMouseOver={this._handleFilmCardMouseOver}
       />;
+    });
+  }
+
+  _handleFilmCardMouseOver(idFilm) {
+    this.setState({
+      activeCardId: idFilm
     });
   }
 }
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        date: PropTypes.number.isRequired
-      }).isRequired
+      PropTypes.shape(filmShape).isRequired
   ).isRequired,
   handleHeaderClick: PropTypes.func.isRequired,
 };

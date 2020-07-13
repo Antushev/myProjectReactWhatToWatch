@@ -4,21 +4,21 @@ const films = [
     name: `Хоббит: Пустошь Смауга`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2001
   },
   {
     id: 2,
     name: `Интерстеллар`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2000
   },
   {
     id: 3,
     name: `Спасти рядоого Райана`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2004
   },
   {
     id: 4,
@@ -39,22 +39,30 @@ const films = [
     name: `Хоббит: Пустошь Смауга`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2019
   },
   {
     id: 7,
     name: `Хоббит: Нежданное путешествие`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2020
   },
   {
     id: 8,
     name: `Хоббит: Пустошь Смауга`,
     picture: `img/pulp-fiction.jpg`,
     genre: `Adventure`,
-    date: 2014
+    date: 2018
   }
 ];
 
-export {films};
+const film = {
+  id: 1,
+  name: `Интерстеллар`,
+  picture: `img/pictrue.jpg`,
+  genre: `Adventure`,
+  date: 2014
+};
+
+export {film, films};

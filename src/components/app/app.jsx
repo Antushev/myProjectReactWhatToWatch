@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
-const handleHeaderClick = (evt) => {
-  return evt.target.classList.contains(`small-movie-card__title`);
+const handleHeaderClick = () => {
+
 };
 
 const App = (props) => {
@@ -19,6 +19,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  date: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -26,10 +27,9 @@ App.propTypes = {
         genre: PropTypes.string.isRequired,
         date: PropTypes.number.isRequired
       }).isRequired
-  ).isRequired,
+  ),
   filmName: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
+  genre: PropTypes.string.isRequired
 };
 
 export default App;

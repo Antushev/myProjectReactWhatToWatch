@@ -265,14 +265,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Хоббит: Пустошь Смауга",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Хоббит: Пустошь Смауга"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -298,14 +291,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Интерстеллар",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Интерстеллар"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -331,14 +317,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Спасти рядоого Райана",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Спасти рядоого Райана"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -364,14 +343,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Хоббит: Пустошь Смауга",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Хоббит: Пустошь Смауга"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -397,14 +369,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Власталин колец: Возвращение короля",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Власталин колец: Возвращение короля"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -430,14 +395,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Хоббит: Пустошь Смауга",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Хоббит: Пустошь Смауга"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -463,14 +421,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Хоббит: Нежданное путешествие",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Хоббит: Нежданное путешествие"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"
@@ -496,14 +447,7 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt={
-                Object {
-                  "date": 2014,
-                  "genre": "Adventure",
-                  "name": "Хоббит: Пустошь Смауга",
-                  "picture": "img/pulp-fiction.jpg",
-                }
-              }
+              alt="Хоббит: Пустошь Смауга"
               height="175"
               src="img/pulp-fiction.jpg"
               width="280"

@@ -2,16 +2,13 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import {film} from '../../utils/films-test.js';
+
 import FilmCard from './film-card.jsx';
 
 configure({adapter: new Adapter()});
 
-const film = {
-  name: `Хоббит: Пустошь Смауга`,
-  picture: `img/pulp-fiction.jpg`,
-  genre: `Adventure`,
-  date: 2014
-};
+const activeCardId = 1;
 
 describe(`FilmCardComponent`, () => {
   it(`Correct information about film mouseover`, () => {
@@ -27,8 +24,8 @@ describe(`FilmCardComponent`, () => {
 
     const filmCard = filmCardMock.find(`.small-movie-card`);
 
-    filmCard.simulate(`mouseover`, film);
+    filmCard.simulate(`mouseover`, activeCardId);
 
-    expect(handleFilmCardMouseOver.mock.calls[0][0]).toMatchObject(film);
+    expect(handleFilmCardMouseOver.mock.calls[0][0]).toBe(activeCardId);
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {filmShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 
@@ -132,17 +133,12 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  date: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        date: PropTypes.number.isRequired
-      })
+      PropTypes.shape(filmShape)
   ).isRequired,
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
   handleHeaderClick: PropTypes.func.isRequired,
 };
 
