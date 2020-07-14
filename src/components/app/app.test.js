@@ -1,20 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+
+import {film, films} from '../../utils/films-test.js';
+
 import App from './app.jsx';
-
-const films = [
-  `Хоббит: Пустошь Смауга`,
-  `Интерстеллар`,
-  `Спасти рядоого Райана`,
-  `Власталин колец: Возвращение короля`,
-  `Хоббит: Нежданное путешествие`
-];
-
-const film = {
-  name: `Интерстеллар`,
-  genre: `Adventure`,
-  date: 2014
-};
 
 describe(`AppComponent`, () => {
   it(`AppComponentSnapshot`, () => {

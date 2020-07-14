@@ -1,19 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {film, films} from '../../utils/films-test.js';
+import {films} from '../../utils/films-test.js';
 
-import Main from './main.jsx';
+import FilmsList from './films-list.jsx';
 
-describe(`MainComponent`, () => {
-  it(`MainComponentSnapshot`, () => {
+describe(`FilmsListComponent`, () => {
+  it(`FilmcListComponentSnapshot`, () => {
     const tree = renderer
       .create(
-          <Main
+          <FilmsList
             films={films}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
             handleHeaderClick={() => {}}
           />
       )
