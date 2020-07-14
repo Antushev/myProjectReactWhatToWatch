@@ -11,7 +11,7 @@ describe(`FilmsListComponent`, () => {
       .create(
           <FilmsList
             films={films}
-            handleHeaderClick={() => {}}
+            handleFilmClick={() => {}}
           />
       )
       .toJSON();

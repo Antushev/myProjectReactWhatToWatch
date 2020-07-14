@@ -8,8 +8,6 @@ import FilmCard from './film-card.jsx';
 
 configure({adapter: new Adapter()});
 
-const activeCardId = 1;
-
 describe(`FilmCardComponent`, () => {
   it(`Correct information about film mouseover`, () => {
     const handleFilmCardMouseOver = jest.fn();
@@ -17,15 +15,15 @@ describe(`FilmCardComponent`, () => {
     const filmCardMock = shallow(
         <FilmCard
           film={film}
-          handleHeaderClick={() => {}}
+          handleFilmClick={() => {}}
           handleFilmCardMouseOver={handleFilmCardMouseOver}
         />
     );
 
     const filmCard = filmCardMock.find(`.small-movie-card`);
 
-    filmCard.simulate(`mouseover`, activeCardId);
+    filmCard.simulate(`mouseover`, film);
 
-    expect(handleFilmCardMouseOver.mock.calls[0][0]).toBe(activeCardId);
+    expect(handleFilmCardMouseOver.mock.calls[0][0]).toBe(film);
   });
 });

@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {films} from './mocks/films.js';
+import {generateFilms} from './mocks/films.js';
 
 import App from './components/app/app.jsx';
+
+const FILMS_NUMBER = 10;
+
+const films = generateFilms(FILMS_NUMBER);
 
 const init = () => {
   const film = films[0];

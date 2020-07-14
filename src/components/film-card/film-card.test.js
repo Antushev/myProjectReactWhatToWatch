@@ -10,7 +10,7 @@ describe(`FilmCardComponent`, () => {
     const tree = renderer.create(
         <FilmCard
           film={film}
-          handleHeaderClick={() => {}}
+          handleFilmClick={() => {}}
           handleFilmCardMouseOver={() => {}}
         />
     )

@@ -8,30 +8,31 @@ export default class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = { };
+    this.state = {};
 
     this._handleFilmCardMouseOver = this._handleFilmCardMouseOver.bind(this);
   }
 
   render() {
-    const {films, handleHeaderClick} = this.props;
+    const {films, handleFilmClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {this._renderFilmsCard(films, handleHeaderClick)}
+        {this._renderFilmsCard(films, handleFilmClick)}
       </div>
     );
   }
 
-  _renderFilmsCard(films, handleHeaderClick) {
-    return films.map((film) => {
-      return <FilmCard
+  _renderFilmsCard(films, handleFilmClick) {
+    return (films.map((film) => (
+      <FilmCard
         key={film.id}
         film={film}
-        handleHeaderClick={handleHeaderClick}
+        handleFilmClick={handleFilmClick}
         handleFilmCardMouseOver={this._handleFilmCardMouseOver}
-      />;
-    });
+      />
+    ))
+    );
   }
 
   _handleFilmCardMouseOver(film) {
@@ -45,5 +46,5 @@ FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape).isRequired
   ).isRequired,
-  handleHeaderClick: PropTypes.func.isRequired,
+  handleFilmClick: PropTypes.func.isRequired
 };

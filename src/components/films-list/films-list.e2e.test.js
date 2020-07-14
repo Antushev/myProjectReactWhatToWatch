@@ -9,12 +9,12 @@ configure({adapter: new Adapter()});
 
 describe(`FilmsListComponent`, () => {
   it(`Click header films`, () => {
-    const handleHeaderClick = jest.fn();
+    const handleFilmClick = jest.fn();
 
     const filmsList = shallow(
         <FilmsList
           films={films}
-          handleHeaderClick={handleHeaderClick}
+          handleFilmClick={handleFilmClick}
         />
     );
 
@@ -24,6 +24,6 @@ describe(`FilmsListComponent`, () => {
       buttonHeader.simulate(`click`);
     });
 
-    expect(handleHeaderClick).toBeCalledTimes(buttonHeaders.length);
+    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
   });
 });

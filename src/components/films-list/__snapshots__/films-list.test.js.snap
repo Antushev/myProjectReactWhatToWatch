@@ -10,37 +10,12 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   >
     <div
       className="small-movie-card__image"
-    >
-      <img
-        alt="Хоббит: Пустошь Смауга"
-        height="175"
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
       onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Хоббит: Пустошь Смауга
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
     >
       <img
         alt="Интерстеллар"
         height="175"
-        src="img/pulp-fiction.jpg"
+        src="img/macbeth.jpg"
         width="280"
       />
     </div>
@@ -62,115 +37,12 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   >
     <div
       className="small-movie-card__image"
-    >
-      <img
-        alt="Спасти рядоого Райана"
-        height="175"
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
       onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Спасти рядоого Райана
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Хоббит: Пустошь Смауга"
-        height="175"
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Хоббит: Пустошь Смауга
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Власталин колец: Возвращение короля"
-        height="175"
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Власталин колец: Возвращение короля
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Хоббит: Пустошь Смауга"
-        height="175"
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Хоббит: Пустошь Смауга
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
     >
       <img
         alt="Хоббит: Нежданное путешествие"
         height="175"
-        src="img/pulp-fiction.jpg"
+        src="img/macbeth.jpg"
         width="280"
       />
     </div>
@@ -192,11 +64,12 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
-        alt="Хоббит: Пустошь Смауга"
+        alt="Интерстеллар"
         height="175"
-        src="img/pulp-fiction.jpg"
+        src="img/johnny-english.jpg"
         width="280"
       />
     </div>
@@ -208,7 +81,196 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        Хоббит: Пустошь Смауга
+        Интерстеллар
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Автостопом по галактике"
+        height="175"
+        src="img/macbeth.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Автостопом по галактике
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Автостопом по галактике"
+        height="175"
+        src="img/bohemian-rhapsody.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Автостопом по галактике
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Интерстеллар"
+        height="175"
+        src="img/bohemian-rhapsody.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Интерстеллар
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Автостопом по галактике"
+        height="175"
+        src="img/macbeth.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Автостопом по галактике
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Властелин колец: Возвращение короля"
+        height="175"
+        src="img/bohemian-rhapsody.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Властелин колец: Возвращение короля
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Джанго: Освобожденный"
+        height="175"
+        src="img/bohemian-rhapsody.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Джанго: Освобожденный
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseOver={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+    >
+      <img
+        alt="Спасти рядового Райана"
+        height="175"
+        src="img/johnny-english.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Спасти рядового Райана
       </a>
     </h3>
   </article>

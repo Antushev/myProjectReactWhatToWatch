@@ -5,6 +5,8 @@ import {film, films} from '../../mocks-test/films-test.js';
 
 import Main from './main.jsx';
 
+console.log(film);
+
 describe(`MainComponent`, () => {
   it(`MainComponentSnapshot`, () => {
     const tree = renderer
@@ -14,7 +16,7 @@ describe(`MainComponent`, () => {
             filmName={film.name}
             genre={film.genre}
             date={film.date}
-            handleHeaderClick={() => {}}
+            handleFilmClick={() => {}}
           />
       )
       .toJSON();
