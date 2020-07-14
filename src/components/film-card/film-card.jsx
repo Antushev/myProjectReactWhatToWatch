@@ -8,7 +8,7 @@ const FilmCard = (props) => {
 
   return (
     <article key={id} className="small-movie-card catalog__movies-card"
-      onMouseOver={() => handleFilmCardMouseOver(id)}
+      onMouseOver={() => handleFilmCardMouseOver(film)}
     >
       <div className="small-movie-card__image">
         <img src={picture}

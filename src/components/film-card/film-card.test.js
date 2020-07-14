@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {film} from '../../utils/films-test.js';
+import {film} from '../../mocks-test/films-test.js';
 
 import FilmCard from './film-card.jsx';
 

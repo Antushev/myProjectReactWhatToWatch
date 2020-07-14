@@ -8,9 +8,7 @@ export default class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCardId: null
-    };
+    this.state = { };
 
     this._handleFilmCardMouseOver = this._handleFilmCardMouseOver.bind(this);
   }
@@ -36,9 +34,9 @@ export default class FilmsList extends PureComponent {
     });
   }
 
-  _handleFilmCardMouseOver(idFilm) {
+  _handleFilmCardMouseOver(film) {
     this.setState({
-      activeCardId: idFilm
+      film
     });
   }
 }

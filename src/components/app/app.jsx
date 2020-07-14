@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {filmShape} from '../../utils/shapes.js';
+
 import Main from '../main/main.jsx';
 
 const handleHeaderClick = () => {
@@ -21,12 +23,7 @@ const App = (props) => {
 App.propTypes = {
   date: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        picture: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        date: PropTypes.number.isRequired
-      }).isRequired
+      PropTypes.shape(filmShape)
   ),
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired
