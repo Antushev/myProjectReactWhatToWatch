@@ -79,12 +79,12 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <span
             className="movie-card__genre"
           >
-            Action
+            Джон
           </span>
           <span
             className="movie-card__year"
           >
-            2000
+            2001
           </span>
         </p>
         <div
@@ -146,7 +146,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
         <img
           alt="The Grand Budapest Hotel poster"
           height="327"
-          src="img/bohemian-rhapsody.jpg"
+          src="img/aviator.jpg"
           width="218"
         />
       </div>
@@ -197,7 +197,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <div
             className="movie-rating__score"
           >
-            0.7
+            4
           </div>
           <p
             className="movie-rating__meta"
@@ -210,7 +210,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
             <span
               className="movie-rating__count"
             >
-              10578
+              89543
             </span>
           </p>
         </div>
@@ -219,14 +219,14 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
         >
           <p>
             In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-                  Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+                    Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
           </p>
           <p
             className="movie-card__director"
           >
             <strong>
               Director: 
-              Казимир
+              Джон
             </strong>
           </p>
           <p

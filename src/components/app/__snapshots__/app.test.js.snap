@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Спасти рядового Райана
+            Интерстеллар
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Adventure
+              Джон
             </span>
             <span
               className="movie-card__year"
             >
-              1999
+              2001
             </span>
           </p>
           <div
@@ -266,7 +266,7 @@ Array [
             onClick={[Function]}
           >
             <img
-              alt="Хоббит: Нежданное путешествие"
+              alt="Интерстеллар"
               height="175"
               src="img/aviator.jpg"
               width="280"
@@ -280,7 +280,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Хоббит: Нежданное путешествие
+              Интерстеллар
             </a>
           </h3>
         </article>
@@ -295,7 +295,7 @@ Array [
             <img
               alt="Интерстеллар"
               height="175"
-              src="img/macbeth.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -320,90 +320,9 @@ Array [
             onClick={[Function]}
           >
             <img
-              alt="Джанго: Освобожденный"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Джанго: Освобожденный
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
-              alt="Автостопом по галактике"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Автостопом по галактике
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
-              alt="Джанго: Освобожденный"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Джанго: Освобожденный
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
               alt="Интерстеллар"
               height="175"
-              src="img/macbeth.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -428,9 +347,9 @@ Array [
             onClick={[Function]}
           >
             <img
-              alt="Хоббит: Нежданное путешествие"
+              alt="Интерстеллар"
               height="175"
-              src="img/johnny-english.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -442,88 +361,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Хоббит: Нежданное путешествие
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
-              alt="Спасти рядового Райана"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Спасти рядового Райана
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
-              alt="Спасти рядового Райана"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Спасти рядового Райана
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={[Function]}
-          >
-            <img
-              alt="Автостопом по галактике"
-              height="175"
-              src="img/johnny-english.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Автостопом по галактике
+              Интерстеллар
             </a>
           </h3>
         </article>
