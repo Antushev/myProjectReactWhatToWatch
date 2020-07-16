@@ -7,11 +7,12 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
 >
   <div
     className="small-movie-card__image"
+    onClick={[Function]}
   >
     <img
       alt="Интерстеллар"
       height="175"
-      src="img/pictrue.jpg"
+      src="img/aviator.jpg"
       width="280"
     />
   </div>

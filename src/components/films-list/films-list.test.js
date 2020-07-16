@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {films} from '../../utils/films-test.js';
+import {films} from '../../mocks-test/films-test.js';
 
 import FilmsList from './films-list.jsx';
 
@@ -11,7 +11,7 @@ describe(`FilmsListComponent`, () => {
       .create(
           <FilmsList
             films={films}
-            handleHeaderClick={() => {}}
+            handleFilmClick={() => {}}
           />
       )
       .toJSON();

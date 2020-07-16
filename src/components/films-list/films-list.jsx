@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
+import {FILM_CARD_DEFAULT} from '../../utils/const.js';
 
 import FilmCard from '../film-card/film-card.jsx';
 
@@ -9,36 +10,36 @@ export default class FilmsList extends PureComponent {
     super(props);
 
     this.state = {
-      activeCardId: null
+      film: FILM_CARD_DEFAULT
     };
 
     this._handleFilmCardMouseOver = this._handleFilmCardMouseOver.bind(this);
   }
 
   render() {
-    const {films, handleHeaderClick} = this.props;
+    const {films, handleFilmClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
-        {this._renderFilmsCard(films, handleHeaderClick)}
+        {this._renderFilmsCard(films, handleFilmClick)}
       </div>
     );
   }
 
-  _renderFilmsCard(films, handleHeaderClick) {
-    return films.map((film) => {
-      return <FilmCard
+  _renderFilmsCard(films, handleFilmClick) {
+    return films.map((film) => (
+      <FilmCard
         key={film.id}
         film={film}
-        handleHeaderClick={handleHeaderClick}
+        handleFilmClick={handleFilmClick}
         handleFilmCardMouseOver={this._handleFilmCardMouseOver}
-      />;
-    });
+      />
+    ));
   }
 
-  _handleFilmCardMouseOver(idFilm) {
+  _handleFilmCardMouseOver(film) {
     this.setState({
-      activeCardId: idFilm
+      film
     });
   }
 }
@@ -47,5 +48,5 @@ FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape).isRequired
   ).isRequired,
-  handleHeaderClick: PropTypes.func.isRequired,
+  handleFilmClick: PropTypes.func.isRequired
 };

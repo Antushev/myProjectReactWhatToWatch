@@ -10,7 +10,7 @@ const Main = (props) => {
     filmName,
     genre,
     date,
-    handleHeaderClick} = props;
+    handleFilmClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -107,7 +107,7 @@ const Main = (props) => {
 
         <FilmsList
           films={films}
-          handleHeaderClick={handleHeaderClick}
+          handleFilmClick={handleFilmClick}
         />
 
         <div className="catalog__more">
@@ -139,7 +139,7 @@ Main.propTypes = {
   ).isRequired,
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  handleHeaderClick: PropTypes.func.isRequired,
+  handleFilmClick: PropTypes.func.isRequired
 };
 
 export default Main;

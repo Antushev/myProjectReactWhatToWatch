@@ -3,18 +3,18 @@ import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FilmsList from './films-list.jsx';
 
-import {films} from '../../utils/films-test.js';
+import {films} from '../../mocks-test/films-test.js';
 
 configure({adapter: new Adapter()});
 
 describe(`FilmsListComponent`, () => {
   it(`Click header films`, () => {
-    const handleHeaderClick = jest.fn();
+    const handleFilmClick = jest.fn();
 
     const filmsList = shallow(
         <FilmsList
           films={films}
-          handleHeaderClick={handleHeaderClick}
+          handleFilmClick={handleFilmClick}
         />
     );
 
@@ -24,6 +24,6 @@ describe(`FilmsListComponent`, () => {
       buttonHeader.simulate(`click`);
     });
 
-    expect(handleHeaderClick).toBeCalledTimes(buttonHeaders.length);
+    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
   });
 });
