@@ -1,16 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {filmShape} from '../../utils/shapes.js';
+
 const getRatingType = (rating) => {
-  let ratingType = `Bad`;
-  if (rating > 3) {
-    ratingType = `Normal`;
-  } else if (rating > 5) {
-    ratingType = `Good`;
-  } else if (rating > 8) {
-    ratingType = `Very good`;
-  } else if (rating >= 10) {
-    ratingType = `Awesome`;
+  let ratingType;
+  switch (rating) {
+    case rating > 3:
+      ratingType = `Normal`;
+      break;
+    case rating > 5:
+      ratingType = `Good`;
+      break;
+    case rating > 8:
+      ratingType = `Good`;
+      break;
+    case rating >= 10:
+      ratingType = `Awesome`;
+      break;
+    default:
+      ratingType = `Bad`;
   }
 
   return ratingType;
@@ -128,18 +137,7 @@ const FilmDetail = (props) => {
 };
 
 FilmDetail.propTypes = {
-  film: PropTypes.shape({
-    date: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    scoresCount: PropTypes.number.isRequired,
-    starring: PropTypes.array.isRequired
-  }).isRequired
+  film: PropTypes.shape(filmShape).isRequired
 };
 
 export default FilmDetail;
