@@ -11,7 +11,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Властелин колец: Возвращение короля"
+        alt="Автостопом по галактике"
         src="img/player-poster.jpg"
       />
     </div>
@@ -71,7 +71,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
         <h2
           className="movie-card__title"
         >
-          Властелин колец: Возвращение короля
+          Автостопом по галактике
         </h2>
         <p
           className="movie-card__meta"
@@ -79,12 +79,12 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <span
             className="movie-card__genre"
           >
-            Drama
+            Comedy
           </span>
           <span
             className="movie-card__year"
           >
-            1992
+            1988
           </span>
         </p>
         <div
@@ -197,7 +197,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <div
             className="movie-rating__score"
           >
-            2.4
+            3.7
           </div>
           <p
             className="movie-rating__meta"
@@ -210,7 +210,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
             <span
               className="movie-rating__count"
             >
-              80123
+              44300
             </span>
           </p>
         </div>
@@ -226,7 +226,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           >
             <strong>
               Director: 
-              Никита
+              Казимир
             </strong>
           </p>
           <p
