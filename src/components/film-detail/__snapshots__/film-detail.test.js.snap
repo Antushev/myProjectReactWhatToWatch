@@ -11,7 +11,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Автостопом по галактике"
+        alt="Интерстеллар"
         src="img/player-poster.jpg"
       />
     </div>
@@ -71,7 +71,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
         <h2
           className="movie-card__title"
         >
-          Автостопом по галактике
+          Интерстеллар
         </h2>
         <p
           className="movie-card__meta"
@@ -79,12 +79,12 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <span
             className="movie-card__genre"
           >
-            Comedy
+            Action
           </span>
           <span
             className="movie-card__year"
           >
-            1988
+            2000
           </span>
         </p>
         <div
@@ -197,7 +197,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <div
             className="movie-rating__score"
           >
-            3.7
+            0.7
           </div>
           <p
             className="movie-rating__meta"
@@ -210,7 +210,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
             <span
               className="movie-rating__count"
             >
-              44300
+              10578
             </span>
           </p>
         </div>

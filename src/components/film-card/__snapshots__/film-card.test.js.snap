@@ -10,7 +10,7 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
     onClick={[Function]}
   >
     <img
-      alt="Интерстеллар"
+      alt="Властелин колец: Возвращение короля"
       height="175"
       src="img/johnny-english.jpg"
       width="280"
@@ -24,7 +24,7 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Интерстеллар
+      Властелин колец: Возвращение короля
     </a>
   </h3>
 </article>
