@@ -1,0 +1,14 @@
+import React from 'react';
+import renderer from 'react-test-renderer';
+
+import VideoPlayer from './video-player.jsx';
+
+describe(`VideoPlayerComponent`, () => {
+  it(`VideoPlayerComponentSnapshot`, () => {
+    const tree = renderer
+      .create(
+          <VideoPlayer />
+      )
+      .toJSON();
+  });
+});
