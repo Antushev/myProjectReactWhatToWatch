@@ -8,6 +8,9 @@ import VideoPlayer from './video-player.jsx';
 
 configure({adapter: new Adapter()});
 
+const VIDEO_PLAYER_PLAY = true;
+const VIDEO_PLAYER_PAUSE = false;
+
 const posterImage = film.previewImage;
 const previewVideo = film.previewVideo;
 const isPlaying = false;
@@ -30,6 +33,14 @@ describe(`VideoPlayerComponentE2E`, () => {
     const videoPlayer = videoContainer.find(`.player__video`);
 
     videoPlayer.simulate(`play`);
-    expect(videoContainer.state().isPlaying).toEqual(false);
+    setTimeout(() => {
+      expect(videoContainer.state().isPlaying).toEqual(VIDEO_PLAYER_PLAY);
+    }, 4000);
+
+    videoPlayer.simulate(`pause`);
+
+    setTimeout(() => {
+      expect(videoContainer.state().isPlaying).toEqual(VIDEO_PLAYER_PAUSE);
+    }, 4000);
   });
 });
