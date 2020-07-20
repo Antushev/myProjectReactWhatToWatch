@@ -12,7 +12,11 @@ describe(`FilmCardComponent`, () => {
           film={film}
           handleFilmClick={() => {}}
           handleFilmCardMouseOver={() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     )
       .toJSON();
 

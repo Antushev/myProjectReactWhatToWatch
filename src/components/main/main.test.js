@@ -15,7 +15,11 @@ describe(`MainComponent`, () => {
             genre={film.genre}
             date={film.date}
             handleFilmClick={() => {}}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
       )
       .toJSON();
 

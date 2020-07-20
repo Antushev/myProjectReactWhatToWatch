@@ -7,7 +7,7 @@ import {films} from '../../mocks-test/films-test.js';
 
 configure({adapter: new Adapter()});
 
-describe(`FilmsListComponent`, () => {
+describe(`FilmsListComponentE2E`, () => {
   it(`Click header films`, () => {
     const handleFilmClick = jest.fn();
 

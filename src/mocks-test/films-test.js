@@ -9,10 +9,12 @@ const film = {
   backgroundImage: `player-poster.jpg`,
   posterImage: `aviator.jpg`,
   previewImage: `bohemian-rhapsody.jpg.jpg`,
+  previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   rating: 4,
   scoresCount: 89543,
   starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`]
 };
+
 const films = [
   {
     id: 1,
@@ -25,6 +27,7 @@ const films = [
     backgroundImage: `player-poster.jpg`,
     posterImage: `aviator.jpg`,
     previewImage: `bohemian-rhapsody.jpg.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: 4,
     scoresCount: 89543,
     starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`]
@@ -40,6 +43,7 @@ const films = [
     backgroundImage: `player-poster.jpg`,
     posterImage: `aviator.jpg`,
     previewImage: `bohemian-rhapsody.jpg.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: 4,
     scoresCount: 89543,
     starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`]
@@ -55,6 +59,7 @@ const films = [
     backgroundImage: `player-poster.jpg`,
     posterImage: `aviator.jpg`,
     previewImage: `bohemian-rhapsody.jpg.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: 4,
     scoresCount: 89543,
     starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`]
@@ -70,6 +75,7 @@ const films = [
     backgroundImage: `player-poster.jpg`,
     posterImage: `aviator.jpg`,
     previewImage: `bohemian-rhapsody.jpg.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: 4,
     scoresCount: 89543,
     starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`]

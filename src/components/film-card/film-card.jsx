@@ -8,8 +8,6 @@ export default class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.idTimeout = null;
-
     this.state = {
       isPlaying: false
     };
@@ -19,7 +17,7 @@ export default class FilmCard extends PureComponent {
   }
 
   render() {
-    const {film, handleFilmClick} = this.props;
+    const {film, handleFilmClick, handleFilmCardMouseOver} = this.props;
     const {isPlaying} = this.state;
     const {id, name, posterImage, previewVideo} = film;
 
@@ -27,19 +25,16 @@ export default class FilmCard extends PureComponent {
       <article
         key={id}
         className="small-movie-card catalog__movies-card"
+        onMouseOver={() => handleFilmCardMouseOver(film)}
+        onClick={() => handleFilmClick(film)}
       >
-        <div
-          className="small-movie-card__image"
-          onClick={() => handleFilmClick(film)}
-          onMouseOver={this._handleFilmCardMouseOver}
-          onMouseOut={this._handleFilmCardMouseOut}
-        >
-          <VideoPlayer
-            posterImage={posterImage}
-            previewVideo={previewVideo}
-            isPlaying={isPlaying}
-          />
-        </div>
+        <VideoPlayer
+          isPlaying={isPlaying}
+          posterImage={posterImage}
+          previewVideo={previewVideo}
+          handleFilmCardMouseOver={this._handleFilmCardMouseOver}
+          handleFilmCardMouseOut={this._handleFilmCardMouseOut}
+        />
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{name}</a>
         </h3>

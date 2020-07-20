@@ -14,7 +14,11 @@ describe(`AppComponent`, () => {
             filmName={film.name}
             genre={film.genre}
             date={film.date}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
       )
       .toJSON();
 
