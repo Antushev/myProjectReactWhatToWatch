@@ -23,7 +23,6 @@ export default class VideoPlayer extends PureComponent {
 
     video.src = previewVideo;
     video.poster = `img/${posterImage}`;
-    video.load();
 
     video.onplay = () => {
       this.setState({

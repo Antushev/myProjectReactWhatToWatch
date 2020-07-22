@@ -13,6 +13,7 @@ exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
   >
     <video
       className="player__video"
+      muted="muted"
     />
     ;
   </div>

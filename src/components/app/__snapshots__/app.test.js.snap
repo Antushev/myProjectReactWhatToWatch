@@ -269,6 +269,7 @@ Array [
           >
             <video
               className="player__video"
+              muted="muted"
             />
             ;
           </div>
@@ -295,6 +296,7 @@ Array [
           >
             <video
               className="player__video"
+              muted="muted"
             />
             ;
           </div>
@@ -321,6 +323,7 @@ Array [
           >
             <video
               className="player__video"
+              muted="muted"
             />
             ;
           </div>
@@ -347,6 +350,7 @@ Array [
           >
             <video
               className="player__video"
+              muted="muted"
             />
             ;
           </div>

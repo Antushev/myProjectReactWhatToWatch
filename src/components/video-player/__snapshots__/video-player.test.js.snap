@@ -8,6 +8,7 @@ exports[`VideoPlayerComponent VideoPlayerComponentSnapshot 1`] = `
 >
   <video
     className="player__video"
+    muted="muted"
   />
   ;
 </div>
