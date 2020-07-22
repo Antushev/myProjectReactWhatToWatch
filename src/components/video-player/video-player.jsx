@@ -23,6 +23,7 @@ export default class VideoPlayer extends PureComponent {
 
     video.src = previewVideo;
     video.poster = `img/${posterImage}`;
+    video.load();
 
     video.onplay = () => {
       this.setState({
@@ -45,7 +46,7 @@ export default class VideoPlayer extends PureComponent {
         onMouseOver={handleFilmCardMouseOver}
         onMouseOut={handleFilmCardMouseOut}
       >
-        <video className="player__video" ref={this._videoRef} />;
+        <video className="player__video" ref={this._videoRef} muted="muted"/>;
       </div>
     );
   }
