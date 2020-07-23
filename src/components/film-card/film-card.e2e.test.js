@@ -1,5 +1,5 @@
 import React from 'react';
-import {configure, shallow} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {film} from '../../mocks-test/films-test.js';
@@ -8,11 +8,11 @@ import FilmCard from './film-card.jsx';
 
 configure({adapter: new Adapter()});
 
-describe(`FilmCardComponent`, () => {
+describe(`FilmCardComponentE2E`, () => {
   it(`Correct information about film mouseover`, () => {
     const handleFilmCardMouseOver = jest.fn();
 
-    const filmCardMock = shallow(
+    const filmCardMock = mount(
         <FilmCard
           film={film}
           handleFilmClick={() => {}}

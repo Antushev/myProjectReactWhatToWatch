@@ -12,7 +12,11 @@ describe(`FilmsListComponent`, () => {
           <FilmsList
             films={films}
             handleFilmClick={() => {}}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
       )
       .toJSON();
 

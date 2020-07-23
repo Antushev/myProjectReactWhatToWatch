@@ -3,22 +3,22 @@
 exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
-    onClick={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
   >
-    <img
-      alt="Интерстеллар"
-      height="175"
-      src="img/aviator.jpg"
-      width="280"
+    <video
+      className="player__video"
+      muted="muted"
     />
+    ;
   </div>
   <h3
     className="small-movie-card__title"
-    onClick={[Function]}
   >
     <a
       className="small-movie-card__link"

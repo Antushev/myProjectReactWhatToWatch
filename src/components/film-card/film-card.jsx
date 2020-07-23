@@ -1,34 +1,63 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 
-const FilmCard = (props) => {
-  const {film, handleFilmClick, handleFilmCardMouseOver} = props;
-  const {id, name, posterImage} = film;
+import VideoPlayer from '../video-player/video-player.jsx';
 
-  return (
-    <article key={id} className="small-movie-card catalog__movies-card"
-      onMouseOver={() => handleFilmCardMouseOver(film)}
-    >
-      <div className="small-movie-card__image" onClick={() => handleFilmClick(film)}>
-        <img
-          src={`img/${posterImage}`}
-          alt={name}
-          width="280"
-          height="175"
+export default class FilmCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isPlaying: false
+    };
+
+    this._handleFilmCardMouseOver = this._handleFilmCardMouseOver.bind(this);
+    this._handleFilmCardMouseOut = this._handleFilmCardMouseOut.bind(this);
+  }
+
+  render() {
+    const {film, handleFilmClick, handleFilmCardMouseOver} = this.props;
+    const {isPlaying} = this.state;
+    const {id, name, posterImage, previewVideo} = film;
+
+    return (
+      <article
+        key={id}
+        className="small-movie-card catalog__movies-card"
+        onMouseOver={() => handleFilmCardMouseOver(film)}
+        onClick={() => handleFilmClick(film)}
+      >
+        <VideoPlayer
+          isPlaying={isPlaying}
+          posterImage={posterImage}
+          previewVideo={previewVideo}
+          handleFilmCardMouseOver={this._handleFilmCardMouseOver}
+          handleFilmCardMouseOut={this._handleFilmCardMouseOut}
         />
-      </div>
-      <h3 className="small-movie-card__title" onClick={() => handleFilmClick(film)}>
-        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
-      </h3>
-    </article>
-  );
-};
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+        </h3>
+      </article>
+    );
+  }
+
+  _handleFilmCardMouseOver() {
+    this.setState((prevState) => {
+      return {isPlaying: !prevState.isPlaying};
+    });
+  }
+
+  _handleFilmCardMouseOut() {
+    this.setState((prevState) => {
+      return {isPlaying: !prevState.isPlaying};
+    });
+  }
+}
+
 
 FilmCard.propTypes = {
   film: PropTypes.shape(filmShape).isRequired,
   handleFilmClick: PropTypes.func.isRequired,
   handleFilmCardMouseOver: PropTypes.func.isRequired
 };
-
-export default FilmCard;
