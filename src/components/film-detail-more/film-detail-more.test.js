@@ -15,5 +15,7 @@ describe(`FilmDetailMoreComponent`, () => {
           />
       )
       .toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 });
