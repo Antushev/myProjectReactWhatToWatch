@@ -2,18 +2,20 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {film, films} from '../../mocks-test/films-test.js';
-import {FilmsListType} from '../../mocks-test/films-test.js';
 
-import FilmsList from './films-list.jsx';
+import FilmDetails from './film-details.jsx';
 
-describe(`FilmsListComponent`, () => {
-  it(`FilmcListComponentSnapshot`, () => {
+const activeTab = `overview`;
+
+describe(`FilmDetailsComponent`, () => {
+  it(`FilmDetailsComponentSnapshot`, () => {
     const tree = renderer
       .create(
-          <FilmsList
-            currentFilm={film}
+          <FilmDetails
+            film={film}
             films={films}
-            filmListType={FilmsListType.DEFAULT}
+            activeTab={activeTab}
+            renderTabs={() => {}}
             handleFilmClick={() => {}}
           />, {
             createNodeMock: () => {

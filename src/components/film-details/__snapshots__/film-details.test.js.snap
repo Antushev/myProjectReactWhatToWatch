@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
+exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
 <section
   className="movie-card movie-card--full"
 >
@@ -153,44 +153,6 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
       <div
         className="movie-card__desc"
       >
-        <nav
-          className="movie-nav movie-card__nav"
-        >
-          <ul
-            className="movie-nav__list"
-          >
-            <li
-              className="movie-nav__item movie-nav__item--active"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Overview
-              </a>
-            </li>
-            <li
-              className="movie-nav__item"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Details
-              </a>
-            </li>
-            <li
-              className="movie-nav__item"
-            >
-              <a
-                className="movie-nav__link"
-                href="#"
-              >
-                Reviews
-              </a>
-            </li>
-          </ul>
-        </nav>
         <div
           className="movie-rating"
         >
@@ -241,6 +203,166 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
         </div>
       </div>
     </div>
+  </div>
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <div
+        className="catalog__movies-list"
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <video
+              className="player__video"
+              muted="muted"
+            />
+            ;
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Интерстеллар
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <video
+              className="player__video"
+              muted="muted"
+            />
+            ;
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Интерстеллар
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <video
+              className="player__video"
+              muted="muted"
+            />
+            ;
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Интерстеллар
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOver={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <video
+              className="player__video"
+              muted="muted"
+            />
+            ;
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Интерстеллар
+            </a>
+          </h3>
+        </article>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+          href="main.html"
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
   </div>
 </section>
 `;

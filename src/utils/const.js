@@ -13,4 +13,15 @@ const FILM_CARD_DEFAULT = {
   starring: null
 };
 
-export {FILM_CARD_DEFAULT};
+const FilmDetailTabsName = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
+};
+
+const FilmsListType = {
+  DEFAULT: `default`,
+  MORE_LIKE: `more like`
+};
+
+export {FILM_CARD_DEFAULT, FilmDetailTabsName, FilmsListType};

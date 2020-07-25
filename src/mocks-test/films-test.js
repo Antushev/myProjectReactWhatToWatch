@@ -82,4 +82,9 @@ const films = [
   }
 ];
 
-export {film, films};
+const FilmsListType = {
+  DEFAULT: `default`,
+  MORE_LIKE: `more like`
+};
+
+export {film, films, FilmsListType};

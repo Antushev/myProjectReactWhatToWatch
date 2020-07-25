@@ -5,7 +5,7 @@ import {generateFilms} from './mocks/films.js';
 
 import App from './components/app/app.jsx';
 
-const FILMS_NUMBER = 10;
+const FILMS_NUMBER = 100;
 
 const films = generateFilms(FILMS_NUMBER);
 
