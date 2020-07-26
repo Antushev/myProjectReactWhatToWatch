@@ -10,21 +10,21 @@ const withTabs = (FilmDetailComponent) => {
       super(props);
 
       this.state = {
-        activeFilmDetailPage: FilmDetailTabsName.OVERVIEW
+        activeTabDetailPage: FilmDetailTabsName.OVERVIEW
       };
     }
 
     render() {
-      const {activeFilmDetailPage} = this.state;
+      const {activeTabDetailPage} = this.state;
 
       return <FilmDetailComponent
         {...this.props}
-        activeTab={activeFilmDetailPage}
+        activeTab={activeTabDetailPage}
         renderTabs={() => {
           return <FilmDetailTabs
             handleTabClick={(activeTab) => {
               this.setState({
-                activeFilmDetailPage: activeTab
+                activeTabDetailPage: activeTab
               });
             }}
           />;

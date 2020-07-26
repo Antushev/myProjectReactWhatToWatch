@@ -9,7 +9,7 @@ const FILMS_MORE_LIKE_COUNT = 4;
 
 const getFilmsMoreLike = (currentFilm, films) => {
   return films.filter((film) => {
-    return film.genre === currentFilm.genre;
+    return film.genre === currentFilm.genre && film.name !== currentFilm.name;
   }).slice(0, FILMS_MORE_LIKE_COUNT);
 };
 
@@ -59,9 +59,9 @@ export default class FilmsList extends PureComponent {
   _renderFilmsCardMoreLike(currentFilm, films, handleFilmClick) {
     const filmsMoreLike = getFilmsMoreLike(currentFilm, films);
 
-    return filmsMoreLike.map((film, index) => {
+    return filmsMoreLike.map((film) => {
       return <FilmCard
-        key={index}
+        key={film.name}
         film={film}
         handleFilmClick={handleFilmClick}
         handleFilmCardMouseOver={this._handleFilmCardMouseOver}

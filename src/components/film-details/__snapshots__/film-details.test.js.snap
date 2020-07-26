@@ -79,7 +79,7 @@ exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
           <span
             className="movie-card__genre"
           >
-            Джон
+            Adventure
           </span>
           <span
             className="movie-card__year"
@@ -217,116 +217,7 @@ exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
       </h2>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const getRandomNumber = (min, max) => {
   return Math.round(Math.random() * (max - min)) + min;
 };
@@ -10,4 +12,16 @@ const getRandomElementFromArray = (elements) => {
   return elements[getRandomNumber(0, elements.length - 1)];
 };
 
-export {getRandomNumber, getRandomNumberFloat, getRandomElementFromArray};
+const formatDateRuntime = (runtimeByMinutes) => {
+  const runtimeHours = moment.duration(runtimeByMinutes, `minutes`).get(`hours`);
+  const runtimeMinutes = moment.duration(runtimeByMinutes, `minutes`).get(`minutes`);
+
+  return `${runtimeHours}h ${runtimeMinutes}m`;
+};
+
+export {
+  getRandomNumber,
+  getRandomNumberFloat,
+  getRandomElementFromArray,
+  formatDateRuntime
+};

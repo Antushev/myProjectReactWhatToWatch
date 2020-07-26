@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {formatDateRuntime} from '../../utils/common.js';
 
 import {filmShape} from './../../utils/shapes.js';
 
 const FilmDetailMore = (props) => {
   const {film, renderTabs} = props;
   const {
-    date,
     director,
     genre,
     name,
     posterImage,
     starring,
-    runtime
+    runtime,
+    date
   } = film;
+
+  const runtimeFilm = formatDateRuntime(runtime);
 
   return (
     <div className="movie-card__wrap movie-card__translate-top">
@@ -35,7 +38,7 @@ const FilmDetailMore = (props) => {
               <p className="movie-card__details-item">
                 <strong className="movie-card__details-name">Starring</strong>
                 <span className="movie-card__details-value">
-                  {starring}
+                  {starring.join(`, \n`)}
                 </span>
               </p>
             </div>
@@ -43,7 +46,7 @@ const FilmDetailMore = (props) => {
             <div className="movie-card__text-col">
               <p className="movie-card__details-item">
                 <strong className="movie-card__details-name">Run Time</strong>
-                <span className="movie-card__details-value">{runtime}</span>
+                <span className="movie-card__details-value">{runtimeFilm}</span>
               </p>
               <p className="movie-card__details-item">
                 <strong className="movie-card__details-name">Genre</strong>

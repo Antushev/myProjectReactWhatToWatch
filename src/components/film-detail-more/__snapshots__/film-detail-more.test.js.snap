@@ -51,10 +51,10 @@ exports[`FilmDetailMoreComponent FilmDetailMoreComponentSnapshot 1`] = `
             <span
               className="movie-card__details-value"
             >
-              Гоша
-              Щас Зе Енд
-              Куллер
-              Райан Оркестр
+              Гоша, 
+Щас Зе Енд, 
+Куллер, 
+Райан Оркестр
             </span>
           </p>
         </div>
@@ -71,7 +71,9 @@ exports[`FilmDetailMoreComponent FilmDetailMoreComponentSnapshot 1`] = `
             </strong>
             <span
               className="movie-card__details-value"
-            />
+            >
+              1h 40m
+            </span>
           </p>
           <p
             className="movie-card__details-item"
@@ -84,7 +86,7 @@ exports[`FilmDetailMoreComponent FilmDetailMoreComponentSnapshot 1`] = `
             <span
               className="movie-card__details-value"
             >
-              Джон
+              Adventure
             </span>
           </p>
           <p
