@@ -6,6 +6,8 @@ const MIN_RATING = 0;
 const MAX_RATING = 10;
 const MIN_SCORES = 5;
 const MAX_SCORES = 100000;
+const MIN_RUNTIME = 100;
+const MAX_RUNTIME = 300;
 
 const names = [
   `Хоббит: Пустош Смауга`,
@@ -71,6 +73,7 @@ const generateFilm = (idFilm) => {
     previewVideo: getRandomElementFromArray(previewVideo),
     rating: getRandomNumberFloat(MIN_RATING, MAX_RATING),
     scoresCount: getRandomNumber(MIN_SCORES, MAX_SCORES),
+    runtime: getRandomNumber(MIN_RUNTIME, MAX_RUNTIME),
     starring: [`Гоша`, `Щас Зе Енд`, `Куллер`, `Райан Оркестр`],
   };
 };

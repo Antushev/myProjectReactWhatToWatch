@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
+import {FilmsListType} from '../../utils/const.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 
@@ -107,6 +108,7 @@ const Main = (props) => {
 
         <FilmsList
           films={films}
+          filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />
 

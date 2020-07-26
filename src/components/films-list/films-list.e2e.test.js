@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import FilmsList from './films-list.jsx';
 
 import {films} from '../../mocks-test/films-test.js';
+import {FilmsListType} from '../../mocks-test/films-test.js';
 
 configure({adapter: new Adapter()});
 
@@ -14,6 +15,7 @@ describe(`FilmsListComponentE2E`, () => {
     const filmsList = shallow(
         <FilmsList
           films={films}
+          filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />
     );

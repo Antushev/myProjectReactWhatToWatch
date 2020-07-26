@@ -8,4 +8,12 @@ const filmShape = {
   date: PropTypes.number.isRequired
 };
 
-export {filmShape};
+const commentShape = {
+  id: PropTypes.number.isRequired,
+  user: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  date: PropTypes.date
+};
+
+export {filmShape, commentShape};

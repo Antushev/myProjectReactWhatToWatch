@@ -5,7 +5,11 @@ import {filmShape} from '../../utils/shapes.js';
 import {FILM_CARD_DEFAULT} from '../../utils/const.js';
 
 import Main from '../main/main.jsx';
-import FilmDetail from '../film-detail/film-detail.jsx';
+import FilmDetails from '../film-details/film-details.jsx';
+
+import {withTabs} from '../../hocs/with-tabs.jsx';
+
+const FilmDetailsWithTabs = withTabs(FilmDetails);
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -28,7 +32,11 @@ export default class App extends PureComponent {
           {this._renderApp()}
         </Route>
         <Route exct path='/dev-film-detail'>
-          <FilmDetail film={filmCard}/>
+          <FilmDetailsWithTabs
+            films={films}
+            film={filmCard}
+            handleFilmClick={this._handleFilmClick}
+          />
         </Route>
       </Switch>
     </BrowserRouter>;
@@ -49,7 +57,11 @@ export default class App extends PureComponent {
         />
       );
     } else {
-      return <FilmDetail film={film} />;
+      return <FilmDetailsWithTabs
+        films={films}
+        film={film}
+        handleFilmClick={this._handleFilmClick}
+      />;
     }
   }
 

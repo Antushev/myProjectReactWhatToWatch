@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
+<div
+  className="movie-card__wrap movie-card__translate-top"
+>
+  <div
+    className="movie-card__info"
+  >
+    <div
+      className="movie-card__poster movie-card__poster--big"
+    >
+      <img
+        alt="The Grand Budapest Hotel poster"
+        height="327"
+        src="img/aviator.jpg"
+        width="218"
+      />
+    </div>
+    <div
+      className="movie-card__desc"
+    >
+      <div
+        className="movie-card__reviews movie-card__row"
+      >
+        <div
+          className="movie-card__reviews-col"
+        >
+          <div
+            className="review"
+          >
+            <blockquote
+              className="review__quote"
+            >
+              <p
+                className="review__text"
+              >
+                Хороший фильм на один раз
+              </p>
+              <footer
+                className="review__details"
+              >
+                <cite
+                  className="review__author"
+                >
+                  Джон
+                </cite>
+                <time
+                  className="review__date"
+                  dateTime="{date}"
+                >
+                  July 26, 2020
+                </time>
+              </footer>
+            </blockquote>
+            <div
+              className="review__rating"
+            >
+              7.4
+            </div>
+          </div>
+          <div
+            className="review"
+          >
+            <blockquote
+              className="review__quote"
+            >
+              <p
+                className="review__text"
+              >
+                Хороший фильм на четыре раза
+              </p>
+              <footer
+                className="review__details"
+              >
+                <cite
+                  className="review__author"
+                >
+                  Андрей
+                </cite>
+                <time
+                  className="review__date"
+                  dateTime="{date}"
+                >
+                  July 26, 2020
+                </time>
+              </footer>
+            </blockquote>
+            <div
+              className="review__rating"
+            >
+              9
+            </div>
+          </div>
+          <div
+            className="review"
+          >
+            <blockquote
+              className="review__quote"
+            >
+              <p
+                className="review__text"
+              >
+                Хороший фильм на один раз
+              </p>
+              <footer
+                className="review__details"
+              >
+                <cite
+                  className="review__author"
+                >
+                  Джон
+                </cite>
+                <time
+                  className="review__date"
+                  dateTime="{date}"
+                >
+                  July 26, 2020
+                </time>
+              </footer>
+            </blockquote>
+            <div
+              className="review__rating"
+            >
+              8.8
+            </div>
+          </div>
+          <div
+            className="review"
+          >
+            <blockquote
+              className="review__quote"
+            >
+              <p
+                className="review__text"
+              >
+                Хороший фильм на один раз
+              </p>
+              <footer
+                className="review__details"
+              >
+                <cite
+                  className="review__author"
+                >
+                  Джон
+                </cite>
+                <time
+                  className="review__date"
+                  dateTime="{date}"
+                >
+                  July 26, 2020
+                </time>
+              </footer>
+            </blockquote>
+            <div
+              className="review__rating"
+            >
+              1.5
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
