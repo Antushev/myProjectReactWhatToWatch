@@ -20,7 +20,7 @@ const generateComment = (index) => {
     user: getRandomElementFromArray(users),
     rating: getRandomNumberFloat(1, 10),
     comment: getRandomElementFromArray(commentsText),
-    date: new Date()
+    date: `July 28, 2020`
   };
 };
 
