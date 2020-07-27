@@ -1,24 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
-import {generateFilms} from './mocks/films.js';
+import {reducer} from './reducer.js';
 
 import App from './components/app/app.jsx';
 
-const FILMS_NUMBER = 100;
-
-const films = generateFilms(FILMS_NUMBER);
+const store = createStore(reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const init = () => {
-  const film = films[0];
-
   ReactDOM.render(
-      <App
-        films={films}
-        filmName={film.name}
-        genre={film.genre}
-        date={film.date}
-      />,
+      <Provider store={store}>
+        <App />
+      </Provider>
+      ,
       document.querySelector(`#root`)
   );
 };

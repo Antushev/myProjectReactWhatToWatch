@@ -55,7 +55,14 @@ const genres = [
   `Comedy`,
   `Adventure`,
   `Action`,
-  `Drama`
+  `Drama`,
+  `Thriller`,
+  `Detective`,
+  `Horror`,
+  `Sport`,
+  `Western`,
+  `Crime`,
+  `Fantastic`,
 ];
 
 const generateFilm = (idFilm) => {
