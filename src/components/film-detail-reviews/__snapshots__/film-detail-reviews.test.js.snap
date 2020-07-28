@@ -49,7 +49,7 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
                   className="review__date"
                   dateTime="{date}"
                 >
-                  July 26, 2020
+                  July 28, 2020
                 </time>
               </footer>
             </blockquote>
@@ -82,7 +82,7 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
                   className="review__date"
                   dateTime="{date}"
                 >
-                  July 26, 2020
+                  July 28, 2020
                 </time>
               </footer>
             </blockquote>
@@ -115,7 +115,7 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
                   className="review__date"
                   dateTime="{date}"
                 >
-                  July 26, 2020
+                  July 28, 2020
                 </time>
               </footer>
             </blockquote>
@@ -148,7 +148,7 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
                   className="review__date"
                   dateTime="{date}"
                 >
-                  July 26, 2020
+                  July 28, 2020
                 </time>
               </footer>
             </blockquote>

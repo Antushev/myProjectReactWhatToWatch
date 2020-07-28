@@ -1,20 +1,32 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import {film, films} from '../../mocks-test/films-test.js';
+import {films, currentGenre} from '../../mocks-test/films-test.js';
 
-import App from './app.jsx';
+import {App} from './app.jsx';
+
+const mockStore = configureStore([]);
 
 describe(`AppComponent`, () => {
   it(`AppComponentSnapshot`, () => {
+    const store = mockStore({
+      films,
+      currentFilms: films,
+      currentGenre
+    });
+
     const tree = renderer
       .create(
-          <App
-            films={films}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
-          />, {
+          <Provider store={store}>
+            <App
+              films={films}
+              currentFilms={films}
+              currentGenre={currentGenre}
+              handleGenreTabClick={() => {}}
+            />
+          </Provider>, {
             createNodeMock: () => {
               return {};
             }

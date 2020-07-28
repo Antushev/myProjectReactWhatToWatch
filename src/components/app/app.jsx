@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 import {FILM_CARD_DEFAULT} from '../../utils/const.js';
+import {ActionCreator} from './../../reducer.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
@@ -11,7 +13,7 @@ import {withTabs} from '../../hocs/with-tabs.jsx';
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -23,8 +25,8 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
-    const filmCard = films[0];
+    const {currentFilms} = this.props;
+    const filmCard = currentFilms[0];
 
     return <BrowserRouter>
       <Switch>
@@ -33,7 +35,7 @@ export default class App extends PureComponent {
         </Route>
         <Route exct path='/dev-film-detail'>
           <FilmDetailsWithTabs
-            films={films}
+            films={currentFilms}
             film={filmCard}
             handleFilmClick={this._handleFilmClick}
           />
@@ -43,22 +45,32 @@ export default class App extends PureComponent {
   }
 
   _renderApp() {
-    const {films, filmName, genre, date} = this.props;
+    const {
+      films,
+      currentFilms,
+      currentGenre,
+      handleGenreTabClick
+    } = this.props;
     const {film} = this.state;
+
+    const filmCard = currentFilms[0];
 
     if (film.id === null) {
       return (
         <Main
           films={films}
-          filmName={filmName}
-          genre={genre}
-          date={date}
+          currentFilms={currentFilms}
+          currentGenre={currentGenre}
+          filmName={filmCard.name}
+          genre={filmCard.genre}
+          date={filmCard.date}
           handleFilmClick={this._handleFilmClick}
+          handleGenreTabClick={handleGenreTabClick}
         />
       );
     } else {
       return <FilmDetailsWithTabs
-        films={films}
+        films={currentFilms}
         film={film}
         handleFilmClick={this._handleFilmClick}
       />;
@@ -71,10 +83,28 @@ export default class App extends PureComponent {
 }
 
 App.propTypes = {
-  date: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
-  filmName: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  currentFilms: PropTypes.arrayOf(
+      PropTypes.shape(filmShape)
+  ),
+  currentGenre: PropTypes.string.isRequired,
+  handleGenreTabClick: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  films: state.films,
+  currentFilms: state.currentFilms,
+  currentGenre: state.currentGenre
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleGenreTabClick(changeGenre) {
+    dispatch(ActionCreator.changeGenre(changeGenre));
+    dispatch(ActionCreator.getFilms());
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

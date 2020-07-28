@@ -2,30 +2,30 @@ const comments = [
   {
     id: 1,
     user: `Джон`,
-    comment: `Хороший фильм на один раз`,
     rating: 7.4,
-    date: new Date()
+    comment: `Хороший фильм на один раз`,
+    date: `July 28, 2020`
   },
   {
     id: 2,
     user: `Андрей`,
-    comment: `Хороший фильм на четыре раза`,
     rating: 9,
-    date: new Date()
+    comment: `Хороший фильм на четыре раза`,
+    date: `July 28, 2020`
   },
   {
     id: 3,
     user: `Джон`,
-    comment: `Хороший фильм на один раз`,
     rating: 8.8,
-    date: new Date()
+    comment: `Хороший фильм на один раз`,
+    date: `July 28, 2020`
   },
   {
     id: 4,
     user: `Джон`,
-    comment: `Хороший фильм на один раз`,
     rating: 1.5,
-    date: new Date()
+    comment: `Хороший фильм на один раз`,
+    date: `July 28, 2020`
   }
 ];
 

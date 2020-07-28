@@ -61,7 +61,7 @@ export default class FilmsList extends PureComponent {
 
     return filmsMoreLike.map((film) => {
       return <FilmCard
-        key={film.name}
+        key={film.id}
         film={film}
         handleFilmClick={handleFilmClick}
         handleFilmCardMouseOver={this._handleFilmCardMouseOver}
