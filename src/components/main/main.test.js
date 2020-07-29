@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {film, films, currentGenre} from '../../mocks-test/films-test.js';
 
-import {Main} from './main.jsx';
+import Main from './main.jsx';
 
 describe(`MainComponent`, () => {
   it(`MainComponentSnapshot`, () => {
@@ -13,11 +13,13 @@ describe(`MainComponent`, () => {
             films={films}
             currentFilms={films}
             currentGenre={currentGenre}
+            showFilmCardCount={8}
             filmName={film.name}
             genre={film.genre}
             date={film.date}
             handleFilmClick={() => {}}
             handleGenreTabClick={() => {}}
+            handleShowMoreClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

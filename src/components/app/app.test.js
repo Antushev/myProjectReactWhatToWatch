@@ -24,7 +24,9 @@ describe(`AppComponent`, () => {
               films={films}
               currentFilms={films}
               currentGenre={currentGenre}
+              showFilmCardCount={8}
               handleGenreTabClick={() => {}}
+              handleShowMoreCLick={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
