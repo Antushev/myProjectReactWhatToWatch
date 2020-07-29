@@ -1,7 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {filmShape} from '../../utils/shapes.js';
+import {connect} from 'react-redux';
+import {ActionCreator} from "../../reducer";
+
 import {FilmsListType} from '../../utils/const.js';
+import {filmShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 import GenresList from './../genres-list/genres-list.jsx';
@@ -161,4 +164,12 @@ Main.propTypes = {
   handleGenreTabClick: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapDispatchToProps = (dispatch) => ({
+  handleGenreTabClick(changeGenre) {
+    dispatch(ActionCreator.changeGenre(changeGenre));
+    dispatch(ActionCreator.getFilms());
+  }
+});
+
+export {Main};
+export default connect(null, mapDispatchToProps)(Main);

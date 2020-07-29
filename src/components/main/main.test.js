@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {film, films, currentGenre} from '../../mocks-test/films-test.js';
 
-import Main from './main.jsx';
+import {Main} from './main.jsx';
 
 describe(`MainComponent`, () => {
   it(`MainComponentSnapshot`, () => {

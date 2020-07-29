@@ -86,7 +86,7 @@ FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape).isRequired
   ).isRequired,
-  showFilmCardCount: PropTypes.number.isRequired,
+  showFilmCardCount: PropTypes.number,
   filmListType: PropTypes.string.isRequired,
   currentFilm: PropTypes.shape(filmShape),
   handleFilmClick: PropTypes.func.isRequired

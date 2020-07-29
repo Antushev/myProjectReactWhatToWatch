@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 import {FILM_CARD_DEFAULT} from '../../utils/const.js';
-import {ActionCreator} from './../../reducer.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
@@ -49,7 +48,6 @@ class App extends PureComponent {
       films,
       currentFilms,
       currentGenre,
-      handleGenreTabClick
     } = this.props;
     const {film} = this.state;
 
@@ -65,7 +63,6 @@ class App extends PureComponent {
           genre={filmCard.genre}
           date={filmCard.date}
           handleFilmClick={this._handleFilmClick}
-          handleGenreTabClick={handleGenreTabClick}
         />
       );
     } else {
@@ -90,7 +87,6 @@ App.propTypes = {
       PropTypes.shape(filmShape)
   ),
   currentGenre: PropTypes.string.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -99,12 +95,5 @@ const mapStateToProps = (state) => ({
   currentGenre: state.currentGenre
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleGenreTabClick(changeGenre) {
-    dispatch(ActionCreator.changeGenre(changeGenre));
-    dispatch(ActionCreator.getFilms());
-  }
-});
-
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
