@@ -33,11 +33,17 @@ export default class FilmsList extends PureComponent {
   }
 
   _renderFilmsList() {
-    const {currentFilm, films, filmListType, handleFilmClick} = this.props;
+    const {
+      currentFilm,
+      films,
+      filmListType,
+      handleFilmClick,
+      showFilmCardCount
+    } = this.props;
 
     switch (filmListType) {
       case FilmsListType.DEFAULT:
-        return this._renderFilmsCardDefault(films, handleFilmClick);
+        return this._renderFilmsCardDefault(films, showFilmCardCount, handleFilmClick);
       case FilmsListType.MORE_LIKE:
         return this._renderFilmsCardMoreLike(currentFilm, films, handleFilmClick);
       default:
@@ -45,7 +51,7 @@ export default class FilmsList extends PureComponent {
     }
   }
 
-  _renderFilmsCardDefault(films, handleFilmClick) {
+  _renderFilmsCardDefault(films, showFilmCardCount, handleFilmClick) {
     return films.map((film) => {
       return <FilmCard
         key={film.id}
@@ -53,7 +59,7 @@ export default class FilmsList extends PureComponent {
         handleFilmClick={handleFilmClick}
         handleFilmCardMouseOver={this._handleFilmCardMouseOver}
       />;
-    });
+    }).slice(0, showFilmCardCount);
   }
 
   _renderFilmsCardMoreLike(currentFilm, films, handleFilmClick) {
@@ -80,6 +86,7 @@ FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape).isRequired
   ).isRequired,
+  showFilmCardCount: PropTypes.number,
   filmListType: PropTypes.string.isRequired,
   currentFilm: PropTypes.shape(filmShape),
   handleFilmClick: PropTypes.func.isRequired

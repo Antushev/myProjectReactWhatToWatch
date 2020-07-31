@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {filmShape} from '../../utils/shapes.js';
+
 import {FilmsListType} from '../../utils/const.js';
+import {filmShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 import GenresList from './../genres-list/genres-list.jsx';
+import ShowMore from './../show-more/show-more.jsx';
 
 const Main = (props) => {
   const {
     films,
     currentFilms,
     currentGenre,
+    showFilmCardCount,
     filmName,
     genre,
     date,
     handleFilmClick,
-    handleGenreTabClick
+    handleGenreTabClick,
+    handleShowMoreClick
   } = props;
 
   return <React.Fragment>
@@ -86,13 +90,13 @@ const Main = (props) => {
 
         <FilmsList
           films={currentFilms}
+          showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />
 
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        {renderShowMore(currentFilms, showFilmCardCount, handleShowMoreClick)}
+
       </section>
 
       <footer className="page-footer">
@@ -112,6 +116,17 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
+const renderShowMore = (currentFilms, showFilmCardCount, handleShowMoreClick) => {
+  if (currentFilms.length > showFilmCardCount) {
+    return <ShowMore
+      handleShowMoreClick={handleShowMoreClick}
+    />;
+  }
+
+  return null;
+};
+
+
 Main.propTypes = {
   date: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(
@@ -121,10 +136,12 @@ Main.propTypes = {
       PropTypes.shape(filmShape)
   ).isRequired,
   currentGenre: PropTypes.string.isRequired,
+  showFilmCardCount: PropTypes.number.isRequired,
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired
+  handleGenreTabClick: PropTypes.func.isRequired,
+  handleShowMoreClick: PropTypes.func.isRequired
 };
 
 export default Main;

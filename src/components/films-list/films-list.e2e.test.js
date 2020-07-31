@@ -15,6 +15,49 @@ describe(`FilmsListComponentE2E`, () => {
     const filmsList = shallow(
         <FilmsList
           films={films}
+          showFilmCardCount={8}
+          filmListType={FilmsListType.DEFAULT}
+          handleFilmClick={handleFilmClick}
+        />
+    );
+
+    const buttonHeaders = filmsList.find(`.small-movie-card__title`);
+
+    buttonHeaders.forEach((buttonHeader) => {
+      buttonHeader.simulate(`click`);
+    });
+
+    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
+  });
+
+  it(`Click header films`, () => {
+    const handleFilmClick = jest.fn();
+
+    const filmsList = shallow(
+        <FilmsList
+          films={films}
+          showFilmCardCount={16}
+          filmListType={FilmsListType.DEFAULT}
+          handleFilmClick={handleFilmClick}
+        />
+    );
+
+    const buttonHeaders = filmsList.find(`.small-movie-card__title`);
+
+    buttonHeaders.forEach((buttonHeader) => {
+      buttonHeader.simulate(`click`);
+    });
+
+    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
+  });
+
+  it(`Click header films`, () => {
+    const handleFilmClick = jest.fn();
+
+    const filmsList = shallow(
+        <FilmsList
+          films={films}
+          showFilmCardCount={0}
           filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />

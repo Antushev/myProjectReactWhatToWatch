@@ -13,11 +13,13 @@ describe(`MainComponent`, () => {
             films={films}
             currentFilms={films}
             currentGenre={currentGenre}
+            showFilmCardCount={8}
             filmName={film.name}
             genre={film.genre}
             date={film.date}
             handleFilmClick={() => {}}
             handleGenreTabClick={() => {}}
+            handleShowMoreClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

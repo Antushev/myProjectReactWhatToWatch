@@ -2,9 +2,10 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {ActionCreator} from './../../reducer.js';
+
 import {filmShape} from '../../utils/shapes.js';
 import {FILM_CARD_DEFAULT} from '../../utils/const.js';
-import {ActionCreator} from './../../reducer.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
@@ -49,7 +50,9 @@ class App extends PureComponent {
       films,
       currentFilms,
       currentGenre,
-      handleGenreTabClick
+      showFilmCardCount,
+      handleGenreTabClick,
+      handleShowMoreClick
     } = this.props;
     const {film} = this.state;
 
@@ -61,11 +64,13 @@ class App extends PureComponent {
           films={films}
           currentFilms={currentFilms}
           currentGenre={currentGenre}
+          showFilmCardCount={showFilmCardCount}
           filmName={filmCard.name}
           genre={filmCard.genre}
           date={filmCard.date}
           handleFilmClick={this._handleFilmClick}
           handleGenreTabClick={handleGenreTabClick}
+          handleShowMoreClick={handleShowMoreClick}
         />
       );
     } else {
@@ -90,19 +95,27 @@ App.propTypes = {
       PropTypes.shape(filmShape)
   ),
   currentGenre: PropTypes.string.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired
+  showFilmCardCount: PropTypes.number.isRequired,
+  handleGenreTabClick: PropTypes.func.isRequired,
+  handleShowMoreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   films: state.films,
   currentFilms: state.currentFilms,
-  currentGenre: state.currentGenre
+  currentGenre: state.currentGenre,
+  showFilmCardCount: state.showFilmCardCount
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleGenreTabClick(changeGenre) {
     dispatch(ActionCreator.changeGenre(changeGenre));
     dispatch(ActionCreator.getFilms());
+    dispatch(ActionCreator.resetFilmCardCount());
+  },
+
+  handleShowMoreClick() {
+    dispatch(ActionCreator.showAdditionalCard());
   }
 });
 

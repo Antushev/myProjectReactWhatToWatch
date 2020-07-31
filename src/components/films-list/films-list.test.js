@@ -13,6 +13,7 @@ describe(`FilmsListComponent`, () => {
           <FilmsList
             currentFilm={film}
             films={films}
+            showFilmCardCount={8}
             filmListType={FilmsListType.DEFAULT}
             handleFilmClick={() => {}}
           />, {
