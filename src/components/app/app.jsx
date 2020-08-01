@@ -10,7 +10,7 @@ import {FILM_CARD_DEFAULT} from '../../utils/const.js';
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 
-import {withTabs} from '../../hocs/with-tabs.jsx';
+import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 

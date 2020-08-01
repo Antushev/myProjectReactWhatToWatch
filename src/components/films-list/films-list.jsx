@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 import {FILM_CARD_DEFAULT, FilmsListType} from '../../utils/const.js';
 
+import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player.jsx';
+
 import FilmCard from '../film-card/film-card.jsx';
 
 const FILMS_MORE_LIKE_COUNT = 4;
+
+const FilmCardWithVideoPlayer = withVideoPlayer(FilmCard);
 
 const getFilmsMoreLike = (currentFilm, films) => {
   return films.filter((film) => {
@@ -53,7 +57,7 @@ export default class FilmsList extends PureComponent {
 
   _renderFilmsCardDefault(films, showFilmCardCount, handleFilmClick) {
     return films.map((film) => {
-      return <FilmCard
+      return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
         handleFilmClick={handleFilmClick}
@@ -66,7 +70,7 @@ export default class FilmsList extends PureComponent {
     const filmsMoreLike = getFilmsMoreLike(currentFilm, films);
 
     return filmsMoreLike.map((film) => {
-      return <FilmCard
+      return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
         handleFilmClick={handleFilmClick}
