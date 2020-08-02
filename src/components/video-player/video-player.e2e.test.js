@@ -8,39 +8,34 @@ import VideoPlayer from './video-player.jsx';
 
 configure({adapter: new Adapter()});
 
-const VIDEO_PLAYER_PLAY = true;
-const VIDEO_PLAYER_PAUSE = false;
-
 const posterImage = film.previewImage;
 const previewVideo = film.previewVideo;
 const isPlaying = false;
 
 describe(`VideoPlayerComponentE2E`, () => {
   it(`Correct playing video`, () => {
-    const handleFilmCardMouseOver = jest.fn();
-    const handleFilmCardMouseOut = jest.fn();
+    const handleVideoPlayerMouseOver = jest.fn();
+    const handleVideoPlayerMouseOut = jest.fn();
 
     const videoContainer = mount(
         <VideoPlayer
           isPlaying={isPlaying}
           posterImage={posterImage}
           previewVideo={previewVideo}
-          handleFilmCardMouseOver={handleFilmCardMouseOver}
-          handleFilmCardMouseOut={handleFilmCardMouseOut}
-        />
+          handleVideoPlayerMouseOver={handleVideoPlayerMouseOver}
+          handleVideoPlayerMouseOut={handleVideoPlayerMouseOut}
+        >
+          <video />
+        </VideoPlayer>
     );
 
-    const videoPlayer = videoContainer.find(`.player__video`);
+    const videoPlayer = videoContainer.find(`.small-movie-card__image`);
 
-    videoPlayer.simulate(`play`);
-    setTimeout(() => {
-      expect(videoContainer.state().isPlaying).toEqual(VIDEO_PLAYER_PLAY);
-    }, 4000);
+    videoPlayer.simulate(`mouseover`);
+    videoPlayer.simulate(`mouseout`);
 
-    videoPlayer.simulate(`pause`);
+    expect(handleVideoPlayerMouseOut).toBeCalled();
 
-    setTimeout(() => {
-      expect(videoContainer.state().isPlaying).toEqual(VIDEO_PLAYER_PAUSE);
-    }, 4000);
+    expect(handleVideoPlayerMouseOver).toBeCalled();
   });
 });

@@ -6,10 +6,6 @@ exports[`VideoPlayerComponent VideoPlayerComponentSnapshot 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
-  <video
-    className="player__video"
-    muted="muted"
-  />
-  ;
+  <video />
 </div>
 `;

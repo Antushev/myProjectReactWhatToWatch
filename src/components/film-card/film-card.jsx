@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 
 const FilmCard = (props) => {
-  const {film, renderVideoPlayer, handleFilmClick, handleFilmCardMouseOver} = props;
+  const {film, renderVideoPlayer, handleFilmClick} = props;
   const {id, name, posterImage, previewVideo} = film;
 
   return (
     <article
       key={id}
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => handleFilmCardMouseOver(film)}
       onClick={() => handleFilmClick(film)}
     >
       {renderVideoPlayer(posterImage, previewVideo)}
@@ -29,7 +28,6 @@ FilmCard.propTypes = {
     PropTypes.func
   ]).isRequired,
   handleFilmClick: PropTypes.func.isRequired,
-  handleFilmCardMouseOver: PropTypes.func.isRequired,
 };
 
 export default FilmCard;
