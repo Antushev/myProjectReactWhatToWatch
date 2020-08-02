@@ -13,7 +13,7 @@ const withVideo = (Component) => {
       this._videoRef = React.createRef();
 
       this.state = {
-        isPlaying: this.props.isPlaying
+        isPlaying: false
       };
     }
 

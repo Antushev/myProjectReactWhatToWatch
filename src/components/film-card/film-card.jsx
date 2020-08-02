@@ -23,10 +23,7 @@ const FilmCard = (props) => {
 
 FilmCard.propTypes = {
   film: PropTypes.shape(filmShape).isRequired,
-  renderVideoPlayer: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.func
-  ]).isRequired,
+  renderVideoPlayer: PropTypes.func.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
 };
 
