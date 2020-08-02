@@ -8,11 +8,16 @@ import FilmsList from './../films-list/films-list.jsx';
 import GenresList from './../genres-list/genres-list.jsx';
 import ShowMore from './../show-more/show-more.jsx';
 
+import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
+
+const GenresListWrapped = withActiveItem(GenresList);
+
+const DEFAULT_GENRE = `All genres`;
+
 const Main = (props) => {
   const {
     films,
     currentFilms,
-    currentGenre,
     showFilmCardCount,
     filmName,
     genre,
@@ -82,9 +87,9 @@ const Main = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenresList
+        <GenresListWrapped
           films={films}
-          currentGenre={currentGenre}
+          activeItem={DEFAULT_GENRE}
           handleGenreTabClick={handleGenreTabClick}
         />
 
@@ -135,7 +140,6 @@ Main.propTypes = {
   currentFilms: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ).isRequired,
-  currentGenre: PropTypes.string.isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   filmName: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
