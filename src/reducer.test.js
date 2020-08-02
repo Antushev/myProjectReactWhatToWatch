@@ -4,7 +4,8 @@ import {films, currentGenre} from './mocks-test/films-test.js';
 const state = {
   films,
   currentFilms: films,
-  currentGenre
+  currentGenre,
+  showFilmCardCount: 8
 };
 
 const getFilms = (movies, genre) => {
@@ -18,26 +19,22 @@ describe(`Tests reducer`, () => {
     expect(reducer(state, ActionCreator.getFilms())).toEqual(state);
   });
 
-  it(`Change genre`, () => {
-    const newGenre = `Comedy`;
-
-    expect(reducer(state, ActionCreator.changeGenre(newGenre))).toEqual(
-        Object.assign({}, state, {
-          currentGenre: newGenre
-        })
-    );
-  });
-
   it(`Get films with new genre`, () => {
     const newGenre = `Comedy`;
-    const newGenreInState = Object.assign({}, state, {
-      currentGenre: newGenre
-    });
-    const newFilms = getFilms(films, newGenre);
-    const newFilmsInState = Object.assign({}, newGenreInState, {
-      currentFilms: newFilms
+
+    const filmsByGenre = getFilms(state.films, newGenre);
+    const newStateFilmsByGenre = Object.assign({}, state, {
+      currentFilms: filmsByGenre
     });
 
-    expect(reducer(newGenreInState, ActionCreator.getFilms())).toEqual(newFilmsInState);
+    expect(reducer(state, ActionCreator.getFilms(newGenre))).toEqual(newStateFilmsByGenre);
+  });
+
+  it(`Show film cards count`, () => {
+    const newStateWithShowCard = Object.assign({}, state, {
+      showFilmCardCount: 10
+    });
+
+    expect(reducer(newStateWithShowCard, ActionCreator.resetFilmCardCount())).toEqual(state);
   });
 });

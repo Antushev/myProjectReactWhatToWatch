@@ -15,9 +15,11 @@ describe(`VideoPlayerComponent`, () => {
             isPlaying={isPlaying}
             posterImage={posterImage}
             previewVideo={previewVideo}
-            handleFilmCardMouseOver={() => {}}
-            handleFilmCardMouseOut={() => {}}
-          />, {
+            handleVideoPlayerMouseOver={() => {}}
+            handleVideoPlayerMouseOut={() => {}}
+          >
+            <video />
+          </ VideoPlayer>, {
             createNodeMock: () => {
               return {};
             }

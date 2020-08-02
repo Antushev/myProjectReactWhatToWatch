@@ -12,6 +12,7 @@ describe(`FilmCardComponent`, () => {
           film={film}
           handleFilmClick={() => {}}
           handleFilmCardMouseOver={() => {}}
+          renderVideoPlayer={() => {}}
         />, {
           createNodeMock: () => {
             return {};

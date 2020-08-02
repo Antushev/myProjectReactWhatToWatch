@@ -10,7 +10,7 @@ import {FILM_CARD_DEFAULT} from '../../utils/const.js';
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 
-import {withTabs} from '../../hocs/with-tabs.jsx';
+import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 
@@ -49,7 +49,6 @@ class App extends PureComponent {
     const {
       films,
       currentFilms,
-      currentGenre,
       showFilmCardCount,
       handleGenreTabClick,
       handleShowMoreClick
@@ -63,7 +62,6 @@ class App extends PureComponent {
         <Main
           films={films}
           currentFilms={currentFilms}
-          currentGenre={currentGenre}
           showFilmCardCount={showFilmCardCount}
           filmName={filmCard.name}
           genre={filmCard.genre}
@@ -94,7 +92,6 @@ App.propTypes = {
   currentFilms: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
-  currentGenre: PropTypes.string.isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired
@@ -103,14 +100,12 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   films: state.films,
   currentFilms: state.currentFilms,
-  currentGenre: state.currentGenre,
   showFilmCardCount: state.showFilmCardCount
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleGenreTabClick(changeGenre) {
-    dispatch(ActionCreator.changeGenre(changeGenre));
-    dispatch(ActionCreator.getFilms());
+  handleGenreTabClick(genre) {
+    dispatch(ActionCreator.getFilms(genre));
     dispatch(ActionCreator.resetFilmCardCount());
   },
 
