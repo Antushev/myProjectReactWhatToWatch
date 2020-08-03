@@ -19,9 +19,18 @@ const formatDateRuntime = (runtimeByMinutes) => {
   return `${runtimeHours}h ${runtimeMinutes}m`;
 };
 
+const formatVideoElapsed = (runtimeBySecond) => {
+  const runtimeHours = moment.duration(runtimeBySecond, `seconds`).get(`hours`);
+  const runtimeMinutes = moment.duration(runtimeBySecond, `seconds`).get(`minutes`);
+  const runtimeSeconds = moment.duration(runtimeBySecond, `seconds`).get(`seconds`);
+
+  return `${runtimeHours}:${runtimeMinutes}:${runtimeSeconds}`;
+};
+
 export {
   getRandomNumber,
   getRandomNumberFloat,
   getRandomElementFromArray,
-  formatDateRuntime
+  formatDateRuntime,
+  formatVideoElapsed
 };

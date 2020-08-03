@@ -122,7 +122,11 @@ class App extends PureComponent {
     }
   }
 
-  _handleFilmClick(film) {
+  _handleFilmClick(film, idTimer = null) {
+    if (idTimer) {
+      clearTimeout(idTimer);
+    }
+
     this.setState({
       film,
       typeScreen: TypeScreen.DETAIL_SCREEN

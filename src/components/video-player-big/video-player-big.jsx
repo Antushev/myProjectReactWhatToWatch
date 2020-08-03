@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {formatVideoElapsed} from '../../utils/common.js';
 
-const styleToggler = {
-  left: `30%`
+const getPositionToggler = (progress) => {
+  const progressString = `${progress}%`;
+
+  return {
+    left: progressString
+  };
 };
-
-const getTimeLeft = (currentTime, duration) => {
-  return Math.floor(currentTime / duration);
-}
 
 const VideoPlayerBig = (props) => {
   const {
     children,
-    durationVideo,
-    currentTimeVideo,
+    videoProgress,
+    videoTimeElapsed,
     handlePlayClick,
-    handleExitVideoPlayerClick
+    handleExitVideoPlayerClick,
+    handleFullScreenClick
   } = props;
-
-  const timeLeft = getTimeLeft(currentTimeVideo, durationVideo);
 
   return (
     <div className="player">
@@ -34,10 +34,10 @@ const VideoPlayerBig = (props) => {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress className="player__progress" value={timeLeft} max="100" />
-            <div className="player__toggler" style={styleToggler}>Toggler</div>
+            <progress className="player__progress" value={videoProgress} max="100" />
+            <div className="player__toggler" style={getPositionToggler(videoProgress)}>Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{formatVideoElapsed(videoTimeElapsed)}</div>
         </div>
 
         <div className="player__controls-row">
@@ -53,7 +53,11 @@ const VideoPlayerBig = (props) => {
           </button>
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
+          <button
+            type="button"
+            className="player__full-screen"
+            onClick={handleFullScreenClick}
+          >
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen" />
             </svg>
@@ -69,8 +73,11 @@ VideoPlayerBig.propTypes = {
   children: PropTypes.node.isRequired,
   posterImage: PropTypes.string.isRequired,
   videoMain: PropTypes.string.isRequired,
+  videoProgress: PropTypes.number.isRequired,
+  videoTimeElapsed: PropTypes.number.isRequired,
   handlePlayClick: PropTypes.func.isRequired,
-  handleExitVideoPlayerClick: PropTypes.func.isRequired
+  handleExitVideoPlayerClick: PropTypes.func.isRequired,
+  handleFullScreenClick: PropTypes.func.isRequired
 };
 
 export default VideoPlayerBig;

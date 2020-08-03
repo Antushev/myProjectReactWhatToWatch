@@ -27,17 +27,17 @@ const Main = (props) => {
   } = props;
 
   const {
-    name: namePreview,
-    backgroundImage: backgroundImagePreview,
-    posterImage: posterImagePreview,
-    genre: genrePreview,
-    date: datePreview
+    name,
+    backgroundImage,
+    posterImage,
+    genre,
+    date
   } = filmCardPreview;
 
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src={`img/${backgroundImagePreview}`} alt={namePreview}/>
+        <img src={`img/${backgroundImage}`} alt={name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -61,15 +61,15 @@ const Main = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={`img/${posterImagePreview}`} alt={name} width="218"
+            <img src={`img/${posterImage}`} alt={name} width="218"
               height="327"/>
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{namePreview}</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genrePreview}</span>
-              <span className="movie-card__year">{datePreview}</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{date}</span>
             </p>
 
             <div className="movie-card__buttons">

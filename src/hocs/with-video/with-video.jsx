@@ -9,21 +9,27 @@ const withVideo = (Component, typeVideoPlayer) => {
     constructor(props) {
       super(props);
 
+      this.state = {
+        isPlaying: false,
+        timeElapsed: 0,
+        progress: 1
+      };
+
       this._idTimer = null;
 
       this._videoRef = React.createRef();
 
-      this.state = {
-        isPlaying: false
-      };
+      this._handleFullScreenClick = this._handleFullScreenClick.bind(this);
     }
 
     render() {
-      const video = this._videoRef.current;
-
+      const {progress, timeElapsed} = this.state;
       return (
         <Component
           {...this.props}
+          videoProgress={progress}
+          videoTimeElapsed={timeElapsed}
+          handleFullScreenClick={this._handleFullScreenClick}
         >
           <video className="player__video" ref={this._videoRef} muted="muted"/>;
         </Component>
@@ -50,6 +56,15 @@ const withVideo = (Component, typeVideoPlayer) => {
           isPlaying: false
         });
       };
+
+      video.ontimeupdate = () => {
+        const progress = Math.floor((video.currentTime / video.duration) * 100);
+        const timeElapsed = Math.floor(video.duration - video.currentTime);
+        this.setState({
+          progress,
+          timeElapsed
+        });
+      };
     }
 
     componentDidUpdate() {
@@ -70,6 +85,11 @@ const withVideo = (Component, typeVideoPlayer) => {
       video.poster = ``;
       video.onplay = null;
       video.onloadeddata = null;
+      video.ontimeupdate = null;
+
+      if (this._idTimer) {
+        clearTimeout(this._idTimer);
+      }
     }
 
     _changeActionPlayForPlayers(video) {
@@ -99,6 +119,16 @@ const withVideo = (Component, typeVideoPlayer) => {
         default:
           clearTimeout(this._idTimer);
           video.load();
+      }
+    }
+
+    _handleFullScreenClick() {
+      const video = this._videoRef.current;
+
+      if (!document.fullscreenElement) {
+        video.requestFullscreen().catch((err) => err);
+      } else {
+        document.exitFullscreen().catch((err) => err);
       }
     }
   }

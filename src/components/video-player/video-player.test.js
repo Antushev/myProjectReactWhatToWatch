@@ -15,8 +15,8 @@ describe(`VideoPlayerComponent`, () => {
             isPlaying={isPlaying}
             posterImage={posterImage}
             previewVideo={previewVideo}
-            handleVideoPlayerMouseOver={() => {}}
-            handleVideoPlayerMouseOut={() => {}}
+            handleVideoPlayerPlay={() => {}}
+            handleVideoPlayerPause={() => {}}
           >
             <video />
           </ VideoPlayer>, {
