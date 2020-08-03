@@ -24,4 +24,21 @@ const FilmsListType = {
   MORE_LIKE: `more like`
 };
 
-export {FILM_CARD_DEFAULT, FilmDetailTabsName, FilmsListType};
+const TypeScreen = {
+  MAIN_SCREEN: `MAIN_SCREEN`,
+  DETAIL_SCREEN: `DETAIL_SCREEN`,
+  VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`
+};
+
+const TypeVideoPlayer = {
+  SMALL_VIDEO_PLAYER: `SMALL_VIDEO_PLAYER`,
+  BIG_VIDEO_PLAYER: `BIG_VIDEO_PLAYER`
+};
+
+export {
+  FILM_CARD_DEFAULT,
+  FilmDetailTabsName,
+  FilmsListType,
+  TypeScreen,
+  TypeVideoPlayer
+};

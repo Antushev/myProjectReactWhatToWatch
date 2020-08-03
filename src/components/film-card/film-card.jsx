@@ -4,7 +4,7 @@ import {filmShape} from '../../utils/shapes.js';
 
 const FilmCard = (props) => {
   const {film, renderVideoPlayer, handleFilmClick} = props;
-  const {id, name, posterImage, previewVideo} = film;
+  const {id, name, posterImage, previewVideo, videoMain} = film;
 
   return (
     <article
@@ -12,7 +12,7 @@ const FilmCard = (props) => {
       className="small-movie-card catalog__movies-card"
       onClick={() => handleFilmClick(film)}
     >
-      {renderVideoPlayer(posterImage, previewVideo)}
+      {renderVideoPlayer(posterImage, previewVideo, videoMain)}
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">{name}</a>
       </h3>

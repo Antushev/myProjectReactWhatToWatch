@@ -41,7 +41,7 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
 };
 
 const FilmDetails = (props) => {
-  const {films, film, activeTab, renderTabs, handleFilmClick} = props;
+  const {films, film, activeTab, renderTabs, handleFilmClick, handlePlayClick} = props;
   const {
     backgroundImage,
     name,
@@ -82,7 +82,11 @@ const FilmDetails = (props) => {
           </p>
 
           <div className="movie-card__buttons">
-            <button className="btn btn--play movie-card__button" type="button">
+            <button
+              className="btn btn--play movie-card__button"
+              type="button"
+              onClick={() => handlePlayClick(film)}
+            >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
               </svg>
@@ -134,7 +138,8 @@ FilmDetails.propTypes = {
   film: PropTypes.shape(filmShape).isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,
-  handleFilmClick: PropTypes.func.isRequired
+  handleFilmClick: PropTypes.func.isRequired,
+  handlePlayClick: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

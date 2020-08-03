@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const VideoPlayer = (props) => {
-  const {children, handleVideoPlayerMouseOut, handleVideoPlayerMouseOver} = props;
+  const {children, handleVideoPlayerPlay, handleVideoPlayerPause} = props;
   return (
     <div
       className="small-movie-card__image"
-      onMouseOver={handleVideoPlayerMouseOver}
-      onMouseOut={handleVideoPlayerMouseOut}
+      onMouseOver={handleVideoPlayerPlay}
+      onMouseOut={handleVideoPlayerPause}
     >
       {children}
     </div>
@@ -16,8 +16,8 @@ const VideoPlayer = (props) => {
 
 VideoPlayer.propTypes = {
   children: PropTypes.node.isRequired,
-  handleVideoPlayerMouseOver: PropTypes.func.isRequired,
-  handleVideoPlayerMouseOut: PropTypes.func.isRequired
+  handleVideoPlayerPlay: PropTypes.func.isRequired,
+  handleVideoPlayerPause: PropTypes.func.isRequired
 };
 
 export default VideoPlayer;
