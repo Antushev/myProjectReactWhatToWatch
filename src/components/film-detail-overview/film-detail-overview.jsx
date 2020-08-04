@@ -40,7 +40,7 @@ const FilmDetailOverview = (props) => {
     <div className="movie-card__wrap movie-card__translate-top">
       <div className="movie-card__info">
         <div className="movie-card__poster movie-card__poster--big">
-          <img src={`img/${posterImage}`} alt="The Grand Budapest Hotel poster" width="218"
+          <img src={posterImage} alt="The Grand Budapest Hotel poster" width="218"
             height="327"/>
         </div>
 

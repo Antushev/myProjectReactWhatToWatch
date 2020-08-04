@@ -37,7 +37,7 @@ const Main = (props) => {
   return <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src={`img/${backgroundImage}`} alt={name}/>
+        <img src={backgroundImage} alt={name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -61,7 +61,7 @@ const Main = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={`img/${posterImage}`} alt={name} width="218"
+            <img src={posterImage} alt={name} width="218"
               height="327"/>
           </div>
 

@@ -52,7 +52,7 @@ const FilmDetails = (props) => {
   return <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
-        <img src={`img/${backgroundImage}`} alt={name}/>
+        <img src={backgroundImage} alt={name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>

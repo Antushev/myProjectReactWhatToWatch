@@ -42,7 +42,7 @@ const withVideo = (Component, typeVideoPlayer) => {
 
       video.src = typeVideoPlayer === TypeVideoPlayer.SMALL_VIDEO_PLAYER ?
         previewVideo : videoMain;
-      video.poster = `img/${posterImage}`;
+      video.poster = posterImage;
 
       video.onplay = () => {
         this.setState({

@@ -34,6 +34,10 @@ class App extends PureComponent {
   }
 
   render() {
+    const {isLoading} = this.props;
+    if (isLoading) {
+      return null;
+    }
     const {currentFilms} = this.props;
     const filmCard = currentFilms[0];
     return <BrowserRouter>
@@ -61,7 +65,6 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
-      isLoading,
       films,
       currentFilms,
       showFilmCardCount,
