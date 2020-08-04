@@ -3,7 +3,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
-import {ActionCreator} from './../../reducer.js';
+import {ActionCreator} from '../../reducer.js';
 
 import {filmShape} from '../../utils/shapes.js';
 
@@ -36,7 +36,6 @@ class App extends PureComponent {
   render() {
     const {currentFilms} = this.props;
     const filmCard = currentFilms[0];
-
     return <BrowserRouter>
       <Switch>
         <Route exact path='/'>
@@ -62,6 +61,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {
+      isLoading,
       films,
       currentFilms,
       showFilmCardCount,
@@ -161,6 +161,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  isLoading: state.isLoading,
   films: state.films,
   currentFilms: state.currentFilms,
   showFilmCardCount: state.showFilmCardCount

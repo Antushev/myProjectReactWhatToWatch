@@ -1,14 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
 
-import {reducer} from './reducer.js';
+import {AuthorizationStatus} from './utils/const.js';
+import {createApi} from './api.js';
+import {reducer, ActionCreator} from './reducer.js';
+import {Operation} from './reducer.js';
 
 import App from './components/app/app.jsx';
 
-const store = createStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const onUnauthorizate = () => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+};
+
+const api = createApi(onUnauthorizate);
+
+const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
 const init = () => {
@@ -21,4 +33,5 @@ const init = () => {
   );
 };
 
+store.dispatch(Operation.loadFilms());
 init();

@@ -4,7 +4,7 @@ import {getRandomNumber} from '../../utils/common.js';
 
 import {filmShape} from '../../utils/shapes.js';
 import {FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
-import {generateComments} from '../../mocks/comments.js';
+import {generateComments} from '../../adapters/comments.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
 import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
