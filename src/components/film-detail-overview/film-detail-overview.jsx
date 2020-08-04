@@ -4,25 +4,18 @@ import PropTypes from 'prop-types';
 import {filmShape} from '../../utils/shapes.js';
 
 const getRatingType = (rating) => {
-  let ratingType;
-  switch (rating) {
-    case rating > 3:
-      ratingType = `Normal`;
-      break;
-    case rating > 5:
-      ratingType = `Good`;
-      break;
-    case rating > 8:
-      ratingType = `Good`;
-      break;
-    case rating >= 10:
-      ratingType = `Awesome`;
-      break;
-    default:
-      ratingType = `Bad`;
+  const numberFloat = Number(rating);
+  if (numberFloat < 3) {
+    return `Bad`;
+  } else if (numberFloat < 5) {
+    return `Normal`;
+  } else if (numberFloat < 8) {
+    return `Good`;
+  } else if (numberFloat < 10) {
+    return `Very good`;
+  } else {
+    return `Awesome`;
   }
-
-  return ratingType;
 };
 
 const FilmDetailOverview = (props) => {
@@ -50,7 +43,7 @@ const FilmDetailOverview = (props) => {
           <div className="movie-rating">
             <div className="movie-rating__score">{rating}</div>
             <p className="movie-rating__meta">
-              <span className="movie-rating__level">{getRatingType()}</span>
+              <span className="movie-rating__level">{getRatingType(rating)}</span>
               <span className="movie-rating__count">{scoresCount}</span>
             </p>
           </div>
