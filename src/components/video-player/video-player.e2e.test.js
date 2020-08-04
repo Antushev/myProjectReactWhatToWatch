@@ -14,16 +14,16 @@ const isPlaying = false;
 
 describe(`VideoPlayerComponentE2E`, () => {
   it(`Correct playing video`, () => {
-    const handleVideoPlayerMouseOver = jest.fn();
-    const handleVideoPlayerMouseOut = jest.fn();
+    const handleVideoPlayerPlay = jest.fn();
+    const handleVideoPlayerPause = jest.fn();
 
     const videoContainer = mount(
         <VideoPlayer
           isPlaying={isPlaying}
           posterImage={posterImage}
           previewVideo={previewVideo}
-          handleVideoPlayerMouseOver={handleVideoPlayerMouseOver}
-          handleVideoPlayerMouseOut={handleVideoPlayerMouseOut}
+          handleVideoPlayerPlay={handleVideoPlayerPlay}
+          handleVideoPlayerPause={handleVideoPlayerPause}
         >
           <video />
         </VideoPlayer>
@@ -34,8 +34,8 @@ describe(`VideoPlayerComponentE2E`, () => {
     videoPlayer.simulate(`mouseover`);
     videoPlayer.simulate(`mouseout`);
 
-    expect(handleVideoPlayerMouseOut).toBeCalled();
+    expect(handleVideoPlayerPlay).toBeCalled();
 
-    expect(handleVideoPlayerMouseOver).toBeCalled();
+    expect(handleVideoPlayerPause).toBeCalled();
   });
 });

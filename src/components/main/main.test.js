@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {film, films, currentGenre} from '../../mocks-test/films-test.js';
+import {film, films} from '../../mocks-test/films-test.js';
 
 import Main from './main.jsx';
 
@@ -12,14 +12,12 @@ describe(`MainComponent`, () => {
           <Main
             films={films}
             currentFilms={films}
-            currentGenre={currentGenre}
             showFilmCardCount={8}
-            filmName={film.name}
-            genre={film.genre}
-            date={film.date}
+            filmCardPreview={film}
             handleFilmClick={() => {}}
             handleGenreTabClick={() => {}}
             handleShowMoreClick={() => {}}
+            handlePlayClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

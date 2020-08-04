@@ -4,9 +4,8 @@ import VideoPlayer from './../../components/video-player/video-player.jsx';
 
 import {withVideo} from '../with-video/with-video.jsx';
 
-const VideoPlayerWrapped = withVideo(VideoPlayer);
-
-const withVideoPlayer = (Component) => {
+const withVideoPlayer = (Component, typeVideoPlayer) => {
+  const VideoPlayerWrapped = withVideo(VideoPlayer, typeVideoPlayer);
   class WithVideoPlayer extends PureComponent {
     constructor(props) {
       super(props);
@@ -15,8 +14,8 @@ const withVideoPlayer = (Component) => {
         isPlaying: false
       };
 
-      this._handleVideoPlayerMouseOver = this._handleVideoPlayerMouseOver.bind(this);
-      this._handleVideoPlayerMouseOut = this._handleVideoPlayerMouseOut.bind(this);
+      this._handleVideoPlayerPlay = this._handleVideoPlayerPlay.bind(this);
+      this._handleVideoPlayerPause = this._handleVideoPlayerPause.bind(this);
     }
 
     render() {
@@ -25,14 +24,15 @@ const withVideoPlayer = (Component) => {
       return (
         <Component
           {...this.props}
-          renderVideoPlayer={(posterImage, previewVideo) => {
+          renderVideoPlayer={(posterImage, previewVideo, videoMain) => {
             return (
               <VideoPlayerWrapped
                 isPlaying={isPlaying}
                 posterImage={posterImage}
                 previewVideo={previewVideo}
-                handleVideoPlayerMouseOver={this._handleVideoPlayerMouseOver}
-                handleVideoPlayerMouseOut={this._handleVideoPlayerMouseOut}
+                videoMain={videoMain}
+                handleVideoPlayerPlay={this._handleVideoPlayerPlay}
+                handleVideoPlayerPause={this._handleVideoPlayerPause}
               />
             );
           }}
@@ -40,13 +40,13 @@ const withVideoPlayer = (Component) => {
       );
     }
 
-    _handleVideoPlayerMouseOver() {
+    _handleVideoPlayerPlay() {
       this.setState((prevState) => {
         return {isPlaying: !prevState.isPlaying};
       });
     }
 
-    _handleVideoPlayerMouseOut() {
+    _handleVideoPlayerPause() {
       this.setState((prevState) => {
         return {isPlaying: !prevState.isPlaying};
       });

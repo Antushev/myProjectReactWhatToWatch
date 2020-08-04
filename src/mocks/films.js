@@ -78,6 +78,7 @@ const generateFilm = (idFilm) => {
     posterImage: getRandomElementFromArray(previewImages),
     previewImage: getRandomElementFromArray(posters),
     previewVideo: getRandomElementFromArray(previewVideo),
+    videoMain: getRandomElementFromArray(previewVideo),
     rating: getRandomNumberFloat(MIN_RATING, MAX_RATING),
     scoresCount: getRandomNumber(MIN_SCORES, MAX_SCORES),
     runtime: getRandomNumber(MIN_RUNTIME, MAX_RUNTIME),
