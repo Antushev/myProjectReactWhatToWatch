@@ -20,7 +20,7 @@ const VideoPlayerBig = (props) => {
     handleExitVideoPlayerClick,
     handleFullScreenClick
   } = props;
-  console.log(isPlaying);
+
   return (
     <div className="player">
       {children}
