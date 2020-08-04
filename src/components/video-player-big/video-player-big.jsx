@@ -13,13 +13,14 @@ const getPositionToggler = (progress) => {
 const VideoPlayerBig = (props) => {
   const {
     children,
+    isPlaying,
     videoProgress,
     videoTimeElapsed,
     handlePlayClick,
     handleExitVideoPlayerClick,
     handleFullScreenClick
   } = props;
-
+  console.log(isPlaying);
   return (
     <div className="player">
       {children}
@@ -46,9 +47,15 @@ const VideoPlayerBig = (props) => {
             className="player__play"
             onClick={handlePlayClick}
           >
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s" />
-            </svg>
+            {isPlaying ?
+              <svg viewBox="0 0 14 21" width="19" height="19">
+                <use xlinkHref="#pause" />
+              </svg>
+              :
+              <svg viewBox="0 0 19 19" width="19" height="19">
+                <use xlinkHref="#play-s" />
+              </svg>
+            }
             <span>Play</span>
           </button>
           <div className="player__name">Transpotting</div>
@@ -71,6 +78,7 @@ const VideoPlayerBig = (props) => {
 
 VideoPlayerBig.propTypes = {
   children: PropTypes.node.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   posterImage: PropTypes.string.isRequired,
   videoMain: PropTypes.string.isRequired,
   videoProgress: PropTypes.number.isRequired,

@@ -15,14 +15,13 @@ const withVideo = (Component, typeVideoPlayer) => {
         progress: 1
       };
 
-      this._idTimer = null;
-
       this._videoRef = React.createRef();
 
       this._handleFullScreenClick = this._handleFullScreenClick.bind(this);
     }
 
     render() {
+      clearTimeout(this._idTimer);
       const {progress, timeElapsed} = this.state;
       return (
         <Component
