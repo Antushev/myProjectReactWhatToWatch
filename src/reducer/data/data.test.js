@@ -4,8 +4,9 @@ import {reducer, ActionCreator, Operation} from './data.js';
 import {films} from './../../mocks-test/films-test.js';
 
 const state = {
-  films,
-  isLoading: true
+  isLoading: true,
+  isError: false,
+  films
 };
 
 const api = createApi(() => {});

@@ -2,7 +2,9 @@ import {filmsAdapter} from '../../adapters/film-adapter.js';
 
 const initialState = {
   isLoading: true,
+  isError: false,
   films: null,
+  currentFilter: `All genres`
 };
 
 const ActionType = {
@@ -10,6 +12,9 @@ const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   END_LOAD: `END_LOAD`,
   GET_FILMS: `GET_FILMS`,
+  CHANGE_GENRE: `CHANGE_FILTER`,
+  PUT_ERROR: `PUT_ERROR`,
+  REMOVE_ERROR: `REMOVE_ERROR`
 };
 
 const ActionCreator = {
@@ -36,11 +41,30 @@ const ActionCreator = {
       type: ActionType.GET_FILMS,
       payload: genre
     };
+  },
+  changeGenre(genre) {
+    return {
+      type: ActionType.CHANGE_GENRE,
+      payload: genre
+    };
+  },
+  putError() {
+    return {
+      type: ActionType.PUT_ERROR,
+      payload: true
+    };
+  },
+  removeError() {
+    return {
+      type: ActionType.REMOVE_ERROR,
+      payload: false
+    };
   }
 };
 
 const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
+    ActionCreator.removeError();
     ActionCreator.startLoad();
     return api.get(`/films`)
       .then((response) => {
@@ -49,6 +73,9 @@ const Operation = {
       })
       .then(() => {
         dispatch(ActionCreator.endLoad());
+      })
+      .catch(() => {
+        ActionCreator.putError();
       });
   }
 };
@@ -79,6 +106,18 @@ const reducer = (state = initialState, action) => {
 
       return Object.assign({}, state, {
         films: currentFilmsByGenre
+      });
+    case ActionType.CHANGE_GENRE:
+      return Object.assign({}, state, {
+        currentGenre: action.payload
+      });
+    case ActionType.PUT_ERROR:
+      return Object.assign({}, state, {
+        isError: action.payload
+      });
+    case ActionType.REMOVE_ERROR:
+      return Object.assign({}, state, {
+        isError: action.payload
       });
     default:
       return state;

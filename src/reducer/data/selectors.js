@@ -4,8 +4,12 @@ const getLoadingStatus = (state) => {
   return state[NameSpace.DATA].isLoading;
 };
 
+const getErrorStatus = (state) => {
+  return state[NameSpace.DATA].isError;
+};
+
 const getFilms = (state) => {
   return state[NameSpace.DATA].films;
 };
 
-export {getFilms, getLoadingStatus};
+export {getLoadingStatus, getErrorStatus, getFilms};

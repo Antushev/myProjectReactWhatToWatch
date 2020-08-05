@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getFilms, getLoadingStatus} from './../../reducer/data/selectors.js';
+import {getFilms, getLoadingStatus, getErrorStatus} from './../../reducer/data/selectors.js';
 import {getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
 import {filmShape} from '../../utils/shapes.js';
@@ -13,6 +13,8 @@ import {filmShape} from '../../utils/shapes.js';
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
+import Loading from '../loading/loading.jsx';
+import Error from '../error/error.jsx';
 
 import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
 import {withVideo} from '../../hocs/with-video/with-video.jsx';
@@ -37,10 +39,15 @@ class App extends PureComponent {
   }
 
   render() {
-    const {isLoading} = this.props;
+    const {isLoading, isError} = this.props;
     if (isLoading) {
-      return null;
+      return <Loading />;
     }
+
+    if (isError) {
+      return <Error />;
+    }
+
     const {films} = this.props;
     const filmCard = films[0];
     return <BrowserRouter>
@@ -155,6 +162,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
@@ -166,15 +174,18 @@ App.propTypes = {
   handleShowMoreClick: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  isLoading: getLoadingStatus(state),
-  films: getFilms(state),
-  showFilmCardCount: getShowFilmCardCount(state)
-});
+const mapStateToProps = (state) => {
+  return {
+    isLoading: getLoadingStatus(state),
+    isError: getErrorStatus(state),
+    films: getFilms(state),
+    showFilmCardCount: getShowFilmCardCount(state)
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   handleGenreTabClick(genre) {
-    dispatch(DataActionCreator.getFilms(genre));
+    dispatch(DataActionCreator.changeGenre(genre));
     dispatch(AppStateActionCreator.resetFilmCardCount());
   },
 
