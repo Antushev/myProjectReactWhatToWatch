@@ -13,7 +13,7 @@ exports[`FilmDetailMoreComponent FilmDetailMoreComponentSnapshot 1`] = `
       <img
         alt="Интерстеллар"
         height="327"
-        src="img/aviator.jpg"
+        src="aviator.jpg"
         width="218"
       />
     </div>

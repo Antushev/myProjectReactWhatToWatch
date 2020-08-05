@@ -10,7 +10,7 @@ Array [
     >
       <img
         alt="Интерстеллар"
-        src="img/player-poster.jpg"
+        src="player-poster.jpg"
       />
     </div>
     <h1
@@ -71,7 +71,7 @@ Array [
           <img
             alt="Интерстеллар"
             height="327"
-            src="img/aviator.jpg"
+            src="aviator.jpg"
             width="218"
           />
         </div>

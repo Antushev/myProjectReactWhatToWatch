@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorComponent ErrorComponentSnapshot 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Кажется, сервер недоступен...
+      </h1>
+    </div>
+  </section>
+</div>
+`;

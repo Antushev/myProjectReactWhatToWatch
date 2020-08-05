@@ -35,10 +35,16 @@ const TypeVideoPlayer = {
   BIG_VIDEO_PLAYER: `BIG_VIDEO_PLAYER`
 };
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 export {
   FILM_CARD_DEFAULT,
   FilmDetailTabsName,
   FilmsListType,
   TypeScreen,
-  TypeVideoPlayer
+  TypeVideoPlayer,
+  AuthorizationStatus
 };

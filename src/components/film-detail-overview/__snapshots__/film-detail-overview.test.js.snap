@@ -13,7 +13,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
       <img
         alt="The Grand Budapest Hotel poster"
         height="327"
-        src="img/aviator.jpg"
+        src="aviator.jpg"
         width="218"
       />
     </div>
@@ -34,7 +34,7 @@ exports[`FilmDetailComponent FilmDetailComponentSnapshot 1`] = `
           <span
             className="movie-rating__level"
           >
-            Bad
+            Normal
           </span>
           <span
             className="movie-rating__count"

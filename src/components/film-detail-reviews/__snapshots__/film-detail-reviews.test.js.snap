@@ -11,9 +11,9 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
       className="movie-card__poster movie-card__poster--big"
     >
       <img
-        alt="The Grand Budapest Hotel poster"
+        alt="Интерстеллар"
         height="327"
-        src="img/aviator.jpg"
+        src="aviator.jpg"
         width="218"
       />
     </div>

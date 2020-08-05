@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingComponent LoadingComponentSnapshot 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Идёт загрузка
+      </h1>
+    </div>
+  </section>
+</div>
+`;
