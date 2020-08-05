@@ -2,17 +2,19 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
+import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer, AuthorizationStatus} from '../../utils/const.js';
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
 import {getLoadingStatus, getErrorStatus, getFilmsByGenre} from './../../reducer/data/selectors.js';
+import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
-import {filmShape} from '../../utils/shapes.js';
+import {filmShape, userShape} from '../../utils/shapes.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
 import Loading from '../loading/loading.jsx';
 import Error from '../error/error.jsx';
 
@@ -36,6 +38,8 @@ class App extends PureComponent {
     this._handleFilmClick = this._handleFilmClick.bind(this);
     this._handlePlayClick = this._handlePlayClick.bind(this);
     this._handleExitVideoPlayerClick = this._handleExitVideoPlayerClick.bind(this);
+    this._handleSignInClick = this._handleSignInClick.bind(this);
+    this._handleChangeScreen = this._handleChangeScreen.bind(this);
   }
 
   render() {
@@ -70,6 +74,9 @@ class App extends PureComponent {
             handleFilmClick={this._handleFilmClick}
           />
         </Route>
+        <Route exct path='/dev-sign-in'>
+          <SignIn />
+        </Route>
       </Switch>
     </BrowserRouter>;
   }
@@ -77,7 +84,9 @@ class App extends PureComponent {
   _renderApp() {
     const {
       films,
+      user,
       showFilmCardCount,
+      authorizeStatus,
       handleGenreTabClick,
       handleShowMoreClick
     } = this.props;
@@ -90,11 +99,15 @@ class App extends PureComponent {
         return (
           <Main
             films={films}
+            user={user}
             currentFilms={films}
             showFilmCardCount={showFilmCardCount}
             filmCardPreview={filmCard}
+            authorizeStatus={authorizeStatus}
             handleFilmClick={this._handleFilmClick}
             handlePlayClick={this._handlePlayClick}
+            handleSignInClick={this._handleSignInClick}
+            handleAuthClick={this._handleAuthClick}
             handleGenreTabClick={handleGenreTabClick}
             handleShowMoreClick={handleShowMoreClick}
           />
@@ -104,6 +117,9 @@ class App extends PureComponent {
           <FilmDetailsWithTabs
             films={films}
             film={film}
+            user={user}
+            authorizeStatus={authorizeStatus}
+            handleSignInClick={this._handleSignInClick}
             handleFilmClick={this._handleFilmClick}
             handlePlayClick={this._handlePlayClick}
           />
@@ -118,6 +134,12 @@ class App extends PureComponent {
             handleExitVideoPlayerClick={this._handleExitVideoPlayerClick}
           />
         );
+      case TypeScreen.SIGN_IN:
+        return (
+          <SignIn
+            handleChangeScreen={this._handleChangeScreen}
+          />
+        );
       default:
         return (
           <Main
@@ -127,6 +149,7 @@ class App extends PureComponent {
             filmName={filmCard.name}
             genre={filmCard.genre}
             date={filmCard.date}
+            authorizeStatus={authorizeStatus}
             handleFilmClick={this._handleFilmClick}
             handleGenreTabClick={handleGenreTabClick}
             handleShowMoreClick={handleShowMoreClick}
@@ -159,6 +182,18 @@ class App extends PureComponent {
       typeScreen: TypeScreen.MAIN_SCREEN
     });
   }
+
+  _handleSignInClick() {
+    this.setState({
+      typeScreen: TypeScreen.SIGN_IN
+    });
+  }
+
+  _handleChangeScreen() {
+    this.setState({
+      typeScreen: TypeScreen.MAIN_SCREEN
+    });
+  }
 }
 
 App.propTypes = {
@@ -167,7 +202,9 @@ App.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
+  user: PropTypes.shape(userShape).isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
+  authorizeStatus: PropTypes.string.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired
 };
@@ -177,7 +214,9 @@ const mapStateToProps = (state) => {
     isLoading: getLoadingStatus(state),
     isError: getErrorStatus(state),
     films: getFilmsByGenre(state),
-    showFilmCardCount: getShowFilmCardCount(state)
+    showFilmCardCount: getShowFilmCardCount(state),
+    authorizeStatus: getAuthorizeStatusUser(state),
+    user: getUserInfo(state)
   };
 };
 

@@ -56,7 +56,7 @@ exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
           <img
             alt="User avatar"
             height="63"
-            src="img/avatar.jpg"
+            src="https://4.react.pages.academysina.jpg"
             width="63"
           />
         </div>

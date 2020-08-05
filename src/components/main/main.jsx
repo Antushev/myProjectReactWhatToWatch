@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {FilmsListType} from '../../utils/const.js';
-import {filmShape} from '../../utils/shapes.js';
+import {filmShape, userShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 import GenresList from './../genres-list/genres-list.jsx';
 import ShowMore from './../show-more/show-more.jsx';
+import UserProfile from './../user-profile/user-profile.jsx';
 
 import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
 
@@ -17,12 +18,15 @@ const DEFAULT_GENRE = `All genres`;
 const Main = (props) => {
   const {
     films,
+    user,
     showFilmCardCount,
     filmCardPreview,
+    authorizeStatus,
     handleFilmClick,
     handleGenreTabClick,
     handleShowMoreClick,
-    handlePlayClick
+    handlePlayClick,
+    handleSignInClick,
   } = props;
 
   const {
@@ -50,11 +54,12 @@ const Main = (props) => {
           </a>
         </div>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-          </div>
-        </div>
+        <UserProfile
+          user={user}
+          authorizeStatus={authorizeStatus}
+          handleSignInClick={handleSignInClick}
+        />
+
       </header>
 
       <div className="movie-card__wrap">
@@ -141,17 +146,19 @@ const renderShowMore = (films, showFilmCardCount, handleShowMoreClick) => {
   return null;
 };
 
-
 Main.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ).isRequired,
+  user: PropTypes.shape(userShape).isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   filmCardPreview: PropTypes.shape(filmShape).isRequired,
+  authorizeStatus: PropTypes.string.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired
+  handlePlayClick: PropTypes.func.isRequired,
+  handleSignInClick: PropTypes.func.isRequired
 };
 
 export default Main;

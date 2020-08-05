@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import {films, currentGenre} from '../../mocks-test/films-test.js';
+import {user} from '../../mocks-test/user-test.js';
 
 import {App} from './app.jsx';
 
@@ -22,6 +23,7 @@ describe(`AppComponent`, () => {
           <Provider store={store}>
             <App
               films={films}
+              user={user}
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}

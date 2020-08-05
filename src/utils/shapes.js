@@ -16,4 +16,11 @@ const commentShape = {
   date: PropTypes.date
 };
 
-export {filmShape, commentShape};
+const userShape = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired
+};
+
+export {filmShape, commentShape, userShape};

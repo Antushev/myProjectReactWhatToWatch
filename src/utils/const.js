@@ -27,7 +27,8 @@ const FilmsListType = {
 const TypeScreen = {
   MAIN_SCREEN: `MAIN_SCREEN`,
   DETAIL_SCREEN: `DETAIL_SCREEN`,
-  VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`
+  VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`,
+  SIGN_IN: `SIGN_IN`
 };
 
 const TypeVideoPlayer = {

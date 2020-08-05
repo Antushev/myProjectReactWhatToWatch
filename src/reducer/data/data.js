@@ -75,7 +75,7 @@ const Operation = {
       })
       .catch(() => {
         dispatch(ActionCreator.endLoad());
-        ActionCreator.putError();
+        dispatch(ActionCreator.putError());
       });
   }
 };
