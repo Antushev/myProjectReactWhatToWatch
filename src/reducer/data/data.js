@@ -1,14 +1,8 @@
-import {AuthorizationStatus} from './utils/const.js';
-import {filmsAdapter} from './adapters/film-adapter.js';
-
-const SHOW_FILMS_CARD_COUNT = 8;
+import {filmsAdapter} from '../../adapters/film-adapter.js';
 
 const initialState = {
   isLoading: true,
   films: null,
-  currentFilms: null,
-  showFilmCardCount: SHOW_FILMS_CARD_COUNT,
-  authorizationStatus: AuthorizationStatus.NO_AUTH
 };
 
 const ActionType = {
@@ -16,10 +10,6 @@ const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   END_LOAD: `END_LOAD`,
   GET_FILMS: `GET_FILMS`,
-  CHANGE_GENRE: `CHANGE_GENRE`,
-  SHOW_ADDITIONAL_CARD: `SHOW_ADDITIONAL_CARD`,
-  RESET_FILM_CARD_COUNT: `RESET_FILM_CARD_COUNT`,
-  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
 };
 
 const ActionCreator = {
@@ -45,24 +35,6 @@ const ActionCreator = {
     return {
       type: ActionType.GET_FILMS,
       payload: genre
-    };
-  },
-  showAdditionalCard() {
-    return {
-      type: ActionType.SHOW_ADDITIONAL_CARD,
-      payload: SHOW_FILMS_CARD_COUNT
-    };
-  },
-  resetFilmCardCount() {
-    return {
-      type: ActionType.RESET_FILM_CARD_COUNT,
-      payload: SHOW_FILMS_CARD_COUNT
-    };
-  },
-  requireAuthorization(authorizationStatus) {
-    return {
-      type: ActionType.REQUIRE_AUTHORIZATION,
-      payload: authorizationStatus
     };
   }
 };
@@ -106,23 +78,11 @@ const reducer = (state = initialState, action) => {
       }
 
       return Object.assign({}, state, {
-        currentFilms: currentFilmsByGenre
+        films: currentFilmsByGenre
       });
-    case ActionType.SHOW_ADDITIONAL_CARD:
-      return Object.assign({}, state, {
-        showFilmCardCount: state.showFilmCardCount + SHOW_FILMS_CARD_COUNT
-      });
-    case ActionType.RESET_FILM_CARD_COUNT:
-      return Object.assign({}, state, {
-        showFilmCardCount: action.payload
-      });
-    case ActionType.REQUIRE_AUTHORIZATION:
-      return Object.assign({}, state, {
-        authorizationStatus: action.type
-      });
+    default:
+      return state;
   }
-
-  return state;
 };
 
-export {reducer, ActionCreator, Operation};
+export {reducer, ActionType, ActionCreator, Operation};

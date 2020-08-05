@@ -17,6 +17,7 @@ describe(`FilmDetailsComponent`, () => {
             activeTab={activeTab}
             renderTabs={() => {}}
             handleFilmClick={() => {}}
+            handlePlayClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

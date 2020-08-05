@@ -3,7 +3,10 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
+import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
+import {getFilms, getLoadingStatus} from './../../reducer/data/selectors.js';
+import {getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
 import {filmShape} from '../../utils/shapes.js';
 
@@ -38,8 +41,8 @@ class App extends PureComponent {
     if (isLoading) {
       return null;
     }
-    const {currentFilms} = this.props;
-    const filmCard = currentFilms[0];
+    const {films} = this.props;
+    const filmCard = films[0];
     return <BrowserRouter>
       <Switch>
         <Route exact path='/'>
@@ -54,7 +57,7 @@ class App extends PureComponent {
         </Route>
         <Route exct path='/dev-film-detail'>
           <FilmDetailsWithTabs
-            films={currentFilms}
+            films={films}
             film={filmCard}
             handleFilmClick={this._handleFilmClick}
           />
@@ -66,21 +69,20 @@ class App extends PureComponent {
   _renderApp() {
     const {
       films,
-      currentFilms,
       showFilmCardCount,
       handleGenreTabClick,
       handleShowMoreClick
     } = this.props;
     const {film, typeScreen} = this.state;
 
-    const filmCard = currentFilms[0];
+    const filmCard = films[0];
 
     switch (typeScreen) {
       case TypeScreen.MAIN_SCREEN:
         return (
           <Main
             films={films}
-            currentFilms={currentFilms}
+            currentFilms={films}
             showFilmCardCount={showFilmCardCount}
             filmCardPreview={filmCard}
             handleFilmClick={this._handleFilmClick}
@@ -92,7 +94,7 @@ class App extends PureComponent {
       case TypeScreen.DETAIL_SCREEN:
         return (
           <FilmDetailsWithTabs
-            films={currentFilms}
+            films={films}
             film={film}
             handleFilmClick={this._handleFilmClick}
             handlePlayClick={this._handlePlayClick}
@@ -112,7 +114,7 @@ class App extends PureComponent {
         return (
           <Main
             films={films}
-            currentFilms={currentFilms}
+            currentFilms={films}
             showFilmCardCount={showFilmCardCount}
             filmName={filmCard.name}
             genre={filmCard.genre}
@@ -152,6 +154,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
@@ -164,20 +167,19 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isLoading: state.isLoading,
-  films: state.films,
-  currentFilms: state.currentFilms,
-  showFilmCardCount: state.showFilmCardCount
+  isLoading: getLoadingStatus(state),
+  films: getFilms(state),
+  showFilmCardCount: getShowFilmCardCount(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleGenreTabClick(genre) {
-    dispatch(ActionCreator.getFilms(genre));
-    dispatch(ActionCreator.resetFilmCardCount());
+    dispatch(DataActionCreator.getFilms(genre));
+    dispatch(AppStateActionCreator.resetFilmCardCount());
   },
 
   handleShowMoreClick() {
-    dispatch(ActionCreator.showAdditionalCard());
+    dispatch(AppStateActionCreator.showAdditionalCard());
   }
 });
 

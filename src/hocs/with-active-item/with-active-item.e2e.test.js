@@ -24,7 +24,7 @@ describe(`Tests HOC with-active-item`, () => {
     const MockListWrapped = withActiveItem(MockList);
     const wrapped = mount(
         <MockListWrapped
-          activeItem={1}
+          activeItem={`item`}
           handleActiveItemChange={() => {}}
         />
     );
@@ -33,6 +33,6 @@ describe(`Tests HOC with-active-item`, () => {
 
     activeElement.simulate(`click`);
 
-    expect(wrapped.props().activeItem).toEqual(1);
+    expect(wrapped.props().activeItem).toEqual(`item`);
   });
 });

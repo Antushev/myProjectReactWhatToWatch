@@ -71,6 +71,7 @@ exports[`VideoPlayerBigComponent VideoPlayerBigComponentSnapshot 1`] = `
       </div>
       <button
         className="player__full-screen"
+        onClick={[Function]}
         type="button"
       >
         <svg

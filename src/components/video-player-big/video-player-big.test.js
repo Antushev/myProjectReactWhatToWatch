@@ -11,12 +11,14 @@ describe(`VideoPlayerBigComponent`, () => {
     const tree = renderer
       .create(
           <VideoPlayerBig
+            isPlaying={false}
             posterImage={posterImage}
             videoMain={videoMain}
             videoProgress={40}
             videoTimeElapsed={40}
             handlePlayClick={() => {}}
             handleExitVideoPlayerClick={() => {}}
+            handleFullScreenClick={() => {}}
           >
             <video />
           </VideoPlayerBig>
