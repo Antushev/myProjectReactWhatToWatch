@@ -24,6 +24,9 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
+store.dispatch(DataActionCreator.startLoad());
+store.dispatch(DataOperation.loadFilms());
+
 const init = () => {
   ReactDOM.render(
       <Provider store={store}>
@@ -34,5 +37,4 @@ const init = () => {
   );
 };
 
-store.dispatch(DataOperation.loadFilms());
 init();

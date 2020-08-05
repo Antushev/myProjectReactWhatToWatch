@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getFilms, getLoadingStatus, getErrorStatus} from './../../reducer/data/selectors.js';
+import {getLoadingStatus, getErrorStatus, getFilmsByGenre} from './../../reducer/data/selectors.js';
 import {getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
 import {filmShape} from '../../utils/shapes.js';
@@ -40,6 +40,7 @@ class App extends PureComponent {
 
   render() {
     const {isLoading, isError} = this.props;
+
     if (isLoading) {
       return <Loading />;
     }
@@ -166,9 +167,6 @@ App.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
-  currentFilms: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ),
   showFilmCardCount: PropTypes.number.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired
@@ -178,7 +176,7 @@ const mapStateToProps = (state) => {
   return {
     isLoading: getLoadingStatus(state),
     isError: getErrorStatus(state),
-    films: getFilms(state),
+    films: getFilmsByGenre(state),
     showFilmCardCount: getShowFilmCardCount(state)
   };
 };

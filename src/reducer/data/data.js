@@ -1,10 +1,10 @@
 import {filmsAdapter} from '../../adapters/film-adapter.js';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isError: false,
   films: null,
-  currentFilter: `All genres`
+  currentGenre: `All genres`
 };
 
 const ActionType = {
@@ -65,7 +65,6 @@ const ActionCreator = {
 const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     ActionCreator.removeError();
-    ActionCreator.startLoad();
     return api.get(`/films`)
       .then((response) => {
         const films = filmsAdapter(response.data);
@@ -75,6 +74,7 @@ const Operation = {
         dispatch(ActionCreator.endLoad());
       })
       .catch(() => {
+        dispatch(ActionCreator.endLoad());
         ActionCreator.putError();
       });
   }
@@ -113,11 +113,11 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.PUT_ERROR:
       return Object.assign({}, state, {
-        isError: action.payload
+        isError: true
       });
     case ActionType.REMOVE_ERROR:
       return Object.assign({}, state, {
-        isError: action.payload
+        isError: false
       });
     default:
       return state;

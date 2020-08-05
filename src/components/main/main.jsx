@@ -17,7 +17,6 @@ const DEFAULT_GENRE = `All genres`;
 const Main = (props) => {
   const {
     films,
-    currentFilms,
     showFilmCardCount,
     filmCardPreview,
     handleFilmClick,
@@ -105,13 +104,13 @@ const Main = (props) => {
         />
 
         <FilmsList
-          films={currentFilms}
+          films={films}
           showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />
 
-        {renderShowMore(currentFilms, showFilmCardCount, handleShowMoreClick)}
+        {renderShowMore(films, showFilmCardCount, handleShowMoreClick)}
 
       </section>
 
@@ -132,8 +131,8 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
-const renderShowMore = (currentFilms, showFilmCardCount, handleShowMoreClick) => {
-  if (currentFilms.length > showFilmCardCount) {
+const renderShowMore = (films, showFilmCardCount, handleShowMoreClick) => {
+  if (films.length > showFilmCardCount) {
     return <ShowMore
       handleShowMoreClick={handleShowMoreClick}
     />;
@@ -145,9 +144,6 @@ const renderShowMore = (currentFilms, showFilmCardCount, handleShowMoreClick) =>
 
 Main.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ).isRequired,
-  currentFilms: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ).isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
