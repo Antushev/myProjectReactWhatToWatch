@@ -34,8 +34,7 @@ const ActionCreator = {
 
 const Operation = {
   checkAuthorizeUser: () => (dispatch, getState, api) => {
-    return api
-      .get(`/login`)
+    return api.get(`/login`)
       .then((response) => {
         return response;
       })

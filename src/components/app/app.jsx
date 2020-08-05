@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer, AuthorizationStatus} from '../../utils/const.js';
+import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
 import {getLoadingStatus, getErrorStatus, getFilmsByGenre} from './../../reducer/data/selectors.js';
