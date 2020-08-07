@@ -8,7 +8,7 @@ const withFormValidation = (Component) => {
       this.state = {
         inputEmail: ``,
         inputPassword: ``,
-        buttonActive: true
+        buttonDisabled: true
       };
 
       this._handleChangeInputEmail = this._handleChangeInputEmail.bind(this);
@@ -16,11 +16,11 @@ const withFormValidation = (Component) => {
     }
 
     render() {
-      const {buttonActive} = this.state;
+      const {buttonDisabled} = this.state;
 
       return <Component
         {...this.props}
-        buttonActive={buttonActive}
+        buttonDisabled={buttonDisabled}
         handleChangeInputEmail={this._handleChangeInputEmail}
         handleChangeInputPassword={this._handleChangeInputPassword}
       />;
@@ -31,11 +31,12 @@ const withFormValidation = (Component) => {
 
       if (inputPassword !== `` && value !== ``) {
         this.setState({
-          buttonActive: false
+          buttonDisabled: false
         });
       } else {
         this.setState({
-          inputEmail: value
+          inputEmail: value,
+          buttonDisabled: true
         });
       }
     }
@@ -45,11 +46,12 @@ const withFormValidation = (Component) => {
 
       if (inputEmail !== `` && value !== ``) {
         this.setState({
-          buttonActive: false
+          buttonDisabled: false
         });
       } else {
         this.setState({
-          inputEmail: value
+          inputEmail: value,
+          buttonDisabled: true
         });
       }
     }

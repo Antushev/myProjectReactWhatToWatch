@@ -14,7 +14,7 @@ describe(`Tests HOC with-form-validation`, () => {
     const tree = renderer
       .create(
           <MockComponentWrapped
-            buttonActive={true}
+            buttonDisabled={true}
             handleChangeInputEmail={() => {}}
             handleChangeInputPassword={() => {}}
           />, {

@@ -11,7 +11,7 @@ import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/
 
 const SignIn = (props) => {
   const {
-    buttonActive,
+    buttonDisabled,
     handleAuthorizeClick,
     handleTypeScreenChange,
     handleChangeInputEmail,
@@ -74,7 +74,7 @@ const SignIn = (props) => {
                 handleAuthorizeClick(login, password);
                 handleTypeScreenChange(TypeScreen.MAIN_SCREEN);
               }}
-              disabled={buttonActive}
+              disabled={buttonDisabled}
             >
               Sign in
             </button>
@@ -100,7 +100,7 @@ const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
-  buttonActive: PropTypes.bool.isRequired,
+  buttonDisabled: PropTypes.bool.isRequired,
   handleAuthorizeClick: PropTypes.func.isRequired,
   handleTypeScreenChange: PropTypes.func.isRequired,
   handleChangeInputEmail: PropTypes.func.isRequired,

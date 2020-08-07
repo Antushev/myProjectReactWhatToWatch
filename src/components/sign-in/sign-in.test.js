@@ -8,7 +8,7 @@ describe(`SignInComponent`, () => {
     const tree = renderer
       .create(
           <SignIn
-            buttonActive={true}
+            buttonDisabled={true}
             handleAuthorizeClick={() => {}}
             handleTypeSCreenChange={() => {}}
             handleChangeInputEmail={() => {}}
