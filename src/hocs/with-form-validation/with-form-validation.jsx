@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 
-const regularForEmail = `^(?![^@]*\\.-)[a-zA-Z][A-Za-z0-9._-]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}\\b`;
-
+const regularForEmail = `^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$`;
 
 const withFormValidation = (Component) => {
   class WithFormValidation extends PureComponent {
