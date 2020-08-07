@@ -19,9 +19,9 @@ describe(`FilmDetailsComponent`, () => {
             authorizationStatus={`NO_AUTH`}
             activeTab={activeTab}
             renderTabs={() => {}}
-            handleFilmClick={() => {}}
-            handlePlayClick={() => {}}
-            handleTypeSCreenChange={() => {}}
+            onFilmClick={() => {}}
+            onPlayClick={() => {}}
+            onTypeScreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};

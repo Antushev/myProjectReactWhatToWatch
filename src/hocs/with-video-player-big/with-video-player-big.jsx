@@ -19,7 +19,7 @@ const withVideoPlayerBig = (Component) => {
         <Component
           {...this.props}
           isPlaying={isPlaying}
-          handlePlayClick={this._handlePlayClick}
+          onPlayClick={this._handlePlayClick}
         />
       );
     }

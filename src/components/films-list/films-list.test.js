@@ -15,7 +15,7 @@ describe(`FilmsListComponent`, () => {
             films={films}
             showFilmCardCount={8}
             filmListType={FilmsListType.DEFAULT}
-            handleFilmClick={() => {}}
+            onFilmClick={() => {}}
           />, {
             createNodeMock: () => {
               return {};

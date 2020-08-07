@@ -17,11 +17,11 @@ describe(`MainComponent`, () => {
             currentFilms={films}
             showFilmCardCount={8}
             filmCardPreview={film}
-            handleFilmClick={() => {}}
-            handleGenreTabClick={() => {}}
-            handleShowMoreClick={() => {}}
-            handlePlayClick={() => {}}
-            handleTypeScreenChange={() => {}}
+            onFilmClick={() => {}}
+            onGenreTabClick={() => {}}
+            onShowMoreClick={() => {}}
+            onPlayClick={() => {}}
+            onTypeScreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};
@@ -43,11 +43,11 @@ describe(`MainComponent`, () => {
             currentFilms={films}
             showFilmCardCount={8}
             filmCardPreview={film}
-            handleFilmClick={() => {}}
-            handleGenreTabClick={() => {}}
-            handleShowMoreClick={() => {}}
-            handlePlayClick={() => {}}
-            handleTypeScreenChange={() => {}}
+            onFilmClick={() => {}}
+            onGenreTabClick={() => {}}
+            onShowMoreClick={() => {}}
+            onPlayClick={() => {}}
+            onTypeScreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};

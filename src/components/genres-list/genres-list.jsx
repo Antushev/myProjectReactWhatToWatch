@@ -20,14 +20,14 @@ const getGenresFilms = (films) => {
 
 const MAX_GENRES = 9;
 
-const renderGenre = (genre, currentGenre, handleActiveItemChange, handleGenreTabClick) => {
+const renderGenre = (genre, currentGenre, onActiveItemChange, onGenreTabClick) => {
   return (
     <li
       key={genre}
       className={`catalog__genres-item ${genre === currentGenre ? `catalog__genres-item--active` : ``}`}
       onClick={() => {
-        handleActiveItemChange(genre);
-        handleGenreTabClick(genre);
+        onActiveItemChange(genre);
+        onGenreTabClick(genre);
       }}
     >
       <a href="#" className="catalog__genres-link">{genre}</a>
@@ -35,20 +35,20 @@ const renderGenre = (genre, currentGenre, handleActiveItemChange, handleGenreTab
   );
 };
 
-const renderGenres = (genres, currentGenre, handleActiveItemChange, handleGenreTabClick) => {
+const renderGenres = (genres, currentGenre, onActiveItemChange, onGenreTabClick) => {
   return genres.map((genre) => {
-    return renderGenre(genre, currentGenre, handleActiveItemChange, handleGenreTabClick);
+    return renderGenre(genre, currentGenre, onActiveItemChange, onGenreTabClick);
   }).slice(0, MAX_GENRES);
 };
 
 const GenresList = (props) => {
-  const {films, activeItem, handleActiveItemChange, handleGenreTabClick} = props;
+  const {films, activeItem, onActiveItemChange, onGenreTabClick} = props;
 
   const genres = getGenresFilms(films);
 
   return (
     <ul className="catalog__genres-list">
-      {renderGenres(genres, activeItem, handleActiveItemChange, handleGenreTabClick)}
+      {renderGenres(genres, activeItem, onActiveItemChange, onGenreTabClick)}
     </ul>
   );
 };
@@ -58,8 +58,8 @@ GenresList.propTypes = {
       PropTypes.shape(filmShape)
   ).isRequired,
   activeItem: PropTypes.string.isRequired,
-  handleActiveItemChange: PropTypes.func.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired
+  onActiveItemChange: PropTypes.func.isRequired,
+  onGenreTabClick: PropTypes.func.isRequired
 };
 
 export default GenresList;

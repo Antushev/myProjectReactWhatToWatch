@@ -12,7 +12,7 @@ describe(`UserProfileComponent`, () => {
           <UserProfile
             user={user}
             authorizationStatus={`AUTH`}
-            handleTypeScreenChange={() => {}}
+            onTypeScreenChange={() => {}}
           />
       )
       .toJSON();

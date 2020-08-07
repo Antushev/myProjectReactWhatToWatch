@@ -12,13 +12,13 @@ const handleLinkSignInClick = (handleSignInClick) => (evt) => {
   handleSignInClick(TypeScreen.SIGN_IN);
 };
 
-const renderUserProfile = (user, authorizationStatus, handleTypeScreenChange) => {
+const renderUserProfile = (user, authorizationStatus, onTypeScreenChange) => {
   const {avatar} = user;
   return authorizationStatus === AuthorizationStatus.NO_AUTH ?
     <a
       href="sign-in.html"
       className="user-block__link"
-      onClick={handleLinkSignInClick(handleTypeScreenChange)}
+      onClick={handleLinkSignInClick(onTypeScreenChange)}
     >
       Sign in
     </a> :
@@ -28,11 +28,11 @@ const renderUserProfile = (user, authorizationStatus, handleTypeScreenChange) =>
 };
 
 const UserProfile = (props) => {
-  const {user, authorizationStatus, handleTypeScreenChange} = props;
+  const {user, authorizationStatus, onTypeScreenChange} = props;
 
   return (
     <div className="user-block">
-      {renderUserProfile(user, authorizationStatus, handleTypeScreenChange)}
+      {renderUserProfile(user, authorizationStatus, onTypeScreenChange)}
     </div>
   );
 };
@@ -40,7 +40,7 @@ const UserProfile = (props) => {
 UserProfile.propTypes = {
   user: PropTypes.shape(userShape).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired
+  onTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default UserProfile;

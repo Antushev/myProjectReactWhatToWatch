@@ -49,9 +49,9 @@ const FilmDetails = (props) => {
     authorizationStatus,
     activeTab,
     renderTabs,
-    handleFilmClick,
-    handlePlayClick,
-    handleTypeScreenChange
+    onFilmClick,
+    onPlayClick,
+    onTypeScreenChange
   } = props;
   const {
     backgroundImage,
@@ -80,7 +80,7 @@ const FilmDetails = (props) => {
         <UserProfile
           user={user}
           authorizationStatus={authorizationStatus}
-          handleTypeScreenChange={handleTypeScreenChange}
+          onTypeScreenChange={onTypeScreenChange}
         />
       </header>
 
@@ -96,7 +96,7 @@ const FilmDetails = (props) => {
             <button
               className="btn btn--play movie-card__button"
               type="button"
-              onClick={() => handlePlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
+              onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
@@ -122,7 +122,7 @@ const FilmDetails = (props) => {
           currentFilm={film}
           films={films}
           filmListType={FilmsListType.MORE_LIKE}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
 
       </section>
@@ -151,9 +151,9 @@ FilmDetails.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,
-  handleFilmClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired
+  onFilmClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
+  onTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

@@ -8,7 +8,7 @@ describe(`ShowMoreComponent`, () => {
     const tree = renderer
       .create(
           <ShowMore
-            handleShowMoreClick={() => {}}
+            onShowMoreClick={() => {}}
           />
       )
       .toJSON();

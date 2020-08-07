@@ -98,7 +98,7 @@ const SignIn = (props) => {
 SignIn.propTypes = {
   buttonDisabled: PropTypes.bool.isRequired,
   handleAuthorizeClick: PropTypes.func.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired,
+  onTypeScreenChange: PropTypes.func.isRequired,
   handleChangeInputEmail: PropTypes.func.isRequired,
   handleChangeInputPassword: PropTypes.func.isRequired
 };
@@ -114,7 +114,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(UserOperation.loginUser(email, password));
   },
 
-  handleTypeScreenChange(typeScreen) {
+  onTypeScreenChange(typeScreen) {
     dispatch(AppStateActionCreator.changeTypeScreen(typeScreen));
   }
 });

@@ -10,12 +10,12 @@ configure({adapter: new Adapter()});
 
 describe(`FilmCardComponentE2E`, () => {
   it(`Correct information about film mouseover`, () => {
-    const handleFilmClick = jest.fn();
+    const onFilmClick = jest.fn();
 
     const filmCardMock = mount(
         <FilmCard
           film={film}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
           handleFilmCardMouseOver={() => {}}
           renderVideoPlayer={() => {}}
         />
@@ -25,6 +25,6 @@ describe(`FilmCardComponentE2E`, () => {
 
     filmCard.simulate(`click`, film);
 
-    expect(handleFilmClick.mock.calls[0][0]).toBe(film);
+    expect(onFilmClick.mock.calls[0][0]).toBe(film);
   });
 });

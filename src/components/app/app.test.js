@@ -31,9 +31,9 @@ describe(`AppComponent`, () => {
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
-              handleGenreTabClick={() => {}}
-              handleShowMoreClick={() => {}}
-              handleTypeScreenChange={() => {}}
+              onGenreTabClick={() => {}}
+              onShowMoreClick={() => {}}
+              onTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -66,9 +66,9 @@ describe(`AppComponent`, () => {
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
-              handleGenreTabClick={() => {}}
-              handleShowMoreClick={() => {}}
-              handleTypeScreenChange={() => {}}
+              onGenreTabClick={() => {}}
+              onShowMoreClick={() => {}}
+              onTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -101,9 +101,9 @@ describe(`AppComponent`, () => {
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
-              handleGenreTabClick={() => {}}
-              handleShowMoreClick={() => {}}
-              handleTypeScreenChange={() => {}}
+              onGenreTabClick={() => {}}
+              onShowMoreClick={() => {}}
+              onTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -136,9 +136,9 @@ describe(`AppComponent`, () => {
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
-              handleGenreTabClick={() => {}}
-              handleShowMoreClick={() => {}}
-              handleTypeScreenChange={() => {}}
+              onGenreTabClick={() => {}}
+              onShowMoreClick={() => {}}
+              onTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -171,9 +171,9 @@ describe(`AppComponent`, () => {
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
-              handleGenreTabClick={() => {}}
-              handleShowMoreClick={() => {}}
-              handleTypeScreenChange={() => {}}
+              onGenreTabClick={() => {}}
+              onShowMoreClick={() => {}}
+              onTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {

@@ -8,7 +8,7 @@ describe(`FilmDetailTabsComponent`, () => {
     const tree = renderer
       .create(
           <FilmDetailTabs
-            handleTabClick={() => {}}
+            onTabClick={() => {}}
           />
       )
       .toJSON();

@@ -10,7 +10,7 @@ describe(`SignInComponent`, () => {
           <SignIn
             buttonDisabled={true}
             handleAuthorizeClick={() => {}}
-            handleTypeSCreenChange={() => {}}
+            onTypeScreenChange={() => {}}
             handleChangeInputEmail={() => {}}
             handleChangeInputPassword={() => {}}
           />
