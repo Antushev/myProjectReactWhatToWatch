@@ -7,13 +7,39 @@ import {user} from '../../mocks-test/user-test.js';
 import Main from './main.jsx';
 
 describe(`MainComponent`, () => {
-  it(`MainComponentSnapshot`, () => {
+  it(`MainComponentSnapshot authorizationStatus NO_AUTH`, () => {
     const tree = renderer
       .create(
           <Main
             films={films}
             user={user}
             authorizationStatus={`NO_AUTH`}
+            currentFilms={films}
+            showFilmCardCount={8}
+            filmCardPreview={film}
+            handleFilmClick={() => {}}
+            handleGenreTabClick={() => {}}
+            handleShowMoreClick={() => {}}
+            handlePlayClick={() => {}}
+            handleTypeScreenChange={() => {}}
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`MainComponentSnapshot authorizationStatus AUTH`, () => {
+    const tree = renderer
+      .create(
+          <Main
+            films={films}
+            user={user}
+            authorizationStatus={`AUTH`}
             currentFilms={films}
             showFilmCardCount={8}
             filmCardPreview={film}

@@ -1,20 +1,19 @@
-import {AuthorizationStatus} from '../../utils/const.js';
+import {TypeScreen, AuthorizationStatus} from '../../utils/const.js';
+
+import {ActionCreator as AppStateActionCreator} from '../app-state/app-state.js';
 
 import {userAdapter} from '../../adapters/user-adapter.js';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  user: {
-    id: null,
-    name: null,
-    email: null,
-    avatar: null
-  }
+  user: {}
 };
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
-  SET_USER_INFO: `SET_USER_INFO`
+  SET_USER_INFO: `SET_USER_INFO`,
+  PUT_ERROR: `PUT_ERROR`,
+  REMOVE_ERROR: `REMOVE_ERROR`
 };
 
 const ActionCreator = {
@@ -52,6 +51,7 @@ const Operation = {
 
         dispatch(ActionCreator.setUserInfo(user));
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(AppStateActionCreator.changeTypeScreen(TypeScreen.MAIN_SCREEN));
       })
       .catch((err) => {
         throw err;

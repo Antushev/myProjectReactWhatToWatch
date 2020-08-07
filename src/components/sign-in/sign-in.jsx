@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {TypeScreen} from './../../utils/const.js';
-
 import {getAuthorizeStatusUser} from './../../reducer/user/selectors.js';
 
 import {Operation as UserOperation} from './../../reducer/user/user.js';
@@ -13,7 +11,6 @@ const SignIn = (props) => {
   const {
     buttonDisabled,
     handleAuthorizeClick,
-    handleTypeScreenChange,
     handleChangeInputEmail,
     handleChangeInputPassword
   } = props;
@@ -72,7 +69,6 @@ const SignIn = (props) => {
                 const password = refInputPassword.current.value;
 
                 handleAuthorizeClick(login, password);
-                handleTypeScreenChange(TypeScreen.MAIN_SCREEN);
               }}
               disabled={buttonDisabled}
             >
@@ -109,7 +105,7 @@ SignIn.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    authorizeStatus: getAuthorizeStatusUser(state)
+    authorizeStatus: getAuthorizeStatusUser(state),
   };
 };
 

@@ -21,7 +21,7 @@ import Error from '../error/error.jsx';
 import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
 import {withVideo} from '../../hocs/with-video/with-video.jsx';
 import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big.jsx';
-import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.js';
+import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.jsx';
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 const VideoPlayerBigWithControls = withVideo(VideoPlayerBig, TypeVideoPlayer.BIG_VIDEO_PLAYER);

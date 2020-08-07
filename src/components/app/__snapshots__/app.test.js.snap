@@ -1,6 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppComponent AppComponentSnapshot 1`] = `
+exports[`AppComponent AppComponentSnapshot authorizationStatus AUTH 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Идёт загрузка
+      </h1>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`AppComponent AppComponentSnapshot isLoading false isError false 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Кажется, сервер недоступен...
+      </h1>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`AppComponent AppComponentSnapshot isLoading false isError true 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Кажется, сервер недоступен...
+      </h1>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`AppComponent AppComponentSnapshot isLoading true isError false authorizationStatus NO_AUTH 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="catalog"
+  >
+    <div
+      className="catalog__movies-list"
+    >
+      <h1>
+        Идёт загрузка
+      </h1>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`AppComponent AppComponentSnapshot isLoading true isError true 1`] = `
 <div
   className="page-content"
 >
