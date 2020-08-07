@@ -14,6 +14,10 @@ const getFilms = (state) => {
   return state[NameSpace.DATA].films;
 };
 
+const getFilmPromo = (state) => {
+  return state[NameSpace.DATA].filmPromo;
+};
+
 const getGenre = (state) => {
   return state[NameSpace.DATA].currentGenre;
 };
@@ -31,4 +35,4 @@ const getFilmsByGenre = createSelector(
     }
 );
 
-export {getLoadingStatus, getErrorStatus, getFilms, getFilmsByGenre};
+export {getLoadingStatus, getErrorStatus, getFilms, getFilmsByGenre, getFilmPromo};

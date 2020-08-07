@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getLoadingStatus, getErrorStatus, getFilmsByGenre} from './../../reducer/data/selectors.js';
+import {getLoadingStatus, getErrorStatus, getFilmsByGenre, getFilmPromo} from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
@@ -15,6 +15,7 @@ import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
+import AddReview from '../add-review/add-review.jsx';
 import Loading from '../loading/loading.jsx';
 import Error from '../error/error.jsx';
 
@@ -43,7 +44,8 @@ class App extends PureComponent {
   }
 
   render() {
-    const {isLoading, isError} = this.props;
+    const {film} = this.state;
+    const {isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
 
     if (isLoading) {
       return <Loading />;
@@ -67,11 +69,19 @@ class App extends PureComponent {
             onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
           />
         </Route>
-        <Route exct path='/dev-film-detail'>
+        <Route exact path='/dev-film-detail'>
           <FilmDetailsWithTabs
             films={films}
             film={filmCard}
             onFilmClick={this._handleFilmClick}
+          />
+        </Route>
+        <Route exact path='/dev-review'>
+          <AddReview
+            film={film}
+            user={user}
+            authorizationStatus={authorizationStatus}
+            onTypeScreenChange={onTypeScreenChange}
           />
         </Route>
         <Route exct path='/dev-sign-in'>
@@ -84,6 +94,7 @@ class App extends PureComponent {
   _renderApp() {
     const {
       films,
+      filmPromo,
       user,
       typeScreenActive,
       showFilmCardCount,
@@ -94,8 +105,6 @@ class App extends PureComponent {
     } = this.props;
     const {film} = this.state;
 
-    const filmCard = films[0];
-
     switch (typeScreenActive) {
       case TypeScreen.MAIN_SCREEN:
         return (
@@ -104,7 +113,7 @@ class App extends PureComponent {
             user={user}
             currentFilms={films}
             showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmCard}
+            filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
             onFilmClick={this._handleFilmClick}
             onPlayClick={this._handlePlayClick}
@@ -139,6 +148,13 @@ class App extends PureComponent {
         return (
           <SignInWrapped />
         );
+      case TypeScreen.ADD_REVIEW:
+        return (
+          <AddReview
+            user={user}
+            authorizationStatus={authorizationStatus}
+          />
+        );
       default:
         return (
           <Main
@@ -146,7 +162,7 @@ class App extends PureComponent {
             user={user}
             currentFilms={films}
             showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmCard}
+            filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
             onFilmClick={this._handleFilmClick}
             onPlayClick={this._handlePlayClick}
@@ -199,6 +215,7 @@ App.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
+  filmPromo: PropTypes.shape(filmShape),
   user: PropTypes.shape(userShape).isRequired,
   typeScreenActive: PropTypes.string.isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
@@ -213,6 +230,7 @@ const mapStateToProps = (state) => {
     isLoading: getLoadingStatus(state),
     isError: getErrorStatus(state),
     films: getFilmsByGenre(state),
+    filmPromo: getFilmPromo(state),
     showFilmCardCount: getShowFilmCardCount(state),
     authorizationStatus: getAuthorizeStatusUser(state),
     user: getUserInfo(state),
@@ -232,7 +250,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   onShowMoreClick() {
     dispatch(AppStateActionCreator.showAdditionalCard());
-  }
+  },
 });
 
 export {App};

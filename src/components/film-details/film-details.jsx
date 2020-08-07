@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getRandomNumber} from '../../utils/common.js';
 
 import {filmShape, userShape} from '../../utils/shapes.js';
 import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
-import {generateComments} from '../../adapters/comments.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
 import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
 import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.jsx';
 import FilmsList from '../films-list/films-list.jsx';
 import UserProfile from '../user-profile/user-profile.jsx';
-
-const COMMENTS_NUMBER = getRandomNumber(1, 4);
-const comments = generateComments(COMMENTS_NUMBER);
 
 const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
   switch (activeFilmDetailPage) {
@@ -30,7 +25,6 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
     case FilmDetailTabsName.REVIEWS:
       return <FilmDetailReviews
         film={film}
-        comments={comments}
         renderTabs={renderTabs}
       />;
     default:
@@ -109,7 +103,12 @@ const FilmDetails = (props) => {
               </svg>
               <span>My list</span>
             </button>
-            <a href="add-review.html" className="btn movie-card__button">Add review</a>
+            <a
+              href="add-review.html"
+              className="btn movie-card__button"
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>

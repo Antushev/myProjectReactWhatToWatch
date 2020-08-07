@@ -1,20 +1,26 @@
-import {filmsAdapter} from '../../adapters/film-adapter.js';
+import {filmAdapter, filmsAdapter} from '../../adapters/film-adapter.js';
+import {commentsAdapter} from '../../adapters/comments-adapter.js';
 
 const initialState = {
   isLoading: false,
   isError: false,
   films: null,
+  filmPromo: null,
+  comments: null,
   currentGenre: `All genres`
 };
 
 const ActionType = {
   START_LOAD: `START_LOAD`,
   LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_FILM_PROMO: `LOAD_FILM_PROMO`,
+  LOAD_COMMENTS: `LOAD_COMMENTS`,
   END_LOAD: `END_LOAD`,
   GET_FILMS: `GET_FILMS`,
   CHANGE_GENRE: `CHANGE_FILTER`,
   PUT_ERROR: `PUT_ERROR`,
-  REMOVE_ERROR: `REMOVE_ERROR`
+  REMOVE_ERROR: `REMOVE_ERROR`,
+  ADD_COMMENT: `ADD_COMMENT`
 };
 
 const ActionCreator = {
@@ -28,6 +34,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_FILMS,
       payload: filmsLoad
+    };
+  },
+  loadFilmPromo(film) {
+    return {
+      type: ActionType.LOAD_FILM_PROMO,
+      payload: film
     };
   },
   endLoad() {
@@ -59,6 +71,18 @@ const ActionCreator = {
       type: ActionType.REMOVE_ERROR,
       payload: false
     };
+  },
+  loadComments(comments) {
+    return {
+      type: ActionType.LOAD_COMMENTS,
+      payload: comments
+    };
+  },
+  addComment(newComment) {
+    return {
+      type: ActionType.ADD_COMMENT,
+      payload: newComment
+    };
   }
 };
 
@@ -70,12 +94,41 @@ const Operation = {
         const films = filmsAdapter(response.data);
         dispatch(ActionCreator.loadFilms(films));
       })
+      .then(() => api.get(`/films/promo`))
+      .then((response) => {
+        const filmPromo = filmAdapter(response.data);
+        dispatch(ActionCreator.loadFilmPromo(filmPromo));
+      })
       .then(() => {
         dispatch(ActionCreator.endLoad());
       })
       .catch(() => {
         dispatch(ActionCreator.endLoad());
         dispatch(ActionCreator.putError());
+      });
+  },
+  loadComment: (idFilm) => (dispatch, getState, api) => {
+    return api.get(`/comments/${idFilm}`)
+      .then((response) => {
+        const comments = commentsAdapter(response);
+
+        dispatch(ActionCreator.loadComments(comments));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
+  addComment: (idFilm, comment) => (dispatch, getState, api) => {
+    return api.post(`/comments/${idFilm}`, {
+      rating: comment.rating,
+      comment: comment.comment
+    })
+      .then((response) => {
+        // Доделать загрузку комментариев с сервера
+        console.log(response);
+      })
+      .catch((err) => {
+        throw err;
       });
   }
 };
@@ -90,6 +143,14 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         films: action.payload,
         currentFilms: action.payload
+      });
+    case ActionType.LOAD_FILM_PROMO:
+      return Object.assign({}, state, {
+        filmPromo: action.payload
+      });
+    case ActionType.LOAD_COMMENTS:
+      return Object.assign({}, state, {
+        comments: action.payload
       });
     case ActionType.END_LOAD:
       return Object.assign({}, state, {
