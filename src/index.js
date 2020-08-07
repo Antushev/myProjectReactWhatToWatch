@@ -10,6 +10,7 @@ import {createApi} from './api.js';
 import reducer from './reducer/reducer.js';
 import {ActionCreator as DataActionCreator} from './reducer/data/data.js';
 import {Operation as DataOperation} from './reducer/data/data.js';
+import {Operation as UserOperation} from './reducer/user/user.js';
 
 import App from './components/app/app.jsx';
 
@@ -24,6 +25,10 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
+store.dispatch(DataActionCreator.startLoad());
+store.dispatch(DataOperation.loadFilms());
+store.dispatch(UserOperation.checkAuthorizeUser());
+
 const init = () => {
   ReactDOM.render(
       <Provider store={store}>
@@ -34,5 +39,4 @@ const init = () => {
   );
 };
 
-store.dispatch(DataOperation.loadFilms());
 init();

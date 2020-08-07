@@ -4,13 +4,14 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import {films, currentGenre} from '../../mocks-test/films-test.js';
+import {user} from '../../mocks-test/user-test.js';
 
 import {App} from './app.jsx';
 
 const mockStore = configureStore([]);
 
 describe(`AppComponent`, () => {
-  it(`AppComponentSnapshot`, () => {
+  it(`AppComponentSnapshot isLoading true isError false authorizationStatus NO_AUTH`, () => {
     const store = mockStore({
       films,
       currentFilms: films,
@@ -21,12 +22,158 @@ describe(`AppComponent`, () => {
       .create(
           <Provider store={store}>
             <App
+              isLoading={true}
+              isError={false}
+              typeScreenActive={`MAIN_SCREEN`}
               films={films}
+              user={user}
+              authorizationStatus={`NO_AUTH`}
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
               handleGenreTabClick={() => {}}
               handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`AppComponentSnapshot isLoading true isError true`, () => {
+    const store = mockStore({
+      films,
+      currentFilms: films,
+      currentGenre
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              isLoading={true}
+              isError={true}
+              typeScreenActive={`MAIN_SCREEN`}
+              films={films}
+              user={user}
+              authorizationStatus={`NO_AUTH`}
+              currentFilms={films}
+              currentGenre={currentGenre}
+              showFilmCardCount={8}
+              handleGenreTabClick={() => {}}
+              handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`AppComponentSnapshot isLoading false isError true`, () => {
+    const store = mockStore({
+      films,
+      currentFilms: films,
+      currentGenre
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              isLoading={false}
+              isError={true}
+              typeScreenActive={`MAIN_SCREEN`}
+              films={films}
+              user={user}
+              authorizationStatus={`NO_AUTH`}
+              currentFilms={films}
+              currentGenre={currentGenre}
+              showFilmCardCount={8}
+              handleGenreTabClick={() => {}}
+              handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`AppComponentSnapshot isLoading false isError false`, () => {
+    const store = mockStore({
+      films,
+      currentFilms: films,
+      currentGenre
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              isLoading={false}
+              isError={true}
+              typeScreenActive={`MAIN_SCREEN`}
+              films={films}
+              user={user}
+              authorizationStatus={`NO_AUTH`}
+              currentFilms={films}
+              currentGenre={currentGenre}
+              showFilmCardCount={8}
+              handleGenreTabClick={() => {}}
+              handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`AppComponentSnapshot authorizationStatus AUTH`, () => {
+    const store = mockStore({
+      films,
+      currentFilms: films,
+      currentGenre
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              isLoading={true}
+              isError={false}
+              typeScreenActive={`MAIN_SCREEN`}
+              films={films}
+              user={user}
+              authorizationStatus={`AUTH`}
+              currentFilms={films}
+              currentGenre={currentGenre}
+              showFilmCardCount={8}
+              handleGenreTabClick={() => {}}
+              handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {

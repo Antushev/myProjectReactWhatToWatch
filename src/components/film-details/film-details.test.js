@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {film, films} from '../../mocks-test/films-test.js';
+import {user} from '../../mocks-test/user-test.js';
 
 import FilmDetails from './film-details.jsx';
 
@@ -14,10 +15,13 @@ describe(`FilmDetailsComponent`, () => {
           <FilmDetails
             film={film}
             films={films}
+            user={user}
+            authorizationStatus={`NO_AUTH`}
             activeTab={activeTab}
             renderTabs={() => {}}
             handleFilmClick={() => {}}
             handlePlayClick={() => {}}
+            handleTypeSCreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};

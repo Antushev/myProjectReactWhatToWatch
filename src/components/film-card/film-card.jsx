@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import {TypeScreen} from '../../utils/const.js';
 import {filmShape} from '../../utils/shapes.js';
 
 const FilmCard = (props) => {
@@ -10,7 +12,7 @@ const FilmCard = (props) => {
     <article
       key={id}
       className="small-movie-card catalog__movies-card"
-      onClick={() => handleFilmClick(film)}
+      onClick={() => handleFilmClick(film, TypeScreen.DETAIL_SCREEN)}
     >
       {renderVideoPlayer(posterImage, previewVideo, videoMain)}
       <h3 className="small-movie-card__title">

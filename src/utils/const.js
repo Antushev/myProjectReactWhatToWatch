@@ -27,7 +27,8 @@ const FilmsListType = {
 const TypeScreen = {
   MAIN_SCREEN: `MAIN_SCREEN`,
   DETAIL_SCREEN: `DETAIL_SCREEN`,
-  VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`
+  VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`,
+  SIGN_IN: `SIGN_IN`
 };
 
 const TypeVideoPlayer = {
@@ -40,8 +41,11 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`
 };
 
+const GENRE_DEFAULT = `All genres`;
+
 export {
   FILM_CARD_DEFAULT,
+  GENRE_DEFAULT,
   FilmDetailTabsName,
   FilmsListType,
   TypeScreen,

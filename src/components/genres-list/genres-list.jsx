@@ -63,3 +63,4 @@ GenresList.propTypes = {
 };
 
 export default GenresList;
+

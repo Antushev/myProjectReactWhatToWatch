@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {FilmsListType} from '../../utils/const.js';
-import {filmShape} from '../../utils/shapes.js';
+import {TypeScreen, FilmsListType} from '../../utils/const.js';
+import {filmShape, userShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
 import GenresList from './../genres-list/genres-list.jsx';
 import ShowMore from './../show-more/show-more.jsx';
+import UserProfile from './../user-profile/user-profile.jsx';
 
 import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
 
@@ -17,13 +18,15 @@ const DEFAULT_GENRE = `All genres`;
 const Main = (props) => {
   const {
     films,
-    currentFilms,
+    user,
     showFilmCardCount,
     filmCardPreview,
+    authorizationStatus,
     handleFilmClick,
     handleGenreTabClick,
     handleShowMoreClick,
-    handlePlayClick
+    handlePlayClick,
+    handleTypeScreenChange
   } = props;
 
   const {
@@ -51,11 +54,12 @@ const Main = (props) => {
           </a>
         </div>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-          </div>
-        </div>
+        <UserProfile
+          user={user}
+          authorizationStatus={authorizationStatus}
+          handleTypeScreenChange={handleTypeScreenChange}
+        />
+
       </header>
 
       <div className="movie-card__wrap">
@@ -76,7 +80,7 @@ const Main = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => handlePlayClick(filmCardPreview)}
+                onClick={() => handlePlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -105,13 +109,13 @@ const Main = (props) => {
         />
 
         <FilmsList
-          films={currentFilms}
+          films={films}
           showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
           handleFilmClick={handleFilmClick}
         />
 
-        {renderShowMore(currentFilms, showFilmCardCount, handleShowMoreClick)}
+        {renderShowMore(films, showFilmCardCount, handleShowMoreClick)}
 
       </section>
 
@@ -132,8 +136,8 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
-const renderShowMore = (currentFilms, showFilmCardCount, handleShowMoreClick) => {
-  if (currentFilms.length > showFilmCardCount) {
+const renderShowMore = (films, showFilmCardCount, handleShowMoreClick) => {
+  if (films.length > showFilmCardCount) {
     return <ShowMore
       handleShowMoreClick={handleShowMoreClick}
     />;
@@ -142,20 +146,19 @@ const renderShowMore = (currentFilms, showFilmCardCount, handleShowMoreClick) =>
   return null;
 };
 
-
 Main.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ).isRequired,
-  currentFilms: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ).isRequired,
+  user: PropTypes.shape(userShape).isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   filmCardPreview: PropTypes.shape(filmShape).isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired
+  handlePlayClick: PropTypes.func.isRequired,
+  handleTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default Main;

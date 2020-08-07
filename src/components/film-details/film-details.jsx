@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getRandomNumber} from '../../utils/common.js';
 
-import {filmShape} from '../../utils/shapes.js';
-import {FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
+import {filmShape, userShape} from '../../utils/shapes.js';
+import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
 import {generateComments} from '../../adapters/comments.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
 import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
 import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.jsx';
 import FilmsList from '../films-list/films-list.jsx';
+import UserProfile from '../user-profile/user-profile.jsx';
 
 const COMMENTS_NUMBER = getRandomNumber(1, 4);
 const comments = generateComments(COMMENTS_NUMBER);
@@ -41,7 +42,17 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
 };
 
 const FilmDetails = (props) => {
-  const {films, film, activeTab, renderTabs, handleFilmClick, handlePlayClick} = props;
+  const {
+    films,
+    film,
+    user,
+    authorizationStatus,
+    activeTab,
+    renderTabs,
+    handleFilmClick,
+    handlePlayClick,
+    handleTypeScreenChange
+  } = props;
   const {
     backgroundImage,
     name,
@@ -66,11 +77,11 @@ const FilmDetails = (props) => {
           </a>
         </div>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-          </div>
-        </div>
+        <UserProfile
+          user={user}
+          authorizationStatus={authorizationStatus}
+          handleTypeScreenChange={handleTypeScreenChange}
+        />
       </header>
 
       <div className="movie-card__wrap">
@@ -85,7 +96,7 @@ const FilmDetails = (props) => {
             <button
               className="btn btn--play movie-card__button"
               type="button"
-              onClick={() => handlePlayClick(film)}
+              onClick={() => handlePlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
@@ -136,10 +147,13 @@ const FilmDetails = (props) => {
 FilmDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(filmShape).isRequired),
   film: PropTypes.shape(filmShape).isRequired,
+  user: PropTypes.shape(userShape).isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired
+  handlePlayClick: PropTypes.func.isRequired,
+  handleTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

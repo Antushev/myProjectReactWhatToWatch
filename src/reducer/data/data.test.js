@@ -1,6 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createApi} from '../../api.js';
 import {reducer, ActionCreator, Operation} from './data.js';
+
 import {films} from './../../mocks-test/films-test.js';
 
 const state = {
