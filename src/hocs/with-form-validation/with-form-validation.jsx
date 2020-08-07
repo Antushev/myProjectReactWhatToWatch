@@ -1,7 +1,5 @@
 import React, {PureComponent} from 'react';
 
-const regularForEmail = `^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$`;
-
 const withFormValidation = (Component) => {
   class WithFormValidation extends PureComponent {
     constructor(props) {
@@ -31,7 +29,7 @@ const withFormValidation = (Component) => {
     _handleChangeInputEmail(value) {
       const {inputPassword} = this.state;
 
-      if (inputPassword !== `` && value !== `` && value.search(regularForEmail) !== -1) {
+      if (inputPassword !== `` && value !== ``) {
         this.setState({
           inputEmail: value,
           buttonDisabled: false
@@ -47,7 +45,7 @@ const withFormValidation = (Component) => {
     _handleChangeInputPassword(value) {
       const {inputEmail} = this.state;
 
-      if (inputEmail !== `` && value !== `` && inputEmail.search(regularForEmail) !== -1) {
+      if (inputEmail !== `` && value !== ``) {
         this.setState({
           inputPassword: value,
           buttonDisabled: false
