@@ -75,7 +75,7 @@ class App extends PureComponent {
           />
         </Route>
         <Route exct path='/dev-sign-in'>
-          <SignIn />
+          <SignInWrapped />
         </Route>
       </Switch>
     </BrowserRouter>;
