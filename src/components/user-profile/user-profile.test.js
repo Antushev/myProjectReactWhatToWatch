@@ -11,8 +11,8 @@ describe(`UserProfileComponent`, () => {
       .create(
           <UserProfile
             user={user}
-            authorizeStatus={`AUTH`}
-            handleSignInClick={() => {}}
+            authorizationStatus={`AUTH`}
+            handleTypeScreenChange={() => {}}
           />
       )
       .toJSON();

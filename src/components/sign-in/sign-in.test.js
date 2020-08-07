@@ -8,8 +8,11 @@ describe(`SignInComponent`, () => {
     const tree = renderer
       .create(
           <SignIn
+            buttonActive={true}
             handleAuthorizeClick={() => {}}
-            handleChangeScreen={() => {}}
+            handleTypeSCreenChange={() => {}}
+            handleChangeInputEmail={() => {}}
+            handleChangeInputPassword={() => {}}
           />
       )
       .toJSON();

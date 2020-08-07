@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {FilmsListType} from '../../utils/const.js';
+import {TypeScreen, FilmsListType} from '../../utils/const.js';
 import {filmShape, userShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
@@ -21,12 +21,12 @@ const Main = (props) => {
     user,
     showFilmCardCount,
     filmCardPreview,
-    authorizeStatus,
+    authorizationStatus,
     handleFilmClick,
     handleGenreTabClick,
     handleShowMoreClick,
     handlePlayClick,
-    handleSignInClick,
+    handleTypeScreenChange
   } = props;
 
   const {
@@ -56,8 +56,8 @@ const Main = (props) => {
 
         <UserProfile
           user={user}
-          authorizeStatus={authorizeStatus}
-          handleSignInClick={handleSignInClick}
+          authorizationStatus={authorizationStatus}
+          handleTypeScreenChange={handleTypeScreenChange}
         />
 
       </header>
@@ -80,7 +80,7 @@ const Main = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => handlePlayClick(filmCardPreview)}
+                onClick={() => handlePlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -153,12 +153,12 @@ Main.propTypes = {
   user: PropTypes.shape(userShape).isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   filmCardPreview: PropTypes.shape(filmShape).isRequired,
-  authorizeStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
   handleGenreTabClick: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired,
   handlePlayClick: PropTypes.func.isRequired,
-  handleSignInClick: PropTypes.func.isRequired
+  handleTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default Main;

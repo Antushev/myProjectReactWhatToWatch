@@ -54,6 +54,7 @@ exports[`SignInComponent SignInComponentSnapshot 1`] = `
             className="sign-in__input"
             id="user-email"
             name="user-email"
+            onChange={[Function]}
             placeholder="Email address"
             type="email"
           />
@@ -71,6 +72,7 @@ exports[`SignInComponent SignInComponentSnapshot 1`] = `
             className="sign-in__input"
             id="user-password"
             name="user-password"
+            onChange={[Function]}
             placeholder="Password"
             type="password"
           />
@@ -87,6 +89,7 @@ exports[`SignInComponent SignInComponentSnapshot 1`] = `
       >
         <button
           className="sign-in__btn"
+          disabled={true}
           onClick={[Function]}
           type="submit"
         >

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {TypeScreen} from '../../utils/const.js';
 import {formatVideoElapsed} from '../../utils/common.js';
 
 const getPositionToggler = (progress) => {
@@ -27,7 +28,7 @@ const VideoPlayerBig = (props) => {
 
       <button
         type="button" className="player__exit"
-        onClick={handleExitVideoPlayerClick}
+        onClick={() => handleExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
       >
         Exit
       </button>

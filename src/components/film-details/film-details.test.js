@@ -16,10 +16,12 @@ describe(`FilmDetailsComponent`, () => {
             film={film}
             films={films}
             user={user}
+            authorizationStatus={`NO_AUTH`}
             activeTab={activeTab}
             renderTabs={() => {}}
             handleFilmClick={() => {}}
             handlePlayClick={() => {}}
+            handleTypeSCreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};

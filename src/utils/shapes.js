@@ -17,10 +17,10 @@ const commentShape = {
 };
 
 const userShape = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired
+  id: PropTypes.number,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  avatar: PropTypes.string
 };
 
 export {filmShape, commentShape, userShape};

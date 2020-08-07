@@ -5,10 +5,10 @@ import {userAdapter} from '../../adapters/user-adapter.js';
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   user: {
-    id: -1,
-    name: ``,
-    email: ``,
-    avatar: ``
+    id: null,
+    name: null,
+    email: null,
+    avatar: null
   }
 };
 

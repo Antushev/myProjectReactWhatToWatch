@@ -13,6 +13,7 @@ describe(`MainComponent`, () => {
           <Main
             films={films}
             user={user}
+            authorizationStatus={`NO_AUTH`}
             currentFilms={films}
             showFilmCardCount={8}
             filmCardPreview={film}
@@ -20,6 +21,7 @@ describe(`MainComponent`, () => {
             handleGenreTabClick={() => {}}
             handleShowMoreClick={() => {}}
             handlePlayClick={() => {}}
+            handleTypeScreenChange={() => {}}
           />, {
             createNodeMock: () => {
               return {};

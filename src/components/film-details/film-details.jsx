@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRandomNumber} from '../../utils/common.js';
 
 import {filmShape, userShape} from '../../utils/shapes.js';
-import {FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
+import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
 import {generateComments} from '../../adapters/comments.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
@@ -46,12 +46,12 @@ const FilmDetails = (props) => {
     films,
     film,
     user,
-    authorizeStatus,
+    authorizationStatus,
     activeTab,
     renderTabs,
     handleFilmClick,
     handlePlayClick,
-    handleSignInClick
+    handleTypeScreenChange
   } = props;
   const {
     backgroundImage,
@@ -79,8 +79,8 @@ const FilmDetails = (props) => {
 
         <UserProfile
           user={user}
-          authorizeStatus={authorizeStatus}
-          handleSignInClick={handleSignInClick}
+          authorizationStatus={authorizationStatus}
+          handleTypeScreenChange={handleTypeScreenChange}
         />
       </header>
 
@@ -96,7 +96,7 @@ const FilmDetails = (props) => {
             <button
               className="btn btn--play movie-card__button"
               type="button"
-              onClick={() => handlePlayClick(film)}
+              onClick={() => handlePlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
@@ -148,12 +148,12 @@ FilmDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(filmShape).isRequired),
   film: PropTypes.shape(filmShape).isRequired,
   user: PropTypes.shape(userShape).isRequired,
-  authorizeStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,
   handleFilmClick: PropTypes.func.isRequired,
   handlePlayClick: PropTypes.func.isRequired,
-  handleSignInClick: PropTypes.func.isRequired
+  handleTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

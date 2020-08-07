@@ -22,13 +22,18 @@ describe(`AppComponent`, () => {
       .create(
           <Provider store={store}>
             <App
+              isLoading={true}
+              isError={false}
+              typeScreenActive={`MAIN_SCREEN`}
               films={films}
               user={user}
+              authorizationStatus={`NO_AUTH`}
               currentFilms={films}
               currentGenre={currentGenre}
               showFilmCardCount={8}
               handleGenreTabClick={() => {}}
               handleShowMoreClick={() => {}}
+              handleTypeScreenChange={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {

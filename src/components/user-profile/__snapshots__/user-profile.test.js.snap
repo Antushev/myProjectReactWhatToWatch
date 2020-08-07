@@ -10,7 +10,7 @@ exports[`UserProfileComponent UserProfileComponentSnapshot 1`] = `
     <img
       alt="User avatar"
       height="63"
-      src="https://4.react.pages.academysina.jpg"
+      src="https://4.react.pages.academy/wtw/static/avatar/8.jpg"
       width="63"
     />
   </div>
