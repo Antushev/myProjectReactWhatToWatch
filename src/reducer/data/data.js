@@ -3,6 +3,7 @@ import {commentsAdapter} from '../../adapters/comments-adapter.js';
 
 const initialState = {
   isLoading: false,
+  isLoadingComment: false,
   isError: false,
   films: null,
   filmPromo: null,
@@ -20,7 +21,9 @@ const ActionType = {
   CHANGE_GENRE: `CHANGE_FILTER`,
   PUT_ERROR: `PUT_ERROR`,
   REMOVE_ERROR: `REMOVE_ERROR`,
-  ADD_COMMENT: `ADD_COMMENT`
+  START_ADD_COMMENT: `START_LOAD_COMMENT`,
+  ADD_COMMENT: `ADD_COMMENT`,
+  END_ADD_COMMENT: `END_LOAD_COMMENT`
 };
 
 const ActionCreator = {
@@ -78,10 +81,22 @@ const ActionCreator = {
       payload: comments
     };
   },
+  startAddComment() {
+    return {
+      type: ActionType.START_ADD_COMMENT,
+      payload: null
+    };
+  },
   addComment(newComment) {
     return {
       type: ActionType.ADD_COMMENT,
       payload: newComment
+    };
+  },
+  endAddComment() {
+    return {
+      type: ActionType.END_ADD_COMMENT,
+      payload: null
     };
   }
 };
@@ -123,15 +138,19 @@ const Operation = {
       });
   },
   addComment: (idFilm, comment) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.startAddComment());
     return api.post(`/comments/${idFilm}`, {
       rating: comment.rating,
       comment: comment.comment
     })
       .then((response) => {
-        // Доделать загрузку комментариев с сервера
-        console.log(response);
+        const comments = commentsAdapter(response.data);
+        dispatch(ActionCreator.addComment(comments));
+        dispatch(ActionCreator.endAddComment());
       })
       .catch((err) => {
+        dispatch(ActionCreator.endAddComment());
+        dispatch(ActionCreator.putError());
         throw err;
       });
   }
@@ -183,6 +202,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.REMOVE_ERROR:
       return Object.assign({}, state, {
         isError: false
+      });
+    case ActionType.START_ADD_COMMENT:
+      return Object.assign({}, state, {
+        isLoadingComment: true
+      });
+    case ActionType.END_ADD_COMMENT:
+      return Object.assign({}, state, {
+        isLoadingComment: false
       });
     default:
       return state;

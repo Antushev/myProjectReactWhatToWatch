@@ -6,6 +6,10 @@ const getLoadingStatus = (state) => {
   return state[NameSpace.DATA].isLoading;
 };
 
+const getLoadingCommentStatus = (state) => {
+  return state[NameSpace.DATA].isLoadingComment;
+};
+
 const getErrorStatus = (state) => {
   return state[NameSpace.DATA].isError;
 };
@@ -41,6 +45,7 @@ const getFilmsByGenre = createSelector(
 
 export {
   getLoadingStatus,
+  getLoadingCommentStatus,
   getErrorStatus,
   getFilms,
   getComments,
