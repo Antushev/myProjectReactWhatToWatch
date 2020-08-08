@@ -115,6 +115,23 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with AUTH user 1`] = `
           className="rating__stars"
         >
           <input
+            className="rating__input visually-hidden"
+            defaultChecked={true}
+            disabled={false}
+            hidden={true}
+            id="star-0"
+            name="rating"
+            onChange={[Function]}
+            type="radio"
+            value={0}
+          />
+          <label
+            className="rating__label visually-hidden"
+            htmlFor="star-0"
+          >
+            Rating 0
+          </label>
+          <input
             className="rating__input"
             defaultChecked={false}
             disabled={false}
@@ -150,7 +167,7 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with AUTH user 1`] = `
           </label>
           <input
             className="rating__input"
-            defaultChecked={true}
+            defaultChecked={false}
             disabled={false}
             id="star-3"
             name="rating"
@@ -219,6 +236,7 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with AUTH user 1`] = `
         >
           <button
             className="add-review__btn"
+            color="#F00"
             disabled={true}
             type="submit"
           >
@@ -344,6 +362,23 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with NO_AUTH user 1`] = `
           className="rating__stars"
         >
           <input
+            className="rating__input visually-hidden"
+            defaultChecked={true}
+            disabled={false}
+            hidden={true}
+            id="star-0"
+            name="rating"
+            onChange={[Function]}
+            type="radio"
+            value={0}
+          />
+          <label
+            className="rating__label visually-hidden"
+            htmlFor="star-0"
+          >
+            Rating 0
+          </label>
+          <input
             className="rating__input"
             defaultChecked={false}
             disabled={false}
@@ -379,7 +414,7 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with NO_AUTH user 1`] = `
           </label>
           <input
             className="rating__input"
-            defaultChecked={true}
+            defaultChecked={false}
             disabled={false}
             id="star-3"
             name="rating"
@@ -448,6 +483,7 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with NO_AUTH user 1`] = `
         >
           <button
             className="add-review__btn"
+            color="#F00"
             disabled={true}
             type="submit"
           >

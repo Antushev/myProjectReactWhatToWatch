@@ -13,6 +13,23 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
       className="rating__stars"
     >
       <input
+        className="rating__input visually-hidden"
+        defaultChecked={true}
+        disabled={false}
+        hidden={true}
+        id="star-0"
+        name="rating"
+        onChange={[Function]}
+        type="radio"
+        value={0}
+      />
+      <label
+        className="rating__label visually-hidden"
+        htmlFor="star-0"
+      >
+        Rating 0
+      </label>
+      <input
         className="rating__input"
         defaultChecked={false}
         disabled={false}
@@ -117,6 +134,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
     >
       <button
         className="add-review__btn"
+        color="#F00"
         disabled={false}
         type="submit"
       >
@@ -141,6 +159,23 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
       className="rating__stars"
     >
       <input
+        className="rating__input visually-hidden"
+        defaultChecked={true}
+        disabled={false}
+        hidden={true}
+        id="star-0"
+        name="rating"
+        onChange={[Function]}
+        type="radio"
+        value={0}
+      />
+      <label
+        className="rating__label visually-hidden"
+        htmlFor="star-0"
+      >
+        Rating 0
+      </label>
+      <input
         className="rating__input"
         defaultChecked={false}
         disabled={false}
@@ -245,6 +280,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
     >
       <button
         className="add-review__btn"
+        color="#F00"
         disabled={true}
         type="submit"
       >
@@ -268,6 +304,23 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     <div
       className="rating__stars"
     >
+      <input
+        className="rating__input visually-hidden"
+        defaultChecked={true}
+        disabled={true}
+        hidden={true}
+        id="star-0"
+        name="rating"
+        onChange={[Function]}
+        type="radio"
+        value={0}
+      />
+      <label
+        className="rating__label visually-hidden"
+        htmlFor="star-0"
+      >
+        Rating 0
+      </label>
       <input
         className="rating__input"
         defaultChecked={false}
@@ -373,6 +426,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     >
       <button
         className="add-review__btn"
+        color="#F00"
         disabled={false}
         type="submit"
       >
@@ -399,6 +453,23 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
       className="rating__stars"
     >
       <input
+        className="rating__input visually-hidden"
+        defaultChecked={true}
+        disabled={true}
+        hidden={true}
+        id="star-0"
+        name="rating"
+        onChange={[Function]}
+        type="radio"
+        value={0}
+      />
+      <label
+        className="rating__label visually-hidden"
+        htmlFor="star-0"
+      >
+        Rating 0
+      </label>
+      <input
         className="rating__input"
         defaultChecked={false}
         disabled={true}
@@ -503,6 +574,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     >
       <button
         className="add-review__btn"
+        color="#F00"
         disabled={true}
         type="submit"
       >

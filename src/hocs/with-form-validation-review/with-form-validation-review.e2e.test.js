@@ -7,8 +7,11 @@ import {withFormValidationReview} from './with-form-validation-review.js';
 
 configure({adapter: new Adapter()});
 
+const ratingPoints = [0, 1, 2, 3, 4, 5];
+
 const FormComponent = (props) => {
   const {
+    rating,
     isLoadingComment,
     isButtonBlocked,
     onRatingChange,
@@ -17,35 +20,28 @@ const FormComponent = (props) => {
   } = props;
 
   return (
-    <div className="add-review">
-      <form action="#" className="add-review__form" onSubmit={onSubmitClick}>
-        <div className="rating">
-          <div className="rating__stars">
-            <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
-            <label className="rating__label" htmlFor="star-1" onChange={onRatingChange}>Rating 1</label>
-
-            <input className="rating__input" id="star-2" type="radio" name="rating" value="2"/>
-            <label className="rating__label" htmlFor="star-2" onChange={onRatingChange}>Rating 2</label>
-
-            <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked/>
-            <label className="rating__label" htmlFor="star-3" onChange={onRatingChange}>Rating 3</label>
-          </div>
-        </div>
-
-        <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text"
-            placeholder="Review text" onChange={onTextChange} disabled={isLoadingComment}/>
-          <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={isButtonBlocked}>Post</button>
-          </div>
-
-        </div>
-      </form>
-    </div>
+    <form action="#" className="add-review__form" onSubmit={onSubmitClick}>
+      {ratingPoints.map((point) => (
+        <input
+          key={point}
+          className="rating__input"
+          id={`star-${point}`}
+          type="radio" name="rating"
+          value={`${point}`}
+          onChange={onRatingChange}
+          defaultChecked={rating === point}
+          disabled={isLoadingComment}
+        />
+      ))}
+      <textarea className="add-review__textarea" name="review-text" id="review-text"
+        placeholder="Review text" onChange={onTextChange} disabled={isLoadingComment}/>
+      <button className="add-review__btn" type="submit" disabled={isButtonBlocked}>Post</button>
+    </form>
   );
 };
 
 FormComponent.propTypes = {
+  rating: PropTypes.number.isRequired,
   isLoadingComment: PropTypes.bool.isRequired,
   isButtonBlocked: PropTypes.bool.isRequired,
   onRatingChange: PropTypes.func.isRequired,
@@ -63,6 +59,7 @@ describe(`Test HOC with-from-validation-review`, () => {
 
     const formWrapped = mount(
         <FormComponentWrapped
+          rating={0}
           isButtonBlocked={true}
           isLoadingComment={false}
           onRatingChange={onRatingChange}
@@ -80,6 +77,9 @@ describe(`Test HOC with-from-validation-review`, () => {
     expect(buttonSubmit.prop(`disabled`)).toBe(true);
 
     textarea.simulate(`change`, {target: {value: `This is text: svsdvjkesvbnkejlwvbewlkjvbewjklvbewklvrbewlkvrb`}});
+
+    formWrapped.find(`input`).at(4).simulate(`change`, {target: {value: 4}});
+
     expect(formWrapped.find(`button`).prop(`disabled`)).toBe(false);
 
     buttonSubmit.simulate(`submit`, {preventDefault: () => {}});
