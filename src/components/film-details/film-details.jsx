@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
-import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
+import {TypeScreen, FilmDetailTabsName, FilmsListType, AuthorizationStatus} from '../../utils/const.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
 import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
@@ -105,17 +105,20 @@ const FilmDetails = (props) => {
               </svg>
               <span>My list</span>
             </button>
-            <a
-              href="add-review.html"
-              className="btn movie-card__button"
-              onClick={(evt) => {
-                evt.preventDefault();
+            {authorizationStatus === AuthorizationStatus.AUTH ?
+              <a
+                href="add-review.html"
+                className="btn movie-card__button"
+                onClick={(evt) => {
+                  evt.preventDefault();
 
-                onTypeScreenChange(TypeScreen.ADD_REVIEW);
-              }}
-            >
-              Add review
-            </a>
+                  onTypeScreenChange(TypeScreen.ADD_REVIEW);
+                }}
+              >
+                Add review
+              </a>
+              : ``
+            }
           </div>
         </div>
       </div>
