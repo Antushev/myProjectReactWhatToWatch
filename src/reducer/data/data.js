@@ -88,7 +88,7 @@ const ActionCreator = {
 
 const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
-    ActionCreator.removeError();
+    dispatch(ActionCreator.removeError());
     return api.get(`/films`)
       .then((response) => {
         const films = filmsAdapter(response.data);
@@ -108,13 +108,17 @@ const Operation = {
       });
   },
   loadComment: (idFilm) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.removeError());
+    dispatch(ActionCreator.startLoad());
     return api.get(`/comments/${idFilm}`)
       .then((response) => {
-        const comments = commentsAdapter(response);
+        const comments = commentsAdapter(response.data);
 
         dispatch(ActionCreator.loadComments(comments));
+        dispatch(ActionCreator.endLoad());
       })
       .catch((err) => {
+        dispatch(ActionCreator.putError());
         throw err;
       });
   },

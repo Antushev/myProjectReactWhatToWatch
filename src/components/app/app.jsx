@@ -3,13 +3,17 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
-import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
+import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getLoadingStatus, getErrorStatus, getFilmsByGenre, getFilmPromo} from './../../reducer/data/selectors.js';
+import {
+  getLoadingStatus,
+  getErrorStatus, getFilmPromo,
+  getComments,
+  getFilmsByGenre} from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
-import {filmShape, userShape} from '../../utils/shapes.js';
+import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
@@ -96,6 +100,7 @@ class App extends PureComponent {
       films,
       filmPromo,
       user,
+      comments,
       typeScreenActive,
       showFilmCardCount,
       authorizationStatus,
@@ -128,6 +133,7 @@ class App extends PureComponent {
             films={films}
             film={film}
             user={user}
+            comments={comments}
             authorizationStatus={authorizationStatus}
             onTypeScreenChange={onTypeScreenChange}
             onFilmClick={this._handleFilmClick}
@@ -175,7 +181,9 @@ class App extends PureComponent {
   }
 
   _handleFilmClick(film, typeScreen, idTimer = null) {
-    const {onTypeScreenChange} = this.props;
+    const {onTypeScreenChange, onLoadComments} = this.props;
+
+    onLoadComments(film.id);
 
     if (idTimer) {
       clearTimeout(idTimer);
@@ -217,12 +225,16 @@ App.propTypes = {
   ),
   filmPromo: PropTypes.shape(filmShape),
   user: PropTypes.shape(userShape).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape(commentShape)
+  ),
   typeScreenActive: PropTypes.string.isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onGenreTabClick: PropTypes.func.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired
+  onTypeScreenChange: PropTypes.func.isRequired,
+  onLoadComments: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -234,6 +246,7 @@ const mapStateToProps = (state) => {
     showFilmCardCount: getShowFilmCardCount(state),
     authorizationStatus: getAuthorizeStatusUser(state),
     user: getUserInfo(state),
+    comments: getComments(state),
     typeScreenActive: getTypeScreenActive(state)
   };
 };
@@ -251,6 +264,10 @@ const mapDispatchToProps = (dispatch) => ({
   onShowMoreClick() {
     dispatch(AppStateActionCreator.showAdditionalCard());
   },
+
+  onLoadComments(idFilm) {
+    dispatch(DataOperation.loadComment(idFilm));
+  }
 });
 
 export {App};

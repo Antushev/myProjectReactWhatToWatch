@@ -10,9 +10,12 @@ const filmShape = {
 
 const commentShape = {
   id: PropTypes.number.isRequired,
-  user: PropTypes.string.isRequired,
-  comment: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
   rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
   date: PropTypes.date
 };
 

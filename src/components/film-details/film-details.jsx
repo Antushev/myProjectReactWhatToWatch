@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {filmShape, userShape} from '../../utils/shapes.js';
+import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
 import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
@@ -10,7 +10,7 @@ import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.jsx';
 import FilmsList from '../films-list/films-list.jsx';
 import UserProfile from '../user-profile/user-profile.jsx';
 
-const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
+const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => {
   switch (activeFilmDetailPage) {
     case FilmDetailTabsName.OVERVIEW:
       return <FilmDetailOverview
@@ -25,6 +25,7 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
     case FilmDetailTabsName.REVIEWS:
       return <FilmDetailReviews
         film={film}
+        comments={comments}
         renderTabs={renderTabs}
       />;
     default:
@@ -40,6 +41,7 @@ const FilmDetails = (props) => {
     films,
     film,
     user,
+    comments,
     authorizationStatus,
     activeTab,
     renderTabs,
@@ -113,7 +115,7 @@ const FilmDetails = (props) => {
         </div>
       </div>
     </div>
-    {renderDetailPages(film, activeTab, renderTabs)}
+    {renderDetailPages(film, activeTab, renderTabs, comments)}
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
@@ -147,6 +149,9 @@ FilmDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(filmShape).isRequired),
   film: PropTypes.shape(filmShape).isRequired,
   user: PropTypes.shape(userShape).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape(commentShape)
+  ).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,

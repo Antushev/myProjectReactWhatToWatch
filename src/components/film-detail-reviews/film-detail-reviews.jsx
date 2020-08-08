@@ -5,14 +5,15 @@ import moment from 'moment';
 import {filmShape, commentShape} from '../../utils/shapes.js';
 
 const renderComment = (comment) => {
-  const {id, comment: commentUser, user, date, rating} = comment;
+  const {comment: commentUser, date, id, rating, user} = comment;
+  const {name} = user;
 
   return <div key={id} className="review">
     <blockquote className="review__quote">
       <p className="review__text">{commentUser}</p>
 
       <footer className="review__details">
-        <cite className="review__author">{user}</cite>
+        <cite className="review__author">{name}</cite>
         <time className="review__date" dateTime="{date}">{moment(date).format(`MMMM D, YYYY`)}</time>
       </footer>
     </blockquote>
