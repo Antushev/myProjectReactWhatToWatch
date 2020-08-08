@@ -157,8 +157,10 @@ class App extends PureComponent {
       case TypeScreen.ADD_REVIEW:
         return (
           <AddReview
+            film={film}
             user={user}
             authorizationStatus={authorizationStatus}
+            onTypeScreenChange={onTypeScreenChange}
           />
         );
       default:

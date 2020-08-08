@@ -21,8 +21,8 @@ const withFormValidation = (Component) => {
       return <Component
         {...this.props}
         buttonDisabled={buttonDisabled}
-        handleChangeInputEmail={this._handleChangeInputEmail}
-        handleChangeInputPassword={this._handleChangeInputPassword}
+        onChangeInputEmail={this._handleChangeInputEmail}
+        onChangeInputPassword={this._handleChangeInputPassword}
       />;
     }
 

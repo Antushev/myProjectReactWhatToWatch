@@ -125,6 +125,7 @@ exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
           <a
             className="btn movie-card__button"
             href="add-review.html"
+            onClick={[Function]}
           >
             Add review
           </a>

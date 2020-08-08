@@ -11,8 +11,8 @@ const SignIn = (props) => {
   const {
     buttonDisabled,
     handleAuthorizeClick,
-    handleChangeInputEmail,
-    handleChangeInputPassword
+    onChangeInputEmail,
+    onChangeInputPassword
   } = props;
 
   const refInputLogin = React.createRef();
@@ -42,7 +42,7 @@ const SignIn = (props) => {
                 name="user-email"
                 id="user-email"
                 ref={refInputLogin}
-                onChange={() => handleChangeInputEmail(refInputLogin.current.value)}
+                onChange={() => onChangeInputEmail(refInputLogin.current.value)}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
@@ -53,7 +53,7 @@ const SignIn = (props) => {
                 name="user-password"
                 id="user-password"
                 ref={refInputPassword}
-                onChange={() => handleChangeInputPassword(refInputPassword.current.value)}
+                onChange={() => onChangeInputPassword(refInputPassword.current.value)}
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
@@ -99,8 +99,8 @@ SignIn.propTypes = {
   buttonDisabled: PropTypes.bool.isRequired,
   handleAuthorizeClick: PropTypes.func.isRequired,
   onTypeScreenChange: PropTypes.func.isRequired,
-  handleChangeInputEmail: PropTypes.func.isRequired,
-  handleChangeInputPassword: PropTypes.func.isRequired
+  onChangeInputEmail: PropTypes.func.isRequired,
+  onChangeInputPassword: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

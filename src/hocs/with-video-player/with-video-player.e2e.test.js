@@ -6,7 +6,9 @@ import {withVideoPlayer} from './with-video-player.jsx';
 
 configure({adapter: new Adapter()});
 
-const MockComponent = <div></div>;
+const MockComponent = () => {
+  return <div />;
+};
 const MockComponentWrapped = withVideoPlayer(MockComponent);
 
 describe(`Tests HOC with-video-player`, () => {

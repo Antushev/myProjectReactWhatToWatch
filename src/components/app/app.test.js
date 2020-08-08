@@ -34,6 +34,7 @@ describe(`AppComponent`, () => {
               onGenreTabClick={() => {}}
               onShowMoreClick={() => {}}
               onTypeScreenChange={() => {}}
+              onLoadComments={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {

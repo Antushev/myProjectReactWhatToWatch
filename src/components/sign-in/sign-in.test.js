@@ -11,8 +11,8 @@ describe(`SignInComponent`, () => {
             buttonDisabled={true}
             handleAuthorizeClick={() => {}}
             onTypeScreenChange={() => {}}
-            handleChangeInputEmail={() => {}}
-            handleChangeInputPassword={() => {}}
+            onChangeInputEmail={() => {}}
+            onChangeInputPassword={() => {}}
           />
       )
       .toJSON();

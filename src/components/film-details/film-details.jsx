@@ -108,6 +108,11 @@ const FilmDetails = (props) => {
             <a
               href="add-review.html"
               className="btn movie-card__button"
+              onClick={(evt) => {
+                evt.preventDefault();
+
+                onTypeScreenChange(TypeScreen.ADD_REVIEW);
+              }}
             >
               Add review
             </a>
