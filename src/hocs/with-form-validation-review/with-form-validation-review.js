@@ -5,13 +5,17 @@ import {connect} from 'react-redux';
 import {Operation as DataOperation} from '../../reducer/data/data.js';
 import {getLoadingCommentStatus} from '../../reducer/data/selectors.js';
 
+const COMMENT_LENGTH_MIN = 50;
+const COMMENT_LENGTH_MAX = 400;
+const ID_FILM_TEMPORARY = 10;
+
 const withFormValidationReview = (Component) => {
   class WithFormValidationReview extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
-        rating: 3,
+        rating: 0,
         comment: null,
         isButtonBlocked: true,
       };
@@ -38,20 +42,37 @@ const withFormValidationReview = (Component) => {
     }
 
     _handleChangeRating(evt) {
+      const {comment} = this.state;
+      const commentLength = comment ? comment.length : 0;
       const ratingFilmActive = Number(evt.target.value);
 
-      this.setState({
-        rating: ratingFilmActive
-      });
+      if (commentLength >= COMMENT_LENGTH_MIN && commentLength < COMMENT_LENGTH_MAX) {
+        this.setState({
+          isButtonBlocked: false,
+          rating: ratingFilmActive
+        });
+      } else {
+        this.setState({
+          rating: ratingFilmActive,
+          isButtonBlocked: true
+        });
+      }
     }
 
     _handleChangeText(evt) {
+      const {rating} = this.state;
+
       const commentText = evt.target.value;
       const commentLength = commentText.length;
 
-      if (commentLength >= 50 && commentLength < 400) {
+      if (commentLength >= COMMENT_LENGTH_MIN && commentLength < COMMENT_LENGTH_MAX && rating !== 0) {
         this.setState({
           isButtonBlocked: false,
+          comment: commentText
+        });
+      } else {
+        this.setState({
+          isButtonBlocked: true,
           comment: commentText
         });
       }
@@ -65,8 +86,6 @@ const withFormValidationReview = (Component) => {
         comment: commentText,
         rating: ratingComment
       };
-
-      const ID_FILM_TEMPORARY = 10;
 
       onSubmitClick(ID_FILM_TEMPORARY, comment);
     }

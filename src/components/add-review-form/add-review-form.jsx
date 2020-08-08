@@ -44,6 +44,17 @@ const FormAddReview = (props) => {
     }}>
       <div className="rating">
         <div className="rating__stars">
+          <input
+            className="rating__input visually-hidden"
+            id={`star-0`}
+            type="radio" name="rating"
+            value={0}
+            onChange={onRatingChange}
+            defaultChecked={true}
+            disabled={isLoadingComment}
+            hidden={true}
+          />
+          <label className="rating__label visually-hidden" htmlFor="star-0">Rating 0</label>
           {renderRatingPoints(ratingPoints, rating, isLoadingComment, onRatingChange)}
         </div>
       </div>
@@ -59,6 +70,7 @@ const FormAddReview = (props) => {
             className="add-review__btn"
             type="submit"
             disabled={isButtonBlocked}
+            color="#F00"
           >
             Post
           </button>
