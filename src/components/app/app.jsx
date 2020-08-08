@@ -49,7 +49,7 @@ class App extends PureComponent {
 
   render() {
     const {film} = this.state;
-    const {isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
+    const {filmPromo, isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
 
     if (isLoading) {
       return <Loading />;
@@ -82,7 +82,7 @@ class App extends PureComponent {
         </Route>
         <Route exact path='/dev-review'>
           <AddReview
-            film={film}
+            film={filmPromo}
             user={user}
             authorizationStatus={authorizationStatus}
             onTypeScreenChange={onTypeScreenChange}
@@ -157,7 +157,7 @@ class App extends PureComponent {
       case TypeScreen.ADD_REVIEW:
         return (
           <AddReview
-            film={film}
+            film={filmPromo}
             user={user}
             authorizationStatus={authorizationStatus}
             onTypeScreenChange={onTypeScreenChange}

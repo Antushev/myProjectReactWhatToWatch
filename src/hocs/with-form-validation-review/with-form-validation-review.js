@@ -8,6 +8,7 @@ import {getLoadingCommentStatus} from '../../reducer/data/selectors.js';
 const COMMENT_LENGTH_MIN = 50;
 const COMMENT_LENGTH_MAX = 400;
 const ID_FILM_TEMPORARY = 10;
+const START_RATING_REVIEW = 0;
 
 const withFormValidationReview = (Component) => {
   class WithFormValidationReview extends PureComponent {
@@ -15,7 +16,7 @@ const withFormValidationReview = (Component) => {
       super(props);
 
       this.state = {
-        rating: 0,
+        rating: START_RATING_REVIEW,
         comment: null,
         isButtonBlocked: true,
       };

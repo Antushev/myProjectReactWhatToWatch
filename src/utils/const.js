@@ -1,18 +1,3 @@
-const FILM_CARD_DEFAULT = {
-  id: 1,
-  date: 2011,
-  description: `dsfsdfsdf`,
-  director: `sdf`,
-  genre: `sdfd`,
-  name: `Властелин колец: Возвращение короля`,
-  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-  posterImage: `img/dardjeeling-limited.jpg`,
-  previewImage: `img/johnny-english.jpg`,
-  rating: 8.4,
-  scoresCount: 101323,
-  starring: 2432
-};
-
 const FilmDetailTabsName = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
@@ -45,7 +30,6 @@ const AuthorizationStatus = {
 const GENRE_DEFAULT = `All genres`;
 
 export {
-  FILM_CARD_DEFAULT,
   GENRE_DEFAULT,
   FilmDetailTabsName,
   FilmsListType,
