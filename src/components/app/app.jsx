@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
+import {TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
 import {
@@ -38,7 +38,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      film: FILM_CARD_DEFAULT,
+      film: {},
       typeScreen: TypeScreen.MAIN_SCREEN
     };
 
@@ -48,7 +48,6 @@ class App extends PureComponent {
   }
 
   render() {
-    const {film} = this.state;
     const {filmPromo, isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
 
     if (isLoading) {
