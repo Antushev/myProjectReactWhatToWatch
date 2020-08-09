@@ -10,7 +10,7 @@ import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/
 const SignIn = (props) => {
   const {
     buttonDisabled,
-    handleAuthorizeClick,
+    onAuthorizeClick,
     onChangeInputEmail,
     onChangeInputPassword
   } = props;
@@ -68,7 +68,7 @@ const SignIn = (props) => {
                 const login = refInputLogin.current.value;
                 const password = refInputPassword.current.value;
 
-                handleAuthorizeClick(login, password);
+                onAuthorizeClick(login, password);
               }}
               disabled={buttonDisabled}
             >
@@ -97,7 +97,7 @@ const SignIn = (props) => {
 
 SignIn.propTypes = {
   buttonDisabled: PropTypes.bool.isRequired,
-  handleAuthorizeClick: PropTypes.func.isRequired,
+  onAuthorizeClick: PropTypes.func.isRequired,
   onTypeScreenChange: PropTypes.func.isRequired,
   onChangeInputEmail: PropTypes.func.isRequired,
   onChangeInputPassword: PropTypes.func.isRequired
@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleAuthorizeClick(email, password) {
+  onAuthorizeClick(email, password) {
     dispatch(UserOperation.loginUser(email, password));
   },
 

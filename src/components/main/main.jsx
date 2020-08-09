@@ -10,6 +10,8 @@ import ShowMore from './../show-more/show-more.jsx';
 import UserProfile from './../user-profile/user-profile.jsx';
 
 import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
+import {AppRoute, AuthorizationStatus} from "../../utils/const";
+import history from "../../history";
 
 const GenresListWrapped = withActiveItem(GenresList);
 
@@ -26,15 +28,18 @@ const Main = (props) => {
     onGenreTabClick,
     onShowMoreClick,
     onPlayClick,
-    onTypeScreenChange
+    onTypeScreenChange,
+    onFilmMyListClick
   } = props;
 
   const {
+    id,
     name,
     backgroundImage,
     posterImage,
     genre,
-    date
+    date,
+    isFavorite
   } = filmCardPreview;
 
   return <React.Fragment>
@@ -87,10 +92,25 @@ const Main = (props) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
+              <button
+                className="btn btn--list movie-card__button"
+                type="button"
+                onClick={() => {
+                  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+                    history.push(AppRoute.LOGIN);
+                  } else {
+                    onFilmMyListClick(id, !isFavorite);
+                  }
+                }}
+              >
+                {isFavorite ?
+                  <svg viewBox="0 0 18 14" width="18" height="14">
+                    <use xlinkHref="#in-list" />
+                  </svg>
+                  : <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add" />
+                  </svg>
+                }
                 <span>My list</span>
               </button>
             </div>
@@ -103,7 +123,6 @@ const Main = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenresListWrapped
-          films={films}
           activeItem={DEFAULT_GENRE}
           onGenreTabClick={onGenreTabClick}
         />
@@ -158,7 +177,8 @@ Main.propTypes = {
   onGenreTabClick: PropTypes.func.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
   onPlayClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired
+  onTypeScreenChange: PropTypes.func.isRequired,
+  onFilmMyListClick: PropTypes.func.isRequired
 };
 
 export default Main;

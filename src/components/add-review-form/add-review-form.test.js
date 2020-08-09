@@ -8,8 +8,10 @@ describe(`AddReViewFormComponent`, () => {
     const tree = renderer
       .create(
           <AddReviewForm
+            rating={4}
             isLoadingComment={false}
             isButtonBlocked={true}
+            isErrorLoadingComment={false}
             onRatingChange={() => {}}
             onTextChange={() => {}}
             onSubmitClick={() => {}}
@@ -24,8 +26,10 @@ describe(`AddReViewFormComponent`, () => {
     const tree = renderer
       .create(
           <AddReviewForm
+            rating={4}
             isLoadingComment={false}
             isButtonBlocked={false}
+            isErrorLoadingComment={false}
             onRatingChange={() => {}}
             onTextChange={() => {}}
             onSubmitClick={() => {}}
@@ -40,8 +44,10 @@ describe(`AddReViewFormComponent`, () => {
     const tree = renderer
       .create(
           <AddReviewForm
+            rating={4}
             isLoadingComment={true}
             isButtonBlocked={false}
+            isErrorLoadingComment={true}
             onRatingChange={() => {}}
             onTextChange={() => {}}
             onSubmitClick={() => {}}
@@ -56,8 +62,10 @@ describe(`AddReViewFormComponent`, () => {
     const tree = renderer
       .create(
           <AddReviewForm
+            rating={4}
             isLoadingComment={true}
             isButtonBlocked={true}
+            isErrorLoadingComment={false}
             onRatingChange={() => {}}
             onTextChange={() => {}}
             onSubmitClick={() => {}}

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import history from '../../history.js';
+import {AuthorizationStatus, AppRoute} from './../../utils/const.js';
 
 import {filmShape, userShape} from '../../utils/shapes';
 
@@ -18,6 +20,10 @@ const AddReview = (props) => {
     backgroundImage,
     posterImage
   } = film;
+
+  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+    history.push(AppRoute.LOGIN);
+  }
 
   return (
     <section className="movie-card movie-card--full">

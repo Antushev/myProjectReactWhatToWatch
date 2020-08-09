@@ -9,7 +9,7 @@ describe(`SignInComponent`, () => {
       .create(
           <SignIn
             buttonDisabled={true}
-            handleAuthorizeClick={() => {}}
+            onAuthorizeClick={() => {}}
             onTypeScreenChange={() => {}}
             onChangeInputEmail={() => {}}
             onChangeInputPassword={() => {}}

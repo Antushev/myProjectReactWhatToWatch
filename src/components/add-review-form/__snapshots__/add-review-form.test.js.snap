@@ -82,7 +82,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
       </label>
       <input
         className="rating__input"
-        defaultChecked={false}
+        defaultChecked={true}
         disabled={false}
         id="star-4"
         name="rating"
@@ -234,7 +234,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
       </label>
       <input
         className="rating__input"
-        defaultChecked={false}
+        defaultChecked={true}
         disabled={false}
         id="star-4"
         name="rating"
@@ -386,7 +386,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
       </label>
       <input
         className="rating__input"
-        defaultChecked={false}
+        defaultChecked={true}
         disabled={true}
         id="star-4"
         name="rating"
@@ -453,7 +453,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     </div>
   </div>
   <p>
-    Комментарий загружается
+    Ошибка при загрузке комментария
   </p>
 </form>
 `;
@@ -540,7 +540,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
       </label>
       <input
         className="rating__input"
-        defaultChecked={false}
+        defaultChecked={true}
         disabled={true}
         id="star-4"
         name="rating"
