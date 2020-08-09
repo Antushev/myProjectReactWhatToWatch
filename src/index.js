@@ -4,9 +4,8 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
-import history from './history.js';
 
-import {AppRoute, AuthorizationStatus} from './utils/const.js';
+import {AuthorizationStatus} from './utils/const.js';
 import {createApi} from './api.js';
 import reducer from './reducer/reducer.js';
 import {ActionCreator as DataActionCreator} from './reducer/data/data.js';
@@ -18,7 +17,6 @@ import App from './components/app/app.jsx';
 
 const onUnauthorized = () => {
   store.dispatch(UserActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-  history.push(AppRoute.LOGIN);
 };
 
 const api = createApi(onUnauthorized);

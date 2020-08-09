@@ -181,6 +181,12 @@ const Operation = {
         .then((response) => {
           const film = filmAdapter(response.data);
 
+          const {DATA: {filmPromo}} = getState();
+
+          if (film.id === filmPromo.id) {
+            dispatch(ActionCreator.loadFilmPromo(film));
+          }
+
           dispatch(ActionCreator.addFilmInMyList(film));
         })
         .catch((err) => {
