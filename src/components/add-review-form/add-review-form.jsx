@@ -85,7 +85,7 @@ const FormAddReview = (props) => {
             className="add-review__btn"
             type="submit"
             style={isButtonBlocked ? styleButtonDefault : styleButtonActive}
-            disabled={isButtonBlocked}
+            disabled={isButtonBlocked || isLoadingComment}
             color="#F00"
           >
             Post
