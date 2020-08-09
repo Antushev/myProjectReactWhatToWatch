@@ -1,20 +1,26 @@
 import React, {PureComponent} from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
+import history from '../../history.js';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {FILM_CARD_DEFAULT, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
-import {ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
+import {AppRoute, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
+import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getLoadingStatus, getErrorStatus, getFilmsByGenre} from './../../reducer/data/selectors.js';
+import {
+  getLoadingStatus,
+  getErrorStatus, getFilmPromo,
+  getComments,
+  getFilmsByGenre} from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
-import {filmShape, userShape} from '../../utils/shapes.js';
+import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
 
 import Main from '../main/main.jsx';
 import FilmDetails from '../film-details/film-details.jsx';
 import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
+import AddReview from '../add-review/add-review.jsx';
 import Loading from '../loading/loading.jsx';
 import Error from '../error/error.jsx';
 
@@ -33,7 +39,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      film: FILM_CARD_DEFAULT,
+      film: {},
       typeScreen: TypeScreen.MAIN_SCREEN
     };
 
@@ -43,7 +49,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {isLoading, isError} = this.props;
+    const {filmPromo, isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
 
     if (isLoading) {
       return <Loading />;
@@ -55,46 +61,54 @@ class App extends PureComponent {
 
     const {films} = this.props;
     const filmCard = films[0];
-    return <BrowserRouter>
+    return <Router history={history}>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path={AppRoute.MAIN}>
           {this._renderApp()}
         </Route>
-        <Route exact path='/dev-video-player-big'>
+        <Route exct path={AppRoute.LOGIN}>
+          <SignInWrapped />
+        </Route>
+        <Route exact path='/player'>
           <VideoPlayerBigWrapped
             posterImage={filmCard.posterImage}
             videoMain={filmCard.video}
-            handleExitVideoPlayerClick={this._handleExitVideoPlayerClick}
+            onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
           />
         </Route>
-        <Route exct path='/dev-film-detail'>
+        <Route exact path='/films'>
           <FilmDetailsWithTabs
             films={films}
             film={filmCard}
-            handleFilmClick={this._handleFilmClick}
+            onFilmClick={this._handleFilmClick}
           />
         </Route>
-        <Route exct path='/dev-sign-in'>
-          <SignInWrapped />
+        <Route exact path='/dev-review'>
+          <AddReview
+            film={filmPromo}
+            user={user}
+            authorizationStatus={authorizationStatus}
+            onTypeScreenChange={onTypeScreenChange}
+          />
         </Route>
       </Switch>
-    </BrowserRouter>;
+    </Router>;
   }
 
   _renderApp() {
     const {
       films,
+      filmPromo,
       user,
+      comments,
       typeScreenActive,
       showFilmCardCount,
       authorizationStatus,
-      handleGenreTabClick,
-      handleShowMoreClick,
-      handleTypeScreenChange
+      onGenreTabClick,
+      onShowMoreClick,
+      onTypeScreenChange
     } = this.props;
     const {film} = this.state;
-
-    const filmCard = films[0];
 
     switch (typeScreenActive) {
       case TypeScreen.MAIN_SCREEN:
@@ -104,13 +118,13 @@ class App extends PureComponent {
             user={user}
             currentFilms={films}
             showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmCard}
+            filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
-            handleFilmClick={this._handleFilmClick}
-            handlePlayClick={this._handlePlayClick}
-            handleTypeScreenChange={handleTypeScreenChange}
-            handleGenreTabClick={handleGenreTabClick}
-            handleShowMoreClick={handleShowMoreClick}
+            onFilmClick={this._handleFilmClick}
+            onPlayClick={this._handlePlayClick}
+            onTypeScreenChange={onTypeScreenChange}
+            onGenreTabClick={onGenreTabClick}
+            onShowMoreClick={onShowMoreClick}
           />
         );
       case TypeScreen.DETAIL_SCREEN:
@@ -119,10 +133,11 @@ class App extends PureComponent {
             films={films}
             film={film}
             user={user}
+            comments={comments}
             authorizationStatus={authorizationStatus}
-            handleTypeScreenChange={handleTypeScreenChange}
-            handleFilmClick={this._handleFilmClick}
-            handlePlayClick={this._handlePlayClick}
+            onTypeScreenChange={onTypeScreenChange}
+            onFilmClick={this._handleFilmClick}
+            onPlayClick={this._handlePlayClick}
           />
         );
       case TypeScreen.VIDEO_BIG_SCREEN:
@@ -132,12 +147,21 @@ class App extends PureComponent {
           <VideoPlayerBigWrapped
             posterImage={posterImage}
             videoMain={videoMain}
-            handleExitVideoPlayerClick={this._handleExitVideoPlayerClick}
+            onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
           />
         );
       case TypeScreen.SIGN_IN:
         return (
           <SignInWrapped />
+        );
+      case TypeScreen.ADD_REVIEW:
+        return (
+          <AddReview
+            film={filmPromo}
+            user={user}
+            authorizationStatus={authorizationStatus}
+            onTypeScreenChange={onTypeScreenChange}
+          />
         );
       default:
         return (
@@ -146,26 +170,28 @@ class App extends PureComponent {
             user={user}
             currentFilms={films}
             showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmCard}
+            filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
-            handleFilmClick={this._handleFilmClick}
-            handlePlayClick={this._handlePlayClick}
-            handleTypeScreenChange={handleTypeScreenChange}
-            handleGenreTabClick={handleGenreTabClick}
-            handleShowMoreClick={handleShowMoreClick}
+            onFilmClick={this._handleFilmClick}
+            onPlayClick={this._handlePlayClick}
+            onTypeScreenChange={onTypeScreenChange}
+            onGenreTabClick={onGenreTabClick}
+            onShowMoreClick={onShowMoreClick}
           />
         );
     }
   }
 
   _handleFilmClick(film, typeScreen, idTimer = null) {
-    const {handleTypeScreenChange} = this.props;
+    const {onTypeScreenChange, onLoadComments} = this.props;
+
+    onLoadComments(film.id);
 
     if (idTimer) {
       clearTimeout(idTimer);
     }
 
-    handleTypeScreenChange(typeScreen);
+    onTypeScreenChange(typeScreen);
 
     this.setState({
       film,
@@ -173,9 +199,9 @@ class App extends PureComponent {
   }
 
   _handlePlayClick(film, typeScreen) {
-    const {handleTypeScreenChange} = this.props;
+    const {onTypeScreenChange} = this.props;
 
-    handleTypeScreenChange(typeScreen);
+    onTypeScreenChange(typeScreen);
 
     this.setState({
       film
@@ -183,9 +209,9 @@ class App extends PureComponent {
   }
 
   _handleExitVideoPlayerClick(typeScreen) {
-    const {handleTypeScreenChange} = this.props;
+    const {onTypeScreenChange} = this.props;
 
-    handleTypeScreenChange(typeScreen);
+    onTypeScreenChange(typeScreen);
 
     this.setState({
       film: null
@@ -199,13 +225,18 @@ App.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape(filmShape)
   ),
+  filmPromo: PropTypes.shape(filmShape),
   user: PropTypes.shape(userShape).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape(commentShape)
+  ),
   typeScreenActive: PropTypes.string.isRequired,
   showFilmCardCount: PropTypes.number.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired,
-  handleShowMoreClick: PropTypes.func.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired
+  onGenreTabClick: PropTypes.func.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired,
+  onTypeScreenChange: PropTypes.func.isRequired,
+  onLoadComments: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -213,25 +244,31 @@ const mapStateToProps = (state) => {
     isLoading: getLoadingStatus(state),
     isError: getErrorStatus(state),
     films: getFilmsByGenre(state),
+    filmPromo: getFilmPromo(state),
     showFilmCardCount: getShowFilmCardCount(state),
     authorizationStatus: getAuthorizeStatusUser(state),
     user: getUserInfo(state),
+    comments: getComments(state),
     typeScreenActive: getTypeScreenActive(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleGenreTabClick(genre) {
+  onGenreTabClick(genre) {
     dispatch(DataActionCreator.changeGenre(genre));
     dispatch(AppStateActionCreator.resetFilmCardCount());
   },
 
-  handleTypeScreenChange(typeScreen) {
+  onTypeScreenChange(typeScreen) {
     dispatch(AppStateActionCreator.changeTypeScreen(typeScreen));
   },
 
-  handleShowMoreClick() {
+  onShowMoreClick() {
     dispatch(AppStateActionCreator.showAdditionalCard());
+  },
+
+  onLoadComments(idFilm) {
+    dispatch(DataOperation.loadComment(idFilm));
   }
 });
 

@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getRandomNumber} from '../../utils/common.js';
 
-import {filmShape, userShape} from '../../utils/shapes.js';
+import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
 import {TypeScreen, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
-import {generateComments} from '../../adapters/comments.js';
 
 import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
 import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
@@ -12,10 +10,7 @@ import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.jsx';
 import FilmsList from '../films-list/films-list.jsx';
 import UserProfile from '../user-profile/user-profile.jsx';
 
-const COMMENTS_NUMBER = getRandomNumber(1, 4);
-const comments = generateComments(COMMENTS_NUMBER);
-
-const renderDetailPages = (film, activeFilmDetailPage, renderTabs) => {
+const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => {
   switch (activeFilmDetailPage) {
     case FilmDetailTabsName.OVERVIEW:
       return <FilmDetailOverview
@@ -46,12 +41,13 @@ const FilmDetails = (props) => {
     films,
     film,
     user,
+    comments,
     authorizationStatus,
     activeTab,
     renderTabs,
-    handleFilmClick,
-    handlePlayClick,
-    handleTypeScreenChange
+    onFilmClick,
+    onPlayClick,
+    onTypeScreenChange
   } = props;
   const {
     backgroundImage,
@@ -80,7 +76,7 @@ const FilmDetails = (props) => {
         <UserProfile
           user={user}
           authorizationStatus={authorizationStatus}
-          handleTypeScreenChange={handleTypeScreenChange}
+          onTypeScreenChange={onTypeScreenChange}
         />
       </header>
 
@@ -96,7 +92,7 @@ const FilmDetails = (props) => {
             <button
               className="btn btn--play movie-card__button"
               type="button"
-              onClick={() => handlePlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
+              onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
@@ -109,12 +105,22 @@ const FilmDetails = (props) => {
               </svg>
               <span>My list</span>
             </button>
-            <a href="add-review.html" className="btn movie-card__button">Add review</a>
+            <a
+              href="add-review.html"
+              className="btn movie-card__button"
+              onClick={(evt) => {
+                evt.preventDefault();
+
+                onTypeScreenChange(TypeScreen.ADD_REVIEW);
+              }}
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>
     </div>
-    {renderDetailPages(film, activeTab, renderTabs)}
+    {renderDetailPages(film, activeTab, renderTabs, comments)}
     <div className="page-content">
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
@@ -122,7 +128,7 @@ const FilmDetails = (props) => {
           currentFilm={film}
           films={films}
           filmListType={FilmsListType.MORE_LIKE}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
 
       </section>
@@ -148,12 +154,15 @@ FilmDetails.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape(filmShape).isRequired),
   film: PropTypes.shape(filmShape).isRequired,
   user: PropTypes.shape(userShape).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape(commentShape)
+  ).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   activeTab: PropTypes.string.isRequired,
   renderTabs: PropTypes.func.isRequired,
-  handleFilmClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired
+  onFilmClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
+  onTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

@@ -1,18 +1,3 @@
-const FILM_CARD_DEFAULT = {
-  id: null,
-  date: null,
-  description: null,
-  director: null,
-  genre: null,
-  name: null,
-  backgroundImage: null,
-  posterImage: null,
-  previewImage: null,
-  rating: null,
-  scoresCount: null,
-  starring: null
-};
-
 const FilmDetailTabsName = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
@@ -28,7 +13,8 @@ const TypeScreen = {
   MAIN_SCREEN: `MAIN_SCREEN`,
   DETAIL_SCREEN: `DETAIL_SCREEN`,
   VIDEO_BIG_SCREEN: `VIDEO_BIG_SCREEN`,
-  SIGN_IN: `SIGN_IN`
+  SIGN_IN: `SIGN_IN`,
+  ADD_REVIEW: `ADD_REVIEW`
 };
 
 const TypeVideoPlayer = {
@@ -43,12 +29,22 @@ const AuthorizationStatus = {
 
 const GENRE_DEFAULT = `All genres`;
 
+const AppRoute = {
+  MAIN: `/`,
+  LOGIN: `/login`,
+  FILMS: `/films`,
+  PLAYER: `/player`,
+  REVIEW: `/review`,
+  MY_LIST: `/mylist`,
+  NOT_FOUND: `/notfound`
+};
+
 export {
-  FILM_CARD_DEFAULT,
   GENRE_DEFAULT,
   FilmDetailTabsName,
   FilmsListType,
   TypeScreen,
   TypeVideoPlayer,
+  AppRoute,
   AuthorizationStatus
 };

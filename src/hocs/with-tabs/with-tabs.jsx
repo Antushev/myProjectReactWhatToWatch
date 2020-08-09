@@ -22,7 +22,7 @@ const withTabs = (Component) => {
         activeTab={activeTabDetailPage}
         renderTabs={() => {
           return <FilmDetailTabs
-            handleTabClick={(activeTab) => {
+            onTabClick={(activeTab) => {
               this.setState({
                 activeTabDetailPage: activeTab
               });

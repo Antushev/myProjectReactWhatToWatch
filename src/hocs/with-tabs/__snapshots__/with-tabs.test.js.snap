@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test HOC with-tabs Test snapshot HOC function renderTabs 1`] = `
+<div>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item"
+        onClick={[Function]}
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

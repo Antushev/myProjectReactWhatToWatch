@@ -12,8 +12,8 @@ describe(`GenresListComponent`, () => {
           <GenresList
             films={films}
             activeItem={currentGenre}
-            handleGenreTabClick={() => {}}
-            handleActiveItemChange={() => {}}
+            onGenreTabClick={() => {}}
+            onActiveItemChange={() => {}}
           />
       )
       .toJSON();

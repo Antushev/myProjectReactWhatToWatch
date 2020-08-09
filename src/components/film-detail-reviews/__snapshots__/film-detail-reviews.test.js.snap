@@ -76,7 +76,7 @@ exports[`FilmDetailReviewsComponent FilmDetailReviewsComponentSnapshot 1`] = `
                 <cite
                   className="review__author"
                 >
-                  Андрей
+                  Джон
                 </cite>
                 <time
                   className="review__date"

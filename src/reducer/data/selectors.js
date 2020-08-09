@@ -6,12 +6,28 @@ const getLoadingStatus = (state) => {
   return state[NameSpace.DATA].isLoading;
 };
 
+const getLoadingCommentStatus = (state) => {
+  return state[NameSpace.DATA].isLoadingComment;
+};
+
+const getErrorLoadingComment = (state) => {
+  return state[NameSpace.DATA].isErrorLoadingComment;
+};
+
 const getErrorStatus = (state) => {
   return state[NameSpace.DATA].isError;
 };
 
 const getFilms = (state) => {
   return state[NameSpace.DATA].films;
+};
+
+const getFilmPromo = (state) => {
+  return state[NameSpace.DATA].filmPromo;
+};
+
+const getComments = (state) => {
+  return state[NameSpace.DATA].comments;
 };
 
 const getGenre = (state) => {
@@ -31,4 +47,13 @@ const getFilmsByGenre = createSelector(
     }
 );
 
-export {getLoadingStatus, getErrorStatus, getFilms, getFilmsByGenre};
+export {
+  getLoadingStatus,
+  getLoadingCommentStatus,
+  getErrorLoadingComment,
+  getErrorStatus,
+  getFilms,
+  getComments,
+  getFilmsByGenre,
+  getFilmPromo
+};

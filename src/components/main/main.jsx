@@ -22,11 +22,11 @@ const Main = (props) => {
     showFilmCardCount,
     filmCardPreview,
     authorizationStatus,
-    handleFilmClick,
-    handleGenreTabClick,
-    handleShowMoreClick,
-    handlePlayClick,
-    handleTypeScreenChange
+    onFilmClick,
+    onGenreTabClick,
+    onShowMoreClick,
+    onPlayClick,
+    onTypeScreenChange
   } = props;
 
   const {
@@ -57,7 +57,7 @@ const Main = (props) => {
         <UserProfile
           user={user}
           authorizationStatus={authorizationStatus}
-          handleTypeScreenChange={handleTypeScreenChange}
+          onTypeScreenChange={onTypeScreenChange}
         />
 
       </header>
@@ -80,7 +80,7 @@ const Main = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => handlePlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
+                onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -105,17 +105,17 @@ const Main = (props) => {
         <GenresListWrapped
           films={films}
           activeItem={DEFAULT_GENRE}
-          handleGenreTabClick={handleGenreTabClick}
+          onGenreTabClick={onGenreTabClick}
         />
 
         <FilmsList
           films={films}
           showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
 
-        {renderShowMore(films, showFilmCardCount, handleShowMoreClick)}
+        {renderShowMore(films, showFilmCardCount, onShowMoreClick)}
 
       </section>
 
@@ -136,10 +136,10 @@ const Main = (props) => {
   </React.Fragment>;
 };
 
-const renderShowMore = (films, showFilmCardCount, handleShowMoreClick) => {
+const renderShowMore = (films, showFilmCardCount, onShowMoreClick) => {
   if (films.length > showFilmCardCount) {
     return <ShowMore
-      handleShowMoreClick={handleShowMoreClick}
+      onShowMoreClick={onShowMoreClick}
     />;
   }
 
@@ -154,11 +154,11 @@ Main.propTypes = {
   showFilmCardCount: PropTypes.number.isRequired,
   filmCardPreview: PropTypes.shape(filmShape).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  handleFilmClick: PropTypes.func.isRequired,
-  handleGenreTabClick: PropTypes.func.isRequired,
-  handleShowMoreClick: PropTypes.func.isRequired,
-  handlePlayClick: PropTypes.func.isRequired,
-  handleTypeScreenChange: PropTypes.func.isRequired
+  onFilmClick: PropTypes.func.isRequired,
+  onGenreTabClick: PropTypes.func.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
+  onTypeScreenChange: PropTypes.func.isRequired
 };
 
 export default Main;

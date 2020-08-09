@@ -42,11 +42,14 @@ describe(`Test button disabled tag from`, () => {
     const wrapped = mount(
         <MockFormWrapped
           buttonDisabled={true}
-          handleEmailInputChange={() => {}}
-          handlePasswordInputChange={() => {}}
+          onEmailInputChange={() => {}}
+          onPasswordInputChange={() => {}}
         />
     );
 
-    expect(wrapped.props().buttonDisabled).toEqual(true);
+    wrapped.find(`.email`).simulate(`change`, {target: {value: `example@mail.ru`}});
+    wrapped.find(`.password`).simulate(`change`, {target: {value: `1111`}});
+
+    expect(wrapped.find(`button`).prop(`disabled`)).toBe(true);
   });
 });

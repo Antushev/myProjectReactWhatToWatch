@@ -28,7 +28,7 @@ const withVideo = (Component, typeVideoPlayer) => {
           {...this.props}
           videoProgress={progress}
           videoTimeElapsed={timeElapsed}
-          handleFullScreenClick={this._handleFullScreenClick}
+          onFullScreenClick={this._handleFullScreenClick}
         >
           <video className="player__video" ref={this._videoRef} muted="muted"/>;
         </Component>

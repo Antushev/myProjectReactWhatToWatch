@@ -17,9 +17,9 @@ const VideoPlayerBig = (props) => {
     isPlaying,
     videoProgress,
     videoTimeElapsed,
-    handlePlayClick,
-    handleExitVideoPlayerClick,
-    handleFullScreenClick
+    onPlayClick,
+    onExitVideoPlayerClick,
+    onFullScreenClick
   } = props;
 
   return (
@@ -28,7 +28,7 @@ const VideoPlayerBig = (props) => {
 
       <button
         type="button" className="player__exit"
-        onClick={() => handleExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
+        onClick={() => onExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
       >
         Exit
       </button>
@@ -46,7 +46,7 @@ const VideoPlayerBig = (props) => {
           <button
             type="button"
             className="player__play"
-            onClick={handlePlayClick}
+            onClick={onPlayClick}
           >
             {isPlaying ?
               <svg viewBox="0 0 14 21" width="19" height="19">
@@ -64,7 +64,7 @@ const VideoPlayerBig = (props) => {
           <button
             type="button"
             className="player__full-screen"
-            onClick={handleFullScreenClick}
+            onClick={onFullScreenClick}
           >
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen" />
@@ -84,9 +84,9 @@ VideoPlayerBig.propTypes = {
   videoMain: PropTypes.string.isRequired,
   videoProgress: PropTypes.number.isRequired,
   videoTimeElapsed: PropTypes.number.isRequired,
-  handlePlayClick: PropTypes.func.isRequired,
-  handleExitVideoPlayerClick: PropTypes.func.isRequired,
-  handleFullScreenClick: PropTypes.func.isRequired
+  onPlayClick: PropTypes.func.isRequired,
+  onExitVideoPlayerClick: PropTypes.func.isRequired,
+  onFullScreenClick: PropTypes.func.isRequired
 };
 
 export default VideoPlayerBig;

@@ -11,6 +11,7 @@ const initialState = {
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  CHECK_AUTHORIZATION: `CHECK_AUTHORIZATION`,
   SET_USER_INFO: `SET_USER_INFO`,
   PUT_ERROR: `PUT_ERROR`,
   REMOVE_ERROR: `REMOVE_ERROR`
@@ -35,7 +36,10 @@ const Operation = {
   checkAuthorizeUser: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then((response) => {
-        return response;
+        const user = userAdapter(response.data);
+
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setUserInfo(user));
       })
       .catch((err) => {
         throw err;

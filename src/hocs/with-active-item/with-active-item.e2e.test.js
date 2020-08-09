@@ -8,15 +8,15 @@ import {withActiveItem} from './with-active-item.jsx';
 configure({adapter: new Adapter()});
 
 const MockList = (props) => {
-  const {handleActiveItemChange} = props;
+  const {onActiveItemChange} = props;
 
   return <div>
-    <span className="active-element" onClick={() => handleActiveItemChange(2)} />
+    <span className="active-element" onClick={() => onActiveItemChange(2)} />
   </div>;
 };
 
 MockList.propTypes = {
-  handleActiveItemChange: PropTypes.func.isRequired
+  onActiveItemChange: PropTypes.func.isRequired
 };
 
 describe(`Tests HOC with-active-item`, () => {
@@ -25,7 +25,7 @@ describe(`Tests HOC with-active-item`, () => {
     const wrapped = mount(
         <MockListWrapped
           activeItem={`item`}
-          handleActiveItemChange={() => {}}
+          onActiveItemChange={() => {}}
         />
     );
 

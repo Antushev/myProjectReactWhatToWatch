@@ -23,38 +23,38 @@ const FilmsList = (props) => {
       currentFilm,
       films,
       filmListType,
-      handleFilmClick,
+      onFilmClick,
       showFilmCardCount
     } = props;
 
     switch (filmListType) {
       case FilmsListType.DEFAULT:
-        return renderFilmsCardDefault(films, showFilmCardCount, handleFilmClick);
+        return renderFilmsCardDefault(films, showFilmCardCount, onFilmClick);
       case FilmsListType.MORE_LIKE:
-        return renderFilmsCardMoreLike(currentFilm, films, handleFilmClick);
+        return renderFilmsCardMoreLike(currentFilm, films, onFilmClick);
       default:
-        return renderFilmsCardDefault(films, handleFilmClick);
+        return renderFilmsCardDefault(films, onFilmClick);
     }
   };
 
-  const renderFilmsCardDefault = (films, showFilmCardCount, handleFilmClick) => {
+  const renderFilmsCardDefault = (films, showFilmCardCount, onFilmClick) => {
     return films.map((film) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        handleFilmClick={handleFilmClick}
+        onFilmClick={onFilmClick}
       />;
     }).slice(0, showFilmCardCount);
   };
 
-  const renderFilmsCardMoreLike = (currentFilm, films, handleFilmClick) => {
+  const renderFilmsCardMoreLike = (currentFilm, films, onFilmClick) => {
     const filmsMoreLike = getFilmsMoreLike(currentFilm, films);
 
     return filmsMoreLike.map((film) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        handleFilmClick={handleFilmClick}
+        onFilmClick={onFilmClick}
       />;
     });
   };
@@ -73,7 +73,7 @@ FilmsList.propTypes = {
   showFilmCardCount: PropTypes.number,
   filmListType: PropTypes.string.isRequired,
   currentFilm: PropTypes.shape(filmShape),
-  handleFilmClick: PropTypes.func.isRequired
+  onFilmClick: PropTypes.func.isRequired
 };
 
 export default FilmsList;

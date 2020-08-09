@@ -5,14 +5,14 @@ import {TypeScreen} from '../../utils/const.js';
 import {filmShape} from '../../utils/shapes.js';
 
 const FilmCard = (props) => {
-  const {film, renderVideoPlayer, handleFilmClick} = props;
+  const {film, renderVideoPlayer, onFilmClick} = props;
   const {id, name, posterImage, previewVideo, videoMain} = film;
 
   return (
     <article
       key={id}
       className="small-movie-card catalog__movies-card"
-      onClick={() => handleFilmClick(film, TypeScreen.DETAIL_SCREEN)}
+      onClick={() => onFilmClick(film, TypeScreen.DETAIL_SCREEN)}
     >
       {renderVideoPlayer(posterImage, previewVideo, videoMain)}
       <h3 className="small-movie-card__title">
@@ -26,7 +26,7 @@ const FilmCard = (props) => {
 FilmCard.propTypes = {
   film: PropTypes.shape(filmShape).isRequired,
   renderVideoPlayer: PropTypes.func.isRequired,
-  handleFilmClick: PropTypes.func.isRequired,
+  onFilmClick: PropTypes.func.isRequired,
 };
 
 export default FilmCard;

@@ -8,11 +8,11 @@ configure({adapter: new Adapter()});
 
 describe(`ShowMoreComponent`, () => {
   it(`Show more button click`, () => {
-    const handleShowMoreClick = jest.fn();
+    const onShowMoreClick = jest.fn();
 
     const showMore = shallow(
         <ShowMore
-          handleShowMoreClick={handleShowMoreClick}
+          onShowMoreClick={onShowMoreClick}
         />
     );
 
@@ -20,6 +20,6 @@ describe(`ShowMoreComponent`, () => {
 
     buttonShowMore.simulate(`click`);
 
-    expect(handleShowMoreClick).toBeCalled();
+    expect(onShowMoreClick).toBeCalled();
   });
 });

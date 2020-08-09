@@ -10,14 +10,14 @@ configure({adapter: new Adapter()});
 
 describe(`FilmsListComponentE2E`, () => {
   it(`Click header films`, () => {
-    const handleFilmClick = jest.fn();
+    const onFilmClick = jest.fn();
 
     const filmsList = shallow(
         <FilmsList
           films={films}
           showFilmCardCount={8}
           filmListType={FilmsListType.DEFAULT}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
     );
 
@@ -27,18 +27,18 @@ describe(`FilmsListComponentE2E`, () => {
       buttonHeader.simulate(`click`);
     });
 
-    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
+    expect(onFilmClick).toBeCalledTimes(buttonHeaders.length);
   });
 
   it(`Click header films`, () => {
-    const handleFilmClick = jest.fn();
+    const onFilmClick = jest.fn();
 
     const filmsList = shallow(
         <FilmsList
           films={films}
           showFilmCardCount={16}
           filmListType={FilmsListType.DEFAULT}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
     );
 
@@ -48,18 +48,18 @@ describe(`FilmsListComponentE2E`, () => {
       buttonHeader.simulate(`click`);
     });
 
-    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
+    expect(onFilmClick).toBeCalledTimes(buttonHeaders.length);
   });
 
   it(`Click header films`, () => {
-    const handleFilmClick = jest.fn();
+    const onFilmClick = jest.fn();
 
     const filmsList = shallow(
         <FilmsList
           films={films}
           showFilmCardCount={0}
           filmListType={FilmsListType.DEFAULT}
-          handleFilmClick={handleFilmClick}
+          onFilmClick={onFilmClick}
         />
     );
 
@@ -69,6 +69,6 @@ describe(`FilmsListComponentE2E`, () => {
       buttonHeader.simulate(`click`);
     });
 
-    expect(handleFilmClick).toBeCalledTimes(buttonHeaders.length);
+    expect(onFilmClick).toBeCalledTimes(buttonHeaders.length);
   });
 });

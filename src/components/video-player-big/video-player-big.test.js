@@ -16,9 +16,9 @@ describe(`VideoPlayerBigComponent`, () => {
             videoMain={videoMain}
             videoProgress={40}
             videoTimeElapsed={40}
-            handlePlayClick={() => {}}
-            handleExitVideoPlayerClick={() => {}}
-            handleFullScreenClick={() => {}}
+            onPlayClick={() => {}}
+            onExitVideoPlayerClick={() => {}}
+            onFullScreenClick={() => {}}
           >
             <video />
           </VideoPlayerBig>
