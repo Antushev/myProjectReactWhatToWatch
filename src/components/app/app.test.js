@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {NameSpace} from './../../reducer/name-space.js';
 
 import {films, currentGenre} from '../../mocks-test/films-test.js';
 import {user} from '../../mocks-test/user-test.js';
@@ -13,9 +14,10 @@ const mockStore = configureStore([]);
 describe(`AppComponent`, () => {
   it(`AppComponentSnapshot isLoading true isError false authorizationStatus NO_AUTH`, () => {
     const store = mockStore({
-      films,
-      currentFilms: films,
-      currentGenre
+      [NameSpace.DATA]: {
+        films,
+        currentGenre
+      }
     });
 
     const tree = renderer

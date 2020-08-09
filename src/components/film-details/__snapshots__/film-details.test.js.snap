@@ -76,7 +76,7 @@ exports[`FilmDetailsComponent FilmDetailsComponentSnapshot 1`] = `
           <span
             className="movie-card__genre"
           >
-            Adventure
+            Джон
           </span>
           <span
             className="movie-card__year"
