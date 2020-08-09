@@ -11,6 +11,7 @@ const ActionType = {
   CHANGE_TYPE_SCREEN: `CHANGE_TYPE_SCREEN`,
   SHOW_ADDITIONAL_CARD: `SHOW_ADDITIONAL_CARD`,
   RESET_FILM_CARD_COUNT: `RESET_FILM_CARD_COUNT`,
+  ADD_IN_MY_LIST: `ADD_IN_MY_LIST`
 };
 
 const ActionCreator = {
@@ -31,7 +32,7 @@ const ActionCreator = {
       type: ActionType.RESET_FILM_CARD_COUNT,
       payload: SHOW_FILMS_CARD_COUNT
     };
-  }
+  },
 };
 
 const reducer = (state = initialState, action) => {

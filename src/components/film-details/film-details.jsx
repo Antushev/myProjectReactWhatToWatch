@@ -47,13 +47,16 @@ const FilmDetails = (props) => {
     renderTabs,
     onFilmClick,
     onPlayClick,
-    onTypeScreenChange
+    onTypeScreenChange,
+    onFilmMyListClick
   } = props;
   const {
+    id,
     backgroundImage,
     name,
     genre,
-    date
+    date,
+    isFavorite
   } = film;
 
   return <section className="movie-card movie-card--full">
@@ -99,10 +102,19 @@ const FilmDetails = (props) => {
               </svg>
               <span>Play</span>
             </button>
-            <button className="btn btn--list movie-card__button" type="button">
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
-              </svg>
+            <button
+              className="btn btn--list movie-card__button"
+              type="button"
+              onClick={() => onFilmMyListClick(id, !isFavorite)}
+            >
+              {isFavorite ?
+                <svg viewBox="0 0 18 14" width="18" height="14">
+                  <use xlinkHref="#in-list" />
+                </svg>
+                : <svg viewBox="0 0 19 20" width="19" height="20">
+                  <use xlinkHref="#add" />
+                </svg>
+              }
               <span>My list</span>
             </button>
             <a
@@ -162,7 +174,8 @@ FilmDetails.propTypes = {
   renderTabs: PropTypes.func.isRequired,
   onFilmClick: PropTypes.func.isRequired,
   onPlayClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired
+  onTypeScreenChange: PropTypes.func.isRequired,
+  onFilmMyListClick: PropTypes.func.isRequired
 };
 
 export default FilmDetails;

@@ -25,7 +25,8 @@ const ActionType = {
   REMOVE_ERROR_LOADING_COMMENT: `REMOVE_ERROR_LOADING_COMMENT`,
   REMOVE_ERROR: `REMOVE_ERROR`,
   START_ADD_COMMENT: `START_LOAD_COMMENT`,
-  END_ADD_COMMENT: `END_LOAD_COMMENT`
+  END_ADD_COMMENT: `END_LOAD_COMMENT`,
+  ADD_FILM_IN_MY_LIST: `ADD_FILM_IN_MY_LIST`
 };
 
 const ActionCreator = {
@@ -106,6 +107,12 @@ const ActionCreator = {
       type: ActionType.END_ADD_COMMENT,
       payload: null
     };
+  },
+  addFilmInMyList(film) {
+    return {
+      type: ActionType.ADD_FILM_IN_MY_LIST,
+      payload: film
+    };
   }
 };
 
@@ -162,6 +169,17 @@ const Operation = {
         dispatch(ActionCreator.putErrorLoadingComment());
         throw err;
       });
+  },
+  addFilmInMyList: (idFilm, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${idFilm}/${status ? 1 : 0}`)
+        .then((response) => {
+          const film = filmAdapter(response.data);
+
+          dispatch(ActionCreator.addFilmInMyList(film));
+        })
+        .catch((err) => {
+          throw err;
+        });
   }
 };
 
@@ -227,6 +245,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.END_ADD_COMMENT:
       return Object.assign({}, state, {
         isLoadingComment: false
+      });
+    case ActionType.ADD_FILM_IN_MY_LIST:
+      const filmNew = action.payload;
+      const filmIndex = state.films.findIndex((film) => film.id === filmNew.id);
+      const filmsCurrent = state.films;
+
+      const filmsNew = [].concat(filmsCurrent.slice(0, filmIndex), filmNew, filmsCurrent.slice(filmIndex + 1));
+
+      return Object.assign({}, state, {
+        films: filmsNew
       });
     default:
       return state;

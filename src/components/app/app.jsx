@@ -10,7 +10,9 @@ import {
   getLoadingStatus,
   getErrorStatus, getFilmPromo,
   getComments,
-  getFilmsByGenre} from './../../reducer/data/selectors.js';
+  getFilmsByGenre,
+  getFilms
+} from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
 
@@ -106,7 +108,8 @@ class App extends PureComponent {
       authorizationStatus,
       onGenreTabClick,
       onShowMoreClick,
-      onTypeScreenChange
+      onTypeScreenChange,
+      onFilmMyListClick
     } = this.props;
     const {film} = this.state;
 
@@ -125,6 +128,7 @@ class App extends PureComponent {
             onTypeScreenChange={onTypeScreenChange}
             onGenreTabClick={onGenreTabClick}
             onShowMoreClick={onShowMoreClick}
+            onFilmMyListClick={onFilmMyListClick}
           />
         );
       case TypeScreen.DETAIL_SCREEN:
@@ -138,6 +142,7 @@ class App extends PureComponent {
             onTypeScreenChange={onTypeScreenChange}
             onFilmClick={this._handleFilmClick}
             onPlayClick={this._handlePlayClick}
+            onFilmMyListClick={onFilmMyListClick}
           />
         );
       case TypeScreen.VIDEO_BIG_SCREEN:
@@ -236,7 +241,8 @@ App.propTypes = {
   onGenreTabClick: PropTypes.func.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
   onTypeScreenChange: PropTypes.func.isRequired,
-  onLoadComments: PropTypes.func.isRequired
+  onLoadComments: PropTypes.func.isRequired,
+  onFilmMyListClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -269,6 +275,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onLoadComments(idFilm) {
     dispatch(DataOperation.loadComment(idFilm));
+  },
+
+  onFilmMyListClick(idFilm, status) {
+    dispatch(DataOperation.addFilmInMyList(idFilm, status));
   }
 });
 

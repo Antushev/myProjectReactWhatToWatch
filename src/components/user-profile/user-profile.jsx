@@ -15,7 +15,7 @@ const renderUserProfile = (user, authorizationStatus) => {
     >
       Sign in
     </Link> :
-    <Link to={AppRoute.MAIN}>
+    <Link to={AppRoute.MY_LIST}>
       <div className="user-block__avatar">
         <img src={`${avatar !== null ? BASE_URL_AVATAR + avatar : BASE_URL_AVATAR}`} alt="User avatar" width="63" height="63"/>
       </div>
