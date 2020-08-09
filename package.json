@@ -35,7 +35,7 @@
     "node": "10"
   },
   "dependencies": {
-    "history": "5.0.0",
+    "history": "4.10.1",
     "moment": "2.27.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",

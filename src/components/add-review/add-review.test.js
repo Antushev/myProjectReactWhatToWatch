@@ -1,6 +1,8 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from './../../history.js';
 import configureStore from 'redux-mock-store';
 
 import {NameSpace} from '../../reducer/name-space.js';
@@ -21,14 +23,16 @@ describe(`AddReviewComponent`, () => {
   it(`AddReviewComponentSnapshot with NO_AUTH user`, () => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <AddReview
-              film={film}
-              user={user}
-              authorizationStatus={`NO_AUTH`}
-              onTypeScreenChange={() => {}}
-            />
-          </Provider>
+          <Router history={history}>
+            <Provider store={store}>
+              <AddReview
+                film={film}
+                user={user}
+                authorizationStatus={`NO_AUTH`}
+                onTypeScreenChange={() => {}}
+              />
+            </Provider>
+          </Router>
       )
       .toJSON();
 
@@ -38,14 +42,16 @@ describe(`AddReviewComponent`, () => {
   it(`AddReviewComponentSnapshot with AUTH user`, () => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <AddReview
-              film={film}
-              user={user}
-              authorizationStatus={`AUTH`}
-              onTypeScreenChange={() => {}}
-            />
-          </Provider>
+          <Router history={history}>
+            <Provider store={store}>
+              <AddReview
+                film={film}
+                user={user}
+                authorizationStatus={`AUTH`}
+                onTypeScreenChange={() => {}}
+              />
+            </Provider>
+          </Router>
       )
       .toJSON();
 

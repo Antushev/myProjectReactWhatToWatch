@@ -29,11 +29,22 @@ const AuthorizationStatus = {
 
 const GENRE_DEFAULT = `All genres`;
 
+const AppRoute = {
+  MAIN: `/`,
+  LOGIN: `/login`,
+  FILMS: `/films`,
+  PLAYER: `/player`,
+  REVIEW: `/review`,
+  MY_LIST: `/mylist`,
+  NOT_FOUND: `/notfound`
+};
+
 export {
   GENRE_DEFAULT,
   FilmDetailTabsName,
   FilmsListType,
   TypeScreen,
   TypeVideoPlayer,
+  AppRoute,
   AuthorizationStatus
 };

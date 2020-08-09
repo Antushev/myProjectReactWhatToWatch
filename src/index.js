@@ -5,20 +5,23 @@ import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
 
+import history from './history.js';
+
 import {AuthorizationStatus} from './utils/const.js';
 import {createApi} from './api.js';
 import reducer from './reducer/reducer.js';
 import {ActionCreator as DataActionCreator} from './reducer/data/data.js';
+import {ActionCreator as UserActionCreator} from './reducer/user/user.js';
 import {Operation as DataOperation} from './reducer/data/data.js';
 import {Operation as UserOperation} from './reducer/user/user.js';
 
 import App from './components/app/app.jsx';
 
-const onUnauthorizate = () => {
-  store.dispatch(DataActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+const onUnauthorized = () => {
+  store.dispatch(UserActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
 };
 
-const api = createApi(onUnauthorizate);
+const api = createApi(onUnauthorized);
 
 const store = createStore(
     reducer,

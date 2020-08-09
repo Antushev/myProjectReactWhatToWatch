@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
 import {Router, Switch, Route} from 'react-router-dom';
-import {history} from '../../history.js';
+import history from '../../history.js';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
+import {AppRoute, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
 import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
 import {
@@ -63,17 +63,20 @@ class App extends PureComponent {
     const filmCard = films[0];
     return <Router history={history}>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path={AppRoute.MAIN}>
           {this._renderApp()}
         </Route>
-        <Route exact path='/dev-video-player-big'>
+        <Route exct path={AppRoute.LOGIN}>
+          <SignInWrapped />
+        </Route>
+        <Route exact path='/player'>
           <VideoPlayerBigWrapped
             posterImage={filmCard.posterImage}
             videoMain={filmCard.video}
             onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
           />
         </Route>
-        <Route exact path='/dev-film-detail'>
+        <Route exact path='/films'>
           <FilmDetailsWithTabs
             films={films}
             film={filmCard}
@@ -87,9 +90,6 @@ class App extends PureComponent {
             authorizationStatus={authorizationStatus}
             onTypeScreenChange={onTypeScreenChange}
           />
-        </Route>
-        <Route exct path='/dev-sign-in'>
-          <SignInWrapped />
         </Route>
       </Switch>
     </Router>;

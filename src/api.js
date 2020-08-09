@@ -8,7 +8,7 @@ const BASE_URL = `https://4.react.pages.academy/wtw`;
 const TIMEOUT = 5000;
 const WITH_CREDENTIALS = true;
 
-export const createApi = (onUnauthorize) => {
+export const createApi = (onUnauthorized) => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIMEOUT,
@@ -23,7 +23,7 @@ export const createApi = (onUnauthorize) => {
     const {response} = err;
 
     if (response.status === Error.UNAUTHORIZED) {
-      onUnauthorize();
+      onUnauthorized();
 
       throw err;
     }
