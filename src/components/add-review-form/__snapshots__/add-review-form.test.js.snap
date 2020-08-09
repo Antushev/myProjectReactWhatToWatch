@@ -439,7 +439,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
       <button
         className="add-review__btn"
         color="#F00"
-        disabled={false}
+        disabled={true}
         style={
           Object {
             "color": "#866866",

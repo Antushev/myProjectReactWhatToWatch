@@ -56,6 +56,7 @@ describe(`Test HOC with-from-validation-review`, () => {
     const onRatingChange = jest.fn();
     const onTextChange = jest.fn();
     const onSubmitClick = jest.fn();
+    const onTypeScreenChange = jest.fn();
 
     const formWrapped = mount(
         <FormComponentWrapped
@@ -64,6 +65,7 @@ describe(`Test HOC with-from-validation-review`, () => {
           isLoadingComment={false}
           onRatingChange={onRatingChange}
           onTextChange={onTextChange}
+          onTypeScreenChange={onTypeScreenChange}
           onSubmitClick={onSubmitClick}
         />
     );

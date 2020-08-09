@@ -2,7 +2,10 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import {TypeScreen} from './../../utils/const.js';
+
 import {Operation as DataOperation} from '../../reducer/data/data.js';
+import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
 import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/data/selectors.js';
 
 const COMMENT_LENGTH_MIN = 50;
@@ -81,7 +84,7 @@ const withFormValidationReview = (Component) => {
     }
 
     _handleSubmitClick() {
-      const {onSubmitClick} = this.props;
+      const {isErrorLoadingComment, isLoadingComment, onTypeScreenChange, onSubmitClick} = this.props;
       const {comment: commentText, rating: ratingComment} = this.state;
 
       const comment = {
@@ -90,13 +93,18 @@ const withFormValidationReview = (Component) => {
       };
 
       onSubmitClick(ID_FILM_TEMPORARY, comment);
+
+      if (!isErrorLoadingComment && !isLoadingComment) {
+        onTypeScreenChange(TypeScreen.DETAIL_SCREEN);
+      }
     }
   }
 
   WithFormValidationReview.propTypes = {
     isLoadingComment: PropTypes.bool.isRequired,
     isErrorLoadingComment: PropTypes.bool.isRequired,
-    onSubmitClick: PropTypes.func.isRequired
+    onTypeScreenChange: PropTypes.func.isRequired,
+    onSubmitClick: PropTypes.func.isRequired,
   };
 
   return WithFormValidationReview;
@@ -112,6 +120,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onSubmitClick(idFilm, comment) {
     dispatch(DataOperation.addComment(idFilm, comment));
+  },
+
+  onTypeScreenChange() {
+    dispatch(AppStateActionCreator.changeTypeScreen(TypeScreen.DETAIL_SCREEN));
   }
 });
 
