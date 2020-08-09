@@ -243,6 +243,12 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with AUTH user 1`] = `
             className="add-review__btn"
             color="#F00"
             disabled={true}
+            style={
+              Object {
+                "color": "#e1b0b2",
+                "cursor": "default",
+              }
+            }
             type="submit"
           >
             Post
@@ -490,6 +496,12 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with NO_AUTH user 1`] = `
             className="add-review__btn"
             color="#F00"
             disabled={true}
+            style={
+              Object {
+                "color": "#e1b0b2",
+                "cursor": "default",
+              }
+            }
             type="submit"
           >
             Post

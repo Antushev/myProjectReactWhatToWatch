@@ -136,6 +136,12 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
         className="add-review__btn"
         color="#F00"
         disabled={false}
+        style={
+          Object {
+            "color": "#866866",
+            "cursor": "pointer",
+          }
+        }
         type="submit"
       >
         Post
@@ -282,6 +288,12 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isButtonBloc
         className="add-review__btn"
         color="#F00"
         disabled={true}
+        style={
+          Object {
+            "color": "#e1b0b2",
+            "cursor": "default",
+          }
+        }
         type="submit"
       >
         Post
@@ -428,6 +440,12 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
         className="add-review__btn"
         color="#F00"
         disabled={false}
+        style={
+          Object {
+            "color": "#866866",
+            "cursor": "pointer",
+          }
+        }
         type="submit"
       >
         Post
@@ -435,7 +453,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     </div>
   </div>
   <p>
-    Комментарий добавлен
+    Комментарий загружается
   </p>
 </form>
 `;
@@ -576,6 +594,12 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
         className="add-review__btn"
         color="#F00"
         disabled={true}
+        style={
+          Object {
+            "color": "#e1b0b2",
+            "cursor": "default",
+          }
+        }
         type="submit"
       >
         Post
@@ -583,7 +607,7 @@ exports[`AddReViewFormComponent AddReviewFormComponentSnapshot with isLoadingCom
     </div>
   </div>
   <p>
-    Комментарий добавлен
+    Комментарий загружается
   </p>
 </form>
 `;
