@@ -37,7 +37,11 @@ const renderRatingPoints = (points, rating, isLoadingComment, onRatingChange) =>
   });
 };
 
-const getLoadingBlock = (isLoadingComment) => {
+const getLoadingBlock = (isLoadingComment, isErrorLoadingComment) => {
+  if (isErrorLoadingComment) {
+    return <p>Ошибка при загрузке комментария</p>;
+  }
+
   return isLoadingComment ? <p>Комментарий загружается</p> : ``;
 };
 
@@ -45,6 +49,7 @@ const FormAddReview = (props) => {
   const {
     rating,
     isLoadingComment,
+    isErrorLoadingComment,
     isButtonBlocked,
     onRatingChange,
     onTextChange,
@@ -92,7 +97,7 @@ const FormAddReview = (props) => {
           </button>
         </div>
       </div>
-      {getLoadingBlock(isLoadingComment)}
+      {getLoadingBlock(isLoadingComment, isErrorLoadingComment)}
     </form>
   );
 };
@@ -100,6 +105,7 @@ const FormAddReview = (props) => {
 FormAddReview.propTypes = {
   rating: PropTypes.number.isRequired,
   isLoadingComment: PropTypes.bool.isRequired,
+  isErrorLoadingComment: PropTypes.bool.isRequired,
   isButtonBlocked: PropTypes.bool.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   onTextChange: PropTypes.func.isRequired,

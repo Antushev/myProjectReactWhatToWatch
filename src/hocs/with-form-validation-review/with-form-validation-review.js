@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {Operation as DataOperation} from '../../reducer/data/data.js';
-import {getLoadingCommentStatus} from '../../reducer/data/selectors.js';
+import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/data/selectors.js';
 
 const COMMENT_LENGTH_MIN = 50;
 const COMMENT_LENGTH_MAX = 400;
@@ -28,12 +28,13 @@ const withFormValidationReview = (Component) => {
 
     render() {
       const {rating, isButtonBlocked} = this.state;
-      const {isLoadingComment} = this.props;
+      const {isLoadingComment, isErrorLoadingComment} = this.props;
 
       return (
         <Component
           rating={rating}
           isLoadingComment={isLoadingComment}
+          isErrorLoadingComment={isErrorLoadingComment}
           isButtonBlocked={isButtonBlocked}
           onRatingChange={this._handleChangeRating}
           onTextChange={this._handleChangeText}
@@ -94,6 +95,7 @@ const withFormValidationReview = (Component) => {
 
   WithFormValidationReview.propTypes = {
     isLoadingComment: PropTypes.bool.isRequired,
+    isErrorLoadingComment: PropTypes.bool.isRequired,
     onSubmitClick: PropTypes.func.isRequired
   };
 
@@ -102,7 +104,8 @@ const withFormValidationReview = (Component) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoadingComment: getLoadingCommentStatus(state)
+    isLoadingComment: getLoadingCommentStatus(state),
+    isErrorLoadingComment: getErrorLoadingComment(state)
   };
 };
 

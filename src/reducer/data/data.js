@@ -5,6 +5,7 @@ const initialState = {
   isLoading: false,
   isLoadingComment: false,
   isError: false,
+  isErrorLoadingComment: false,
   films: null,
   filmPromo: null,
   comments: null,
@@ -20,6 +21,8 @@ const ActionType = {
   GET_FILMS: `GET_FILMS`,
   CHANGE_GENRE: `CHANGE_FILTER`,
   PUT_ERROR: `PUT_ERROR`,
+  PUT_ERROR_LOADING_COMMENT: `PUT_ERROR_LOADING_COMMENT`,
+  REMOVE_ERROR_LOADING_COMMENT: `REMOVE_ERROR_LOADING_COMMENT`,
   REMOVE_ERROR: `REMOVE_ERROR`,
   START_ADD_COMMENT: `START_LOAD_COMMENT`,
   END_ADD_COMMENT: `END_LOAD_COMMENT`
@@ -66,6 +69,18 @@ const ActionCreator = {
     return {
       type: ActionType.PUT_ERROR,
       payload: true
+    };
+  },
+  putErrorLoadingComment() {
+    return {
+      type: ActionType.PUT_ERROR_LOADING_COMMENT,
+      payload: true
+    };
+  },
+  removeErrorLoadingComment() {
+    return {
+      type: ActionType.REMOVE_ERROR_LOADING_COMMENT,
+      payload: false
     };
   },
   removeError() {
@@ -132,6 +147,7 @@ const Operation = {
   },
   addComment: (idFilm, comment) => (dispatch, getState, api) => {
     dispatch(ActionCreator.startAddComment());
+    dispatch(ActionCreator.removeErrorLoadingComment());
     return api.post(`/comments/${idFilm}`, {
       rating: comment.rating,
       comment: comment.comment
@@ -143,7 +159,7 @@ const Operation = {
       })
       .catch((err) => {
         dispatch(ActionCreator.endAddComment());
-        dispatch(ActionCreator.putError());
+        dispatch(ActionCreator.putErrorLoadingComment());
         throw err;
       });
   }
@@ -195,6 +211,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.REMOVE_ERROR:
       return Object.assign({}, state, {
         isError: false
+      });
+    case ActionType.PUT_ERROR_LOADING_COMMENT:
+      return Object.assign({}, state, {
+        isErrorLoadingComment: true
+      });
+    case ActionType.REMOVE_ERROR_LOADING_COMMENT:
+      return Object.assign({}, state, {
+        isErrorLoadingComment: false
       });
     case ActionType.START_ADD_COMMENT:
       return Object.assign({}, state, {
