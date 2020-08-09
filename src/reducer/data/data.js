@@ -1,3 +1,7 @@
+import {AppRoute} from './../../utils/const.js';
+import history from './../../history.js';
+
+
 import {filmAdapter, filmsAdapter} from '../../adapters/film-adapter.js';
 import {commentsAdapter} from '../../adapters/comments-adapter.js';
 
