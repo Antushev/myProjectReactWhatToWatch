@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
+import {history} from '../../history.js';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
@@ -60,7 +61,7 @@ class App extends PureComponent {
 
     const {films} = this.props;
     const filmCard = films[0];
-    return <BrowserRouter>
+    return <Router history={history}>
       <Switch>
         <Route exact path='/'>
           {this._renderApp()}
@@ -91,7 +92,7 @@ class App extends PureComponent {
           <SignInWrapped />
         </Route>
       </Switch>
-    </BrowserRouter>;
+    </Router>;
   }
 
   _renderApp() {
