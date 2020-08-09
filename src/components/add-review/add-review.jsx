@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {history} from '../../history.js';
+import history from '../../history.js';
 import {AuthorizationStatus, AppRoute} from './../../utils/const.js';
 
 import {filmShape, userShape} from '../../utils/shapes';
