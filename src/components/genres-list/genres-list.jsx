@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import {getFilms} from './../../reducer/data/selectors.js';
+
 import {filmShape} from './../../utils/shapes.js';
 
 const getGenresFilms = (films) => {
@@ -62,5 +66,12 @@ GenresList.propTypes = {
   onGenreTabClick: PropTypes.func.isRequired
 };
 
-export default GenresList;
+const mapStateToProps = (state) => {
+  return {
+    films: getFilms(state)
+  };
+};
+
+export {GenresList};
+export default connect(mapStateToProps, null)(GenresList);
 

@@ -10,6 +10,8 @@ import ShowMore from './../show-more/show-more.jsx';
 import UserProfile from './../user-profile/user-profile.jsx';
 
 import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
+import {AppRoute, AuthorizationStatus} from "../../utils/const";
+import history from "../../history";
 
 const GenresListWrapped = withActiveItem(GenresList);
 
@@ -93,7 +95,13 @@ const Main = (props) => {
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
-                onClick={() => onFilmMyListClick(id, !isFavorite)}
+                onClick={() => {
+                  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+                    history.push(AppRoute.LOGIN);
+                  } else {
+                    onFilmMyListClick(id, !isFavorite);
+                  }
+                }}
               >
                 {isFavorite ?
                   <svg viewBox="0 0 18 14" width="18" height="14">
@@ -115,7 +123,6 @@ const Main = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenresListWrapped
-          films={films}
           activeItem={DEFAULT_GENRE}
           onGenreTabClick={onGenreTabClick}
         />

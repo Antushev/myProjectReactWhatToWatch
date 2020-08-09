@@ -78,7 +78,7 @@ exports[`AddReviewComponent AddReviewComponentSnapshot with AUTH user 1`] = `
         className="user-block"
       >
         <a
-          href="/"
+          href="/mylist"
           onClick={[Function]}
         >
           <div

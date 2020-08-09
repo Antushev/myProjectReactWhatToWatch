@@ -1,9 +1,11 @@
-import {AppRoute} from './../../utils/const.js';
-import history from './../../history.js';
-
-
 import {filmAdapter, filmsAdapter} from '../../adapters/film-adapter.js';
 import {commentsAdapter} from '../../adapters/comments-adapter.js';
+
+const getFilmsNew = (filmNew, state) => {
+  const filmIndex = state.films.findIndex((film) => film.id === filmNew.id);
+  const filmsCurrent = state.films.slice();
+  return [].concat(filmsCurrent.slice(0, filmIndex), filmNew, filmsCurrent.slice(filmIndex + 1));
+};
 
 const initialState = {
   isLoading: false,
@@ -252,10 +254,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.ADD_FILM_IN_MY_LIST:
       const filmNew = action.payload;
-      const filmIndex = state.films.findIndex((film) => film.id === filmNew.id);
-      const filmsCurrent = state.films;
-
-      const filmsNew = [].concat(filmsCurrent.slice(0, filmIndex), filmNew, filmsCurrent.slice(filmIndex + 1));
+      const filmsNew = getFilmsNew(filmNew, state);
 
       return Object.assign({}, state, {
         films: filmsNew

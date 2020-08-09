@@ -5,7 +5,7 @@ exports[`UserProfileComponent UserProfileComponentSnapshot 1`] = `
   className="user-block"
 >
   <a
-    href="/"
+    href="/mylist"
     onClick={[Function]}
   >
     <div

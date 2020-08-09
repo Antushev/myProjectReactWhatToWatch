@@ -26,6 +26,12 @@ const getFilmPromo = (state) => {
   return state[NameSpace.DATA].filmPromo;
 };
 
+const getFilmById = (state, id) => {
+  const films = state[NameSpace.DATA].films;
+
+  return films.find((film) => film.id === id);
+};
+
 const getComments = (state) => {
   return state[NameSpace.DATA].comments;
 };
@@ -53,6 +59,7 @@ export {
   getErrorLoadingComment,
   getErrorStatus,
   getFilms,
+  getFilmById,
   getComments,
   getFilmsByGenre,
   getFilmPromo

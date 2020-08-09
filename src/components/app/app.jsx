@@ -10,8 +10,7 @@ import {
   getLoadingStatus,
   getErrorStatus, getFilmPromo,
   getComments,
-  getFilmsByGenre,
-  getFilms
+  getFilmsByGenre
 } from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
@@ -51,7 +50,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {filmPromo, isLoading, isError, user, authorizationStatus, onTypeScreenChange} = this.props;
+    const {isLoading, isError} = this.props;
 
     if (isLoading) {
       return <Loading />;
@@ -61,8 +60,6 @@ class App extends PureComponent {
       return <Error />;
     }
 
-    const {films} = this.props;
-    const filmCard = films[0];
     return <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MAIN}>
@@ -70,28 +67,6 @@ class App extends PureComponent {
         </Route>
         <Route exct path={AppRoute.LOGIN}>
           <SignInWrapped />
-        </Route>
-        <Route exact path='/player'>
-          <VideoPlayerBigWrapped
-            posterImage={filmCard.posterImage}
-            videoMain={filmCard.video}
-            onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
-          />
-        </Route>
-        <Route exact path='/films'>
-          <FilmDetailsWithTabs
-            films={films}
-            film={filmCard}
-            onFilmClick={this._handleFilmClick}
-          />
-        </Route>
-        <Route exact path='/dev-review'>
-          <AddReview
-            film={filmPromo}
-            user={user}
-            authorizationStatus={authorizationStatus}
-            onTypeScreenChange={onTypeScreenChange}
-          />
         </Route>
       </Switch>
     </Router>;
@@ -119,7 +94,6 @@ class App extends PureComponent {
           <Main
             films={films}
             user={user}
-            currentFilms={films}
             showFilmCardCount={showFilmCardCount}
             filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
@@ -135,7 +109,7 @@ class App extends PureComponent {
         return (
           <FilmDetailsWithTabs
             films={films}
-            film={film}
+            filmDetail={film}
             user={user}
             comments={comments}
             authorizationStatus={authorizationStatus}
@@ -173,7 +147,6 @@ class App extends PureComponent {
           <Main
             films={films}
             user={user}
-            currentFilms={films}
             showFilmCardCount={showFilmCardCount}
             filmCardPreview={filmPromo}
             authorizationStatus={authorizationStatus}
@@ -182,6 +155,7 @@ class App extends PureComponent {
             onTypeScreenChange={onTypeScreenChange}
             onGenreTabClick={onGenreTabClick}
             onShowMoreClick={onShowMoreClick}
+            onFilmMyListClick={onFilmMyListClick}
           />
         );
     }
@@ -190,6 +164,8 @@ class App extends PureComponent {
   _handleFilmClick(film, typeScreen, idTimer = null) {
     const {onTypeScreenChange, onLoadComments} = this.props;
 
+
+    // Нужно брать фильм из хранилища по ID
     onLoadComments(film.id);
 
     if (idTimer) {
