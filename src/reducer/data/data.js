@@ -22,7 +22,6 @@ const ActionType = {
   PUT_ERROR: `PUT_ERROR`,
   REMOVE_ERROR: `REMOVE_ERROR`,
   START_ADD_COMMENT: `START_LOAD_COMMENT`,
-  ADD_COMMENT: `ADD_COMMENT`,
   END_ADD_COMMENT: `END_LOAD_COMMENT`
 };
 
@@ -87,12 +86,6 @@ const ActionCreator = {
       payload: null
     };
   },
-  addComment(newComment) {
-    return {
-      type: ActionType.ADD_COMMENT,
-      payload: newComment
-    };
-  },
   endAddComment() {
     return {
       type: ActionType.END_ADD_COMMENT,
@@ -145,7 +138,7 @@ const Operation = {
     })
       .then((response) => {
         const comments = commentsAdapter(response.data);
-        dispatch(ActionCreator.addComment(comments));
+        dispatch(ActionCreator.loadComments(comments));
         dispatch(ActionCreator.endAddComment());
       })
       .catch((err) => {

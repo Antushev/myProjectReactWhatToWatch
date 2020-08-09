@@ -3,6 +3,21 @@ import PropTypes from 'prop-types';
 
 const ratingPoints = [1, 2, 3, 4, 5];
 
+const COLOR_BUTTON_DEFAULT = `#e1b0b2`;
+const CURSOR_BUTTON_DEFAULT = `default`;
+const COLOR_BUTTON_ACTIVE = `#866866`;
+const CURSOR_BUTTON_ACTIVE = `pointer`;
+
+const styleButtonDefault = {
+  cursor: CURSOR_BUTTON_DEFAULT,
+  color: COLOR_BUTTON_DEFAULT
+};
+
+const styleButtonActive = {
+  cursor: CURSOR_BUTTON_ACTIVE,
+  color: COLOR_BUTTON_ACTIVE
+};
+
 const renderRatingPoints = (points, rating, isLoadingComment, onRatingChange) => {
   return points.map((point) => {
     return (
@@ -23,7 +38,7 @@ const renderRatingPoints = (points, rating, isLoadingComment, onRatingChange) =>
 };
 
 const getLoadingBlock = (isLoadingComment) => {
-  return isLoadingComment ? <p>Комментарий добавлен</p> : ``;
+  return isLoadingComment ? <p>Комментарий загружается</p> : ``;
 };
 
 const FormAddReview = (props) => {
@@ -69,6 +84,7 @@ const FormAddReview = (props) => {
           <button
             className="add-review__btn"
             type="submit"
+            style={isButtonBlocked ? styleButtonDefault : styleButtonActive}
             disabled={isButtonBlocked}
             color="#F00"
           >
