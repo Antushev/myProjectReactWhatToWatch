@@ -34,8 +34,7 @@ const UserProfile = (props) => {
 
 UserProfile.propTypes = {
   user: PropTypes.shape(userShape).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 export default UserProfile;

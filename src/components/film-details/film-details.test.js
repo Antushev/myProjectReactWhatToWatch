@@ -1,10 +1,14 @@
 import React from 'react';
+import {createStore, applyMiddleware} from 'redux';
+import reducer from './../../reducer/reducer.js';
 import renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import history from './../../history.js';
 import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import {NameSpace} from './../../reducer/name-space.js';
+
+import {createApi} from './../../api.js';
 
 import {film, films} from '../../mocks-test/films-test.js';
 import {user} from '../../mocks-test/user-test.js';
@@ -14,15 +18,28 @@ import FilmDetails from './film-details.jsx';
 
 const activeTab = `overview`;
 
-const mockStore = configureStore([]);
+const api = createApi();
+
+const store = createStore(
+    reducer,
+    {
+      [NameSpace.DATA]: {
+        film: null,
+        films,
+        id: 1
+      }
+    },
+    applyMiddleware(thunk.withExtraArgument(api))
+);
 
 describe(`FilmDetailsComponent`, () => {
   it(`FilmDetailsComponentSnapshot`, () => {
-    const store = mockStore({
-      [NameSpace.DATA]: {
-        films
+
+    const match = {
+      params: {
+        id: 1
       }
-    });
+    };
 
     const tree = renderer
       .create(
@@ -33,8 +50,10 @@ describe(`FilmDetailsComponent`, () => {
                 films={films}
                 user={user}
                 comments={comments}
+                match={match}
                 authorizationStatus={`NO_AUTH`}
                 activeTab={activeTab}
+                loadComments={() => {}}
                 renderTabs={() => {}}
                 onFilmClick={() => {}}
                 onPlayClick={() => {}}

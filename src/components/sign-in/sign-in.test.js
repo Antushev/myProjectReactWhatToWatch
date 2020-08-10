@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from './../../history.js';
 
 import {SignIn} from './sign-in.jsx';
 
@@ -7,13 +9,15 @@ describe(`SignInComponent`, () => {
   it(`SignInComponentSnapshot`, () => {
     const tree = renderer
       .create(
-          <SignIn
-            buttonDisabled={true}
-            onAuthorizeClick={() => {}}
-            onTypeScreenChange={() => {}}
-            onChangeInputEmail={() => {}}
-            onChangeInputPassword={() => {}}
-          />
+          <Router history={history}>
+            <SignIn
+              buttonDisabled={true}
+              onAuthorizeClick={() => {}}
+              onTypeScreenChange={() => {}}
+              onChangeInputEmail={() => {}}
+              onChangeInputPassword={() => {}}
+            />
+          </Router>
       )
       .toJSON();
 

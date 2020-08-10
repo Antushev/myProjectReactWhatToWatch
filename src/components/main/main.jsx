@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-import {TypeScreen, FilmsListType} from '../../utils/const.js';
+import {AppRoute, AuthorizationStatus, TypeScreen, FilmsListType} from '../../utils/const.js';
 import {filmShape, userShape} from '../../utils/shapes.js';
 
 import FilmsList from './../films-list/films-list.jsx';
@@ -9,8 +11,9 @@ import GenresList from './../genres-list/genres-list.jsx';
 import ShowMore from './../show-more/show-more.jsx';
 import UserProfile from './../user-profile/user-profile.jsx';
 
+import {getFilmsByGenre} from './../../reducer/data/selectors.js';
+
 import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
-import {AppRoute, AuthorizationStatus} from "../../utils/const";
 import history from "../../history";
 
 const GenresListWrapped = withActiveItem(GenresList);
@@ -28,7 +31,6 @@ const Main = (props) => {
     onGenreTabClick,
     onShowMoreClick,
     onPlayClick,
-    onTypeScreenChange,
     onFilmMyListClick
   } = props;
 
@@ -52,17 +54,16 @@ const Main = (props) => {
 
       <header className="page-header movie-card__head">
         <div className="logo">
-          <a className="logo__link">
+          <Link to={`${AppRoute.MAIN}`} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
         <UserProfile
           user={user}
           authorizationStatus={authorizationStatus}
-          onTypeScreenChange={onTypeScreenChange}
         />
 
       </header>
@@ -82,7 +83,8 @@ const Main = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button
+              <Link
+                to={`${AppRoute.PLAYER}/${id}`}
                 className="btn btn--play movie-card__button"
                 type="button"
                 onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
@@ -91,7 +93,7 @@ const Main = (props) => {
                   <use xlinkHref="#play-s"></use>
                 </svg>
                 <span>Play</span>
-              </button>
+              </Link>
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
@@ -181,4 +183,11 @@ Main.propTypes = {
   onFilmMyListClick: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    films: getFilmsByGenre(state)
+  };
+};
+
+export {Main};
+export default connect(mapStateToProps, null)(Main);

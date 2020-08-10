@@ -10,6 +10,10 @@ const getLoadingCommentStatus = (state) => {
   return state[NameSpace.DATA].isLoadingComment;
 };
 
+const getLoadingFilmsFavoriteStatus = (state) => {
+  return state[NameSpace.DATA].isLoadingFilmsFavorite;
+};
+
 const getErrorLoadingComment = (state) => {
   return state[NameSpace.DATA].isErrorLoadingComment;
 };
@@ -22,6 +26,10 @@ const getFilms = (state) => {
   return state[NameSpace.DATA].films;
 };
 
+const getFilmsFavorite = (state) => {
+  return state[NameSpace.DATA].filmsFavorite;
+};
+
 const getFilmPromo = (state) => {
   return state[NameSpace.DATA].filmPromo;
 };
@@ -29,7 +37,11 @@ const getFilmPromo = (state) => {
 const getFilmById = (state, id) => {
   const films = state[NameSpace.DATA].films;
 
-  return films.find((film) => film.id === id);
+  return films.find((film) => film.id === Number(id));
+};
+
+const getFilmActive = (state) => {
+  return state[NameSpace.DATA].filmActive;
 };
 
 const getComments = (state) => {
@@ -57,9 +69,12 @@ export {
   getLoadingStatus,
   getLoadingCommentStatus,
   getErrorLoadingComment,
+  getLoadingFilmsFavoriteStatus,
   getErrorStatus,
   getFilms,
+  getFilmsFavorite,
   getFilmById,
+  getFilmActive,
   getComments,
   getFilmsByGenre,
   getFilmPromo

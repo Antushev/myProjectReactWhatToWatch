@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import VideoPlayer from './../../components/video-player/video-player.jsx';
 
-import {withVideo} from '../with-video/with-video.jsx';
+import withVideo from '../with-video/with-video.jsx';
 
 const withVideoPlayer = (Component, typeVideoPlayer) => {
   const VideoPlayerWrapped = withVideo(VideoPlayer, typeVideoPlayer);

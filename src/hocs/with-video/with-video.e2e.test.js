@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import {film} from './../../mocks-test/films-test.js';
+
 import {withVideo} from './with-video.jsx';
 
 configure({adapter: new Adapter()});
@@ -36,6 +38,7 @@ describe(`Tests HOC with-video`, () => {
 
     const wrapper = mount(
         <MockVideoWrapped
+          filmActive={film}
           isPlaying={false}
           posterImage={previewImage}
           previewVideo={previewVideo}
@@ -64,7 +67,8 @@ describe(`Tests HOC with-video`, () => {
 
     const wrapper = mount(
         <MockVideoWrapped
-          isPlaying={true}
+          filmActive={film}
+          isPlaying={false}
           posterImage={previewImage}
           previewVideo={previewVideo}
           handleVideoPlayerMouseOver={() => {}}

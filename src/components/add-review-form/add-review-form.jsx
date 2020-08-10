@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {filmShape} from '../../utils/shapes.js';
+
 const ratingPoints = [1, 2, 3, 4, 5];
 
 const COLOR_BUTTON_DEFAULT = `#e1b0b2`;
@@ -47,6 +49,7 @@ const getLoadingBlock = (isLoadingComment, isErrorLoadingComment) => {
 
 const FormAddReview = (props) => {
   const {
+    film,
     rating,
     isLoadingComment,
     isErrorLoadingComment,
@@ -60,7 +63,7 @@ const FormAddReview = (props) => {
     <form action="#" className="add-review__form" onSubmit={(evt) => {
       evt.preventDefault();
 
-      onSubmitClick();
+      onSubmitClick(film.id);
     }}>
       <div className="rating">
         <div className="rating__stars">
@@ -103,6 +106,7 @@ const FormAddReview = (props) => {
 };
 
 FormAddReview.propTypes = {
+  film: PropTypes.shape(filmShape).isRequired,
   rating: PropTypes.number.isRequired,
   isLoadingComment: PropTypes.bool.isRequired,
   isErrorLoadingComment: PropTypes.bool.isRequired,

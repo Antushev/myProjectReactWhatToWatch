@@ -26,6 +26,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -105,8 +107,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/1"
               onClick={[Function]}
               type="button"
             >
@@ -122,7 +125,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               onClick={[Function]}
@@ -196,112 +199,7 @@ Array [
       </ul>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"
@@ -367,6 +265,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -438,8 +338,9 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/1"
               onClick={[Function]}
               type="button"
             >
@@ -455,7 +356,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               onClick={[Function]}
@@ -529,112 +430,7 @@ Array [
       </ul>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
-            <video
-              className="player__video"
-              muted="muted"
-            />
-            ;
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Интерстеллар
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"

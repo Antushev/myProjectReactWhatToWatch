@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import history from './../../history.js';
 
-import {TypeScreen} from './../../utils/const.js';
+import {AppRoute, TypeScreen} from './../../utils/const.js';
+import {filmShape} from './../../utils/shapes.js';
 
 import {Operation as DataOperation} from '../../reducer/data/data.js';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
@@ -10,7 +12,6 @@ import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/dat
 
 const COMMENT_LENGTH_MIN = 50;
 const COMMENT_LENGTH_MAX = 400;
-const ID_FILM_TEMPORARY = 10;
 const START_RATING_REVIEW = 0;
 
 const withFormValidationReview = (Component) => {
@@ -31,10 +32,11 @@ const withFormValidationReview = (Component) => {
 
     render() {
       const {rating, isButtonBlocked} = this.state;
-      const {isLoadingComment, isErrorLoadingComment} = this.props;
+      const {film, isLoadingComment, isErrorLoadingComment} = this.props;
 
       return (
         <Component
+          film={film}
           rating={rating}
           isLoadingComment={isLoadingComment}
           isErrorLoadingComment={isErrorLoadingComment}
@@ -83,8 +85,8 @@ const withFormValidationReview = (Component) => {
       }
     }
 
-    _handleSubmitClick() {
-      const {isErrorLoadingComment, isLoadingComment, onTypeScreenChange, onSubmitClick} = this.props;
+    _handleSubmitClick(idFilm) {
+      const {film, isErrorLoadingComment, isLoadingComment, onSubmitClick} = this.props;
       const {comment: commentText, rating: ratingComment} = this.state;
 
       const comment = {
@@ -92,15 +94,16 @@ const withFormValidationReview = (Component) => {
         rating: ratingComment
       };
 
-      onSubmitClick(ID_FILM_TEMPORARY, comment);
+      onSubmitClick(idFilm, comment);
 
       if (!isErrorLoadingComment && !isLoadingComment) {
-        onTypeScreenChange(TypeScreen.DETAIL_SCREEN);
+        history.push(`${AppRoute.FILMS}/${film.id}`);
       }
     }
   }
 
   WithFormValidationReview.propTypes = {
+    film: PropTypes.shape(filmShape).isRequired,
     isLoadingComment: PropTypes.bool.isRequired,
     isErrorLoadingComment: PropTypes.bool.isRequired,
     onTypeScreenChange: PropTypes.func.isRequired,

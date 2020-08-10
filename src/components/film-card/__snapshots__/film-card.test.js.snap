@@ -3,14 +3,18 @@
 exports[`FilmCardComponent FilmCardComponentSnapshot 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
 >
+  <a
+    href="/films/1"
+    onClick={[Function]}
+  />
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/films/1"
+      onClick={[Function]}
     >
       Интерстеллар
     </a>

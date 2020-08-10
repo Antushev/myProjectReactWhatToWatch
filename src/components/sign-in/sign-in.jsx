@@ -1,11 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
-import {getAuthorizeStatusUser} from './../../reducer/user/selectors.js';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import {Operation as UserOperation} from './../../reducer/user/user.js';
 import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/app-state.js';
+import {getAuthorizeStatusUser} from './../../reducer/user/selectors.js';
+
+import {AppRoute} from "./../../utils/const";
 
 const SignIn = (props) => {
   const {
@@ -22,11 +24,11 @@ const SignIn = (props) => {
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <a href="main.html" className="logo__link">
+          <Link to={`${AppRoute.MAIN}`} className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
         <h1 className="page-title user-page__title">Sign in</h1>
@@ -105,7 +107,7 @@ SignIn.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    authorizeStatus: getAuthorizeStatusUser(state),
+    authorizationStatus: getAuthorizeStatusUser(state),
   };
 };
 

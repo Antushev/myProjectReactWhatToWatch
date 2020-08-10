@@ -1,6 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+
+import {getFilmActive} from './../../reducer/data/selectors.js';
+
 import {TypeVideoPlayer} from './../../utils/const.js';
+import {filmShape} from './../../utils/shapes.js';
 
 const TIMEOUT_PLAY_VIDEO = 1000;
 
@@ -36,13 +41,18 @@ const withVideo = (Component, typeVideoPlayer) => {
     }
 
     componentDidMount() {
-      const {posterImage, previewVideo, videoMain} = this.props;
+      const {filmActive, posterImage, previewVideo} = this.props;
 
       const video = this._videoRef.current;
 
-      video.src = typeVideoPlayer === TypeVideoPlayer.SMALL_VIDEO_PLAYER ?
-        previewVideo : videoMain;
-      video.poster = posterImage;
+      if (typeVideoPlayer === TypeVideoPlayer.SMALL_VIDEO_PLAYER) {
+        video.src = previewVideo;
+        video.poster = posterImage;
+      } else {
+        video.src = filmActive.videoMain;
+        video.poster = filmActive.posterImage;
+      }
+
 
       video.onplay = () => {
         this.setState({
@@ -67,6 +77,7 @@ const withVideo = (Component, typeVideoPlayer) => {
     }
 
     componentDidUpdate() {
+      clearTimeout(this._idTimer);
       const {isPlaying} = this.props;
       const video = this._videoRef.current;
 
@@ -133,6 +144,7 @@ const withVideo = (Component, typeVideoPlayer) => {
   }
 
   WithVideo.propTypes = {
+    filmActive: PropTypes.shape(filmShape).isRequired,
     isPlaying: PropTypes.bool.isRequired,
     posterImage: PropTypes.string.isRequired,
     previewVideo: PropTypes.string,
@@ -142,4 +154,11 @@ const withVideo = (Component, typeVideoPlayer) => {
   return WithVideo;
 };
 
+const mapStateToProps = (state) => {
+  return {
+    filmActive: getFilmActive(state),
+  };
+};
+
 export {withVideo};
+export default (Component, typeVideoPlayer) => connect(mapStateToProps, null)(withVideo(Component, typeVideoPlayer));
