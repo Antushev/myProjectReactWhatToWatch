@@ -10,10 +10,13 @@ const getFilmsNew = (filmNew, state) => {
 const initialState = {
   isLoading: false,
   isLoadingComment: false,
+  isLoadingFilmsFavorite: true,
   isError: false,
   isErrorLoadingComment: false,
   films: null,
+  filmsFavorite: null,
   filmPromo: null,
+  filmActive: null,
   comments: null,
   currentGenre: `All genres`
 };
@@ -32,7 +35,11 @@ const ActionType = {
   REMOVE_ERROR: `REMOVE_ERROR`,
   START_ADD_COMMENT: `START_LOAD_COMMENT`,
   END_ADD_COMMENT: `END_LOAD_COMMENT`,
-  ADD_FILM_IN_MY_LIST: `ADD_FILM_IN_MY_LIST`
+  ADD_FILM_IN_MY_LIST: `ADD_FILM_IN_MY_LIST`,
+  ADD_FILM_ACTIVE: `ADD_FILM_ACTIVE`,
+  START_LOAD_FILMS_FAVORITE: `START_LOAD_FILMS_FAVORITE`,
+  LOAD_FILMS_FAVORITE: `LOAD_FILMS_FAVORITE`,
+  END_LOAD_FILMS_FAVORITE: `END_LOAD_FILMS_FAVORITE`
 };
 
 const ActionCreator = {
@@ -46,6 +53,24 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_FILMS,
       payload: filmsLoad
+    };
+  },
+  startLoadFilmsFavorite() {
+    return {
+      type: ActionType.START_LOAD_FILMS_FAVORITE,
+      payload: true
+    };
+  },
+  loadFilmsFavorite(filmsFavorite) {
+    return {
+      type: ActionType.LOAD_FILMS_FAVORITE,
+      payload: filmsFavorite
+    };
+  },
+  endLoadFilmsFavorite() {
+    return {
+      type: ActionType.END_LOAD_FILMS_FAVORITE,
+      payload: false
     };
   },
   loadFilmPromo(film) {
@@ -102,13 +127,13 @@ const ActionCreator = {
       payload: comments
     };
   },
-  startAddComment() {
+  startLoadComment() {
     return {
       type: ActionType.START_ADD_COMMENT,
       payload: null
     };
   },
-  endAddComment() {
+  endLoadComment() {
     return {
       type: ActionType.END_ADD_COMMENT,
       payload: null
@@ -117,6 +142,12 @@ const ActionCreator = {
   addFilmInMyList(film) {
     return {
       type: ActionType.ADD_FILM_IN_MY_LIST,
+      payload: film
+    };
+  },
+  addFilmActive(film) {
+    return {
+      type: ActionType.ADD_FILM_ACTIVE,
       payload: film
     };
   }
@@ -134,6 +165,7 @@ const Operation = {
       .then((response) => {
         const filmPromo = filmAdapter(response.data);
         dispatch(ActionCreator.loadFilmPromo(filmPromo));
+        dispatch(ActionCreator.addFilmActive(filmPromo));
       })
       .then(() => {
         dispatch(ActionCreator.endLoad());
@@ -145,21 +177,22 @@ const Operation = {
   },
   loadComment: (idFilm) => (dispatch, getState, api) => {
     dispatch(ActionCreator.removeError());
-    dispatch(ActionCreator.startLoad());
+    dispatch(ActionCreator.startLoadComment());
     return api.get(`/comments/${idFilm}`)
       .then((response) => {
         const comments = commentsAdapter(response.data);
 
         dispatch(ActionCreator.loadComments(comments));
-        dispatch(ActionCreator.endLoad());
+        dispatch(ActionCreator.endLoadComment());
       })
       .catch((err) => {
+        dispatch(ActionCreator.endLoadComment());
         dispatch(ActionCreator.putError());
         throw err;
       });
   },
   addComment: (idFilm, comment) => (dispatch, getState, api) => {
-    dispatch(ActionCreator.startAddComment());
+    dispatch(ActionCreator.startLoadComment());
     dispatch(ActionCreator.removeErrorLoadingComment());
     return api.post(`/comments/${idFilm}`, {
       rating: comment.rating,
@@ -168,30 +201,44 @@ const Operation = {
       .then((response) => {
         const comments = commentsAdapter(response.data);
         dispatch(ActionCreator.loadComments(comments));
-        dispatch(ActionCreator.endAddComment());
+        dispatch(ActionCreator.endLoadComment());
       })
       .catch((err) => {
-        dispatch(ActionCreator.endAddComment());
+        dispatch(ActionCreator.endLoadComment());
         dispatch(ActionCreator.putErrorLoadingComment());
+        throw err;
+      });
+  },
+  loadFilmsFavorite: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.startLoadFilmsFavorite());
+    return api.get(`/favorite`)
+      .then((response) => {
+        const filmsFavorite = filmsAdapter(response.data);
+
+        dispatch(ActionCreator.loadFilmsFavorite(filmsFavorite));
+        dispatch(ActionCreator.endLoadFilmsFavorite());
+      })
+      .catch((err) => {
+        dispatch(ActionCreator.endLoadFilmsFavorite());
         throw err;
       });
   },
   addFilmInMyList: (idFilm, status) => (dispatch, getState, api) => {
     return api.post(`/favorite/${idFilm}/${status ? 1 : 0}`)
-        .then((response) => {
-          const film = filmAdapter(response.data);
+      .then((response) => {
+        const film = filmAdapter(response.data);
 
-          const {DATA: {filmPromo}} = getState();
+        const {DATA: {filmPromo}} = getState();
 
-          if (film.id === filmPromo.id) {
-            dispatch(ActionCreator.loadFilmPromo(film));
-          }
+        if (film.id === filmPromo.id) {
+          dispatch(ActionCreator.loadFilmPromo(film));
+        }
 
-          dispatch(ActionCreator.addFilmInMyList(film));
-        })
-        .catch((err) => {
-          throw err;
-        });
+        dispatch(ActionCreator.addFilmInMyList(film));
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 };
 
@@ -264,6 +311,22 @@ const reducer = (state = initialState, action) => {
 
       return Object.assign({}, state, {
         films: filmsNew
+      });
+    case ActionType.ADD_FILM_ACTIVE:
+      return Object.assign({}, state, {
+        filmActive: action.payload
+      });
+    case ActionType.START_LOAD_FILMS_FAVORITE:
+      return Object.assign({}, state, {
+        isLoadingFilmsFavorite: true
+      });
+    case ActionType.LOAD_FILMS_FAVORITE:
+      return Object.assign({}, state, {
+        filmsFavorite: action.payload
+      });
+    case ActionType.END_LOAD_FILMS_FAVORITE:
+      return Object.assign({}, state, {
+        isLoadingFilmsFavorite: false
       });
     default:
       return state;

@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import history from '../../history.js';
 import {AuthorizationStatus, AppRoute} from './../../utils/const.js';
 
 import {filmShape, userShape} from '../../utils/shapes';
+
+import {getFilmById} from '../../reducer/data/selectors.js';
 
 import UserProfile from '../user-profile/user-profile.jsx';
 import FormAddReview from '../add-review-form/add-review-form.jsx';
@@ -20,10 +23,6 @@ const AddReview = (props) => {
     backgroundImage,
     posterImage
   } = film;
-
-  if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-    history.push(AppRoute.LOGIN);
-  }
 
   return (
     <section className="movie-card movie-card--full">
@@ -68,7 +67,9 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <FormAddReviewWrapped />
+        <FormAddReviewWrapped
+          film={film}
+        />
       </div>
     </section>
   );
@@ -81,4 +82,11 @@ AddReview.propTypes = {
   onTypeScreenChange: PropTypes.func.isRequired
 };
 
-export default AddReview;
+const mapStateToProps = (state, props) => {
+  return {
+    film: getFilmById(state, props.match.params.id)
+  };
+};
+
+export {AddReview};
+export default connect(mapStateToProps, null)(AddReview);

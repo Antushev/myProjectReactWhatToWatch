@@ -10,7 +10,8 @@ import {
   getLoadingStatus,
   getErrorStatus, getFilmPromo,
   getComments,
-  getFilmsByGenre
+  getFilmsByGenre,
+  getFilmActive
 } from './../../reducer/data/selectors.js';
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
@@ -22,11 +23,12 @@ import FilmDetails from '../film-details/film-details.jsx';
 import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
 import AddReview from '../add-review/add-review.jsx';
+import MyList from '../my-list/my-list.jsx';
 import Loading from '../loading/loading.jsx';
 import Error from '../error/error.jsx';
 
 import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
-import {withVideo} from '../../hocs/with-video/with-video.jsx';
+import withVideo from '../../hocs/with-video/with-video.jsx';
 import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big.jsx';
 import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.jsx';
 
@@ -50,7 +52,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {isLoading, isError} = this.props;
+    const {isLoading, isError, authorizationStatus} = this.props;
 
     if (isLoading) {
       return <Loading />;
@@ -60,113 +62,100 @@ class App extends PureComponent {
       return <Error />;
     }
 
+    const {
+      films,
+      filmPromo,
+      filmActive,
+      user,
+      comments,
+      showFilmCardCount,
+      onGenreTabClick,
+      onShowMoreClick,
+      onTypeScreenChange,
+      onFilmMyListClick
+    } = this.props;
+
     return <Router history={history}>
       <Switch>
-        <Route exact path={AppRoute.MAIN}>
-          {this._renderApp()}
-        </Route>
-        <Route exct path={AppRoute.LOGIN}>
+        <Route exact path={AppRoute.MAIN}
+          render={() => {
+            return (
+              <Main
+                user={user}
+                showFilmCardCount={showFilmCardCount}
+                filmCardPreview={filmPromo}
+                authorizationStatus={authorizationStatus}
+                onFilmClick={this._handleFilmClick}
+                onPlayClick={this._handlePlayClick}
+                onTypeScreenChange={onTypeScreenChange}
+                onGenreTabClick={onGenreTabClick}
+                onShowMoreClick={onShowMoreClick}
+                onFilmMyListClick={onFilmMyListClick}
+              />
+            );
+          }}
+        />
+        <Route exact path={`${AppRoute.FILMS}/:id`}
+          render={(routerProps) => {
+            return (
+              <FilmDetailsWithTabs
+                {...routerProps}
+                films={films}
+                user={user}
+                comments={comments}
+                authorizationStatus={authorizationStatus}
+                onTypeScreenChange={onTypeScreenChange}
+                onFilmClick={this._handleFilmClick}
+                onPlayClick={this._handlePlayClick}
+                onFilmMyListClick={onFilmMyListClick}
+              />
+            );
+          }}
+        />
+        <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.PLAYER}`}
+          render={(routerProps) => {
+            return (
+              <VideoPlayerBigWrapped
+                {...routerProps}
+                posterImage={filmActive.posterImage}
+                videoMain={filmActive.videoMain}
+                onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
+              />
+            );
+          }}
+        />
+        <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
+          render={(routerProps) => {
+            return (
+              <AddReview
+                {...routerProps}
+                user={user}
+                authorizationStatus={authorizationStatus}
+                onTypeScreenChange={onTypeScreenChange}
+              />
+            );
+          }}
+        />
+        <Route exact path={AppRoute.MY_LIST}
+          render={(routerProps) => {
+            return (
+              <MyList
+                {...routerProps}
+                user={user}
+                authorizationStatus={authorizationStatus}
+              />
+            );
+          }}
+        />
+        <Route exact path={AppRoute.LOGIN}>
           <SignInWrapped />
         </Route>
       </Switch>
     </Router>;
   }
 
-  _renderApp() {
-    const {
-      films,
-      filmPromo,
-      user,
-      comments,
-      typeScreenActive,
-      showFilmCardCount,
-      authorizationStatus,
-      onGenreTabClick,
-      onShowMoreClick,
-      onTypeScreenChange,
-      onFilmMyListClick
-    } = this.props;
-    const {film} = this.state;
-
-    switch (typeScreenActive) {
-      case TypeScreen.MAIN_SCREEN:
-        return (
-          <Main
-            films={films}
-            user={user}
-            showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmPromo}
-            authorizationStatus={authorizationStatus}
-            onFilmClick={this._handleFilmClick}
-            onPlayClick={this._handlePlayClick}
-            onTypeScreenChange={onTypeScreenChange}
-            onGenreTabClick={onGenreTabClick}
-            onShowMoreClick={onShowMoreClick}
-            onFilmMyListClick={onFilmMyListClick}
-          />
-        );
-      case TypeScreen.DETAIL_SCREEN:
-        return (
-          <FilmDetailsWithTabs
-            films={films}
-            filmDetail={film}
-            user={user}
-            comments={comments}
-            authorizationStatus={authorizationStatus}
-            onTypeScreenChange={onTypeScreenChange}
-            onFilmClick={this._handleFilmClick}
-            onPlayClick={this._handlePlayClick}
-            onFilmMyListClick={onFilmMyListClick}
-          />
-        );
-      case TypeScreen.VIDEO_BIG_SCREEN:
-        const {posterImage, videoMain} = film;
-
-        return (
-          <VideoPlayerBigWrapped
-            posterImage={posterImage}
-            videoMain={videoMain}
-            onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
-          />
-        );
-      case TypeScreen.SIGN_IN:
-        return (
-          <SignInWrapped />
-        );
-      case TypeScreen.ADD_REVIEW:
-        return (
-          <AddReview
-            film={filmPromo}
-            user={user}
-            authorizationStatus={authorizationStatus}
-            onTypeScreenChange={onTypeScreenChange}
-          />
-        );
-      default:
-        return (
-          <Main
-            films={films}
-            user={user}
-            showFilmCardCount={showFilmCardCount}
-            filmCardPreview={filmPromo}
-            authorizationStatus={authorizationStatus}
-            onFilmClick={this._handleFilmClick}
-            onPlayClick={this._handlePlayClick}
-            onTypeScreenChange={onTypeScreenChange}
-            onGenreTabClick={onGenreTabClick}
-            onShowMoreClick={onShowMoreClick}
-            onFilmMyListClick={onFilmMyListClick}
-          />
-        );
-    }
-  }
-
   _handleFilmClick(film, typeScreen, idTimer = null) {
-    const {onTypeScreenChange, onLoadComments} = this.props;
-
-
-    // Нужно брать фильм из хранилища по ID
-    onLoadComments(film.id);
+    const {onTypeScreenChange} = this.props;
 
     if (idTimer) {
       clearTimeout(idTimer);
@@ -207,6 +196,7 @@ App.propTypes = {
       PropTypes.shape(filmShape)
   ),
   filmPromo: PropTypes.shape(filmShape),
+  filmActive: PropTypes.shape(filmShape),
   user: PropTypes.shape(userShape).isRequired,
   comments: PropTypes.arrayOf(
       PropTypes.shape(commentShape)
@@ -227,6 +217,7 @@ const mapStateToProps = (state) => {
     isError: getErrorStatus(state),
     films: getFilmsByGenre(state),
     filmPromo: getFilmPromo(state),
+    filmActive: getFilmActive(state),
     showFilmCardCount: getShowFilmCardCount(state),
     authorizationStatus: getAuthorizeStatusUser(state),
     user: getUserInfo(state),
@@ -236,6 +227,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  loadFilmsFavorite() {
+    dispatch(DataOperation.loadFilmsFavorite());
+  },
+
   onGenreTabClick(genre) {
     dispatch(DataActionCreator.changeGenre(genre));
     dispatch(AppStateActionCreator.resetFilmCardCount());

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {withVideo} from './with-video.jsx';
+import withVideo from './with-video.jsx';
 
 configure({adapter: new Adapter()});
 

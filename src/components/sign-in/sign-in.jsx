@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import history from './../../history.js';
+
+import {AuthorizationStatus} from './../../utils/const.js';
 
 import {getAuthorizeStatusUser} from './../../reducer/user/selectors.js';
 
@@ -9,6 +12,7 @@ import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/
 
 const SignIn = (props) => {
   const {
+    authorizationStatus,
     buttonDisabled,
     onAuthorizeClick,
     onChangeInputEmail,
@@ -105,7 +109,7 @@ SignIn.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    authorizeStatus: getAuthorizeStatusUser(state),
+    authorizationStatus: getAuthorizeStatusUser(state),
   };
 };
 

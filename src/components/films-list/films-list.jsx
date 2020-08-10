@@ -23,17 +23,16 @@ const FilmsList = (props) => {
       currentFilm,
       films,
       filmListType,
-      onFilmClick,
       showFilmCardCount
     } = props;
 
     switch (filmListType) {
       case FilmsListType.DEFAULT:
-        return renderFilmsCardDefault(films, showFilmCardCount, onFilmClick);
+        return renderFilmsCardDefault(films, showFilmCardCount);
       case FilmsListType.MORE_LIKE:
-        return renderFilmsCardMoreLike(currentFilm, films, onFilmClick);
+        return renderFilmsCardMoreLike(currentFilm, films);
       default:
-        return renderFilmsCardDefault(films, onFilmClick);
+        return renderFilmsCardDefault(films, showFilmCardCount);
     }
   };
 
@@ -73,7 +72,6 @@ FilmsList.propTypes = {
   showFilmCardCount: PropTypes.number,
   filmListType: PropTypes.string.isRequired,
   currentFilm: PropTypes.shape(filmShape),
-  onFilmClick: PropTypes.func.isRequired
 };
 
 export default FilmsList;
