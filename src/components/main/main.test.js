@@ -9,7 +9,7 @@ import {NameSpace} from './../../reducer/name-space.js';
 import {film, films} from '../../mocks-test/films-test.js';
 import {user} from '../../mocks-test/user-test.js';
 
-import Main from './main.jsx';
+import Main from './main';
 
 const mockStore = configureStore([]);
 

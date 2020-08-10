@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import {film} from './../../mocks-test/films-test.js';
 
-import {withVideo} from './with-video.jsx';
+import {withVideo} from './with-video';
 
 configure({adapter: new Adapter()});
 

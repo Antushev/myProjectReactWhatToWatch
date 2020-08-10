@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import AddReviewForm from './add-review-form.jsx';
+import AddReviewForm from './add-review-form';
 
 describe(`AddReViewFormComponent`, () => {
   it(`AddReviewFormComponentSnapshot with isButtonBlocked true`, () => {

@@ -5,7 +5,7 @@ import history from './../../history.js';
 
 import {user} from './../../mocks-test/user-test.js';
 
-import UserProfile from './user-profile.jsx';
+import UserProfile from './user-profile';
 
 describe(`UserProfileComponent`, () => {
   it(`UserProfileComponentSnapshot`, () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import {filmShape} from '../../utils/shapes.js';
@@ -84,7 +84,7 @@ const FormAddReview = (props) => {
 
       <div className="add-review__text">
         <textarea className="add-review__textarea" name="review-text" id="review-text"
-          placeholder="Review text" minLength="50" maxLength="400"
+          placeholder="Review text" minLength={50} maxLength={400}
           onChange={onTextChange}
           disabled={isLoadingComment}
         />

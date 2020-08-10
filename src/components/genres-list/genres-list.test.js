@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {films, currentGenre} from './../../mocks-test/films-test.js';
 
-import {GenresList} from './genres-list.jsx';
+import {GenresList} from './genres-list';
 
 describe(`GenresListComponent`, () => {
   it(`GenresListComponentSnapshot`, () => {

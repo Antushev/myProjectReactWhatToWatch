@@ -14,7 +14,7 @@ import {film, films} from '../../mocks-test/films-test.js';
 import {user} from '../../mocks-test/user-test.js';
 import {comments} from '../../mocks-test/comment-test.js';
 
-import FilmDetails from './film-details.jsx';
+import FilmDetails from './film-details';
 
 const activeTab = `overview`;
 

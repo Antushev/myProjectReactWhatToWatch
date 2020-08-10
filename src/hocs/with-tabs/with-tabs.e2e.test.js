@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import {FilmDetailTabsName} from '../../utils/const.js';
 
-import {withTabs} from './with-tabs.jsx';
+import {withTabs} from './with-tabs';
 
 configure({adapter: new Adapter()});
 

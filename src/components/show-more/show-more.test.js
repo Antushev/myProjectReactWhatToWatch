@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ShowMore from './show-more.jsx';
+import ShowMore from './show-more';
 
 describe(`ShowMoreComponent`, () => {
   it(`ShowMoreComponentSnapshot`, () => {

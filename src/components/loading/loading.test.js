@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Loading from './loading.jsx';
+import Loading from './loading';
 
 describe(`LoadingComponent`, () => {
   it(`LoadingComponentSnapshot`, () => {

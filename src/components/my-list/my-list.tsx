@@ -9,9 +9,9 @@ import {filmShape, userShape} from './../../utils/shapes.js';
 import {Operation as DataOperation} from './../../reducer/data/data.js';
 import {getFilmsFavorite, getLoadingFilmsFavoriteStatus} from './../../reducer/data/selectors.js';
 
-import FilmsList from './../films-list/films-list.jsx';
-import UserProfile from './../user-profile/user-profile.jsx';
-import Loading from './../loading/loading.jsx';
+import FilmsList from '../films-list/films-list.js';
+import UserProfile from '../user-profile/user-profile.js';
+import Loading from '../loading/loading.js';
 
 class MyList extends PureComponent {
   constructor(props) {

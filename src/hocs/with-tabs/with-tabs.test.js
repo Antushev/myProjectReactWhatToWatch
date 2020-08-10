@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
 
-import {withTabs} from './with-tabs.jsx';
+import {withTabs} from './with-tabs';
 
 const MockComponent = (props) => {
   const {renderTabs} = props;

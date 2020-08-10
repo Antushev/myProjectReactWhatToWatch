@@ -11,12 +11,12 @@ import {Operation as DataOperation} from './../../reducer/data/data.js';
 import {ActionCreator as DataActionCreator} from './../../reducer/data/data.js';
 import {getFilmById, getFilmsByGenre, getComments, getLoadingCommentStatus} from './../../reducer/data/selectors.js';
 
-import FilmDetailOverview from '../film-detail-overview/film-detail-overview.jsx';
-import FilmDetailMore from '../film-detail-more/film-detail-more.jsx';
-import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.jsx';
-import FilmsList from '../films-list/films-list.jsx';
-import UserProfile from '../user-profile/user-profile.jsx';
-import Loading from '../loading/loading.jsx';
+import FilmDetailOverview from '../film-detail-overview/film-detail-overview.js';
+import FilmDetailMore from '../film-detail-more/film-detail-more.js';
+import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.js';
+import FilmsList from '../films-list/films-list.js';
+import UserProfile from '../user-profile/user-profile.js';
+import Loading from '../loading/loading.js';
 
 const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => {
   switch (activeFilmDetailPage) {

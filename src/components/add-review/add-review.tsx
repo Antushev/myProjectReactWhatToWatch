@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -8,8 +8,8 @@ import {filmShape, userShape} from '../../utils/shapes';
 
 import {getFilmById} from '../../reducer/data/selectors.js';
 
-import UserProfile from '../user-profile/user-profile.jsx';
-import FormAddReview from '../add-review-form/add-review-form.jsx';
+import UserProfile from '../user-profile/user-profile.js';
+import FormAddReview from '../add-review-form/add-review-form.js';
 
 import withFormValidationReview from '../../hocs/with-form-validation-review/with-form-validation-review.js';
 

@@ -9,7 +9,7 @@ import {NameSpace} from './../../reducer/name-space.js';
 
 import {film, films} from './../../mocks-test/films-test.js';
 
-import VideoPlayerBig from './video-player-big.jsx';
+import VideoPlayerBig from './video-player-big';
 
 const posterImage = `img/poster.jpg`;
 const videoMain = `video/video-main.mp4`;

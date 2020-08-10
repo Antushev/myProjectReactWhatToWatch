@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {FilmDetailTabsName} from '../../utils/const.js';
 
-import FilmDetailTabs from '../../components/film-detail-tabs/film-detail-tabs.jsx';
+import FilmDetailTabs from '../../components/film-detail-tabs/film-detail-tabs.js';
 
 const withTabs = (Component) => {
   class FilmDetailComponentWithTabs extends PureComponent {

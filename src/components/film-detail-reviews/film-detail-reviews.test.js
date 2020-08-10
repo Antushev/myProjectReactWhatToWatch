@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import {film} from '../../mocks-test/films-test.js';
 import {comments} from '../../mocks-test/comment-test.js';
 
-import FilmDetailReviews from './film-detail-reviews.jsx';
+import FilmDetailReviews from './film-detail-reviews';
 
 describe(`FilmDetailReviewsComponent`, () => {
   it(`FilmDetailReviewsComponentSnapshot`, () => {

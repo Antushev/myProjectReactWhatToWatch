@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus, TypeScreen, FilmsListType} from '../../utils/const.js';
 import {filmShape, userShape} from '../../utils/shapes.js';
 
-import FilmsList from './../films-list/films-list.jsx';
-import GenresList from './../genres-list/genres-list.jsx';
-import ShowMore from './../show-more/show-more.jsx';
-import UserProfile from './../user-profile/user-profile.jsx';
+import FilmsList from '../films-list/films-list.js';
+import GenresList from '../genres-list/genres-list.js';
+import ShowMore from '../show-more/show-more.js';
+import UserProfile from '../user-profile/user-profile.js';
 
 import {getFilmsByGenre} from './../../reducer/data/selectors.js';
 
-import {withActiveItem} from './../../hocs/with-active-item/with-active-item.jsx';
+import {withActiveItem} from '../../hocs/with-active-item/with-active-item.js';
 import history from "../../history";
 
 const GenresListWrapped = withActiveItem(GenresList);

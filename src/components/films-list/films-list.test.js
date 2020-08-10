@@ -10,7 +10,7 @@ import {NameSpace} from './../../reducer/name-space.js';
 import {film, films} from '../../mocks-test/films-test.js';
 import {FilmsListType} from '../../mocks-test/films-test.js';
 
-import FilmsList from './films-list.jsx';
+import FilmsList from './films-list';
 
 const mockStore = createStore([]);
 const store = mockStore({

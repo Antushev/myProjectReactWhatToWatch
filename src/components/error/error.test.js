@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Error from './error.jsx';
+import Error from './error';
 
 describe(`ErrorComponent`, () => {
   it(`ErrorComponentSnapshot`, () => {

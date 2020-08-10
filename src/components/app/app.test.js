@@ -7,7 +7,7 @@ import {NameSpace} from './../../reducer/name-space.js';
 import {films, currentGenre} from '../../mocks-test/films-test.js';
 import {user} from '../../mocks-test/user-test.js';
 
-import {App} from './app.jsx';
+import {App} from './app';
 
 const mockStore = configureStore([]);
 

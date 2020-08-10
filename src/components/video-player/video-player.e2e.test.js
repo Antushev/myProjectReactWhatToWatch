@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import {film} from '../../mocks-test/films-test.js';
 
-import VideoPlayer from './video-player.jsx';
+import VideoPlayer from './video-player';
 
 configure({adapter: new Adapter()});
 

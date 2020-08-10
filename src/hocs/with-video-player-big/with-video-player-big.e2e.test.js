@@ -2,7 +2,7 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {withVideoPlayerBig} from './with-video-player-big.jsx';
+import {withVideoPlayerBig} from './with-video-player-big';
 
 configure({adapter: new Adapter()});
 

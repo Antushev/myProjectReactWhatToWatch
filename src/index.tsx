@@ -13,7 +13,7 @@ import {ActionCreator as UserActionCreator} from './reducer/user/user.js';
 import {Operation as DataOperation} from './reducer/data/data.js';
 import {Operation as UserOperation} from './reducer/user/user.js';
 
-import App from './components/app/app.jsx';
+import App from './components/app/app.js';
 
 const onUnauthorized = () => {
   store.dispatch(UserActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));

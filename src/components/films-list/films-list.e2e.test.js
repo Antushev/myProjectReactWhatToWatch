@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import FilmsList from './films-list.jsx';
+import FilmsList from './films-list';
 
 import {films} from '../../mocks-test/films-test.js';
 import {FilmsListType} from '../../mocks-test/films-test.js';

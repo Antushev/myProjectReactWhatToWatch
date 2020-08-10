@@ -1,15 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 
-const Loading = () => {
+const Error = () => {
   return (
     <div className="page-content">
       <section className="catalog">
         <div className="catalog__movies-list">
-          <h1>Идёт загрузка</h1>
+          <h1>Кажется, сервер недоступен...</h1>
         </div>
       </section>
     </div>
   );
 };
 
-export default Loading;
+export default Error;

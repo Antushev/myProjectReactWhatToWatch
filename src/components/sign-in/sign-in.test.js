@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import history from './../../history.js';
 
-import {SignIn} from './sign-in.jsx';
+import {SignIn} from './sign-in';
 
 describe(`SignInComponent`, () => {
   it(`SignInComponentSnapshot`, () => {

@@ -5,7 +5,7 @@ import history from './../../history.js';
 
 import {film} from '../../mocks-test/films-test.js';
 
-import FilmCard from './film-card.jsx';
+import FilmCard from './film-card';
 
 describe(`FilmCardComponent`, () => {
   it(`FilmCardComponentSnapshot`, () => {

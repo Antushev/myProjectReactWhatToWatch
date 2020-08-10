@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {film} from './../../mocks-test/films-test.js';
 
-import FilmDetailMore from './film-detail-more.jsx';
+import FilmDetailMore from './film-detail-more';
 
 describe(`FilmDetailMoreComponent`, () => {
   it(`FilmDetailMoreComponentSnapshot`, () => {

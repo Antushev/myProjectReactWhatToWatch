@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import {FilmsListType, TypeVideoPlayer} from '../../utils/const.js';
 import {filmShape} from '../../utils/shapes.js';
 
-import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player.jsx';
+import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player.js';
 
-import FilmCard from '../film-card/film-card.jsx';
+import FilmCard from '../film-card/film-card.js';
 
 const FILMS_MORE_LIKE_COUNT = 4;
 

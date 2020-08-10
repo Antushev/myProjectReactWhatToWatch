@@ -18,21 +18,21 @@ import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-sta
 
 import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
 
-import Main from '../main/main.jsx';
-import FilmDetails from '../film-details/film-details.jsx';
-import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
-import AddReview from '../add-review/add-review.jsx';
-import MyList from '../my-list/my-list.jsx';
-import PrivateRoute from '../private-route/private-route.jsx';
-import AuthRoute from '../auth-route/auth-route.jsx';
-import Loading from '../loading/loading.jsx';
-import Error from '../error/error.jsx';
+import Main from '../main/main.js';
+import FilmDetails from '../film-details/film-details.js';
+import VideoPlayerBig from '../video-player-big/video-player-big.js';
+import SignIn from '../sign-in/sign-in.js';
+import AddReview from '../add-review/add-review.js';
+import MyList from '../my-list/my-list.js';
+import PrivateRoute from '../private-route/private-route.js';
+import AuthRoute from '../auth-route/auth-route.js';
+import Loading from '../loading/loading.js';
+import Error from '../error/error.js';
 
-import {withTabs} from '../../hocs/with-tabs/with-tabs.jsx';
-import withVideo from '../../hocs/with-video/with-video.jsx';
-import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big.jsx';
-import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.jsx';
+import {withTabs} from '../../hocs/with-tabs/with-tabs.js';
+import withVideo from '../../hocs/with-video/with-video.js';
+import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big.js';
+import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.js';
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 const VideoPlayerBigWithControls = withVideo(VideoPlayerBig, TypeVideoPlayer.BIG_VIDEO_PLAYER);
