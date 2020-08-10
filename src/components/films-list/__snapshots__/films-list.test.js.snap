@@ -6,25 +6,30 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
   >
-    <div
-      className="small-movie-card__image"
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
+    <a
+      href="/films/1"
+      onClick={[Function]}
     >
-      <video
-        className="player__video"
-        muted="muted"
-      />
-      ;
-    </div>
+      <div
+        className="small-movie-card__image"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <video
+          className="player__video"
+          muted="muted"
+        />
+        ;
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/1"
+        onClick={[Function]}
       >
         Интерстеллар
       </a>
@@ -32,25 +37,30 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
   >
-    <div
-      className="small-movie-card__image"
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
+    <a
+      href="/films/2"
+      onClick={[Function]}
     >
-      <video
-        className="player__video"
-        muted="muted"
-      />
-      ;
-    </div>
+      <div
+        className="small-movie-card__image"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <video
+          className="player__video"
+          muted="muted"
+        />
+        ;
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/2"
+        onClick={[Function]}
       >
         Интерстеллар
       </a>
@@ -58,25 +68,30 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
   >
-    <div
-      className="small-movie-card__image"
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
+    <a
+      href="/films/3"
+      onClick={[Function]}
     >
-      <video
-        className="player__video"
-        muted="muted"
-      />
-      ;
-    </div>
+      <div
+        className="small-movie-card__image"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <video
+          className="player__video"
+          muted="muted"
+        />
+        ;
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/3"
+        onClick={[Function]}
       >
         Интерстеллар
       </a>
@@ -84,25 +99,30 @@ exports[`FilmsListComponent FilmcListComponentSnapshot 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
   >
-    <div
-      className="small-movie-card__image"
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
+    <a
+      href="/films/4"
+      onClick={[Function]}
     >
-      <video
-        className="player__video"
-        muted="muted"
-      />
-      ;
-    </div>
+      <div
+        className="small-movie-card__image"
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
+        <video
+          className="player__video"
+          muted="muted"
+        />
+        ;
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/4"
+        onClick={[Function]}
       >
         Интерстеллар
       </a>

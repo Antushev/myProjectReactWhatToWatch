@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {FilmsListType, TypeVideoPlayer} from '../../utils/const.js';
 import {filmShape} from '../../utils/shapes.js';
 

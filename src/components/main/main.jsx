@@ -84,7 +84,7 @@ const Main = (props) => {
 
             <div className="movie-card__buttons">
               <Link
-                to={`${AppRoute.FILMS}/${id}${AppRoute.PLAYER}`}
+                to={`${AppRoute.PLAYER}/${id}`}
                 className="btn btn--play movie-card__button"
                 type="button"
                 onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}

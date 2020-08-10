@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import {film} from './../../mocks-test/films-test.js';
+
 import {withFormValidationReview} from './with-form-validation-review.js';
 
 configure({adapter: new Adapter()});
@@ -60,6 +62,7 @@ describe(`Test HOC with-from-validation-review`, () => {
 
     const formWrapped = mount(
         <FormComponentWrapped
+          film={film}
           rating={0}
           isButtonBlocked={true}
           isLoadingComment={false}

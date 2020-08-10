@@ -5,13 +5,14 @@ exports[`VideoPlayerBigComponent VideoPlayerBigComponentSnapshot 1`] = `
   className="player"
 >
   <video />
-  <button
+  <a
     className="player__exit"
+    href="/films/4"
     onClick={[Function]}
     type="button"
   >
     Exit
-  </button>
+  </a>
   <div
     className="player__controls"
   >

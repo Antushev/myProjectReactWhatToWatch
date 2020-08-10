@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {getFilmById, getFilmActive} from './../../reducer/data/selectors.js';
+import {getFilmActive} from './../../reducer/data/selectors.js';
 
 import {TypeVideoPlayer} from './../../utils/const.js';
 import {filmShape} from './../../utils/shapes.js';

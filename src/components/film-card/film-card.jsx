@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {AppRoute, TypeScreen} from '../../utils/const.js';
+import {AppRoute} from '../../utils/const.js';
 import {filmShape} from '../../utils/shapes.js';
 
 const FilmCard = (props) => {

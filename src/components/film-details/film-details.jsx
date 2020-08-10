@@ -87,6 +87,7 @@ class FilmDetails extends PureComponent {
 
     const {
       id,
+      backgroundColor,
       backgroundImage,
       name,
       genre,
@@ -94,7 +95,11 @@ class FilmDetails extends PureComponent {
       isFavorite
     } = film;
 
-    return <section className="movie-card movie-card--full">
+    const styleBackground = {
+      backgroundColor
+    };
+
+    return <section className="movie-card movie-card--full" style={styleBackground}>
       <div className="movie-card__hero">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -130,7 +135,7 @@ class FilmDetails extends PureComponent {
               <Link
                 className="btn btn--play movie-card__button"
                 type="button"
-                to={`${AppRoute.FILMS}/${id}${AppRoute.PLAYER}`}
+                to={`${AppRoute.PLAYER}/${id}`}
                 onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">

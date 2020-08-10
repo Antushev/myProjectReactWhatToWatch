@@ -24,6 +24,8 @@ import VideoPlayerBig from '../video-player-big/video-player-big.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
 import AddReview from '../add-review/add-review.jsx';
 import MyList from '../my-list/my-list.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
+import AuthRoute from '../auth-route/auth-route.jsx';
 import Loading from '../loading/loading.jsx';
 import Error from '../error/error.jsx';
 
@@ -112,7 +114,7 @@ class App extends PureComponent {
             );
           }}
         />
-        <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.PLAYER}`}
+        <Route exact path={`${AppRoute.PLAYER}/:id`}
           render={(routerProps) => {
             return (
               <VideoPlayerBigWrapped
@@ -124,7 +126,7 @@ class App extends PureComponent {
             );
           }}
         />
-        <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
+        <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
           render={(routerProps) => {
             return (
               <AddReview
@@ -136,7 +138,7 @@ class App extends PureComponent {
             );
           }}
         />
-        <Route exact path={AppRoute.MY_LIST}
+        <PrivateRoute exact path={AppRoute.MY_LIST}
           render={(routerProps) => {
             return (
               <MyList
@@ -147,9 +149,11 @@ class App extends PureComponent {
             );
           }}
         />
-        <Route exact path={AppRoute.LOGIN}>
-          <SignInWrapped />
-        </Route>
+        <AuthRoute exact path={AppRoute.LOGIN}
+          render={() => {
+            return <SignInWrapped />;
+          }}
+        />
       </Switch>
     </Router>;
   }
