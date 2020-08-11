@@ -1,19 +1,30 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {AppRoute, FilmsListType} from './../../utils/const.js';
-import {filmShape, userShape} from './../../utils/shapes.js';
+import {AppRoute, FilmsListType} from './../../utils/const';
+import {Film, UserMaximum} from '../../utils/types';
 
-import {Operation as DataOperation} from './../../reducer/data/data.js';
-import {getFilmsFavorite, getLoadingFilmsFavoriteStatus} from './../../reducer/data/selectors.js';
+import {Operation as DataOperation} from './../../reducer/data/data';
+import {getFilmsFavorite, getLoadingFilmsFavoriteStatus} from './../../reducer/data/selectors';
 
-import FilmsList from '../films-list/films-list.js';
-import UserProfile from '../user-profile/user-profile.js';
-import Loading from '../loading/loading.js';
+import FilmsList from '../films-list/films-list';
+import UserProfile from '../user-profile/user-profile';
+import Loading from '../loading/loading';
 
-class MyList extends PureComponent {
+interface Props {
+  filmsFavorite: Film[],
+  user: UserMaximum,
+  authorizationStatus: string,
+  isLoadingFilmsFavorite: boolean,
+  loadFilmsFavorite: () => void
+}
+
+const SHOW_FILMS_CARD_COUNT_MORE_LIKE = 4;
+
+class MyList extends React.PureComponent<Props, {}> {
+  props: Props;
+
   constructor(props) {
     super(props);
   }
@@ -66,6 +77,8 @@ class MyList extends PureComponent {
               : <FilmsList
                 films={filmsFavorite}
                 filmListType={FilmsListType.DEFAULT}
+                showFilmCardCount={SHOW_FILMS_CARD_COUNT_MORE_LIKE}
+                currentFilm={filmsFavorite[0]}
               />
             }
           </div>
@@ -88,16 +101,6 @@ class MyList extends PureComponent {
     );
   }
 }
-
-MyList.propTypes = {
-  filmsFavorite: PropTypes.arrayOf(
-      PropTypes.shape(filmShape).isRequired
-  ),
-  user: PropTypes.shape(userShape).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  isLoadingFilmsFavorite: PropTypes.bool.isRequired,
-  loadFilmsFavorite: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => {
   return {

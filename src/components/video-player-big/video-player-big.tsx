@@ -1,14 +1,26 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {ActionCreator as DataActionCreator} from './../../reducer/data/data.js';
-import {getFilmById} from './../../reducer/data/selectors.js';
+import {ActionCreator as DataActionCreator} from './../../reducer/data/data';
+import {getFilmById} from './../../reducer/data/selectors';
 
-import {formatVideoElapsed} from '../../utils/common.js';
-import {AppRoute, TypeScreen} from '../../utils/const.js';
-import {filmShape} from '../../utils/shapes.js';
+import {formatVideoElapsed} from '../../utils/common';
+import {AppRoute, TypeScreen} from '../../utils/const';
+import {Film} from '../../utils/types';
+
+interface Props {
+  filmActive: Film,
+  children: React.ReactNode,
+  isPlaying: boolean,
+  posterImage: string,
+  videoMain: string,
+  videoProgress: number,
+  videoTimeElapsed: number,
+  // onPlayClick: func,
+  // onExitVideoPlayerClick: func,
+  onFullScreenClick: () => void
+};
 
 const getPositionToggler = (progress) => {
   const progressString = `${progress}%`;
@@ -18,7 +30,9 @@ const getPositionToggler = (progress) => {
   };
 };
 
-class VideoPlayerBig extends PureComponent {
+class VideoPlayerBig extends React.PureComponent<Props, {}> {
+  props: Props;
+
   constructor(props) {
     super(props);
   }
@@ -30,8 +44,8 @@ class VideoPlayerBig extends PureComponent {
       isPlaying,
       videoProgress,
       videoTimeElapsed,
-      onPlayClick,
-      onExitVideoPlayerClick,
+      // onPlayClick,
+      // onExitVideoPlayerClick,
       onFullScreenClick
     } = this.props;
 
@@ -43,7 +57,7 @@ class VideoPlayerBig extends PureComponent {
           to={`${AppRoute.FILMS}/${filmActive.id}`}
           type="button"
           className="player__exit"
-          onClick={() => onExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
+          // onClick={() => onExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
         >
           Exit
         </Link>
@@ -51,7 +65,7 @@ class VideoPlayerBig extends PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value={videoProgress} max="100" />
+              <progress className="player__progress" value={videoProgress} max="100"/>
               <div className="player__toggler" style={getPositionToggler(videoProgress)}>Toggler</div>
             </div>
             <div className="player__time-value">{formatVideoElapsed(videoTimeElapsed)}</div>
@@ -61,15 +75,15 @@ class VideoPlayerBig extends PureComponent {
             <button
               type="button"
               className="player__play"
-              onClick={onPlayClick}
+              // onClick={onPlayClick}
             >
               {isPlaying ?
                 <svg viewBox="0 0 14 21" width="19" height="19">
-                  <use xlinkHref="#pause" />
+                  <use xlinkHref="#pause"/>
                 </svg>
                 :
                 <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s" />
+                  <use xlinkHref="#play-s"/>
                 </svg>
               }
               <span>Play</span>
@@ -82,7 +96,7 @@ class VideoPlayerBig extends PureComponent {
               onClick={onFullScreenClick}
             >
               <svg viewBox="0 0 27 27" width="27" height="27">
-                <use xlinkHref="#full-screen" />
+                <use xlinkHref="#full-screen"/>
               </svg>
               <span>Full screen</span>
             </button>
@@ -92,19 +106,6 @@ class VideoPlayerBig extends PureComponent {
     );
   }
 }
-
-VideoPlayerBig.propTypes = {
-  filmActive: PropTypes.shape(filmShape).isRequired,
-  children: PropTypes.node.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  posterImage: PropTypes.string.isRequired,
-  videoMain: PropTypes.string.isRequired,
-  videoProgress: PropTypes.number.isRequired,
-  videoTimeElapsed: PropTypes.number.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
-  onExitVideoPlayerClick: PropTypes.func.isRequired,
-  onFullScreenClick: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state, props) => {
   return {

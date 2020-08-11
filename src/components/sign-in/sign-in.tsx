@@ -1,15 +1,22 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {Operation as UserOperation} from './../../reducer/user/user.js';
-import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/app-state.js';
-import {getAuthorizeStatusUser} from './../../reducer/user/selectors.js';
+import {Operation as UserOperation} from './../../reducer/user/user';
+import {ActionCreator as AppStateActionCreator} from './../../reducer/app-state/app-state';
+import {getAuthorizeStatusUser} from './../../reducer/user/selectors';
 
 import {AppRoute} from "./../../utils/const";
 
-const SignIn = (props) => {
+interface Props {
+  buttonDisabled: boolean,
+  onAuthorizeClick: (email: string, password: string) => void,
+  onTypeScreenChange: (typeScreen: string) => void,
+  onChangeInputEmail: (email: string) => void,
+  onChangeInputPassword: (password: string) => void
+}
+
+const SignIn: React.FunctionComponent<Props> = (props:Props) => {
   const {
     buttonDisabled,
     onAuthorizeClick,
@@ -17,8 +24,8 @@ const SignIn = (props) => {
     onChangeInputPassword
   } = props;
 
-  const refInputLogin = React.createRef();
-  const refInputPassword = React.createRef();
+  const refInputLogin = React.createRef<HTMLInputElement>();
+  const refInputPassword = React.createRef<HTMLInputElement>();
 
   return (
     <div className="user-page">
@@ -95,14 +102,6 @@ const SignIn = (props) => {
       </footer>
     </div>
   );
-};
-
-SignIn.propTypes = {
-  buttonDisabled: PropTypes.bool.isRequired,
-  onAuthorizeClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired,
-  onChangeInputEmail: PropTypes.func.isRequired,
-  onChangeInputPassword: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

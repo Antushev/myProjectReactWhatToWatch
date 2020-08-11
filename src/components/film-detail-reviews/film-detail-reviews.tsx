@@ -1,8 +1,13 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import * as moment from 'moment';
 
-import {filmShape, commentShape} from '../../utils/shapes.js';
+import {Film, Comment} from '../../utils/types';
+
+interface Props {
+  film: Film,
+  comments: Comment[],
+  renderTabs: () => React.ReactNode
+};
 
 const renderComment = (comment) => {
   const {comment: commentUser, date, id, rating, user} = comment;
@@ -28,7 +33,7 @@ const renderComments = (comments) => {
   });
 };
 
-const FilmDetailReviews = (props) => {
+const FilmDetailReviews: React.FunctionComponent<Props> = (props: Props) => {
   const {film, comments, renderTabs} = props;
   const {
     name,
@@ -55,12 +60,6 @@ const FilmDetailReviews = (props) => {
       </div>
     </div>
   );
-};
-
-FilmDetailReviews.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
-  renderTabs: PropTypes.func.isRequired
 };
 
 export default FilmDetailReviews;

@@ -1,7 +1,23 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  inputEmail: string,
+  inputPassword: string,
+  buttonDisabled: boolean
+}
+
+interface InjectingProps {
+  buttonDisabled: boolean,
+  onChangeInputEmail: (value: string) => void,
+  onChangeInputPassword: (value: string) => void
+}
 
 const withFormValidation = (Component) => {
-  class WithFormValidation extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithFormValidation extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

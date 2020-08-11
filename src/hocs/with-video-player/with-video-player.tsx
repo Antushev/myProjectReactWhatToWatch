@@ -1,12 +1,24 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
 
-import VideoPlayer from '../../components/video-player/video-player.js';
+import VideoPlayer from '../../components/video-player/video-player';
 
-import withVideo from '../with-video/with-video.js';
+import withVideo from '../with-video/with-video';
+
+interface State {
+  isPlaying: boolean
+}
+
+interface InjectingProps {
+  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain: string) => React.ReactNode
+}
 
 const withVideoPlayer = (Component, typeVideoPlayer) => {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
   const VideoPlayerWrapped = withVideo(VideoPlayer, typeVideoPlayer);
-  class WithVideoPlayer extends PureComponent {
+  class WithVideoPlayer extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

@@ -1,23 +1,42 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
+import {Subtract} from 'utility-types';
 
-import {getFilmActive} from './../../reducer/data/selectors.js';
+import {getFilmActive} from './../../reducer/data/selectors';
 
-import {TypeVideoPlayer} from './../../utils/const.js';
-import {filmShape} from './../../utils/shapes.js';
+import {TypeVideoPlayer} from './../../utils/const';
+
+interface State {
+  isPlaying: boolean,
+  timeElapsed: number,
+  progress: number
+}
+
+interface InjectingProps {
+  videoProgress: number,
+  videoTimeElapsed: number,
+  onFullScreenClick: () => void
+}
 
 const TIMEOUT_PLAY_VIDEO = 1000;
+const START_TIME_ELAPSED = 0;
+const START_PROGRESS = 1;
 
 const withVideo = (Component, typeVideoPlayer) => {
-  class WithVideo extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithVideo extends React.PureComponent<T, State> {
+    private _idTimer: NodeJS.Timeout;
+    private _videoRef: any;
+
     constructor(props) {
       super(props);
 
       this.state = {
         isPlaying: false,
-        timeElapsed: 0,
-        progress: 1
+        timeElapsed: START_TIME_ELAPSED,
+        progress: START_PROGRESS
       };
 
       this._videoRef = React.createRef();
@@ -35,7 +54,7 @@ const withVideo = (Component, typeVideoPlayer) => {
           videoTimeElapsed={timeElapsed}
           onFullScreenClick={this._handleFullScreenClick}
         >
-          <video className="player__video" ref={this._videoRef} muted="muted"/>;
+          <video className="player__video" ref={this._videoRef} muted/>;
         </Component>
       );
     }
@@ -142,14 +161,6 @@ const withVideo = (Component, typeVideoPlayer) => {
       }
     }
   }
-
-  WithVideo.propTypes = {
-    filmActive: PropTypes.shape(filmShape).isRequired,
-    isPlaying: PropTypes.bool.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    previewVideo: PropTypes.string,
-    videoMain: PropTypes.string
-  };
 
   return WithVideo;
 };

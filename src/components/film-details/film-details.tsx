@@ -1,22 +1,38 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 
-import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
-import {TypeScreen, AuthorizationStatus, AppRoute, FilmDetailTabsName, FilmsListType} from '../../utils/const.js';
+import {Film, UserMaximum, Comment} from '../../utils/types';
+import {TypeScreen, AuthorizationStatus, AppRoute, FilmDetailTabsName, FilmsListType} from '../../utils/const';
 
-import {Operation as DataOperation} from './../../reducer/data/data.js';
-import {ActionCreator as DataActionCreator} from './../../reducer/data/data.js';
-import {getFilmById, getFilmsByGenre, getComments, getLoadingCommentStatus} from './../../reducer/data/selectors.js';
+import {Operation as DataOperation} from './../../reducer/data/data';
+import {ActionCreator as DataActionCreator} from './../../reducer/data/data';
+import {getFilmById, getFilmsByGenre, getComments, getLoadingCommentStatus} from './../../reducer/data/selectors';
 
-import FilmDetailOverview from '../film-detail-overview/film-detail-overview.js';
-import FilmDetailMore from '../film-detail-more/film-detail-more.js';
-import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews.js';
-import FilmsList from '../films-list/films-list.js';
-import UserProfile from '../user-profile/user-profile.js';
-import Loading from '../loading/loading.js';
+import FilmDetailOverview from '../film-detail-overview/film-detail-overview';
+import FilmDetailMore from '../film-detail-more/film-detail-more';
+import FilmDetailReviews from '../film-detail-reviews/film-detail-reviews';
+import FilmsList from '../films-list/films-list';
+import UserProfile from '../user-profile/user-profile';
+import Loading from '../loading/loading';
+
+interface Props {
+  films: Film[],
+  film: Film,
+  user: UserMaximum,
+  comments: Comment[],
+  authorizationStatus: string,
+  activeTab: string,
+  isLoadingCommentStatus: boolean,
+  addFilmActive: (Film) => void,
+  loadComments: (idFilm: number) => void,
+  renderTabs: () => React.ReactNode,
+  //onFilmClick: func,
+  //onPlayClick: func,
+  //onTypeScreenChange: func,
+  onFilmMyListClick: (id: number, isFavorite: boolean) => void
+}
 
 const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => {
   switch (activeFilmDetailPage) {
@@ -44,7 +60,7 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => 
   }
 };
 
-class FilmDetails extends PureComponent {
+class FilmDetails extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
   }
@@ -79,9 +95,9 @@ class FilmDetails extends PureComponent {
       authorizationStatus,
       activeTab,
       renderTabs,
-      onFilmClick,
-      onPlayClick,
-      onTypeScreenChange,
+      //onFilmClick,
+      //onPlayClick,
+      //onTypeScreenChange,
       onFilmMyListClick
     } = this.props;
 
@@ -119,7 +135,7 @@ class FilmDetails extends PureComponent {
           <UserProfile
             user={user}
             authorizationStatus={authorizationStatus}
-            onTypeScreenChange={onTypeScreenChange}
+            //onTypeScreenChange={onTypeScreenChange}
           />
         </header>
 
@@ -136,7 +152,7 @@ class FilmDetails extends PureComponent {
                 className="btn btn--play movie-card__button"
                 type="button"
                 to={`${AppRoute.PLAYER}/${id}`}
-                onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
+                // onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -183,7 +199,8 @@ class FilmDetails extends PureComponent {
             currentFilm={film}
             films={films}
             filmListType={FilmsListType.MORE_LIKE}
-            onFilmClick={onFilmClick}
+            showFilmCardCount={8}
+            // onFilmClick={onFilmClick}
           />
 
         </section>
@@ -205,25 +222,6 @@ class FilmDetails extends PureComponent {
     </section>;
   }
 }
-
-FilmDetails.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape(filmShape).isRequired),
-  film: PropTypes.shape(filmShape).isRequired,
-  user: PropTypes.shape(userShape).isRequired,
-  comments: PropTypes.arrayOf(
-      PropTypes.shape(commentShape)
-  ),
-  authorizationStatus: PropTypes.string.isRequired,
-  activeTab: PropTypes.string.isRequired,
-  isLoadingCommentStatus: PropTypes.bool.isRequired,
-  addFilmActive: PropTypes.func.isRequired,
-  loadComments: PropTypes.func.isRequired,
-  renderTabs: PropTypes.func.isRequired,
-  onFilmClick: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired,
-  onFilmMyListClick: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state, props) => {
   return {

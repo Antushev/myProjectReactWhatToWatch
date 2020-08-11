@@ -1,9 +1,13 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../utils/const';
 
-import {userShape} from './../../utils/shapes.js';
+import {UserMaximum} from '../../utils/types';
+
+interface Props {
+  user: UserMaximum,
+  authorizationStatus: string
+}
 
 const BASE_URL_AVATAR = `https://4.react.pages.academy`;
 
@@ -22,7 +26,7 @@ const renderUserProfile = (user, authorizationStatus) => {
     </Link>;
 };
 
-const UserProfile = (props) => {
+const UserProfile: React.FunctionComponent<Props> = (props:Props) => {
   const {user, authorizationStatus} = props;
 
   return (
@@ -30,11 +34,6 @@ const UserProfile = (props) => {
       {renderUserProfile(user, authorizationStatus)}
     </div>
   );
-};
-
-UserProfile.propTypes = {
-  user: PropTypes.shape(userShape).isRequired,
-  authorizationStatus: PropTypes.string.isRequired
 };
 
 export default UserProfile;

@@ -1,7 +1,11 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-import {filmShape} from '../../utils/shapes.js';
+import {Film} from '../../utils/types';
+
+interface Props {
+  film: Film,
+  renderTabs: () => React.ReactNode
+}
 
 const getRatingType = (rating) => {
   const numberFloat = Number(rating);
@@ -18,7 +22,7 @@ const getRatingType = (rating) => {
   }
 };
 
-const FilmDetailOverview = (props) => {
+const FilmDetailOverview: React.FunctionComponent<Props> = (props: Props) => {
   const {film, renderTabs} = props;
   const {
     posterImage,
@@ -59,11 +63,6 @@ const FilmDetailOverview = (props) => {
       </div>
     </div>
   );
-};
-
-FilmDetailOverview.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  renderTabs: PropTypes.func.isRequired
 };
 
 export default FilmDetailOverview;

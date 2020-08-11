@@ -1,7 +1,20 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  isPlaying: boolean
+}
+
+interface InjectingProps {
+  isPlaying: boolean,
+  onPlayClick: () => void
+}
 
 const withVideoPlayerBig = (Component) => {
-  class WithVideoPlayerBig extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithVideoPlayerBig extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -30,8 +43,6 @@ const withVideoPlayerBig = (Component) => {
       });
     }
   }
-
-  WithVideoPlayerBig.propTypes = {};
 
   return WithVideoPlayerBig;
 };

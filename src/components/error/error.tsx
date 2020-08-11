@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Error = () => {
+const Error: React.FunctionComponent = () => {
   return (
     <div className="page-content">
       <section className="catalog">

@@ -1,7 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-const VideoPlayer = (props) => {
+interface Props {
+  children: React.ReactNode,
+  handleVideoPlayerPlay: () => void,
+  handleVideoPlayerPause: () => void
+}
+
+const VideoPlayer: React.FunctionComponent<Props> = (props: Props) => {
   const {children, handleVideoPlayerPlay, handleVideoPlayerPause} = props;
   return (
     <div
@@ -12,12 +17,6 @@ const VideoPlayer = (props) => {
       {children}
     </div>
   );
-};
-
-VideoPlayer.propTypes = {
-  children: PropTypes.node.isRequired,
-  handleVideoPlayerPlay: PropTypes.func.isRequired,
-  handleVideoPlayerPause: PropTypes.func.isRequired
 };
 
 export default VideoPlayer;

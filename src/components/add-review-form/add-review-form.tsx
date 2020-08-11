@@ -1,7 +1,17 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-import {filmShape} from '../../utils/shapes.js';
+import {Film} from '../../utils/types';
+
+interface Props {
+  film: Film,
+  rating: number,
+  isLoadingComment: boolean,
+  isErrorLoadingComment: boolean,
+  isButtonBlocked: boolean,
+  onRatingChange: () => void,
+  onTextChange: () => void,
+  onSubmitClick: (id: number) => void
+}
 
 const ratingPoints = [1, 2, 3, 4, 5];
 
@@ -47,7 +57,7 @@ const getLoadingBlock = (isLoadingComment, isErrorLoadingComment) => {
   return isLoadingComment ? <p>Комментарий загружается</p> : ``;
 };
 
-const FormAddReview = (props) => {
+const FormAddReview: React.FunctionComponent<Props> = (props:Props) => {
   const {
     film,
     rating,
@@ -103,17 +113,6 @@ const FormAddReview = (props) => {
       {getLoadingBlock(isLoadingComment, isErrorLoadingComment)}
     </form>
   );
-};
-
-FormAddReview.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  rating: PropTypes.number.isRequired,
-  isLoadingComment: PropTypes.bool.isRequired,
-  isErrorLoadingComment: PropTypes.bool.isRequired,
-  isButtonBlocked: PropTypes.bool.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onTextChange: PropTypes.func.isRequired,
-  onSubmitClick: PropTypes.func.isRequired
 };
 
 export default FormAddReview;

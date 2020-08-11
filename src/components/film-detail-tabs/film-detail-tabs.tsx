@@ -1,7 +1,10 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-import {FilmDetailTabsName} from '../../utils/const.js';
+import {FilmDetailTabsName} from '../../utils/const';
+
+interface Props {
+  onTabClick: (tab: string) => void
+}
 
 const renderFilmDetailTab = (tabs, onTabClick) => {
   return Object.values(tabs).map((tab, index) => {
@@ -17,7 +20,7 @@ const renderFilmDetailTab = (tabs, onTabClick) => {
   });
 };
 
-const FilmDetailTabs = (props) => {
+const FilmDetailTabs: React.FunctionComponent<Props> = (props: Props) => {
   const {onTabClick} = props;
 
   return (
@@ -27,10 +30,6 @@ const FilmDetailTabs = (props) => {
       </ul>
     </nav>
   );
-};
-
-FilmDetailTabs.propTypes = {
-  onTabClick: PropTypes.func.isRequired
 };
 
 export default FilmDetailTabs;

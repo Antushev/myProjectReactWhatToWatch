@@ -1,10 +1,16 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {getFilms} from './../../reducer/data/selectors.js';
+import {getFilms} from './../../reducer/data/selectors';
 
-import {filmShape} from './../../utils/shapes.js';
+import {Film} from '../../utils/types';
+
+interface Props {
+  films: Film[],
+  activeItem: string,
+  onActiveItemChange: (genre: string) => void,
+  onGenreTabClick: (genre: string) => void
+};
 
 const getGenresFilms = (films) => {
   let genres = [`All genres`];
@@ -45,7 +51,7 @@ const renderGenres = (genres, currentGenre, onActiveItemChange, onGenreTabClick)
   }).slice(0, MAX_GENRES);
 };
 
-const GenresList = (props) => {
+const GenresList: React.FunctionComponent<Props>= (props: Props) => {
   const {films, activeItem, onActiveItemChange, onGenreTabClick} = props;
 
   const genres = getGenresFilms(films);
@@ -55,15 +61,6 @@ const GenresList = (props) => {
       {renderGenres(genres, activeItem, onActiveItemChange, onGenreTabClick)}
     </ul>
   );
-};
-
-GenresList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ).isRequired,
-  activeItem: PropTypes.string.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
-  onGenreTabClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

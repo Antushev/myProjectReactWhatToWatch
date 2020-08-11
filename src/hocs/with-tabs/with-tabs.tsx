@@ -1,11 +1,24 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
 
-import {FilmDetailTabsName} from '../../utils/const.js';
+import {FilmDetailTabsName} from '../../utils/const';
 
-import FilmDetailTabs from '../../components/film-detail-tabs/film-detail-tabs.js';
+import FilmDetailTabs from '../../components/film-detail-tabs/film-detail-tabs';
+
+interface State {
+  activeTabDetailPage: string
+}
+
+interface InjectingProps {
+  activeTab: string,
+  renderTabs: () => React.ReactNode
+}
 
 const withTabs = (Component) => {
-  class FilmDetailComponentWithTabs extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class FilmDetailComponentWithTabs extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 

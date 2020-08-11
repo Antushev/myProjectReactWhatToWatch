@@ -1,36 +1,49 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {AppRoute, AuthorizationStatus, TypeScreen, FilmsListType} from '../../utils/const.js';
-import {filmShape, userShape} from '../../utils/shapes.js';
+import {AppRoute, AuthorizationStatus, TypeScreen, FilmsListType} from '../../utils/const';
+import {Film, UserMaximum} from '../../utils/types';
 
-import FilmsList from '../films-list/films-list.js';
-import GenresList from '../genres-list/genres-list.js';
-import ShowMore from '../show-more/show-more.js';
-import UserProfile from '../user-profile/user-profile.js';
+import FilmsList from '../films-list/films-list';
+import GenresList from '../genres-list/genres-list';
+import ShowMore from '../show-more/show-more';
+import UserProfile from '../user-profile/user-profile';
 
-import {getFilmsByGenre} from './../../reducer/data/selectors.js';
+import {getFilmsByGenre} from './../../reducer/data/selectors';
 
-import {withActiveItem} from '../../hocs/with-active-item/with-active-item.js';
+import {withActiveItem} from '../../hocs/with-active-item/with-active-item';
 import history from "../../history";
+
+interface Props {
+  films: Film[],
+  user: UserMaximum,
+  showFilmCardCount: number,
+  filmCardPreview: Film,
+  authorizationStatus: string,
+  // onFilmClick: func,
+  onGenreTabClick: (genre: string) => void,
+  onShowMoreClick: () => void,
+  // onPlayClick: func,
+  // onTypeScreenChange: func,
+  onFilmMyListClick: (id: number, isFavorite: boolean) => void
+}
 
 const GenresListWrapped = withActiveItem(GenresList);
 
 const DEFAULT_GENRE = `All genres`;
 
-const Main = (props) => {
+const Main: React.FunctionComponent<Props> = (props: Props) => {
   const {
     films,
     user,
     showFilmCardCount,
     filmCardPreview,
     authorizationStatus,
-    onFilmClick,
+    // onFilmClick,
     onGenreTabClick,
     onShowMoreClick,
-    onPlayClick,
+    // onPlayClick,
     onFilmMyListClick
   } = props;
 
@@ -87,7 +100,7 @@ const Main = (props) => {
                 to={`${AppRoute.PLAYER}/${id}`}
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
+                // onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -133,7 +146,8 @@ const Main = (props) => {
           films={films}
           showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
-          onFilmClick={onFilmClick}
+         // onFilmClick={onFilmClick}
+         currentFilm={films[0]}
         />
 
         {renderShowMore(films, showFilmCardCount, onShowMoreClick)}
@@ -165,22 +179,6 @@ const renderShowMore = (films, showFilmCardCount, onShowMoreClick) => {
   }
 
   return null;
-};
-
-Main.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ).isRequired,
-  user: PropTypes.shape(userShape).isRequired,
-  showFilmCardCount: PropTypes.number.isRequired,
-  filmCardPreview: PropTypes.shape(filmShape).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onFilmClick: PropTypes.func.isRequired,
-  onGenreTabClick: PropTypes.func.isRequired,
-  onShowMoreClick: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired,
-  onFilmMyListClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

@@ -1,21 +1,41 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import history from './../../history.js';
+import history from './../../history';
+import {Subtract} from 'utility-types';
 
-import {AppRoute, TypeScreen} from './../../utils/const.js';
-import {filmShape} from './../../utils/shapes.js';
+import {AppRoute, TypeScreen} from './../../utils/const';
+import {Film} from '../../utils/types';
 
-import {Operation as DataOperation} from '../../reducer/data/data.js';
-import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
-import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/data/selectors.js';
+import {Operation as DataOperation} from '../../reducer/data/data';
+import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state';
+import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/data/selectors';
+
+interface State {
+  rating: number,
+  comment: string,
+  isButtonBlocked: boolean
+}
+
+interface InjectingProps {
+  film: Film,
+  rating: number,
+  isLoadingComment: boolean,
+  isErrorLoadingComment: boolean,
+  isButtonBlocked: boolean,
+  onRatingChange: () => void,
+  onTextChange: () => void,
+  onSubmitClick: (idFilm: number) => void
+}
 
 const COMMENT_LENGTH_MIN = 50;
 const COMMENT_LENGTH_MAX = 400;
 const START_RATING_REVIEW = 0;
 
 const withFormValidationReview = (Component) => {
-  class WithFormValidationReview extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>
+
+  class WithFormValidationReview extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -101,14 +121,6 @@ const withFormValidationReview = (Component) => {
       }
     }
   }
-
-  WithFormValidationReview.propTypes = {
-    film: PropTypes.shape(filmShape).isRequired,
-    isLoadingComment: PropTypes.bool.isRequired,
-    isErrorLoadingComment: PropTypes.bool.isRequired,
-    onTypeScreenChange: PropTypes.func.isRequired,
-    onSubmitClick: PropTypes.func.isRequired,
-  };
 
   return WithFormValidationReview;
 };

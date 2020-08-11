@@ -1,10 +1,14 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {formatDateRuntime} from '../../utils/common.js';
+import {formatDateRuntime} from '../../utils/common';
 
-import {filmShape} from './../../utils/shapes.js';
+import {Film} from '../../utils/types';
 
-const FilmDetailMore = (props) => {
+interface Props {
+  film: Film,
+  renderTabs: () => React.ReactNode
+}
+
+const FilmDetailMore: React.FunctionComponent<Props> = (props: Props) => {
   const {film, renderTabs} = props;
   const {
     director,
@@ -62,11 +66,6 @@ const FilmDetailMore = (props) => {
       </div>
     </div>
   );
-};
-
-FilmDetailMore.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  renderTabs: PropTypes.func.isRequired
 };
 
 export default FilmDetailMore;

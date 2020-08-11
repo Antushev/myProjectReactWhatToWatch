@@ -1,56 +1,73 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 import {Router, Switch, Route} from 'react-router-dom';
-import history from '../../history.js';
+import history from '../../history';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {AppRoute, TypeScreen, TypeVideoPlayer} from '../../utils/const.js';
-import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data.js';
-import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state.js';
+import {AppRoute, TypeVideoPlayer} from '../../utils/const';
+import {Operation as DataOperation, ActionCreator as DataActionCreator} from '../../reducer/data/data';
+import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state';
 import {
   getLoadingStatus,
   getErrorStatus, getFilmPromo,
   getComments,
   getFilmsByGenre,
   getFilmActive
-} from './../../reducer/data/selectors.js';
-import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors.js';
-import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors.js';
+} from './../../reducer/data/selectors';
+import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors';
+import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors';
 
-import {filmShape, userShape, commentShape} from '../../utils/shapes.js';
+import {Film, Comment} from '../../utils/types';
 
-import Main from '../main/main.js';
-import FilmDetails from '../film-details/film-details.js';
-import VideoPlayerBig from '../video-player-big/video-player-big.js';
-import SignIn from '../sign-in/sign-in.js';
-import AddReview from '../add-review/add-review.js';
-import MyList from '../my-list/my-list.js';
-import PrivateRoute from '../private-route/private-route.js';
-import AuthRoute from '../auth-route/auth-route.js';
-import Loading from '../loading/loading.js';
-import Error from '../error/error.js';
+import Main from '../main/main';
+import FilmDetails from '../film-details/film-details';
+import VideoPlayerBig from '../video-player-big/video-player-big';
+import SignIn from '../sign-in/sign-in';
+import AddReview from '../add-review/add-review';
+import MyList from '../my-list/my-list';
+import PrivateRoute from '../private-route/private-route';
+import AuthRoute from '../auth-route/auth-route';
+import Loading from '../loading/loading';
+import Error from '../error/error';
 
-import {withTabs} from '../../hocs/with-tabs/with-tabs.js';
-import withVideo from '../../hocs/with-video/with-video.js';
-import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big.js';
-import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation.js';
+import {withTabs} from '../../hocs/with-tabs/with-tabs';
+import withVideo from '../../hocs/with-video/with-video';
+import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-player-big';
+import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation';
+
+interface Props {
+  isLoading: boolean,
+  isError: boolean,
+  films: Film[],
+  filmPromo: Film,
+  filmActive: Film,
+  user: Film,
+  comments: Comment[],
+  typeScreenActive: string,
+  showFilmCardCount: number,
+  authorizationStatus: string,
+  onGenreTabClick: (genre: string) => void,
+  onShowMoreClick: () => void,
+  onTypeScreenChange: () => void,
+  onLoadComments: (idFilm: number) => void,
+  onFilmMyListClick: (idFilm: number, status: boolean) => void
+}
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);
 const VideoPlayerBigWithControls = withVideo(VideoPlayerBig, TypeVideoPlayer.BIG_VIDEO_PLAYER);
 const VideoPlayerBigWrapped = withVideoPlayerBig(VideoPlayerBigWithControls);
 const SignInWrapped = withFormValidation(SignIn);
 
-class App extends PureComponent {
+class App extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
-    this.state = {
-      film: {},
-      typeScreen: TypeScreen.MAIN_SCREEN
-    };
+    // this.state = {
+    //   film: {},
+    //   typeScreen: TypeScreen.MAIN_SCREEN
+    // };
 
-    this._handleFilmClick = this._handleFilmClick.bind(this);
-    this._handlePlayClick = this._handlePlayClick.bind(this);
-    this._handleExitVideoPlayerClick = this._handleExitVideoPlayerClick.bind(this);
+    // this._handleFilmClick = this._handleFilmClick.bind(this);
+    // this._handlePlayClick = this._handlePlayClick.bind(this);
+    // this._handleExitVideoPlayerClick = this._handleExitVideoPlayerClick.bind(this);
   }
 
   render() {
@@ -87,8 +104,8 @@ class App extends PureComponent {
                 showFilmCardCount={showFilmCardCount}
                 filmCardPreview={filmPromo}
                 authorizationStatus={authorizationStatus}
-                onFilmClick={this._handleFilmClick}
-                onPlayClick={this._handlePlayClick}
+                //onFilmClick={this._handleFilmClick}
+                //onPlayClick={this._handlePlayClick}
                 onTypeScreenChange={onTypeScreenChange}
                 onGenreTabClick={onGenreTabClick}
                 onShowMoreClick={onShowMoreClick}
@@ -107,8 +124,8 @@ class App extends PureComponent {
                 comments={comments}
                 authorizationStatus={authorizationStatus}
                 onTypeScreenChange={onTypeScreenChange}
-                onFilmClick={this._handleFilmClick}
-                onPlayClick={this._handlePlayClick}
+                //onFilmClick={this._handleFilmClick}
+                //onPlayClick={this._handlePlayClick}
                 onFilmMyListClick={onFilmMyListClick}
               />
             );
@@ -121,7 +138,7 @@ class App extends PureComponent {
                 {...routerProps}
                 posterImage={filmActive.posterImage}
                 videoMain={filmActive.videoMain}
-                onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
+                // onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
               />
             );
           }}
@@ -158,62 +175,40 @@ class App extends PureComponent {
     </Router>;
   }
 
-  _handleFilmClick(film, typeScreen, idTimer = null) {
-    const {onTypeScreenChange} = this.props;
-
-    if (idTimer) {
-      clearTimeout(idTimer);
-    }
-
-    onTypeScreenChange(typeScreen);
-
-    this.setState({
-      film,
-    });
-  }
-
-  _handlePlayClick(film, typeScreen) {
-    const {onTypeScreenChange} = this.props;
-
-    onTypeScreenChange(typeScreen);
-
-    this.setState({
-      film
-    });
-  }
-
-  _handleExitVideoPlayerClick(typeScreen) {
-    const {onTypeScreenChange} = this.props;
-
-    onTypeScreenChange(typeScreen);
-
-    this.setState({
-      film: null
-    });
-  }
+  // _handleFilmClick(film, typeScreen, idTimer = null) {
+  //   const {onTypeScreenChange} = this.props;
+  //
+  //   if (idTimer) {
+  //     clearTimeout(idTimer);
+  //   }
+  //
+  //   onTypeScreenChange(typeScreen);
+  //
+  //   this.setState({
+  //     film,
+  //   });
+  // }
+  //
+  // _handlePlayClick(film, typeScreen) {
+  //   const {onTypeScreenChange} = this.props;
+  //
+  //   onTypeScreenChange(typeScreen);
+  //
+  //   this.setState({
+  //     film
+  //   });
+  // }
+  //
+  // _handleExitVideoPlayerClick(typeScreen) {
+  //   const {onTypeScreenChange} = this.props;
+  //
+  //   onTypeScreenChange(typeScreen);
+  //
+  //   this.setState({
+  //     film: null
+  //   });
+  // }
 }
-
-App.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmShape)
-  ),
-  filmPromo: PropTypes.shape(filmShape),
-  filmActive: PropTypes.shape(filmShape),
-  user: PropTypes.shape(userShape).isRequired,
-  comments: PropTypes.arrayOf(
-      PropTypes.shape(commentShape)
-  ),
-  typeScreenActive: PropTypes.string.isRequired,
-  showFilmCardCount: PropTypes.number.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onGenreTabClick: PropTypes.func.isRequired,
-  onShowMoreClick: PropTypes.func.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired,
-  onLoadComments: PropTypes.func.isRequired,
-  onFilmMyListClick: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => {
   return {

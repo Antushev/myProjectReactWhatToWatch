@@ -1,8 +1,20 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  activeItem: string
+}
+
+interface InjectingProps {
+  activeItem: string,
+  onActiveItemChange: (newActionItem: string) => void
+}
 
 const withActiveItem = (Component) => {
-  class WithActiveItem extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithActiveItem extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -35,10 +47,6 @@ const withActiveItem = (Component) => {
       }
     }
   }
-
-  WithActiveItem.propTypes = {
-    activeItem: PropTypes.string.isRequired
-  };
 
   return WithActiveItem;
 };

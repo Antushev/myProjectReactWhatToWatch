@@ -1,12 +1,18 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-import {FilmsListType, TypeVideoPlayer} from '../../utils/const.js';
-import {filmShape} from '../../utils/shapes.js';
+import {FilmsListType, TypeVideoPlayer} from '../../utils/const';
+import {Film} from '../../utils/types';
 
-import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player.js';
+import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player';
 
-import FilmCard from '../film-card/film-card.js';
+import FilmCard from '../film-card/film-card';
+
+interface Props {
+  films: Film[],
+  showFilmCardCount: number,
+  filmListType: string,
+  currentFilm: Film
+}
 
 const FILMS_MORE_LIKE_COUNT = 4;
 
@@ -18,7 +24,7 @@ const getFilmsMoreLike = (currentFilm, films) => {
   }).slice(0, FILMS_MORE_LIKE_COUNT);
 };
 
-const FilmsList = (props) => {
+const FilmsList: React.FunctionComponent<Props> = (props: Props) => {
   const renderFilmsList = () => {
     const {
       currentFilm,
@@ -37,24 +43,24 @@ const FilmsList = (props) => {
     }
   };
 
-  const renderFilmsCardDefault = (films, showFilmCardCount, onFilmClick) => {
+  const renderFilmsCardDefault = (films, showFilmCardCount) => {
     return films.map((film) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        onFilmClick={onFilmClick}
+        // onFilmClick={onFilmClick}
       />;
     }).slice(0, showFilmCardCount);
   };
 
-  const renderFilmsCardMoreLike = (currentFilm, films, onFilmClick) => {
+  const renderFilmsCardMoreLike = (currentFilm, films) => {
     const filmsMoreLike = getFilmsMoreLike(currentFilm, films);
 
     return filmsMoreLike.map((film) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        onFilmClick={onFilmClick}
+        // onFilmClick={onFilmClick}
       />;
     });
   };
@@ -64,15 +70,6 @@ const FilmsList = (props) => {
       {renderFilmsList()}
     </div>
   );
-};
-
-FilmsList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape(filmShape).isRequired
-  ).isRequired,
-  showFilmCardCount: PropTypes.number,
-  filmListType: PropTypes.string.isRequired,
-  currentFilm: PropTypes.shape(filmShape),
 };
 
 export default FilmsList;

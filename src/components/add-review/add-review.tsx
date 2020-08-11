@@ -1,22 +1,27 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AppRoute} from './../../utils/const.js';
+import {AppRoute} from './../../utils/const';
 
-import {filmShape, userShape} from '../../utils/shapes';
+import {Film, UserMaximum} from '../../utils/types';
 
-import {getFilmById} from '../../reducer/data/selectors.js';
+import {getFilmById} from '../../reducer/data/selectors';
 
-import UserProfile from '../user-profile/user-profile.js';
-import FormAddReview from '../add-review-form/add-review-form.js';
+import UserProfile from '../user-profile/user-profile';
+import FormAddReview from '../add-review-form/add-review-form';
 
-import withFormValidationReview from '../../hocs/with-form-validation-review/with-form-validation-review.js';
+import withFormValidationReview from '../../hocs/with-form-validation-review/with-form-validation-review';
+
+interface Props {
+  film: Film,
+  user: UserMaximum,
+  authorizationStatus: string
+}
 
 const FormAddReviewWrapped = withFormValidationReview(FormAddReview);
 
-const AddReview = (props) => {
-  const {film, user, authorizationStatus, onTypeScreenChange} = props;
+const AddReview: React.FunctionComponent<Props> = (props: Props) => {
+  const {film, user, authorizationStatus} = props;
 
   const {
     name,
@@ -56,7 +61,6 @@ const AddReview = (props) => {
           <UserProfile
             user={user}
             authorizationStatus={authorizationStatus}
-            onTypeScreenChange={onTypeScreenChange}
           />
         </header>
 
@@ -73,13 +77,6 @@ const AddReview = (props) => {
       </div>
     </section>
   );
-};
-
-AddReview.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  user: PropTypes.shape(userShape).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  onTypeScreenChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, props) => {

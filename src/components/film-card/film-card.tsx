@@ -1,11 +1,15 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-import {AppRoute} from '../../utils/const.js';
-import {filmShape} from '../../utils/shapes.js';
+import {AppRoute} from '../../utils/const';
+import {Film} from '../../utils/types';
 
-const FilmCard = (props) => {
+interface Props {
+  film: Film,
+  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain:string) => React.ReactNode,
+}
+
+const FilmCard: React.FunctionComponent<Props> = (props: Props) => {
   const {film, renderVideoPlayer} = props;
   const {id, name, posterImage, previewVideo, videoMain} = film;
 
@@ -22,12 +26,6 @@ const FilmCard = (props) => {
       </h3>
     </article>
   );
-};
-
-
-FilmCard.propTypes = {
-  film: PropTypes.shape(filmShape).isRequired,
-  renderVideoPlayer: PropTypes.func.isRequired,
 };
 
 export default FilmCard;
