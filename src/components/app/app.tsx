@@ -55,6 +55,8 @@ const VideoPlayerBigWrapped = withVideoPlayerBig(VideoPlayerBigWithControls);
 const SignInWrapped = withFormValidation(SignIn);
 
 class App extends React.PureComponent<Props, {}> {
+  props: Props
+
   constructor(props) {
     super(props);
   }

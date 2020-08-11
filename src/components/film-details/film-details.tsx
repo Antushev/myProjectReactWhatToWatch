@@ -57,6 +57,8 @@ const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => 
 };
 
 class FilmDetails extends React.PureComponent<Props> {
+  props: Props
+
   constructor(props) {
     super(props);
   }
