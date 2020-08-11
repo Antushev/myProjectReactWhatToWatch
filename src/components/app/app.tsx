@@ -15,8 +15,6 @@ import {
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors';
 
-import {Film, Comment, UserMaximum} from '../../utils/types';
-
 import Main from '../main/main';
 import FilmDetails from '../film-details/film-details';
 import VideoPlayerBig from '../video-player-big/video-player-big';

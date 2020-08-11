@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {AppRoute} from './../../utils/const';
 
-import {Film, UserMaximum} from '../../utils/types';
-
 import {getFilmById} from '../../reducer/data/selectors';
 
 import UserProfile from '../user-profile/user-profile';

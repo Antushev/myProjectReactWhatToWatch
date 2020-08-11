@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import history from './../../history';
 
-import {Film, UserMaximum, Comment} from '../../utils/types';
 import {AuthorizationStatus, AppRoute, FilmDetailTabsName, FilmsListType} from '../../utils/const';
 
 import {Operation as DataOperation} from './../../reducer/data/data';

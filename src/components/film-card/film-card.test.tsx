@@ -3,8 +3,6 @@ import * as renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import history from './../../history';
 
-import {Film} from '../../utils/types';
-
 import {film} from '../../mocks-test/films-t';
 
 const filmTest: Film = film;

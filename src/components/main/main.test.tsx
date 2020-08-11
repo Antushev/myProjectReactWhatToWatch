@@ -9,7 +9,6 @@ import {NameSpace} from '../../reducer/name-space';
 import {film, films} from '../../mocks-test/films-t';
 import {user} from '../../mocks-test/user-t';
 
-import {Film, UserMaximum} from '../../utils/types';
 import {noop} from '../../utils/const';
 
 const filmTest: Film = film;

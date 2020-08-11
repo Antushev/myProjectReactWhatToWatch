@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
 
-import {Film, Comment} from '../../utils/types';
-
 interface Props {
   film: Film;
   comments: Comment[];

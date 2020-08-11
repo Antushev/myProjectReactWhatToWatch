@@ -5,8 +5,6 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import history from './../../history';
 
-import {Film, UserMaximum} from '../../utils/types';
-
 import {NameSpace} from '../../reducer/name-space';
 import {film} from '../../mocks-test/films-t';
 import {user} from '../../mocks-test/user-t';

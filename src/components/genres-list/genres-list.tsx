@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 
 import {getFilms} from './../../reducer/data/selectors';
 
-import {Film} from '../../utils/types';
-
 interface Props {
   films: Film[];
   activeItem: string;

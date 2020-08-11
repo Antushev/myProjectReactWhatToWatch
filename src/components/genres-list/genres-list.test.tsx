@@ -3,7 +3,6 @@ import * as renderer from 'react-test-renderer';
 
 import {films, currentGenre} from '../../mocks-test/films-t';
 
-import {Film} from '../../utils/types';
 import {noop} from '../../utils/const';
 
 import {GenresList} from './genres-list';

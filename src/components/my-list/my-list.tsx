@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {AppRoute, FilmsListType} from './../../utils/const';
-import {Film, UserMaximum} from '../../utils/types';
 
 import {Operation as DataOperation} from './../../reducer/data/data';
 import {getFilmsFavorite, getLoadingFilmsFavoriteStatus} from './../../reducer/data/selectors';

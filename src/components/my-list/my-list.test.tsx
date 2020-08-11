@@ -10,8 +10,6 @@ import {NameSpace} from '../../reducer/name-space';
 import {films as filmsTest} from '../../mocks-test/films-t.js';
 import {user} from '../../mocks-test/user-t';
 
-import {Film, UserMaximum} from '../../utils/types';
-
 import {MyList} from './my-list';
 
 const filmsTestMyList: Film[] = filmsTest;

@@ -5,8 +5,6 @@ import history from './../../history';
 
 import {user} from '../../mocks-test/user-t';
 
-import {UserMaximum} from '../../utils/types';
-
 import UserProfile from './user-profile';
 
 const userTest: UserMaximum = user;

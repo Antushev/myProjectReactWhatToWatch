@@ -2,8 +2,6 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../utils/const';
 
-import {UserMaximum} from '../../utils/types';
-
 interface Props {
   user: UserMaximum;
   authorizationStatus: string;

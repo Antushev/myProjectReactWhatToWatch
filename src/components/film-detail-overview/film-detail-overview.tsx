@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import {Film} from '../../utils/types';
-
 interface Props {
   film: Film;
   renderTabs: () => React.ReactNode;

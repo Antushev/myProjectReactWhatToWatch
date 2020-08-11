@@ -4,8 +4,6 @@ import * as renderer from 'react-test-renderer';
 import {film} from '../../mocks-test/films-t';
 import {comments} from '../../mocks-test/comment-t';
 
-import {Film, Comment} from '../../utils/types';
-
 import FilmDetailReviews from './film-detail-reviews';
 
 const filmTest: Film = film;

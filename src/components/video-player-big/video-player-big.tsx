@@ -7,7 +7,6 @@ import {getFilmById} from './../../reducer/data/selectors';
 
 import {formatVideoElapsed} from '../../utils/common';
 import {AppRoute} from '../../utils/const';
-import {Film} from '../../utils/types';
 
 interface Props {
   filmActive: Film;

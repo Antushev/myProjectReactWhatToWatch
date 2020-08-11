@@ -4,7 +4,6 @@ import history from './../../history';
 import {Subtract} from 'utility-types';
 
 import {AppRoute, TypeScreen} from './../../utils/const';
-import {Film} from '../../utils/types';
 
 import {Operation as DataOperation} from '../../reducer/data/data';
 import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/app-state';

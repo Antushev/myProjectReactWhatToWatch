@@ -6,8 +6,6 @@ import FilmsList from './films-list';
 import {film, films} from '../../mocks-test/films-t';
 import {FilmsListType} from '../../mocks-test/films-t';
 
-import {Film} from '../../utils/types';
-
 const filmTest: Film = film;
 const filmsTest: Film[] = films;
 

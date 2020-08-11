@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {AppRoute, AuthorizationStatus, FilmsListType} from '../../utils/const';
-import {Film, UserMaximum} from '../../utils/types';
 
 import FilmsList from '../films-list/films-list';
 import GenresList from '../genres-list/genres-list';

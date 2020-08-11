@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {FilmsListType, TypeVideoPlayer} from '../../utils/const';
-import {Film} from '../../utils/types';
 
 import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player';
 

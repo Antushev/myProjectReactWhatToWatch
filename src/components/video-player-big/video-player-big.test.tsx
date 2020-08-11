@@ -9,7 +9,6 @@ import {NameSpace} from '../../reducer/name-space';
 
 import {film, films} from '../../mocks-test/films-t';
 
-import {Film} from '../../utils/types';
 import {noop} from '../../utils/const';
 
 import VideoPlayerBig from './video-player-big';

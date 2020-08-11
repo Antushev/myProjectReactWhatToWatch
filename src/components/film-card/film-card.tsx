@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 import {AppRoute} from '../../utils/const';
-import {Film} from '../../utils/types';
 
 interface Props {
   film: Film;

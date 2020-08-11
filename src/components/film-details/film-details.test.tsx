@@ -14,7 +14,6 @@ import {film, films} from '../../mocks-test/films-t';
 import {user} from '../../mocks-test/user-t';
 import {comments} from '../../mocks-test/comment-t';
 
-import {Film, UserMaximum, Comment} from '../../utils/types';
 import {noop} from '../../utils/const';
 
 import FilmDetails from './film-details';
