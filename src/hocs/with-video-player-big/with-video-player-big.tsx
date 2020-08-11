@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  isPlaying: boolean
+  isPlaying: boolean;
 }
 
 interface InjectingProps {
-  isPlaying: boolean,
-  onPlayClick: () => void
+  isPlaying: boolean;
+  onPlayClick: () => void;
 }
 
 const withVideoPlayerBig = (Component) => {

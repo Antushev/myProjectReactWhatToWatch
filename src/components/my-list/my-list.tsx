@@ -13,11 +13,11 @@ import UserProfile from '../user-profile/user-profile';
 import Loading from '../loading/loading';
 
 interface Props {
-  filmsFavorite: Film[],
-  user: UserMaximum,
-  authorizationStatus: string,
-  isLoadingFilmsFavorite: boolean,
-  loadFilmsFavorite: () => void
+  filmsFavorite: Film[];
+  user: UserMaximum;
+  authorizationStatus: string;
+  isLoadingFilmsFavorite: boolean;
+  loadFilmsFavorite: () => void;
 }
 
 const SHOW_FILMS_CARD_COUNT_MORE_LIKE = 4;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import {FilmDetailTabsName} from '../../utils/const';
 
 interface Props {
-  onTabClick: (tab: string) => void
+  onTabClick: (tab: string) => void;
 }
 
 const renderFilmDetailTab = (tabs, onTabClick) => {

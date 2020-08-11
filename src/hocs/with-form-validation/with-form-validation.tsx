@@ -2,15 +2,15 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  inputEmail: string,
-  inputPassword: string,
-  buttonDisabled: boolean
+  inputEmail: string;
+  inputPassword: string;
+  buttonDisabled: boolean;
 }
 
 interface InjectingProps {
-  buttonDisabled: boolean,
-  onChangeInputEmail: (value: string) => void,
-  onChangeInputPassword: (value: string) => void
+  buttonDisabled: boolean;
+  onChangeInputEmail: (value: string) => void;
+  onChangeInputPassword: (value: string) => void;
 }
 
 const withFormValidation = (Component) => {

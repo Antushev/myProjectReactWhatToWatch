@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer'
+import * as renderer from 'react-test-renderer';
 
 import FilmDetailTabs from './film-detail-tabs';
 
@@ -8,7 +8,7 @@ describe(`FilmDetailTabsComponent`, () => {
     const tree = renderer
       .create(
           <FilmDetailTabs
-            onTabClick={() => {}}
+            onTabClick={() => null}
           />
       )
       .toJSON();

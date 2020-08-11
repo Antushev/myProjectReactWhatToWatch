@@ -6,14 +6,14 @@ import {getFilms} from './../../reducer/data/selectors';
 import {Film} from '../../utils/types';
 
 interface Props {
-  films: Film[],
-  activeItem: string,
-  onActiveItemChange: (genre: string) => void,
-  onGenreTabClick: (genre: string) => void
-};
+  films: Film[];
+  activeItem: string;
+  onActiveItemChange: (genre: string) => void;
+  onGenreTabClick: (genre: string) => void;
+}
 
 const getGenresFilms = (films) => {
-  let genres = [`All genres`];
+  const genres = [`All genres`];
 
   films.forEach((film) => {
     const isFilmInArray = genres.find((genre) => {
@@ -51,7 +51,7 @@ const renderGenres = (genres, currentGenre, onActiveItemChange, onGenreTabClick)
   }).slice(0, MAX_GENRES);
 };
 
-const GenresList: React.FunctionComponent<Props>= (props: Props) => {
+const GenresList: React.FunctionComponent<Props> = (props: Props) => {
   const {films, activeItem, onActiveItemChange, onGenreTabClick} = props;
 
   const genres = getGenresFilms(films);

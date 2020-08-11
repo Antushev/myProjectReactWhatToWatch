@@ -5,10 +5,10 @@ import {AuthorizationStatus, AppRoute} from './../../utils/const';
 import {getAuthorizeStatusUser} from './../../reducer/user/selectors';
 
 interface Props {
-  path: string,
-  exact: boolean,
-  authorizationStatus: string,
-  render: (obj: any) => React.ReactNode
+  path: string;
+  exact: boolean;
+  authorizationStatus: string;
+  render: (obj: any) => React.ReactNode;
 }
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props) => {

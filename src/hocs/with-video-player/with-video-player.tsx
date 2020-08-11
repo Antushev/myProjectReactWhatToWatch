@@ -6,11 +6,11 @@ import VideoPlayer from '../../components/video-player/video-player';
 import withVideo from '../with-video/with-video';
 
 interface State {
-  isPlaying: boolean
+  isPlaying: boolean;
 }
 
 interface InjectingProps {
-  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain: string) => React.ReactNode
+  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain: string) => React.ReactNode;
 }
 
 const withVideoPlayer = (Component, typeVideoPlayer) => {

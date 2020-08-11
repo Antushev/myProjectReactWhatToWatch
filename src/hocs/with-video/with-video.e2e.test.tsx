@@ -14,12 +14,12 @@ const previewVideo = `src/video.mp4`;
 
 
 interface Props {
-  children: React.ReactNode,
-  handleVideoPlayerMouseOver: () => void,
-  handleVideoPlayerMouseOut: () => void
+  children: React.ReactNode;
+  handleVideoPlayerMouseOver: () => void;
+  handleVideoPlayerMouseOut: () => void;
 }
 
-const MockVideo: React.FunctionComponent<Props> = (props:Props) => {
+const MockVideo: React.FunctionComponent<Props> = (props: Props) => {
   const {children, handleVideoPlayerMouseOver, handleVideoPlayerMouseOut} = props;
 
   return (
@@ -43,12 +43,12 @@ describe(`Tests HOC with-video`, () => {
           isPlaying={false}
           posterImage={previewImage}
           previewVideo={previewVideo}
-          handleVideoPlayerMouseOver={() => {}}
-          handleVideoPlayerMouseOut={() => {}}
+          handleVideoPlayerMouseOver={() => null}
+          handleVideoPlayerMouseOut={() => null}
         />
     );
 
-    window.HTMLMediaElement.prototype.load = () => {};
+    window.HTMLMediaElement.prototype.load = () => null;
 
     const {_videoRef} = wrapper.instance();
 
@@ -72,12 +72,12 @@ describe(`Tests HOC with-video`, () => {
           isPlaying={false}
           posterImage={previewImage}
           previewVideo={previewVideo}
-          handleVideoPlayerMouseOver={() => {}}
-          handleVideoPlayerMouseOut={() => {}}
+          handleVideoPlayerMouseOver={() => null}
+          handleVideoPlayerMouseOut={() => null}
         />
     );
 
-    window.HTMLMediaElement.prototype.load = () => {};
+    window.HTMLMediaElement.prototype.load = () => null;
 
     const {_videoRef} = wrapper.instance();
 

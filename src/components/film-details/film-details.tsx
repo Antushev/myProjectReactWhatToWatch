@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import history from './../../history';
 
 import {Film, UserMaximum, Comment} from '../../utils/types';
-import {TypeScreen, AuthorizationStatus, AppRoute, FilmDetailTabsName, FilmsListType} from '../../utils/const';
+import {AuthorizationStatus, AppRoute, FilmDetailTabsName, FilmsListType} from '../../utils/const';
 
 import {Operation as DataOperation} from './../../reducer/data/data';
 import {ActionCreator as DataActionCreator} from './../../reducer/data/data';
@@ -18,17 +18,17 @@ import UserProfile from '../user-profile/user-profile';
 import Loading from '../loading/loading';
 
 interface Props {
-  films: Film[],
-  film: Film,
-  user: UserMaximum,
-  comments: Comment[],
-  authorizationStatus: string,
-  activeTab: string,
-  isLoadingCommentStatus: boolean,
-  addFilmActive: (Film) => void,
-  loadComments: (idFilm: number) => void,
-  renderTabs: () => React.ReactNode,
-  onFilmMyListClick: (id: number, isFavorite: boolean) => void
+  films: Film[];
+  film: Film;
+  user: UserMaximum;
+  comments: Comment[];
+  authorizationStatus: string;
+  activeTab: string;
+  isLoadingCommentStatus: boolean;
+  addFilmActive: (Film) => void;
+  loadComments: (idFilm: number) => void;
+  renderTabs: () => React.ReactNode;
+  onFilmMyListClick: (id: number, isFavorite: boolean) => void;
 }
 
 const renderDetailPages = (film, activeFilmDetailPage, renderTabs, comments) => {

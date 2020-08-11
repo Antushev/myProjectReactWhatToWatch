@@ -10,7 +10,7 @@ interface Props {
   onActiveItemChange: (value: number) => void;
 }
 
-const MockList: React.FunctionComponent<Props> = (props:Props) => {
+const MockList: React.FunctionComponent<Props> = (props: Props) => {
   const {onActiveItemChange} = props;
 
   return <div>

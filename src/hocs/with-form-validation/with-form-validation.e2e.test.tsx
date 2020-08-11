@@ -7,9 +7,9 @@ import {withFormValidation} from './with-form-validation';
 configure({adapter: new Adapter()});
 
 interface Props {
-  buttonDisabled: boolean,
-  handleEmailInputChange: () => void,
-  handlePasswordInputChange: () => void
+  buttonDisabled: boolean;
+  handleEmailInputChange: () => void;
+  handlePasswordInputChange: () => void;
 }
 
 const MockForm: React.FunctionComponent<Props> = (props: Props) => {

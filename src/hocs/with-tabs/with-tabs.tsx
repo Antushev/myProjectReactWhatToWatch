@@ -6,12 +6,12 @@ import {FilmDetailTabsName} from '../../utils/const';
 import FilmDetailTabs from '../../components/film-detail-tabs/film-detail-tabs';
 
 interface State {
-  activeTabDetailPage: string
+  activeTabDetailPage: string;
 }
 
 interface InjectingProps {
-  activeTab: string,
-  renderTabs: () => React.ReactNode
+  activeTab: string;
+  renderTabs: () => React.ReactNode;
 }
 
 const withTabs = (Component) => {

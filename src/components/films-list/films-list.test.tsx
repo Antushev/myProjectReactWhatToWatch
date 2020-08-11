@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer'
+import * as renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import createStore from 'redux-mock-store';

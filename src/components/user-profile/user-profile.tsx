@@ -5,8 +5,8 @@ import {AppRoute, AuthorizationStatus} from '../../utils/const';
 import {UserMaximum} from '../../utils/types';
 
 interface Props {
-  user: UserMaximum,
-  authorizationStatus: string
+  user: UserMaximum;
+  authorizationStatus: string;
 }
 
 const BASE_URL_AVATAR = `https://4.react.pages.academy`;
@@ -26,7 +26,7 @@ const renderUserProfile = (user, authorizationStatus) => {
     </Link>;
 };
 
-const UserProfile: React.FunctionComponent<Props> = (props:Props) => {
+const UserProfile: React.FunctionComponent<Props> = (props: Props) => {
   const {user, authorizationStatus} = props;
 
   return (

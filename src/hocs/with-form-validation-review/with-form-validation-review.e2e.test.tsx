@@ -15,15 +15,15 @@ const filmTest: Film = film;
 const ratingPoints = [0, 1, 2, 3, 4, 5];
 
 interface Props {
-  rating: number,
-  isLoadingComment: boolean,
-  isButtonBlocked: boolean,
-  onRatingChange: () => void,
-  onTextChange: () => void,
-  onSubmitClick: () => void
+  rating: number;
+  isLoadingComment: boolean;
+  isButtonBlocked: boolean;
+  onRatingChange: () => void;
+  onTextChange: () => void;
+  onSubmitClick: () => void;
 }
 
-const FormComponent: React.FunctionComponent<Props> = (props:Props) => {
+const FormComponent: React.FunctionComponent<Props> = (props: Props) => {
   const {
     rating,
     isLoadingComment,
@@ -90,7 +90,7 @@ describe(`Test HOC with-from-validation-review`, () => {
 
     expect(formWrapped.find(`button`).prop(`disabled`)).toBe(false);
 
-    buttonSubmit.simulate(`submit`, {preventDefault: () => {}});
+    buttonSubmit.simulate(`submit`, {preventDefault: () => null});
 
     expect(onSubmitClick).toHaveBeenCalledTimes(1);
   });

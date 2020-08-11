@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
 
-import {AuthorizationStatus} from './utils/const'
+import {AuthorizationStatus} from './utils/const';
 import {createApi} from './api';
 import reducer from './reducer/reducer.js';
 import {ActionCreator as DataActionCreator} from './reducer/data/data';

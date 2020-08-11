@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 interface Props {
-  children: React.ReactNode,
-  handleVideoPlayerPlay: () => void,
-  handleVideoPlayerPause: () => void
+  children: React.ReactNode;
+  handleVideoPlayerPlay: () => void;
+  handleVideoPlayerPause: () => void;
 }
 
 const VideoPlayer: React.FunctionComponent<Props> = (props: Props) => {

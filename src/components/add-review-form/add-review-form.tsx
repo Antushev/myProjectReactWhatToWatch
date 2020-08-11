@@ -3,14 +3,14 @@ import * as React from 'react';
 import {Film} from '../../utils/types';
 
 interface Props {
-  film: Film,
-  rating: number,
-  isLoadingComment: boolean,
-  isErrorLoadingComment: boolean,
-  isButtonBlocked: boolean,
-  onRatingChange: () => void,
-  onTextChange: () => void,
-  onSubmitClick: (id: number) => void
+  film: Film;
+  rating: number;
+  isLoadingComment: boolean;
+  isErrorLoadingComment: boolean;
+  isButtonBlocked: boolean;
+  onRatingChange: () => void;
+  onTextChange: () => void;
+  onSubmitClick: (id: number) => void;
 }
 
 const ratingPoints = [1, 2, 3, 4, 5];
@@ -57,7 +57,7 @@ const getLoadingBlock = (isLoadingComment, isErrorLoadingComment) => {
   return isLoadingComment ? <p>Комментарий загружается</p> : ``;
 };
 
-const FormAddReview: React.FunctionComponent<Props> = (props:Props) => {
+const FormAddReview: React.FunctionComponent<Props> = (props: Props) => {
   const {
     film,
     rating,

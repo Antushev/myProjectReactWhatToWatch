@@ -4,8 +4,8 @@ import {formatDateRuntime} from '../../utils/common';
 import {Film} from '../../utils/types';
 
 interface Props {
-  film: Film,
-  renderTabs: () => React.ReactNode
+  film: Film;
+  renderTabs: () => React.ReactNode;
 }
 
 const FilmDetailMore: React.FunctionComponent<Props> = (props: Props) => {

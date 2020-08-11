@@ -6,21 +6,19 @@ import {ActionCreator as DataActionCreator} from './../../reducer/data/data';
 import {getFilmById} from './../../reducer/data/selectors';
 
 import {formatVideoElapsed} from '../../utils/common';
-import {AppRoute, TypeScreen} from '../../utils/const';
+import {AppRoute} from '../../utils/const';
 import {Film} from '../../utils/types';
 
 interface Props {
-  filmActive: Film,
-  children: React.ReactNode,
-  isPlaying: boolean,
-  posterImage: string,
-  videoMain: string,
-  videoProgress: number,
-  videoTimeElapsed: number,
-  // onPlayClick: func,
-  // onExitVideoPlayerClick: func,
-  onFullScreenClick: () => void
-};
+  filmActive: Film;
+  children: React.ReactNode;
+  isPlaying: boolean;
+  posterImage: string;
+  videoMain: string;
+  videoProgress: number;
+  videoTimeElapsed: number;
+  onFullScreenClick: () => void;
+}
 
 const getPositionToggler = (progress) => {
   const progressString = `${progress}%`;
@@ -44,8 +42,6 @@ class VideoPlayerBig extends React.PureComponent<Props, {}> {
       isPlaying,
       videoProgress,
       videoTimeElapsed,
-      // onPlayClick,
-      // onExitVideoPlayerClick,
       onFullScreenClick
     } = this.props;
 
@@ -57,7 +53,6 @@ class VideoPlayerBig extends React.PureComponent<Props, {}> {
           to={`${AppRoute.FILMS}/${filmActive.id}`}
           type="button"
           className="player__exit"
-          // onClick={() => onExitVideoPlayerClick(TypeScreen.MAIN_SCREEN)}
         >
           Exit
         </Link>
@@ -75,7 +70,6 @@ class VideoPlayerBig extends React.PureComponent<Props, {}> {
             <button
               type="button"
               className="player__play"
-              // onClick={onPlayClick}
             >
               {isPlaying ?
                 <svg viewBox="0 0 14 21" width="19" height="19">

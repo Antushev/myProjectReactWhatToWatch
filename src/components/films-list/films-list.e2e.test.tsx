@@ -22,7 +22,7 @@ describe(`FilmsListComponentE2E`, () => {
           films={filmsTest}
           showFilmCardCount={8}
           filmListType={FilmsListType.DEFAULT}
-         currentFilm={filmTest}
+          currentFilm={filmTest}
         />
     );
 

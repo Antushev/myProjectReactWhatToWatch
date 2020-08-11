@@ -4,10 +4,10 @@ import * as moment from 'moment';
 import {Film, Comment} from '../../utils/types';
 
 interface Props {
-  film: Film,
-  comments: Comment[],
-  renderTabs: () => React.ReactNode
-};
+  film: Film;
+  comments: Comment[];
+  renderTabs: () => React.ReactNode;
+}
 
 const renderComment = (comment) => {
   const {comment: commentUser, date, id, rating, user} = comment;

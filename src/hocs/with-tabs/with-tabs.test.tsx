@@ -4,10 +4,10 @@ import * as renderer from 'react-test-renderer';
 import {withTabs} from './with-tabs';
 
 interface Props {
-  renderTabs: () => React.ReactNode
+  renderTabs: () => React.ReactNode;
 }
 
-const MockComponent: React.FunctionComponent<Props> = (props:Props) => {
+const MockComponent: React.FunctionComponent<Props> = (props: Props) => {
   const {renderTabs} = props;
 
   return (

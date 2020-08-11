@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  activeItem: string
+  activeItem: string;
 }
 
 interface InjectingProps {
-  activeItem: string,
-  onActiveItemChange: (newActionItem: string) => void
+  activeItem: string;
+  onActiveItemChange: (newActionItem: string) => void;
 }
 
 const withActiveItem = (Component) => {

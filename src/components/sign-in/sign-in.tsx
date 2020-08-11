@@ -9,14 +9,14 @@ import {getAuthorizeStatusUser} from './../../reducer/user/selectors';
 import {AppRoute} from "./../../utils/const";
 
 interface Props {
-  buttonDisabled: boolean,
-  onAuthorizeClick: (email: string, password: string) => void,
-  onTypeScreenChange: (typeScreen: string) => void,
-  onChangeInputEmail: (email: string) => void,
-  onChangeInputPassword: (password: string) => void
+  buttonDisabled: boolean;
+  onAuthorizeClick: (email: string, password: string) => void;
+  onTypeScreenChange: (typeScreen: string) => void;
+  onChangeInputEmail: (email: string) => void;
+  onChangeInputPassword: (password: string) => void;
 }
 
-const SignIn: React.FunctionComponent<Props> = (props:Props) => {
+const SignIn: React.FunctionComponent<Props> = (props: Props) => {
   const {
     buttonDisabled,
     onAuthorizeClick,

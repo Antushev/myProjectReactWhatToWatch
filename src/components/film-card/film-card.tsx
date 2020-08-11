@@ -5,8 +5,8 @@ import {AppRoute} from '../../utils/const';
 import {Film} from '../../utils/types';
 
 interface Props {
-  film: Film,
-  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain:string) => React.ReactNode,
+  film: Film;
+  renderVideoPlayer: (posterImage: string, previewVideo: string, videoMain: string) => React.ReactNode;
 }
 
 const FilmCard: React.FunctionComponent<Props> = (props: Props) => {

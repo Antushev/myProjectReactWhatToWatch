@@ -34,21 +34,21 @@ import {withVideoPlayerBig} from '../../hocs/with-video-player-big/with-video-pl
 import {withFormValidation} from '../../hocs/with-form-validation/with-form-validation';
 
 interface Props {
-  isLoading: boolean,
-  isError: boolean,
-  films: Film[],
-  filmPromo: Film,
-  filmActive: Film,
-  user: UserMaximum,
-  comments: Comment[],
-  typeScreenActive: string,
-  showFilmCardCount: number,
-  authorizationStatus: string,
-  onGenreTabClick: (genre: string) => void,
-  onShowMoreClick: () => void,
-  onTypeScreenChange: () => void,
-  onLoadComments: (idFilm: number) => void,
-  onFilmMyListClick: (idFilm: number, status: boolean) => void
+  isLoading: boolean;
+  isError: boolean;
+  films: Film[];
+  filmPromo: Film;
+  filmActive: Film;
+  user: UserMaximum;
+  comments: Comment[];
+  typeScreenActive: string;
+  showFilmCardCount: number;
+  authorizationStatus: string;
+  onGenreTabClick: (genre: string) => void;
+  onShowMoreClick: () => void;
+  onTypeScreenChange: () => void;
+  onLoadComments: (idFilm: number) => void;
+  onFilmMyListClick: (idFilm: number, status: boolean) => void;
 }
 
 const FilmDetailsWithTabs = withTabs(FilmDetails);

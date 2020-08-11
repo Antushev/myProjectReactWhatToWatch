@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer'
+import * as renderer from 'react-test-renderer';
 
 import {Film} from '../../utils/types';
 import {noop} from '../../utils/const.js';
@@ -40,7 +40,7 @@ describe(`AddReViewFormComponent`, () => {
             onRatingChange={noop}
             onTextChange={noop}
             onSubmitClick={noop}
-           film={filmTest}
+            film={filmTest}
           />
       )
       .toJSON();

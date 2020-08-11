@@ -1,10 +1,9 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer'
+import * as renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import history from './../../history';
 
 import {Film} from '../../utils/types';
-import {noop} from '../../utils/const.js';
 
 import {film} from '../../mocks-test/films-t';
 

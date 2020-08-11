@@ -11,20 +11,20 @@ import {ActionCreator as AppStateActionCreator} from '../../reducer/app-state/ap
 import {getLoadingCommentStatus, getErrorLoadingComment} from '../../reducer/data/selectors';
 
 interface State {
-  rating: number,
-  comment: string,
-  isButtonBlocked: boolean
+  rating: number;
+  comment: string;
+  isButtonBlocked: boolean;
 }
 
 interface InjectingProps {
-  film: Film,
-  rating: number,
-  isLoadingComment: boolean,
-  isErrorLoadingComment: boolean,
-  isButtonBlocked: boolean,
-  onRatingChange: () => void,
-  onTextChange: () => void,
-  onSubmitClick: (idFilm: number) => void
+  film: Film;
+  rating: number;
+  isLoadingComment: boolean;
+  isErrorLoadingComment: boolean;
+  isButtonBlocked: boolean;
+  onRatingChange: () => void;
+  onTextChange: () => void;
+  onSubmitClick: (idFilm: number) => void;
 }
 
 const COMMENT_LENGTH_MIN = 50;

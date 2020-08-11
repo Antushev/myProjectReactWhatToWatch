@@ -8,10 +8,10 @@ import {withVideoPlayer} from '../../hocs/with-video-player/with-video-player';
 import FilmCard from '../film-card/film-card';
 
 interface Props {
-  films: Film[],
-  showFilmCardCount: number,
-  filmListType: string,
-  currentFilm: Film
+  films: Film[];
+  showFilmCardCount: number;
+  filmListType: string;
+  currentFilm: Film;
 }
 
 const FILMS_MORE_LIKE_COUNT = 4;

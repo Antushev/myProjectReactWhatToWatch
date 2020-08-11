@@ -13,9 +13,9 @@ import FormAddReview from '../add-review-form/add-review-form';
 import withFormValidationReview from '../../hocs/with-form-validation-review/with-form-validation-review';
 
 interface Props {
-  film: Film,
-  user: UserMaximum,
-  authorizationStatus: string
+  film: Film;
+  user: UserMaximum;
+  authorizationStatus: string;
 }
 
 const FormAddReviewWrapped = withFormValidationReview(FormAddReview);

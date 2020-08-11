@@ -10,10 +10,10 @@ configure({adapter: new Adapter()});
 
 
 interface Props {
-  renderTabs: () => React.ReactNode
+  renderTabs: () => React.ReactNode;
 }
 
-const MockComponent: React.FunctionComponent<Props> = (props:Props) => {
+const MockComponent: React.FunctionComponent<Props> = (props: Props) => {
   const {renderTabs} = props;
 
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createStore, applyMiddleware} from 'redux';
 import reducer from './../../reducer/reducer.js';
-import * as renderer from 'react-test-renderer'
+import * as renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import history from './../../history';
 import {Provider} from 'react-redux';
@@ -14,7 +14,7 @@ import {film, films} from '../../mocks-test/films-t';
 import {user} from '../../mocks-test/user-t';
 import {comments} from '../../mocks-test/comment-t';
 
-import {Film, UserMaximum, Comment} from './../../utils/types';
+import {Film, UserMaximum, Comment} from '../../utils/types';
 import {noop} from '../../utils/const';
 
 import FilmDetails from './film-details';

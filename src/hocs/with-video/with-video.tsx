@@ -7,15 +7,15 @@ import {getFilmActive} from './../../reducer/data/selectors';
 import {TypeVideoPlayer} from './../../utils/const';
 
 interface State {
-  isPlaying: boolean,
-  timeElapsed: number,
-  progress: number
+  isPlaying: boolean;
+  timeElapsed: number;
+  progress: number;
 }
 
 interface InjectingProps {
-  videoProgress: number,
-  videoTimeElapsed: number,
-  onFullScreenClick: () => void
+  videoProgress: number;
+  videoTimeElapsed: number;
+  onFullScreenClick: () => void;
 }
 
 const TIMEOUT_PLAY_VIDEO = 1000;

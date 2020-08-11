@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {AppRoute, AuthorizationStatus, TypeScreen, FilmsListType} from '../../utils/const';
+import {AppRoute, AuthorizationStatus, FilmsListType} from '../../utils/const';
 import {Film, UserMaximum} from '../../utils/types';
 
 import FilmsList from '../films-list/films-list';
@@ -16,17 +16,14 @@ import {withActiveItem} from '../../hocs/with-active-item/with-active-item';
 import history from "../../history";
 
 interface Props {
-  films: Film[],
-  user: UserMaximum,
-  showFilmCardCount: number,
-  filmCardPreview: Film,
-  authorizationStatus: string,
-  // onFilmClick: func,
-  onGenreTabClick: (genre: string) => void,
-  onShowMoreClick: () => void,
-  // onPlayClick: func,
-  // onTypeScreenChange: func,
-  onFilmMyListClick: (id: number, isFavorite: boolean) => void
+  films: Film[];
+  user: UserMaximum;
+  showFilmCardCount: number;
+  filmCardPreview: Film;
+  authorizationStatus: string;
+  onGenreTabClick: (genre: string) => void;
+  onShowMoreClick: () => void;
+  onFilmMyListClick: (id: number, isFavorite: boolean) => void;
 }
 
 const GenresListWrapped = withActiveItem(GenresList);
@@ -40,10 +37,8 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
     showFilmCardCount,
     filmCardPreview,
     authorizationStatus,
-    // onFilmClick,
     onGenreTabClick,
     onShowMoreClick,
-    // onPlayClick,
     onFilmMyListClick
   } = props;
 
@@ -100,7 +95,6 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
                 to={`${AppRoute.PLAYER}/${id}`}
                 className="btn btn--play movie-card__button"
                 type="button"
-                // onClick={() => onPlayClick(filmCardPreview, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -146,8 +140,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
           films={films}
           showFilmCardCount={showFilmCardCount}
           filmListType={FilmsListType.DEFAULT}
-         // onFilmClick={onFilmClick}
-         currentFilm={films[0]}
+          currentFilm={films[0]}
         />
 
         {renderShowMore(films, showFilmCardCount, onShowMoreClick)}
