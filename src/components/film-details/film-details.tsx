@@ -192,7 +192,6 @@ class FilmDetails extends React.PureComponent<Props> {
             films={films}
             filmListType={FilmsListType.MORE_LIKE}
             showFilmCardCount={8}
-            // onFilmClick={onFilmClick}
           />
 
         </section>

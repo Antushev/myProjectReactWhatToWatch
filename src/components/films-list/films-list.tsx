@@ -48,7 +48,6 @@ const FilmsList: React.FunctionComponent<Props> = (props: Props) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        // onFilmClick={onFilmClick}
       />;
     }).slice(0, showFilmCardCount);
   };
@@ -60,7 +59,6 @@ const FilmsList: React.FunctionComponent<Props> = (props: Props) => {
       return <FilmCardWithVideoPlayer
         key={film.id}
         film={film}
-        // onFilmClick={onFilmClick}
       />;
     });
   };
