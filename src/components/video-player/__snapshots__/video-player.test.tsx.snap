@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayerComponent VideoPlayerComponentSnapshot 1`] = `
+<div
+  className="small-movie-card__image"
+>
+  <video />
+</div>
+`;
