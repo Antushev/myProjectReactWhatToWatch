@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 
-import {film} from '../../mocks-test/films-test.js';
+import {film} from '../../mocks-test/films-t';
 
 import FilmCard from './film-card';
 
@@ -18,7 +18,6 @@ describe(`FilmCardComponentE2E`, () => {
         <Router history={history}>
           <FilmCard
             film={film}
-            handleFilmCardMouseOver={() => {}}
             renderVideoPlayer={renderVideoPlayer}
           />
         </Router>

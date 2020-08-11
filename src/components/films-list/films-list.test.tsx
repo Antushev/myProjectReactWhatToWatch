@@ -1,14 +1,19 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import createStore from 'redux-mock-store';
-import history from './../../history.js';
+import history from './../../history';
 
-import {NameSpace} from './../../reducer/name-space.js';
+import {NameSpace} from '../../reducer/name-space';
 
-import {film, films} from '../../mocks-test/films-test.js';
-import {FilmsListType} from '../../mocks-test/films-test.js';
+import {film, films} from '../../mocks-test/films-t';
+import {FilmsListType} from '../../mocks-test/films-t';
+
+import {Film} from '../../utils/types';
+
+const filmTest: Film = film;
+const filmsTest: Film[] = films;
 
 import FilmsList from './films-list';
 
@@ -20,17 +25,16 @@ const store = mockStore({
 });
 
 describe(`FilmsListComponent`, () => {
-  it(`FilmcListComponentSnapshot`, () => {
+  it(`FilmsListComponentSnapshot`, () => {
     const tree = renderer
       .create(
           <Router history={history}>
             <Provider store={store}>
               <FilmsList
-                currentFilm={film}
-                films={films}
+                currentFilm={filmTest}
+                films={filmsTest}
                 showFilmCardCount={8}
                 filmListType={FilmsListType.DEFAULT}
-                onFilmClick={() => {}}
               />
             </Provider>
           </Router>, {

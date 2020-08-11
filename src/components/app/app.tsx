@@ -15,7 +15,7 @@ import {
 import {getAuthorizeStatusUser, getUserInfo} from './../../reducer/user/selectors';
 import {getTypeScreenActive, getShowFilmCardCount} from './../../reducer/app-state/selectors';
 
-import {Film, Comment} from '../../utils/types';
+import {Film, Comment, UserMaximum} from '../../utils/types';
 
 import Main from '../main/main';
 import FilmDetails from '../film-details/film-details';
@@ -39,7 +39,7 @@ interface Props {
   films: Film[],
   filmPromo: Film,
   filmActive: Film,
-  user: Film,
+  user: UserMaximum,
   comments: Comment[],
   typeScreenActive: string,
   showFilmCardCount: number,
@@ -59,15 +59,6 @@ const SignInWrapped = withFormValidation(SignIn);
 class App extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   film: {},
-    //   typeScreen: TypeScreen.MAIN_SCREEN
-    // };
-
-    // this._handleFilmClick = this._handleFilmClick.bind(this);
-    // this._handlePlayClick = this._handlePlayClick.bind(this);
-    // this._handleExitVideoPlayerClick = this._handleExitVideoPlayerClick.bind(this);
   }
 
   render() {
@@ -104,8 +95,6 @@ class App extends React.PureComponent<Props, {}> {
                 showFilmCardCount={showFilmCardCount}
                 filmCardPreview={filmPromo}
                 authorizationStatus={authorizationStatus}
-                //onFilmClick={this._handleFilmClick}
-                //onPlayClick={this._handlePlayClick}
                 onTypeScreenChange={onTypeScreenChange}
                 onGenreTabClick={onGenreTabClick}
                 onShowMoreClick={onShowMoreClick}
@@ -124,8 +113,6 @@ class App extends React.PureComponent<Props, {}> {
                 comments={comments}
                 authorizationStatus={authorizationStatus}
                 onTypeScreenChange={onTypeScreenChange}
-                //onFilmClick={this._handleFilmClick}
-                //onPlayClick={this._handlePlayClick}
                 onFilmMyListClick={onFilmMyListClick}
               />
             );
@@ -138,7 +125,6 @@ class App extends React.PureComponent<Props, {}> {
                 {...routerProps}
                 posterImage={filmActive.posterImage}
                 videoMain={filmActive.videoMain}
-                // onExitVideoPlayerClick={this._handleExitVideoPlayerClick}
               />
             );
           }}
@@ -174,40 +160,6 @@ class App extends React.PureComponent<Props, {}> {
       </Switch>
     </Router>;
   }
-
-  // _handleFilmClick(film, typeScreen, idTimer = null) {
-  //   const {onTypeScreenChange} = this.props;
-  //
-  //   if (idTimer) {
-  //     clearTimeout(idTimer);
-  //   }
-  //
-  //   onTypeScreenChange(typeScreen);
-  //
-  //   this.setState({
-  //     film,
-  //   });
-  // }
-  //
-  // _handlePlayClick(film, typeScreen) {
-  //   const {onTypeScreenChange} = this.props;
-  //
-  //   onTypeScreenChange(typeScreen);
-  //
-  //   this.setState({
-  //     film
-  //   });
-  // }
-  //
-  // _handleExitVideoPlayerClick(typeScreen) {
-  //   const {onTypeScreenChange} = this.props;
-  //
-  //   onTypeScreenChange(typeScreen);
-  //
-  //   this.setState({
-  //     film: null
-  //   });
-  // }
 }
 
 const mapStateToProps = (state) => {

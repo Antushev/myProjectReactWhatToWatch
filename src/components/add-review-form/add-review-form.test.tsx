@@ -1,7 +1,13 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
+
+import {Film} from '../../utils/types';
+import {noop} from '../../utils/const.js';
+import {film} from '../../mocks-test/films-t';
 
 import AddReviewForm from './add-review-form';
+
+const filmTest: Film = film;
 
 describe(`AddReViewFormComponent`, () => {
   it(`AddReviewFormComponentSnapshot with isButtonBlocked true`, () => {
@@ -12,9 +18,10 @@ describe(`AddReViewFormComponent`, () => {
             isLoadingComment={false}
             isButtonBlocked={true}
             isErrorLoadingComment={false}
-            onRatingChange={() => {}}
-            onTextChange={() => {}}
-            onSubmitClick={() => {}}
+            onRatingChange={noop}
+            onTextChange={noop}
+            onSubmitClick={noop}
+            film={filmTest}
           />
       )
       .toJSON();
@@ -30,9 +37,10 @@ describe(`AddReViewFormComponent`, () => {
             isLoadingComment={false}
             isButtonBlocked={false}
             isErrorLoadingComment={false}
-            onRatingChange={() => {}}
-            onTextChange={() => {}}
-            onSubmitClick={() => {}}
+            onRatingChange={noop}
+            onTextChange={noop}
+            onSubmitClick={noop}
+           film={filmTest}
           />
       )
       .toJSON();
@@ -48,9 +56,10 @@ describe(`AddReViewFormComponent`, () => {
             isLoadingComment={true}
             isButtonBlocked={false}
             isErrorLoadingComment={true}
-            onRatingChange={() => {}}
-            onTextChange={() => {}}
-            onSubmitClick={() => {}}
+            onRatingChange={noop}
+            onTextChange={noop}
+            onSubmitClick={noop}
+            film={filmTest}
           />
       )
       .toJSON();
@@ -66,9 +75,10 @@ describe(`AddReViewFormComponent`, () => {
             isLoadingComment={true}
             isButtonBlocked={true}
             isErrorLoadingComment={false}
-            onRatingChange={() => {}}
-            onTextChange={() => {}}
-            onSubmitClick={() => {}}
+            onRatingChange={noop}
+            onTextChange={noop}
+            onSubmitClick={noop}
+            film={filmTest}
           />
       )
       .toJSON();

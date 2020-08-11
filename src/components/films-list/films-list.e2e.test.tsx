@@ -1,10 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 import FilmsList from './films-list';
 
-import {films} from '../../mocks-test/films-test.js';
-import {FilmsListType} from '../../mocks-test/films-test.js';
+import {film, films} from '../../mocks-test/films-t';
+import {FilmsListType} from '../../mocks-test/films-t';
+
+import {Film} from '../../utils/types';
+
+const filmTest: Film = film;
+const filmsTest: Film[] = films;
 
 configure({adapter: new Adapter()});
 
@@ -14,10 +19,10 @@ describe(`FilmsListComponentE2E`, () => {
 
     const filmsList = shallow(
         <FilmsList
-          films={films}
+          films={filmsTest}
           showFilmCardCount={8}
           filmListType={FilmsListType.DEFAULT}
-          onFilmClick={onFilmClick}
+         currentFilm={filmTest}
         />
     );
 
@@ -35,10 +40,10 @@ describe(`FilmsListComponentE2E`, () => {
 
     const filmsList = shallow(
         <FilmsList
-          films={films}
+          films={filmsTest}
           showFilmCardCount={16}
           filmListType={FilmsListType.DEFAULT}
-          onFilmClick={onFilmClick}
+          currentFilm={filmTest}
         />
     );
 
@@ -56,10 +61,10 @@ describe(`FilmsListComponentE2E`, () => {
 
     const filmsList = shallow(
         <FilmsList
-          films={films}
+          films={filmsTest}
           showFilmCardCount={0}
           filmListType={FilmsListType.DEFAULT}
-          onFilmClick={onFilmClick}
+          currentFilm={filmTest}
         />
     );
 

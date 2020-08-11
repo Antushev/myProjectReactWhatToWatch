@@ -1,15 +1,20 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import history from './../../history.js';
+import history from './../../history';
 
-import {NameSpace} from '../../reducer/name-space.js';
-import {film} from './../../mocks-test/films-test.js';
-import {user} from './../../mocks-test/user-test.js';
+import {Film, UserMaximum} from '../../utils/types';
+
+import {NameSpace} from '../../reducer/name-space';
+import {film} from '../../mocks-test/films-t';
+import {user} from '../../mocks-test/user-t';
 
 import {AddReview} from './add-review';
+
+const filmTest: Film = film;
+const userTest: UserMaximum = user;
 
 const mockStore = configureStore([]);
 
@@ -26,10 +31,9 @@ describe(`AddReviewComponent`, () => {
           <Router history={history}>
             <Provider store={store}>
               <AddReview
-                film={film}
-                user={user}
+                film={filmTest}
+                user={userTest}
                 authorizationStatus={`NO_AUTH`}
-                onTypeScreenChange={() => {}}
               />
             </Provider>
           </Router>
@@ -48,7 +52,6 @@ describe(`AddReviewComponent`, () => {
                 film={film}
                 user={user}
                 authorizationStatus={`AUTH`}
-                onTypeScreenChange={() => {}}
               />
             </Provider>
           </Router>

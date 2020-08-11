@@ -1,5 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
+
+import {noop} from '../../utils/const';
 
 import ShowMore from './show-more';
 
@@ -8,7 +10,7 @@ describe(`ShowMoreComponent`, () => {
     const tree = renderer
       .create(
           <ShowMore
-            onShowMoreClick={() => {}}
+            onShowMoreClick={noop}
           />
       )
       .toJSON();

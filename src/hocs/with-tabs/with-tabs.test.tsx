@@ -1,10 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import {withTabs} from './with-tabs';
 
-const MockComponent = (props) => {
+interface Props {
+  renderTabs: () => React.ReactNode
+}
+
+const MockComponent: React.FunctionComponent<Props> = (props:Props) => {
   const {renderTabs} = props;
 
   return (
@@ -12,10 +15,6 @@ const MockComponent = (props) => {
       {renderTabs()}
     </div>
   );
-};
-
-MockComponent.propTypes = {
-  renderTabs: PropTypes.func.isRequired
 };
 
 describe(`Test HOC with-tabs`, () => {

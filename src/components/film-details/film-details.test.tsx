@@ -1,20 +1,28 @@
-import React from 'react';
+import * as React from 'react';
 import {createStore, applyMiddleware} from 'redux';
 import reducer from './../../reducer/reducer.js';
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {NameSpace} from './../../reducer/name-space.js';
+import {NameSpace} from '../../reducer/name-space';
 
-import {createApi} from './../../api.js';
+import {createApi} from '../../api';
 
-import {film, films} from '../../mocks-test/films-test.js';
-import {user} from '../../mocks-test/user-test.js';
-import {comments} from '../../mocks-test/comment-test.js';
+import {film, films} from '../../mocks-test/films-t';
+import {user} from '../../mocks-test/user-t';
+import {comments} from '../../mocks-test/comment-t';
+
+import {Film, UserMaximum, Comment} from './../../utils/types';
+import {noop} from '../../utils/const';
 
 import FilmDetails from './film-details';
+
+const filmTest: Film = film;
+const filmsTest: Film[] = films;
+const userTest: UserMaximum = user;
+const commentsTest: Comment[] = comments;
 
 const activeTab = `overview`;
 
@@ -46,18 +54,18 @@ describe(`FilmDetailsComponent`, () => {
           <Provider store={store}>
             <Router history={history}>
               <FilmDetails
-                filmDetail={film}
-                films={films}
-                user={user}
-                comments={comments}
+                filmDetail={filmTest}
+                films={filmsTest}
+                user={userTest}
+                comments={commentsTest}
                 match={match}
                 authorizationStatus={`NO_AUTH`}
                 activeTab={activeTab}
-                loadComments={() => {}}
-                renderTabs={() => {}}
-                onFilmClick={() => {}}
-                onPlayClick={() => {}}
-                onTypeScreenChange={() => {}}
+                loadComments={noop}
+                renderTabs={() => null}
+                onFilmClick={noop}
+                onPlayClick={noop}
+                onTypeScreenChange={noop}
               />
             </Router>
           </Provider>, {

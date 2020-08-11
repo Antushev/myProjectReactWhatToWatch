@@ -27,10 +27,13 @@ const formatVideoElapsed = (runtimeBySecond) => {
   return `${runtimeHours}:${runtimeMinutes}:${runtimeSeconds}`;
 };
 
+const noop = () => {};
+
 export {
   getRandomNumber,
   getRandomNumberFloat,
   getRandomElementFromArray,
   formatDateRuntime,
-  formatVideoElapsed
+  formatVideoElapsed,
+  noop
 };

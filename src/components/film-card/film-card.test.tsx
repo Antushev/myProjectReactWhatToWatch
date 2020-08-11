@@ -1,9 +1,14 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 
-import {film} from '../../mocks-test/films-test.js';
+import {Film} from '../../utils/types';
+import {noop} from '../../utils/const.js';
+
+import {film} from '../../mocks-test/films-t';
+
+const filmTest: Film = film;
 
 import FilmCard from './film-card';
 
@@ -12,10 +17,8 @@ describe(`FilmCardComponent`, () => {
     const tree = renderer.create(
         <Router history={history}>
           <FilmCard
-            film={film}
-            onFilmClick={() => {}}
-            handleFilmCardMouseOver={() => {}}
-            renderVideoPlayer={() => {}}
+            film={filmTest}
+            renderVideoPlayer={() => null}
           />
         </Router>, {
           createNodeMock: () => {

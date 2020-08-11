@@ -1,7 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 
-import {film} from './../../mocks-test/films-test.js';
+import {film} from '../../mocks-test/films-t';
 
 import FilmDetailMore from './film-detail-more';
 
@@ -11,7 +11,7 @@ describe(`FilmDetailMoreComponent`, () => {
       .create(
           <FilmDetailMore
             film={film}
-            renderTabs={() => {}}
+            renderTabs={() => null}
           />
       )
       .toJSON();

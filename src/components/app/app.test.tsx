@@ -1,13 +1,22 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {NameSpace} from './../../reducer/name-space.js';
+import {NameSpace} from './../../reducer/name-space';
 
-import {films, currentGenre} from '../../mocks-test/films-test.js';
-import {user} from '../../mocks-test/user-test.js';
+import {film, films, currentGenre} from '../../mocks-test/films-t';
+import {user} from '../../mocks-test/user-t';
+import {comments} from '../../mocks-test/comment-t';
+
+import {Film, UserMaximum, Comment} from '../../utils/types';
+import {noop} from './../../utils/const';
 
 import {App} from './app';
+
+const filmTest: Film = film;
+const filmsTest: Film[] = films;
+const userTest: UserMaximum = user;
+const commentsTest: Comment[] = comments;
 
 const mockStore = configureStore([]);
 
@@ -27,16 +36,18 @@ describe(`AppComponent`, () => {
               isLoading={true}
               isError={false}
               typeScreenActive={`MAIN_SCREEN`}
-              films={films}
-              user={user}
+              films={filmsTest}
               authorizationStatus={`NO_AUTH`}
-              currentFilms={films}
-              currentGenre={currentGenre}
               showFilmCardCount={8}
-              onGenreTabClick={() => {}}
-              onShowMoreClick={() => {}}
-              onTypeScreenChange={() => {}}
-              onLoadComments={() => {}}
+              onGenreTabClick={noop}
+              onShowMoreClick={noop}
+              onTypeScreenChange={noop}
+              onLoadComments={noop}
+              comments={commentsTest}
+              filmActive={filmTest}
+              filmPromo={filmTest}
+              onFilmMyListClick={noop}
+              user={userTest}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -63,15 +74,18 @@ describe(`AppComponent`, () => {
               isLoading={true}
               isError={true}
               typeScreenActive={`MAIN_SCREEN`}
-              films={films}
-              user={user}
+              films={filmsTest}
               authorizationStatus={`NO_AUTH`}
-              currentFilms={films}
-              currentGenre={currentGenre}
               showFilmCardCount={8}
-              onGenreTabClick={() => {}}
-              onShowMoreClick={() => {}}
-              onTypeScreenChange={() => {}}
+              onGenreTabClick={noop}
+              onShowMoreClick={noop}
+              onTypeScreenChange={noop}
+              onLoadComments={noop}
+              comments={commentsTest}
+              filmActive={filmTest}
+              filmPromo={filmTest}
+              onFilmMyListClick={noop}
+              user={userTest}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -98,15 +112,18 @@ describe(`AppComponent`, () => {
               isLoading={false}
               isError={true}
               typeScreenActive={`MAIN_SCREEN`}
-              films={films}
-              user={user}
+              films={filmsTest}
               authorizationStatus={`NO_AUTH`}
-              currentFilms={films}
-              currentGenre={currentGenre}
               showFilmCardCount={8}
-              onGenreTabClick={() => {}}
-              onShowMoreClick={() => {}}
-              onTypeScreenChange={() => {}}
+              onGenreTabClick={noop}
+              onShowMoreClick={noop}
+              onTypeScreenChange={noop}
+              onLoadComments={noop}
+              comments={commentsTest}
+              filmActive={filmTest}
+              filmPromo={filmTest}
+              onFilmMyListClick={noop}
+              user={userTest}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -133,15 +150,18 @@ describe(`AppComponent`, () => {
               isLoading={false}
               isError={true}
               typeScreenActive={`MAIN_SCREEN`}
-              films={films}
-              user={user}
+              films={filmsTest}
               authorizationStatus={`NO_AUTH`}
-              currentFilms={films}
-              currentGenre={currentGenre}
               showFilmCardCount={8}
-              onGenreTabClick={() => {}}
-              onShowMoreClick={() => {}}
-              onTypeScreenChange={() => {}}
+              onGenreTabClick={noop}
+              onShowMoreClick={noop}
+              onTypeScreenChange={noop}
+              onLoadComments={noop}
+              comments={commentsTest}
+              filmActive={filmTest}
+              filmPromo={filmTest}
+              onFilmMyListClick={noop}
+              user={userTest}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -168,15 +188,18 @@ describe(`AppComponent`, () => {
               isLoading={true}
               isError={false}
               typeScreenActive={`MAIN_SCREEN`}
-              films={films}
-              user={user}
-              authorizationStatus={`AUTH`}
-              currentFilms={films}
-              currentGenre={currentGenre}
+              films={filmsTest}
+              authorizationStatus={`NO_AUTH`}
               showFilmCardCount={8}
-              onGenreTabClick={() => {}}
-              onShowMoreClick={() => {}}
-              onTypeScreenChange={() => {}}
+              onGenreTabClick={noop}
+              onShowMoreClick={noop}
+              onTypeScreenChange={noop}
+              onLoadComments={noop}
+              comments={commentsTest}
+              filmActive={filmTest}
+              filmPromo={filmTest}
+              onFilmMyListClick={noop}
+              user={userTest}
             />
           </Provider>, {
             createNodeMock: () => {

@@ -1,7 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
+
+import {noop} from '../../utils/const';
 
 import {SignIn} from './sign-in';
 
@@ -12,10 +14,10 @@ describe(`SignInComponent`, () => {
           <Router history={history}>
             <SignIn
               buttonDisabled={true}
-              onAuthorizeClick={() => {}}
-              onTypeScreenChange={() => {}}
-              onChangeInputEmail={() => {}}
-              onChangeInputPassword={() => {}}
+              onAuthorizeClick={noop}
+              onTypeScreenChange={noop}
+              onChangeInputEmail={noop}
+              onChangeInputPassword={noop}
             />
           </Router>
       )

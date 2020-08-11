@@ -1,13 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import {withActiveItem} from './with-active-item';
 
 configure({adapter: new Adapter()});
 
-const MockList = (props) => {
+interface Props {
+  onActiveItemChange: (value: number) => void;
+}
+
+const MockList: React.FunctionComponent<Props> = (props:Props) => {
   const {onActiveItemChange} = props;
 
   return <div>
@@ -15,17 +18,16 @@ const MockList = (props) => {
   </div>;
 };
 
-MockList.propTypes = {
-  onActiveItemChange: PropTypes.func.isRequired
-};
 
 describe(`Tests HOC with-active-item`, () => {
   it(`Test HOC with-active-item`, () => {
     const MockListWrapped = withActiveItem(MockList);
+    const onActiveItemChange = jest.fn();
+
     const wrapped = mount(
         <MockListWrapped
           activeItem={`item`}
-          onActiveItemChange={() => {}}
+          onActiveItemChange={onActiveItemChange}
         />
     );
 

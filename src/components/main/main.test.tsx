@@ -1,13 +1,20 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import {NameSpace} from './../../reducer/name-space.js';
-import {film, films} from '../../mocks-test/films-test.js';
-import {user} from '../../mocks-test/user-test.js';
+import {NameSpace} from '../../reducer/name-space';
+import {film, films} from '../../mocks-test/films-t';
+import {user} from '../../mocks-test/user-t';
+
+import {Film, UserMaximum} from '../../utils/types';
+import {noop} from '../../utils/const';
+
+const filmTest: Film = film;
+const filmsTest: Film[] = films;
+const userTest: UserMaximum[] = user;
 
 import Main from './main';
 
@@ -26,17 +33,17 @@ describe(`MainComponent`, () => {
           <Router history={history}>
             <Provider store={store}>
               <Main
-                films={films}
-                user={user}
+                films={filmsTest}
+                user={userTest}
                 authorizationStatus={`NO_AUTH`}
-                currentFilms={films}
+                currentFilms={filmsTest}
                 showFilmCardCount={8}
-                filmCardPreview={film}
-                onFilmClick={() => {}}
-                onGenreTabClick={() => {}}
-                onShowMoreClick={() => {}}
-                onPlayClick={() => {}}
-                onTypeScreenChange={() => {}}
+                filmCardPreview={filmTest}
+                onFilmClick={noop}
+                onGenreTabClick={noop}
+                onShowMoreClick={noop}
+                onPlayClick={noop}
+                onTypeScreenChange={noop}
               />
             </Provider>
           </Router>
@@ -57,17 +64,17 @@ describe(`MainComponent`, () => {
           <Router history={history}>
             <Provider store={store}>
               <Main
-                films={films}
-                user={user}
+                films={filmsTest}
+                user={userTest}
                 authorizationStatus={`AUTH`}
-                currentFilms={films}
+                currentFilms={filmsTest}
                 showFilmCardCount={8}
-                filmCardPreview={film}
-                onFilmClick={() => {}}
-                onGenreTabClick={() => {}}
-                onShowMoreClick={() => {}}
-                onPlayClick={() => {}}
-                onTypeScreenChange={() => {}}
+                filmCardPreview={filmTest}
+                onFilmClick={noop}
+                onGenreTabClick={noop}
+                onShowMoreClick={noop}
+                onPlayClick={noop}
+                onTypeScreenChange={noop}
               />
             </Provider>
           </Router>, {

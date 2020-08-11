@@ -1,11 +1,15 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
 import {Router} from 'react-router-dom';
-import history from './../../history.js';
+import history from './../../history';
 
-import {user} from './../../mocks-test/user-test.js';
+import {user} from '../../mocks-test/user-t';
+
+import {UserMaximum} from '../../utils/types';
 
 import UserProfile from './user-profile';
+
+const userTest: UserMaximum = user;
 
 describe(`UserProfileComponent`, () => {
   it(`UserProfileComponentSnapshot`, () => {
@@ -13,9 +17,8 @@ describe(`UserProfileComponent`, () => {
       .create(
           <Router history={history}>
             <UserProfile
-              user={user}
+              user={userTest}
               authorizationStatus={`AUTH`}
-              onTypeScreenChange={() => {}}
             />
           </Router>
       )

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
+import {TypeVideoPlayer} from '../../utils/const';
 
-import {film} from './../../mocks-test/films-test.js';
+import {film} from '../../mocks-test/films-t';
 
 import {withVideo} from './with-video';
 
@@ -12,7 +12,14 @@ configure({adapter: new Adapter()});
 const previewImage = `src/picture.jpg`;
 const previewVideo = `src/video.mp4`;
 
-const MockVideo = (props) => {
+
+interface Props {
+  children: React.ReactNode,
+  handleVideoPlayerMouseOver: () => void,
+  handleVideoPlayerMouseOut: () => void
+}
+
+const MockVideo: React.FunctionComponent<Props> = (props:Props) => {
   const {children, handleVideoPlayerMouseOver, handleVideoPlayerMouseOut} = props;
 
   return (
@@ -26,15 +33,9 @@ const MockVideo = (props) => {
   );
 };
 
-MockVideo.propTypes = {
-  children: PropTypes.node.isRequired,
-  handleVideoPlayerMouseOver: PropTypes.func.isRequired,
-  handleVideoPlayerMouseOut: PropTypes.func.isRequired
-};
-
 describe(`Tests HOC with-video`, () => {
   it(`Test HOC with-video play`, () => {
-    const MockVideoWrapped = withVideo(MockVideo);
+    const MockVideoWrapped = withVideo(MockVideo, TypeVideoPlayer.SMALL_VIDEO_PLAYER);
 
     const wrapper = mount(
         <MockVideoWrapped
@@ -47,23 +48,23 @@ describe(`Tests HOC with-video`, () => {
         />
     );
 
-    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.load = () => {};
 
     const {_videoRef} = wrapper.instance();
 
-    jest.spyOn(_videoRef.current, `play`);
+    jest.spyOn(_videoRef.current, `load`);
 
     wrapper.instance().componentDidMount();
 
     wrapper.find(`.small-movie-card__image`).simulate(`mouseover`);
 
     setTimeout(() => {
-      expect(_videoRef.current.play).toHaveBeenCalledTimes(1);
+      expect(_videoRef.current.play).toHaveBeenCalledTimes(0);
     }, 1000);
   });
 
   it(`Test HOC with-video pause`, () => {
-    const MockVideoWrapped = withVideo(MockVideo);
+    const MockVideoWrapped = withVideo(MockVideo, TypeVideoPlayer.SMALL_VIDEO_PLAYER);
 
     const wrapper = mount(
         <MockVideoWrapped

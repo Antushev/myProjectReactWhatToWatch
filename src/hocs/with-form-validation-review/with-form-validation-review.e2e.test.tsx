@@ -1,17 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 
-import {film} from './../../mocks-test/films-test.js';
+import {film} from '../../mocks-test/films-t';
 
-import {withFormValidationReview} from './with-form-validation-review.js';
+import {Film} from '../../utils/const';
+
+import {withFormValidationReview} from './with-form-validation-review';
 
 configure({adapter: new Adapter()});
 
+const filmTest: Film = film;
+
 const ratingPoints = [0, 1, 2, 3, 4, 5];
 
-const FormComponent = (props) => {
+interface Props {
+  rating: number,
+  isLoadingComment: boolean,
+  isButtonBlocked: boolean,
+  onRatingChange: () => void,
+  onTextChange: () => void,
+  onSubmitClick: () => void
+}
+
+const FormComponent: React.FunctionComponent<Props> = (props:Props) => {
   const {
     rating,
     isLoadingComment,
@@ -42,15 +54,6 @@ const FormComponent = (props) => {
   );
 };
 
-FormComponent.propTypes = {
-  rating: PropTypes.number.isRequired,
-  isLoadingComment: PropTypes.bool.isRequired,
-  isButtonBlocked: PropTypes.bool.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onTextChange: PropTypes.func.isRequired,
-  onSubmitClick: PropTypes.func.isRequired
-};
-
 describe(`Test HOC with-from-validation-review`, () => {
   it(`Test component with HOC`, () => {
     const FormComponentWrapped = withFormValidationReview(FormComponent);
@@ -62,7 +65,7 @@ describe(`Test HOC with-from-validation-review`, () => {
 
     const formWrapped = mount(
         <FormComponentWrapped
-          film={film}
+          film={filmTest}
           rating={0}
           isButtonBlocked={true}
           isLoadingComment={false}

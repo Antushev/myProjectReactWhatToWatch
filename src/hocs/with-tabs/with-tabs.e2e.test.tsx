@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import {FilmDetailTabsName} from '../../utils/const.js';
 
@@ -9,7 +8,12 @@ import {withTabs} from './with-tabs';
 
 configure({adapter: new Adapter()});
 
-const MockComponent = (props) => {
+
+interface Props {
+  renderTabs: () => React.ReactNode
+}
+
+const MockComponent: React.FunctionComponent<Props> = (props:Props) => {
   const {renderTabs} = props;
 
   return (
@@ -17,10 +21,6 @@ const MockComponent = (props) => {
       {renderTabs()}
     </div>
   );
-};
-
-MockComponent.propTypes = {
-  renderTabs: PropTypes.func.isRequired
 };
 
 describe(`Test HOC with-tabs`, () => {

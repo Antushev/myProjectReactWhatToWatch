@@ -1,5 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer'
+
+import {noop} from '../../utils/const';
 
 import VideoPlayer from './video-player';
 
@@ -12,11 +14,8 @@ describe(`VideoPlayerComponent`, () => {
     const tree = renderer
       .create(
           <VideoPlayer
-            isPlaying={isPlaying}
-            posterImage={posterImage}
-            previewVideo={previewVideo}
-            handleVideoPlayerPlay={() => {}}
-            handleVideoPlayerPause={() => {}}
+            handleVideoPlayerPlay={noop}
+            handleVideoPlayerPause={noop}
           >
             <video />
           </ VideoPlayer>, {
