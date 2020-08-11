@@ -41,8 +41,8 @@ const Operation = {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserInfo(user));
       })
-      .catch((err) => {
-        throw err;
+      .catch(() => {
+
       });
   },
   loginUser: (emailUser, passwordUser) => (dispatch, getState, api) => {

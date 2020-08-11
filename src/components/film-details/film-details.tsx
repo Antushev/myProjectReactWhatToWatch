@@ -28,9 +28,6 @@ interface Props {
   addFilmActive: (Film) => void,
   loadComments: (idFilm: number) => void,
   renderTabs: () => React.ReactNode,
-  //onFilmClick: func,
-  //onPlayClick: func,
-  //onTypeScreenChange: func,
   onFilmMyListClick: (id: number, isFavorite: boolean) => void
 }
 
@@ -95,9 +92,6 @@ class FilmDetails extends React.PureComponent<Props> {
       authorizationStatus,
       activeTab,
       renderTabs,
-      //onFilmClick,
-      //onPlayClick,
-      //onTypeScreenChange,
       onFilmMyListClick
     } = this.props;
 
@@ -135,7 +129,6 @@ class FilmDetails extends React.PureComponent<Props> {
           <UserProfile
             user={user}
             authorizationStatus={authorizationStatus}
-            //onTypeScreenChange={onTypeScreenChange}
           />
         </header>
 
@@ -152,7 +145,6 @@ class FilmDetails extends React.PureComponent<Props> {
                 className="btn btn--play movie-card__button"
                 type="button"
                 to={`${AppRoute.PLAYER}/${id}`}
-                // onClick={() => onPlayClick(film, TypeScreen.VIDEO_BIG_SCREEN)}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -207,11 +199,11 @@ class FilmDetails extends React.PureComponent<Props> {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to={AppRoute.MAIN} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
