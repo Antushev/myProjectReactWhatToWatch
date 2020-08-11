@@ -54,36 +54,32 @@ const VideoPlayerBigWithControls = withVideo(VideoPlayerBig, TypeVideoPlayer.BIG
 const VideoPlayerBigWrapped = withVideoPlayerBig(VideoPlayerBigWithControls);
 const SignInWrapped = withFormValidation(SignIn);
 
-class App extends React.PureComponent<Props, {}> {
-  constructor(props) {
-    super(props);
+const App: React.FunctionComponent<Props> = (props: Props) => {
+  const {isLoading, isError, authorizationStatus} = props;
+
+  if (isLoading) {
+    return <Loading />;
   }
 
-  render() {
-    const {isLoading, isError, authorizationStatus} = this.props;
+  if (isError) {
+    return <Error />;
+  }
 
-    if (isLoading) {
-      return <Loading />;
-    }
+  const {
+    films,
+    filmPromo,
+    filmActive,
+    user,
+    comments,
+    showFilmCardCount,
+    onGenreTabClick,
+    onShowMoreClick,
+    onTypeScreenChange,
+    onFilmMyListClick
+  } = props;
 
-    if (isError) {
-      return <Error />;
-    }
-
-    const {
-      films,
-      filmPromo,
-      filmActive,
-      user,
-      comments,
-      showFilmCardCount,
-      onGenreTabClick,
-      onShowMoreClick,
-      onTypeScreenChange,
-      onFilmMyListClick
-    } = this.props;
-
-    return <Router history={history}>
+  return (
+    <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MAIN}
           render={() => {
@@ -156,9 +152,9 @@ class App extends React.PureComponent<Props, {}> {
           }}
         />
       </Switch>
-    </Router>;
-  }
-}
+    </Router>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
