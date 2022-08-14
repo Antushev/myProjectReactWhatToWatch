@@ -5,7 +5,7 @@ const Error = {
 };
 
 const BASE_URL = `https://4.react.pages.academy/wtw`;
-const TIMEOUT = 5000;
+const TIMEOUT = 15000;
 const WITH_CREDENTIALS = true;
 
 export const createApi = (onUnauthorized) => {
